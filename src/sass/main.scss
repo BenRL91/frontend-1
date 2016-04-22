@@ -3,3 +3,27 @@
 // Turn on freq used libraries
 @import 'normalize-css/normalize';
 // @import 'font-awesome/scss/font-awesome';
+
+//Overall Application default styling//
+
+.app {
+  box-sizing: border-box;
+  ul {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
+  }
+  h1, h2, h3, h4 {
+    margin: 0;
+  }
+}
+
+//Home Component//
+
+.home-wrapper {
+  .home-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
