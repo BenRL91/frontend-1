@@ -7,6 +7,9 @@ import Home from './home';
 
 render((
   <Router history={ hashHistory }>
-    <Route path='/' component={ Home }/>
+    <Route path='/' component={ Main }>
+      <IndexRoute component={ Home }/>
+      <Route path='/profile/:user_name'/>
+    </Route>
   </Router>
 ), document.querySelector('.app'));

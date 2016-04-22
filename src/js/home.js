@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 
 export default class Home extends Component {
-  
+
   render(){
     return (
       <div className='home-wrapper'>
-        <div className='home-button-wrapper'>
-          <button>Host a Trip</button>
-          <button>LOGIN</button>
-        </div>
         <div className='search-wrapper'>
           <label>
             Departure:

@@ -18,6 +18,17 @@
     margin: 0;
   }
 }
+//Main Component//
+
+.top-main-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
 
 //Home Component//
 
