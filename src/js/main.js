@@ -14,8 +14,8 @@ export default class Main extends Component {
             <Link to="/">Home</Link>
             <Link to="/">About</Link>
             <Link to="/profile">Host A Trip</Link>
-            <Link to="/">Sign Up</Link>
-            <Link to="/login">LOGIN</Link>
+            <Link to="/"></Link>
+            <Link to="/login">LOGIN/REGISTER</Link>
           </div>
         </div>
         {this.props.children}
