@@ -5,20 +5,25 @@ import SSF from 'react-simple-serial-form';
 
 export default class Login extends Component {
 
-  datHandler(user_credentials) {
-    console.log('user', user_credentials)
+  register(new_user_credentials) {
     ajax({
-      url: 'http://.../login',
+      url: 'http://.../register',
+      type: 'POST',
+      data: new_user_credentials
+    })
+  }
+  login(user_credentials){
+    ajax({
+      usl: 'http://.../login',
       type: 'POST',
       data: user_credentials
     })
   }
   render(){
-    let messages = { required: 'You must enter a username and password.'}
 
     return (
       <div className='login-wrapper'>
-      <SSF onData={::this.datHandler}>
+      <SSF className='login-form' onData={::this.login}>
           {/*Have not decided on names yet*/}
           <label>
             Username:
@@ -35,6 +40,44 @@ export default class Login extends Component {
               placeholder='Type Your Password'/>
           </label>
           <button>Log In</button>
+        </SSF>
+        <SSF className='register-form' onData={::this.register}>
+            <label>
+              First Name:
+              <input
+                type='text'
+                name='first_name'
+                placeholder='placeholder'/>
+            </label>
+            <label>
+              Last Name:
+              <input
+                type='last_name'
+                name='name-goes-here'
+                placeholder='placeholder'/>
+            </label>
+            <label>
+              Username:
+              <input
+                type='text'
+                name='user_name'
+                placeholder='placeholder'/>
+            </label>
+            <label>
+              Email:
+              <input
+                type='text'
+                name='email'
+                placeholder='placeholder'/>
+            </label>
+            <label>
+              Password:
+              <input
+                type='password'
+                name='password'
+                placeholder='placeholder'/>
+            </label>
+            <button>Register</button>
         </SSF>
       </div>
     )
