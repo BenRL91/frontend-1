@@ -1,0 +1,65 @@
+
+
+.profile-wrapper{
+	width:100vw;
+	height:100vh;
+	// padding-left: 100px;
+	// padding-right: 100px;
+	// padding-top: 100px;
+
+}
+
+
+.profile-header{
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 100px;
+	display:flex;
+	justify-content:space-between;
+	.profile-picture{
+		border-radius:50%;
+
+	}
+
+	.profile-name{
+		font-weight: 30px;
+
+	}
+}
+
+.profile-trips{
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 100px;
+	// display:flex;
+	// flex-direction:column;
+
+	.profile-new-trips{
+		display:flex;
+		justify-content:space-between;
+
+		.your-trips{
+
+		}
+
+		.new-trips-btn{
+			width:10%;
+		}
+	}
+
+
+	.profile-trips-list{
+		display:flex;
+		justify-content:space-between;
+
+		.profile-cities{
+
+		}
+
+		.profile-dates{
+			
+		}
+
+	}
+
+}
