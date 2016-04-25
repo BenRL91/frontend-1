@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
+import token from './token';
 
 export default class Home extends Component {
 
