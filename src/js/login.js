@@ -75,8 +75,8 @@ export default class Login extends Component {
             <label>
               Last Name:
               <input
-                type='last_name'
-                name='name-goes-here'
+                type='text'
+                name='last_name'
                 placeholder='placeholder'/>
             </label>
             <label>
