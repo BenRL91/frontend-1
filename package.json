@@ -29,9 +29,11 @@
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "node-sass": "^3.4.2",
+    "firebase-api": "^1.0.0",
     "watchify": "^3.7.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.7.4",
     "jquery": "^2.2.3",
     "js-cookie": "^2.1.1",
     "normalize-css": "^2.3.1",

@@ -9,9 +9,9 @@ import Profile from './profile';
 
 render((
   <Router history={ hashHistory }>
-    <Route path='/' component={ Main }>
-      <IndexRoute component={ Home }/>
-      <Route path='/login' component={ Login }/>
+    <Route path='/'          component={ Main }>
+      <IndexRoute            component={ Home }/>
+      <Route path='/login'   component={ Login }/>
       <Route path='/profile' component={ Profile }/>
     </Route>
   </Router>
