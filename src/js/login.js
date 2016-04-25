@@ -3,23 +3,33 @@ import { Link, hashHistory } from 'react-router';
 import { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
+import firebaseAPI from 'firebase-api';
+
+const users = firebaseAPI('lifteri').resource('users');
 
 export default class Login extends Component {
 
   register(new_user_credentials) {
     ajax({
-      url: 'https://salty-river-31528.herokuapp.com/',
+      url: 'https://salty-river-31528.herokuapp.com/register',
       type: 'POST',
       data: new_user_credentials
     }).then(resp => {
       ajaxSetup({
         headers: {
-          'X-auth_token': resp.user.auth_token
+          'Auth-Token': resp.user.auth_token
         }
       })
       cookie.set('current_user', {current_user: resp.user})
     })
   }
+
+  // register(new_user_credentials){
+  //   users.post({ user: new_user_credentials}).then(response => {
+  //     cookie.set('current_user', {current_user: response.user});
+  //   })
+  // }
+
   login(user_credentials){
     ajax({
       usl: 'https://salty-river-31528.herokuapp.com/',
@@ -27,6 +37,9 @@ export default class Login extends Component {
       data: user_credentials
     })
   }
+  // login(user_credentials){
+  //   users.get({ user: user_credentials.})
+  // }
   render(){
 
     return (
