@@ -3,17 +3,18 @@ import { Link, hashHistory } from 'react-router';
 import { ajax, ajaxSetup } from 'jquery';
 
 export default class Login extends Component {
+
+  login(user_credentials){
+
+    ajax({
+      url: 'http://.../login',
+      type: 'POST',
+      data: user_credentials
+    })
+  }
+
   render(){
 
-    login(user_credentials){
-
-      ajax({
-        url: 'http://'/*herokusomething*/'/login',
-        type: 'POST',
-        data: user_credentials,
-
-      })
-    }
 
     return (
       <div className='login-wrapper'>
