@@ -13,7 +13,6 @@ export default class Main extends Component {
           <div className="main-nav">
             <Link to="/">Home</Link>
             <Link to="/">About</Link>
-            <Link to={`/profile/${{/*user_name*/}}`}>Profile</Link>
             <Link to="/profile">Host A Trip</Link>
             <Link to="/">Sign Up</Link>
             <Link to="/login">LOGIN</Link>
@@ -25,3 +24,7 @@ export default class Main extends Component {
     )
   }
 }
+
+
+            // Move me back when we have data
+            // <Link to={`/profile/${{user_name}}`}>Profile</Link>
