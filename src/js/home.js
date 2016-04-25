@@ -13,7 +13,7 @@ export default class Home extends Component {
           </label>
           <label>
             Destination:
-            <input type='select'/>
+            <input type='select' placeholder='Choose an end point'/>
           </label>
           <button>Search</button>
         </div>
