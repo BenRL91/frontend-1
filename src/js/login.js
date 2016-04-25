@@ -10,7 +10,7 @@ export default class Login extends Component {
       ajax({
         url: 'http://'/*herokusomething*/'/login',
         type: 'POST',
-        data: user_credentials,
+        data: user_credentials
 
       })
     }
