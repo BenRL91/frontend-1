@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import { ajax, ajaxSetup } from 'jquery';
+import SSF from 'react-simple-serial-form';
 
 export default class Login extends Component {
 
-  login(user_credentials){
-
+  datHandler(user_credentials) {
+    console.log('user', user_credentials)
     ajax({
       url: 'http://.../login',
       type: 'POST',
       data: user_credentials
     })
   }
-
   render(){
-
+    let messages = { required: 'You must enter a username and password.'}
 
     return (
       <div className='login-wrapper'>
-        <form>
+      <SSF onData={::this.datHandler}>
           {/*Have not decided on names yet*/}
           <label>
             Username:
@@ -35,7 +35,7 @@ export default class Login extends Component {
               placeholder='Type Your Password'/>
           </label>
           <button>Log In</button>
-        </form>
+        </SSF>
       </div>
     )
   }
