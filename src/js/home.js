@@ -15,6 +15,7 @@ export default class Home extends Component {
             Destination:
             <input type='select'/>
           </label>
+          <button>Search</button>
         </div>
       </div>
     )

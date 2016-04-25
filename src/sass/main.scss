@@ -3,7 +3,8 @@
 // Turn on freq used libraries
 @import 'normalize-css/normalize';
 // @import 'font-awesome/scss/font-awesome';
-
+@import '_main';
+@import '_home';
 //Overall Application default styling//
 
 .app {
@@ -16,25 +17,5 @@
   }
   h1, h2, h3, h4 {
     margin: 0;
-  }
-}
-//Main Component//
-
-.top-main-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-.main-nav {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-}
-
-//Home Component//
-
-.home-wrapper {
-  .home-button-wrapper {
-    display: flex;
-    justify-content: space-between;
   }
 }
