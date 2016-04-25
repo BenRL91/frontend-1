@@ -2,19 +2,27 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
+import cookie from 'js-cookie';
 
 export default class Login extends Component {
 
   register(new_user_credentials) {
     ajax({
-      url: 'http://.../register',
+      url: 'https://salty-river-31528.herokuapp.com/',
       type: 'POST',
       data: new_user_credentials
+    }).then(resp => {
+      ajaxSetup({
+        headers: {
+          'X-auth_token': resp.user.auth_token
+        }
+      })
+      cookie.set('current_user', {current_user: resp.user})
     })
   }
   login(user_credentials){
     ajax({
-      usl: 'http://.../login',
+      usl: 'https://salty-river-31528.herokuapp.com/',
       type: 'POST',
       data: user_credentials
     })
@@ -23,6 +31,7 @@ export default class Login extends Component {
 
     return (
       <div className='login-wrapper'>
+      {/*Login Form*/}
       <SSF className='login-form' onData={::this.login}>
           {/*Have not decided on names yet*/}
           <label>
@@ -41,6 +50,7 @@ export default class Login extends Component {
           </label>
           <button>Log In</button>
         </SSF>
+        {/*Registration Form*/}
         <SSF className='register-form' onData={::this.register}>
             <label>
               First Name:
