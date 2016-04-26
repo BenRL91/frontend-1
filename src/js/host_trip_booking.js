@@ -7,15 +7,16 @@ import cookie from 'js-cookie';
 export default class HostTripBooking extends Component {
  
 
-  book(host_credentials){
+  book(trip_details){
     ajax({
-      url: 'https://salty-river-31528.herokuapp.com/',
+      url: 'https://salty-river-31528.herokuapp.com/hosts',
       type: 'POST',
-      data: user_credentials
+      data: trip_details
     }).then( resp => {
       console.log(resp)
     		}
     	)
+    	hashHistory.push('/profile');
     }
 
 
@@ -25,9 +26,9 @@ export default class HostTripBooking extends Component {
 
     return (
       <div className="host-booking-wrapper">
-     	 HOST TRIP BOOKING PAGE
 
      	 <SSF className='host-trip-form' onData={::this.book}>
+     	 HOST TRIP BOOKING PAGE <br/><br/>
 
             <label>
               Departure City:
@@ -40,7 +41,7 @@ export default class HostTripBooking extends Component {
             <label>
               Date:
               <input
-                type='text'
+                type='date'
                 name='date_leave'
                 placeholder='When are you leaving?'/>
             </label>
@@ -57,7 +58,7 @@ export default class HostTripBooking extends Component {
             <label>
               Date:
               <input
-                type='text'
+                type='date'
                 name='date_arrive'
                 placeholder='Whats your ETA?'/>
             </label>
@@ -65,7 +66,7 @@ export default class HostTripBooking extends Component {
             <label>
               Seats Available:
               <input
-                type='password'
+                type='text'
                 name='seats_available'
                 placeholder='Number of seats you want to make available'/>
             </label>
@@ -73,15 +74,26 @@ export default class HostTripBooking extends Component {
             <label>
               Total Price:
               <input
-                type='password'
+                type='text'
                 name='seat_price'
                 placeholder='List the price for all seats'/>
             </label>
 
-            <span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
+
+            	<span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
             	you've listed 3 seats available. A suggested total is $75. 
-            Riders will reserve seats ahead of time, and the price will go down for them
+           		Riders will reserve seats ahead of time, and the price will go down for them
             	based on how many seats are filled.  But no worries, you will always get the total amount. </span>
+
+
+             <label className="trip-description">
+              Trip Description:
+              <input
+                type='text'
+                name='comments'
+                placeholder='tell us about your trip'/>
+            </label>
+
 
 
             <button>HOST</button>
@@ -91,3 +103,14 @@ export default class HostTripBooking extends Component {
     )
   }
 }
+
+
+
+
+
+// NEED TO INTERPERLATE ESTIMATE PRICES IN TIP PARAGRAPH/////
+
+
+
+
+

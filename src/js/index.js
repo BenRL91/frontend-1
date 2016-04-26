@@ -6,7 +6,9 @@ import Main from './main';
 import Home from './home';
 import Login from './login';
 import Profile from './profile';
-import HostTripBooking from './host_trip_booking'
+import HostTripBooking from './host_trip_booking';
+import HostSingleView from './host_single_view';
+import TripDetails from './trip_details';
 
 render((
   <Router history={ hashHistory }>
@@ -15,6 +17,8 @@ render((
       <Route path='/login'   component={ Login }/>
       <Route path='/profile' component={ Profile }/>
       <Route path='/hosttripbooking' component={ HostTripBooking }/>
+      <Route path='/hostsingleview' component={ HostSingleView }/>
+      <Route path='/tripdetails' component={ TripDetails }/>
     </Route>
   </Router>
 ), document.querySelector('.app'));

@@ -1,66 +1,84 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
+import {ajax} from 'jquery';
 import cookie from 'js-cookie'
+
+
+
+////NEED TO ADD USER ID///////
+////MAKE RIDER/DRIVER DYNAMIC, IF ELSE, TRUE FALSE?/////
+
+
 export default class Profile extends Component {
+  constructor(...args){
+  super(...args);
+  this.state = {
+    current_user_trips: []
+    }
+  }
 
   componentWillMount(){
-    cookie.getJSON('current_user')
-  }
+        ajax('http://salty-river-31528.herokuapp.com/hosts').then( resp => {
+            this.setState({current_user_trips: resp.host})
+            }
+        )
+    }
+           
+
+          gettrips(trip){
+            return (
+            <div className="profile_get_trips" key={trip.id}>
+              <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
+              <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
+              <Link to="/hostsingleview"> expand + </Link>
+            </div>
+          )}
+
+
+
   render(){
+      let trips = this.state.current_user_trips;
+      let current_user = cookie.getJSON('current_user')
+console.log(trips)
     return (
       <div className="profile-wrapper">
 
-     	<div className="profile-header">
-     		<div className="profile-picture">
-     			<img src="http://www.fillmurray.com/100/100"/>
+      <div className="profile-header">
+        <div className="profile-picture">
+          <img src="http://www.fillmurray.com/100/100"/>
+          </div>
+
+          <div className="profile-user-details">
+
+            <div className="profile-name">
+              {current_user.current_user.first_name} {current_user.current_user.last_name}
+            </div>
+
+            <div className="profile-status">
+              Rider / Driver status
+            </div>
+
+
+          </div>
+        </div>
+
+
+            
+
+
+        <div className="profile-trips">
+          <div className="profile-new-trips">
+            <span className="your-trips"> Your Trips </span>
+            <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
+          </div>
+
+          <div className="profile-trips-list">
+
+           { trips.map(::this.gettrips) }
+
       		</div>
 
-      		<div className="profile-user-details">
 
-      			<div className="profile-name">
-      				Jane Smith
-      			</div>
-
-      			<div className="profile-location">
-      				Miami, FL
-      			</div>
-
-      			<div className="profile-status">
-      				Rider
-      			</div>
-
-
-      		</div>
-      	</div>
-
-
-
-      	<div className="profile-trips">
-      		<div className="profile-new-trips">
-      			<span className="your-trips"> Your Trips </span>
-      			<Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
-      		</div>
-
-      		<div className="profile-trips-list">
-      			<span> Upcoming </span>
-      			<span className="profile-cities"> ATL > LAX </span>
-      			<span className="profile-dates"> 11/12/16 </span>
-      			<button> expand + </button>
-      		</div>
-
-      		<div className="profile-trips-list">
-      			<span> Upcoming </span>
-      			<span className="profile-cities"> ATL > LAX </span>
-      			<span className="profile-dates"> 11/12/16 </span>
-      			<button> expand + </button>
-      		</div>
-
-      		<div className="profile-trips-list">
-      			<span> Upcoming </span>
-      			<span className="profile-cities"> ATL > LAX </span>
-      			<span className="profile-dates"> 11/12/16 </span>
-      			<button> expand + </button>
-      		</div>
       	</div>
 
 

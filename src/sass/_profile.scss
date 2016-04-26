@@ -32,12 +32,6 @@
 			
 		}
 
-
-		.profile-location{
-			font-size: 20px;
-
-		}
-
 		.profile-status{
 			font-size: 20px;
 
@@ -78,28 +72,31 @@
 
 
 	.profile-trips-list{
-		display:flex;
-		justify-content:space-between;
-		border-left: 3px solid #a2a2a2;
-		margin-bottom: 15px;
+
+		.profile_get_trips{
+			display:flex;
+			justify-content:space-between;
+			border-left: 3px solid #a2a2a2;
+			margin-bottom: 15px;
 
 
-		span{
-			margin-left: 10px;
-			font-weight: bold;
+			span{
+				margin-left: 10px;
+				font-weight: bold;
+			}
 
-		}
+			span:hover{
+				color: #48de23;
+			}
 
-		span:hover{
-			color: #48de23;
-		}
+			.profile-cities{
 
-		.profile-cities{
+			}
 
-		}
-
-		.profile-dates{
+			.profile-dates{
 			
+			}
+
 		}
 
 	}

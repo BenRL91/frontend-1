@@ -1,25 +1,40 @@
 .host-booking-wrapper{
+	width:100vw;
+	display:flex;
+	justify-content:center;
+	// flex-direction:column;
 
 
 	.host-trip-form{
 		display:flex;
 		flex-direction:column;
 
+		input{ 
+			width:500px;
+			margin-bottom:20px;
+		}
 
 		span{
-		display:flex;
-		justify-content:space-between;
-		width:600px;
+			display:flex;
+			justify-content:space-between;
+			margin-bottom: 5px;
+			// width:600px;
 
 		}
 
 		.host-span{
-			width:300px;
+			width:500px;
 			font-size: small;
+			padding-bottom: 20px;
 		}
 
 		button{
-			width:300px;
+			width:500px;
+			margin-bottom: 100px;
+		}
+
+		.trip-description input{
+			padding-bottom:200px;
 		}
 
 
