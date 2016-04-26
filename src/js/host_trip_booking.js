@@ -56,7 +56,7 @@ export default class HostTripBooking extends Component {
               Departure City:
               <input
                 type='text'
-                name='departure_city'
+                name='departing_city'
                 placeholder='Where are you leaving from?'/>
             </label>
 

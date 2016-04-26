@@ -11,8 +11,20 @@ export default class HostSingleView extends Component {
 
     return (
 
-    	<span>SINGLE TRIP VIEW FOR Host
-    	EVENTUALLY ENABLE HOST TO EDIT TRIP HERE</span>
+
+    	<div className="host_single_view_wrapper">
+
+    		<span>SINGLE TRIP VIEW FOR Host
+    		EVENTUALLY ENABLE HOST TO EDIT TRIP HERE</span>
+
+    		<span> Trip:  </span> <button> edit </button>
+
+
+
+    		<button> delete trip </button>
+
+
+    	</div>
 
     	)
 	}

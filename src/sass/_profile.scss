@@ -77,7 +77,9 @@
 			display:flex;
 			justify-content:space-between;
 			border-left: 3px solid #a2a2a2;
-			margin-bottom: 15px;
+			padding-bottom: 5px;
+			margin-bottom: 20px;
+			border-bottom: 1px dotted gray;
 
 
 			span{
@@ -93,8 +95,21 @@
 
 			}
 
-			.profile-dates{
+			.get_trips_flex{
+				display:flex;
+				justify-content:space-between;
+				// width: 600px;
+				width:50%;
+
+				.profile-dates{
+					// margin-right: 30px;
 			
+				}
+
+				.profile-trip-details{
+					// padding-left: 100px;
+				}
+
 			}
 
 		}

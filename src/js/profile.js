@@ -7,6 +7,7 @@ import cookie from 'js-cookie'
 
 ////NEED TO ADD USER ID///////
 ////MAKE RIDER/DRIVER DYNAMIC, IF ELSE, TRUE FALSE?/////
+////ADD TRIP ID SO ONCLICK OF EXPAND TAKES U TO THE RIGHT TRIP TO EDIT//////
 
 
 export default class Profile extends Component {
@@ -29,8 +30,12 @@ export default class Profile extends Component {
             return (
             <div className="profile_get_trips" key={trip.id}>
               <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
-              <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
-              <Link to="/hostsingleview"> expand + </Link>
+
+                <div className="get_trips_flex">
+                  <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
+                  <Link className="profile-trip-details" to="/hostsingleview"> details + </Link>
+                </div>
+
             </div>
           )}
 
