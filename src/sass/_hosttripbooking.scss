@@ -1,0 +1,28 @@
+.host-booking-wrapper{
+
+
+	.host-trip-form{
+		display:flex;
+		flex-direction:column;
+
+
+		span{
+		display:flex;
+		justify-content:space-between;
+		width:600px;
+
+		}
+
+		.host-span{
+			width:300px;
+			font-size: small;
+		}
+
+		button{
+			width:300px;
+		}
+
+
+	}
+
+}

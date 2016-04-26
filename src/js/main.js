@@ -7,7 +7,7 @@ export default class Main extends Component {
       <div className="main-wrapper">
         <div className='top-main-wrapper'>
           <div className="main-logo">
-            <span>L I F T E R I</span>
+            <Link to="/">L I F T E R I</Link>
           </div>
 
           <div className="main-nav">
