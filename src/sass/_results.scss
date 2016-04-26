@@ -1,0 +1,50 @@
+.trip-listing-wrapper{
+	display:flex;
+	// flex-direction:column;
+	justify-content:space-between;
+	border-bottom: 1px dotted gray;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	line-height: 50px;
+
+	img{
+		object-fit:cover;
+		margin-right: 20px;
+	}
+
+
+	// .results-cities{
+	// 	width:500px;
+	// 	display:flex;
+	// 	justify-content:space-between;
+
+	// }
+
+	// .results-dates{
+	// 	width:500px;
+	// 	// display:flex;
+	// 	// justify-content:space-between;
+
+
+	// }
+
+	.results-img-cities-flex{
+		display:flex;
+		justify-content:space-between;	
+	}
+
+	.results-dates-price-flex{
+		display:flex;
+		justify-content:space-between;
+		width:50%;
+
+
+		.results-price{
+			// margin-left: 50px;
+		}
+
+	}
+
+}

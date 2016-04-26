@@ -14,8 +14,19 @@ export default class Results extends Component {
   makeTripListing(trip){
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
-        {trip.departing_city}{trip.destination}
-        {trip.date_leave}{trip.date_arrive}
+
+
+        <div className="results-img-cities-flex">
+         <img src="http://www.fillmurray.com/50/50" alt="temp"/>
+         <div className="results-cities"> <b>{trip.departing_city}</b> to <b>{trip.destination}</b> </div>
+        </div>
+
+        <div className="results-dates-price-flex">
+          <div className="results-dates"> Leaving <b>{trip.date_leave}</b> Returning <b>{trip.date_arrive}</b></div>
+          <div className="results-price"> $ {trip.seat_price} </div>
+        <Link to="/"> <b>BOOK THIS TRIP</b></Link>
+        </div>
+
       </div>
     )
   }
