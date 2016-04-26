@@ -1,11 +1,32 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
-import { ajax, ajaxSetup } from 'jquery';
+import { ajax } from 'jquery';
+import token from './token';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
+import script from './google_script';
 
 export default class HostTripBooking extends Component {
- 
+  constructor(...args){
+    super(...args);
+    this.state = {
+      starting_point: null,
+      destination: null
+    }
+  }
+// getStartLocation(query){
+//   console.log(query)
+//   ajax(`https://maps.googleapis.com/maps/api/geocode/json?${token}&${query}`)
+//   .then(resp => {
+//     console.log(resp)
+//   })
+// }
+// getEndLocation(query){
+//   ajax(`https://maps.googleapis.com/maps/api/geocode/json?${query}${token}`)
+//   .then(resp => {
+//     console.log(resp)
+//   })
+// } 
 
   book(trip_details){
     ajax({
@@ -25,6 +46,7 @@ export default class HostTripBooking extends Component {
   render(){
 
     return (
+
       <div className="host-booking-wrapper">
 
      	 <SSF className='host-trip-form' onData={::this.book}>
@@ -80,9 +102,9 @@ export default class HostTripBooking extends Component {
             </label>
 
 
-            	<span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
-            	you've listed 3 seats available. A suggested total is $75. 
-           		Riders will reserve seats ahead of time, and the price will go down for them
+            <span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
+            	you've listed 3 seats available. A suggested total is $75.
+            	Riders will reserve seats ahead of time, and the price will go down for them
             	based on how many seats are filled.  But no worries, you will always get the total amount. </span>
 
 
@@ -98,7 +120,7 @@ export default class HostTripBooking extends Component {
 
             <button>HOST</button>
 
-     	 </SSF> 
+     	 </SSF>
       </div>
     )
   }
@@ -114,3 +136,30 @@ export default class HostTripBooking extends Component {
 
 
 
+      ////*<script
+      // <div>
+      // src={`https://maps.googleapis.com/maps/api/js?key=${token}&callback=initMap`
+      // async defer/>
+        // <label>
+          // Starting:
+          // <input
+            // ref={input => this.input1 = input}
+            // onChange={() => this.getStartLocation(this.input1.value)}
+            // type='text'
+            // name='starting_point'
+            // defaultValue=''
+            // value={this.state.starting_point}
+            // placeholder='Type Start Point'/>
+        // </label>
+        // <label>
+          // Ending:
+          // <input
+          // ref={input => this.input2 = input}
+          // onChange={() => this.getEndLocation(this.input2.value)}
+          // type='text'
+          // name='starting_point'
+          // defaultValue=''
+          // value={this.state.destination}
+          // placeholder='Type Start Point'/>
+         // </label>
+// */////

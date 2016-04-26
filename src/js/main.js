@@ -15,7 +15,6 @@ export default class Main extends Component {
             <Link to="/">Home</Link>
             <Link to="/">About</Link>
             <Link to="/profile">Host A Trip</Link>
-            <Link to="/"></Link>
             <Link to="/login">LOGIN/REGISTER</Link>
             <Link to="/"><button onClick={() => { cookie.remove('current_user') }}>Log Out</button></Link>
           </div>
