@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
-
+import cookie from 'js-cookie'
 export default class Profile extends Component {
+
+  componentWillMount(){
+    cookie.getJSON('current_user')
+  }
   render(){
     return (
       <div className="profile-wrapper">
