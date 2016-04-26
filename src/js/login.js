@@ -32,7 +32,7 @@ export default class Login extends Component {
 
   login(user_credentials){
     ajax({
-      usl: 'https://salty-river-31528.herokuapp.com/',
+      url: 'https://salty-river-31528.herokuapp.com/logins',
       type: 'POST',
       data: user_credentials
     })

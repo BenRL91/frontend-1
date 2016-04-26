@@ -16,6 +16,7 @@ export default class Main extends Component {
             <Link to="/profile">Host A Trip</Link>
             <Link to="/"></Link>
             <Link to="/login">LOGIN/REGISTER</Link>
+            <Link to="/host_booking">Host Booking (temporary)</Link>
           </div>
         </div>
         {this.props.children}
