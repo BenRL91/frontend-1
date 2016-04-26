@@ -9,7 +9,7 @@ import Profile from './profile';
 import HostTripBooking from './host_trip_booking';
 import HostSingleView from './host_single_view';
 import TripDetails from './trip_details';
-
+import Results from './results';
 
 render((
   <Router history={ hashHistory }>
@@ -20,6 +20,7 @@ render((
       <Route path='/hosttripbooking' component={ HostTripBooking }/>
       <Route path='/hostsingleview' component={ HostSingleView }/>
       <Route path='/tripdetails' component={ TripDetails }/>
+      <Route path='/results' component={ Results }/>
     </Route>
   </Router>
 ), document.querySelector('.app'));

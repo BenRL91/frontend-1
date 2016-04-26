@@ -38,6 +38,12 @@ export default class Login extends Component {
       data: user_credentials
     }).then( resp => {
       console.log(resp)
+      ajaxSetup({
+        headers: {
+          'Auth-Token': resp.user.auth_token
+        }
+      })
+      cookie.set('current_user', {current_user: resp.user})
     }
 
     )
