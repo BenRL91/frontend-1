@@ -3,9 +3,6 @@ import { Link, hashHistory } from 'react-router';
 import { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
-import firebaseAPI from 'firebase-api';
-
-const users = firebaseAPI('lifteri').resource('users');
 
 export default class Login extends Component {
 
@@ -57,7 +54,6 @@ export default class Login extends Component {
       <div className='login-wrapper'>
       {/*Login Form*/}
       <SSF className='login-form' onData={::this.login}>
-          {/*Have not decided on names yet*/}
           <label>
             Username:
             <input
