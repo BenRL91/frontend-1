@@ -14,19 +14,6 @@ export default class HostTripBooking extends Component {
       destination: null
     }
   }
-// getStartLocation(query){
-//   console.log(query)
-//   ajax(`https://maps.googleapis.com/maps/api/geocode/json?${token}&${query}`)
-//   .then(resp => {
-//     console.log(resp)
-//   })
-// }
-// getEndLocation(query){
-//   ajax(`https://maps.googleapis.com/maps/api/geocode/json?${query}${token}`)
-//   .then(resp => {
-//     console.log(resp)
-//   })
-// } 
 
   book(trip_details){
     ajax({
@@ -44,7 +31,7 @@ export default class HostTripBooking extends Component {
 
 
   render(){
-
+    console.log(cookie.getJSON('current_user'))
     return (
 
       <div className="host-booking-wrapper">
@@ -73,6 +60,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='destination'
+                defaultValue='AB'
                 placeholder='Where are you driving to?'/>
             </label>
 
@@ -90,6 +78,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='seats_available'
+                defaultValue='4'
                 placeholder='Number of seats you want to make available'/>
             </label>
 
@@ -98,6 +87,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='seat_price'
+                defaultValue='3'
                 placeholder='List the price for all seats'/>
             </label>
 

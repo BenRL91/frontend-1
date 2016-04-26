@@ -23,7 +23,7 @@ export default class Home extends Component {
               name='destination'
               placeholder='Choose an end point'/>
           </label>
-          <button>Search</button>
+          <button onClick={() => { hashHistory.push('/results')}}>Search</button>
         </div>
       </div>
     )

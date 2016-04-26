@@ -3,6 +3,10 @@ import { Link, hashHistory } from 'react-router';
 import cookie from 'js-cookie';
 
 export default class Main extends Component {
+  logOut(){
+    console.log(cookie.getJSON('current_user'))
+    cookie.remove('current_user')
+  }
   render(){
     return (
       <div className="main-wrapper">
@@ -16,7 +20,7 @@ export default class Main extends Component {
             <Link to="/">About</Link>
             <Link to="/profile">Host A Trip</Link>
             <Link to="/login">LOGIN/REGISTER</Link>
-            <Link to="/"><button onClick={() => { cookie.remove('current_user') }}>Log Out</button></Link>
+            <Link to="/"><button onClick={::this.logOut}>Log Out</button></Link>
           </div>
         </div>
         {this.props.children}
