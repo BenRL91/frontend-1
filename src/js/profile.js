@@ -38,7 +38,7 @@ export default class Profile extends Component {
       	<div className="profile-trips">
       		<div className="profile-new-trips">
       			<span className="your-trips"> Your Trips </span>
-      			<button className="new-trips-btn"> + MAKE A NEW TRIP </button>
+      			<Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
       		</div>
 
       		<div className="profile-trips-list">

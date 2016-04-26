@@ -14,7 +14,7 @@ render((
       <IndexRoute            component={ Home }/>
       <Route path='/login'   component={ Login }/>
       <Route path='/profile' component={ Profile }/>
-      <Route path='/host_booking' component={ HostTripBooking }/>
+      <Route path='/hosttripbooking' component={ HostTripBooking }/>
     </Route>
   </Router>
 ), document.querySelector('.app'));

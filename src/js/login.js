@@ -15,6 +15,7 @@ export default class Login extends Component {
       type: 'POST',
       data: new_user_credentials
     }).then(resp => {
+       console.log(resp)
       ajaxSetup({
         headers: {
           'Auth-Token': resp.user.auth_token
@@ -35,7 +36,11 @@ export default class Login extends Component {
       url: 'https://salty-river-31528.herokuapp.com/logins',
       type: 'POST',
       data: user_credentials
-    })
+    }).then( resp => {
+      console.log(resp)
+    }
+
+    )
   }
   // login(user_credentials){
   //   users.get({ user: user_credentials.})
