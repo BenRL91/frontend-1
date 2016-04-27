@@ -12,6 +12,7 @@ export default class HostSignUp extends Component {
       <div>
         <SSF onData={::this.dataHandler}>
           <input type='text' placeholder='enter your info to become a driver'/>
+          <button>Submit</button>
         </SSF>
       </div>
     )
