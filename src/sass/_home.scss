@@ -1,21 +1,29 @@
 //Home Component//
 
 .home-wrapper {
+	display: flex;
+	justify-content: center;
 	padding-left: 100px;
 	padding-right: 100px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   		.search-wrapper {
     		display: flex;
-    		justify-content:center;
-   			// justify-content: space-between;
-
+				justify-content:center;
+				align-items: center;
+				width: 60%;
+				height: 200px;
+				background: rgba(38, 144, 100, 0.20);
+				border-radius: 12px;
+				border: 1px solid black;
+				margin-bottom: 55px;
    			input{
    				margin-right: 20px;
    				margin-left: 5px;
-   				width:250px;
+					border-radius: 5px;
    			}
 
-   			label{
-   				// margin-right: 20px;
+   			button{
+					border-radius: 4px;
    			}
   		}
 }
