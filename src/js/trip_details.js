@@ -8,7 +8,8 @@ export default class TripDetails extends Component {
   constructor(...args){
   super(...args);
   this.state = {
-    current_trip: {}
+    current_trip: {},
+    current_user: {}
     }
   }
 
@@ -34,15 +35,37 @@ export default class TripDetails extends Component {
 
 
   componentWillMount(){
-	let trip_id = this.props.params.trip_id
 
-        ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`).then( resp => {
-          console.log(resp)
-            this.setState({current_trip: resp.hosts})
+  	let respA;
 
-            }
-        )
-    }
+	ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
+		.then( resp => {
+	        respA = resp;
+	        console.log('check here', resp)
+	        this.setState({current_trip: resp.hosts}) 
+	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
+		})
+		.then( respB => {
+			console.log('a', respA);
+			console.log('b', respB);
+			this.setState({current_user: respB.user})
+		})
+
+  }
+
+
+// original ajax call - single/////
+
+ //  componentWillMount(){
+	// let trip_id = this.props.params.trip_id
+
+ //        ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`).then( resp => {
+ //          console.log(resp)
+ //            this.setState({current_trip: resp.hosts})
+
+ //            }
+ //        )
+ //    }
 
 
 			// request to get info on the driver 
@@ -57,7 +80,9 @@ export default class TripDetails extends Component {
 
   render(){
   	let trip = this.state.current_trip;
+  	let user = this.state.current_user;
   	console.log(trip)
+
     return (
       <div className="trip-details-wrapper">
 
@@ -96,10 +121,14 @@ export default class TripDetails extends Component {
 
 
      	 	<div className="trip-details-driver">
-     	 		<span>John</span>
+     	 		<span>{user.first_name} {user.last_name}</span>
      	 		<span>Verified Driver</span>
      	 		<button> expand details </button>
      	 	</div>
+
+     	 	<br/><br/>
+
+     	 	<Link to="/rider_trip_booking">BOOK THIS TRIP!</Link> 
 
 
      </div>
