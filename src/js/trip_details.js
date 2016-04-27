@@ -17,8 +17,8 @@ export default class TripDetails extends Component {
 	let trip_id = this.props.params.trip_id
 
         ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`).then( resp => {
-            this.setState({current_trip: resp.user})
-            console.log(resp)
+          console.log(resp)
+            this.setState({current_trip: resp.hosts})
 
             }
         )
@@ -27,17 +27,17 @@ export default class TripDetails extends Component {
 
 
   render(){
-  	let trip = this.state.current_trip; 
+  	let trip = this.state.current_trip;
   	console.log(trip)
     return (
       <div className="trip-details-wrapper">
 
 
       	<div className="trip-details">
-  				
+
 
   			 <div className="trip-details-cities">
-  				departure: {trip.departing_city} destination: {trip.destination} 
+  				departure: {trip.departing_city} destination: {trip.destination}
      		 </div>
 
      		 <div className="trip-details-dates">
@@ -66,8 +66,8 @@ export default class TripDetails extends Component {
 
      	 	<div className="trip-details-driver">
      	 		<span>John</span>
-     	 		<span>Verified Driver</span> 
-     	 		<button> expand details </button>			
+     	 		<span>Verified Driver</span>
+     	 		<button> expand details </button>
      	 	</div>
 
 

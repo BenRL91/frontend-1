@@ -12,8 +12,19 @@ import HostSignUp from './host_signup';
 import TripDetails from './trip_details';
 import Results from './results';
 import cookie from 'js-cookie';
+import { ajaxSetup } from 'jquery';
 
 let current_user = null;
+
+if (cookie.getJSON('current_user')) {
+  let user = cookie.getJSON('current_user').current_user
+  console.log(user)
+  ajaxSetup({
+            headers: {
+              'Auth-Token': user.auth_token
+            }
+          })
+}
 
 function checkIfDriver(state, replace){
   current_user = cookie.getJSON('current_user').current_user

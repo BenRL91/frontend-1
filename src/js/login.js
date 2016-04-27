@@ -14,12 +14,6 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        let user = cookie.getJSON('current_user').current_user
-        ajaxSetup({
-          headers: {
-            'Auth-Token': user.auth_token
-          }
-        })
         hashHistory.push('/');
       })
     }
@@ -38,12 +32,6 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      let user = cookie.getJSON('current_user').current_user
-      ajaxSetup({
-        headers: {
-          'Auth-Token': user.auth_token
-        }
-      })
       hashHistory.push('/');
     })
   }
