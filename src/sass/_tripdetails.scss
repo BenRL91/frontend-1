@@ -1,7 +1,16 @@
 .trip-details-wrapper{
+	margin-left: 100px; 
+	margin-right: 100px;
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
 
 
 	.trip-details{
+
+		display:flex;
+		flex-direction:column;
+
 
 		.trip-details-cities{
 
@@ -30,13 +39,17 @@
 
 
 	.trip-details-driver{
+		display:flex;
+		justify-content:center;
+		flex-direction:column;
 
 		span{
 
 		}
 
 		button{
-			
+			width: 200px;
+
 		}
 
 

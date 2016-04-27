@@ -13,6 +13,26 @@ export default class TripDetails extends Component {
   }
 
 
+
+			//example of returning multiple promises
+
+ //  tmp() {
+
+ //  	let respA;
+
+	// ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
+	// 	.then( resp => {
+	//         respA = resp;
+	//         return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.user_id}`);
+	// 	})
+	// 	.then( respB => {
+	// 		console.log('a', respA);
+	// 		console.log('b', respB);
+	// 	})
+
+ //  }
+
+
   componentWillMount(){
 	let trip_id = this.props.params.trip_id
 
@@ -24,6 +44,15 @@ export default class TripDetails extends Component {
         )
     }
 
+
+			// request to get info on the driver 
+			
+  // checkProf(){
+  //   let user_id = cookie.getJSON('current_user').current_user.id
+  //   ajax(`https://salty-river-31528.herokuapp.com/profile/${user_id}`).then( resp => {
+  //     console.log(resp)
+  //   })
+  // }
 
 
   render(){
@@ -62,6 +91,8 @@ export default class TripDetails extends Component {
 
      	</div>
 
+     	<br/>
+     	<br/>
 
 
      	 	<div className="trip-details-driver">
