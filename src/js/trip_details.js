@@ -43,7 +43,7 @@ export default class TripDetails extends Component {
 		.then( resp => {
 	        respA = resp;
 	        console.log('check here', resp)
-	        this.setState({current_trip: resp.hosts}) 
+	        this.setState({current_trip: resp.hosts})
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		})
 		.then( respB => {
@@ -51,6 +51,7 @@ export default class TripDetails extends Component {
 			console.log('b', respB);
 			this.setState({current_user: respB.user})
 			cookie.set('saved_trip', {trip_id: this.props.params.trip_id})
+      console.log('checking cookie', cookie.getJSON('saved_trip'))
 		})
 
   }
@@ -70,8 +71,8 @@ export default class TripDetails extends Component {
  //    }
 
 
-			// request to get info on the driver 
-			
+			// request to get info on the driver
+
   // checkProf(){
   //   let user_id = cookie.getJSON('current_user').current_user.id
   //   ajax(`https://salty-river-31528.herokuapp.com/profile/${user_id}`).then( resp => {
@@ -130,7 +131,7 @@ export default class TripDetails extends Component {
 
      	 	<br/><br/>
 
-     	 	<Link to="/ridertripbooking">BOOK THIS TRIP!</Link> 
+     	 	<Link to="/ridertripbooking">BOOK THIS TRIP!</Link>
 
 
      </div>
