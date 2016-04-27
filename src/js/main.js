@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import cookie from 'js-cookie';
+import { ajax } from 'jquery';
 
 export default class Main extends Component {
   logOut(){

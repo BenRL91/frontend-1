@@ -12,16 +12,17 @@ export default class Login extends Component {
       type: 'POST',
       data: new_user_credentials
     }).then(resp => {
-       console.log(resp)
-      ajaxSetup({
-        headers: {
-          'Auth-Token': resp.user.auth_token
-        }
+        console.log(resp)
+        cookie.set('current_user', {current_user: resp.user})
+        let user = cookie.getJSON('current_user').current_user
+        ajaxSetup({
+          headers: {
+            'Auth-Token': user.auth_token
+          }
+        })
+        hashHistory.push('/');
       })
-      cookie.set('current_user', {current_user: resp.user})
-      hashHistory.push('/');
-    })
-  }
+    }
 
   // register(new_user_credentials){
   //   users.post({ user: new_user_credentials}).then(response => {
@@ -36,16 +37,15 @@ export default class Login extends Component {
       data: user_credentials
     }).then( resp => {
       console.log(resp)
+      cookie.set('current_user', {current_user: resp.user})
+      let user = cookie.getJSON('current_user').current_user
       ajaxSetup({
         headers: {
-          'Auth-Token': resp.user.auth_token
+          'Auth-Token': user.auth_token
         }
       })
-      cookie.set('current_user', {current_user: resp.user})
       hashHistory.push('/');
-    }
-
-    )
+    })
   }
   // login(user_credentials){
   //   users.get({ user: user_credentials.})

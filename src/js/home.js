@@ -25,7 +25,6 @@ export default class Home extends Component {
           </label>
           <button onClick={() => { hashHistory.push('/results')}}>Search</button>
         </div>
-        <button onClick={::this.factCheck}>Test Factual</button>
       </div>
     )
   }
