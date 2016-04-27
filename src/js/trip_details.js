@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
+import cookie from 'js-cookie';
 
 
 export default class TripDetails extends Component {
@@ -49,6 +50,7 @@ export default class TripDetails extends Component {
 			console.log('a', respA);
 			console.log('b', respB);
 			this.setState({current_user: respB.user})
+			cookie.set('saved_trip', {trip_id: this.props.params.trip_id})
 		})
 
   }
@@ -91,7 +93,7 @@ export default class TripDetails extends Component {
 
 
   			 <div className="trip-details-cities">
-  				departure: {trip.departing_city} destination: {trip.destination}
+  				departure: {trip.departing_city} <br/> destination: {trip.destination}
      		 </div>
 
      		 <div className="trip-details-dates">
@@ -128,7 +130,7 @@ export default class TripDetails extends Component {
 
      	 	<br/><br/>
 
-     	 	<Link to="/rider_trip_booking">BOOK THIS TRIP!</Link> 
+     	 	<Link to="/ridertripbooking">BOOK THIS TRIP!</Link> 
 
 
      </div>
