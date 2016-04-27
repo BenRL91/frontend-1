@@ -5,7 +5,7 @@ import cookie from 'js-cookie';
 export default class Main extends Component {
   logOut(){
     console.log(cookie.getJSON('current_user'))
-    cookie.remove('current_user')
+    cookie.set('current_user', null)
   }
   render(){
     return (

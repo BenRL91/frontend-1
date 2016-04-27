@@ -24,15 +24,15 @@ function checkIfDriver(state, replace){
 }
 render((
   <Router history={ hashHistory }>
-    <Route path='/'          component={ Main }>
-      <IndexRoute            component={ Home }/>
-      <Route path='/login'   component={ Login }/>
-      <Route path='/profile' onEnter={checkIfDriver} component={ Profile }/>
+    <Route path='/'                  component={ Main }>
+      <IndexRoute                    component={ Home }/>
+      <Route path='/login'           component={ Login }/>
+      <Route path='/profile'         component={ Profile } onEnter={checkIfDriver}/>
       <Route path='/hosttripbooking' component={ HostTripBooking }/>
-      <Route path='/hostsingleview' component={ HostSingleView }/>
-      <Route path='/tripdetails' component={ TripDetails }/>
-      <Route path='/results' component={ Results }/>
-      <Route path='/hostsignup' component={ HostSignUp }/>
+      <Route path='/hostsingleview'  component={ HostSingleView }/>
+      <Route path='/tripdetails'     component={ TripDetails }/>
+      <Route path='/results'         component={ Results }/>
+      <Route path='/hostsignup'      component={ HostSignUp }/>
     </Route>
   </Router>
 ), document.querySelector('.app'));

@@ -19,6 +19,7 @@ export default class Login extends Component {
         }
       })
       cookie.set('current_user', {current_user: resp.user})
+      hashHistory.push('/');
     })
   }
 
@@ -41,6 +42,7 @@ export default class Login extends Component {
         }
       })
       cookie.set('current_user', {current_user: resp.user})
+      hashHistory.push('/');
     }
 
     )
