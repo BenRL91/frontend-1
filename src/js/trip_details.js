@@ -1,8 +1,34 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
+import { ajax } from 'jquery';
+
 
 export default class TripDetails extends Component {
+
+  constructor(...args){
+  super(...args);
+  this.state = {
+    current_trip: {}
+    }
+  }
+
+
+  componentWillMount(){
+	let trip_id = this.props.params.trip_id
+
+        ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`).then( resp => {
+            this.setState({current_trip: resp.user})
+            console.log(resp)
+
+            }
+        )
+    }
+
+
+
   render(){
+  	let trip = this.state.current_trip; 
+  	console.log(trip)
     return (
       <div className="trip-details-wrapper">
 
@@ -11,26 +37,26 @@ export default class TripDetails extends Component {
   				
 
   			 <div className="trip-details-cities">
-  				Atlanta{/*from*/} to {/*to*/} Miami
+  				departure: {trip.departing_city} destination: {trip.destination} 
      		 </div>
 
      		 <div className="trip-details-dates">
-  				11/11/17{/*from*/} to 11/14/17 {/*to*/}
+  				{trip.date_leave} to {trip.date_arrive}
      		 </div>
 
      		 <div className="trip-details-duration">
-  				18 hrs{/*days/hrs*/}
+  				trip duration{/*need to estimate*/}
      	 	</div>
 
      	 	<div className="trip-details-price">
-  				$100 {/*money*/}
+  				$ {trip.seat_price}
      		 </div>
 
      		 <div className="trip-details-seats">
-  				3/4 seats available{/*seats available*/}
+  				seats available: {trip.seats_available}
      	 	</div>
 
-     	 	<div className="trip-details-cities">
+     	 	<div className="trip-details-expand">
   				<button> expand details </button>
      		</div>
 
