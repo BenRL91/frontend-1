@@ -27,7 +27,7 @@ export default class Login extends Component {
     ajax({
       url: 'https://salty-river-31528.herokuapp.com/register',
       type: 'POST',
-      data: data, 
+      data: data,
       dataType: 'json',
       cache: false,
       processData: false,
@@ -49,10 +49,10 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      hashHistory.push('/');
+      hashHistory.push('/')
     })
   }
-  
+
 
   dropHandler([file]){
     this.setState({

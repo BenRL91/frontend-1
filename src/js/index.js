@@ -32,9 +32,9 @@ if (cookie.getJSON('current_user')) {
 
 
 function checkIfDriver(state, replace){
-  current_user = cookie.getJSON('current_user').current_user
+  current_user = cookie.getJSON('current_user')
   console.log(current_user)
-  if(!current_user.driver){
+  if(!current_user.current_user.driver){
     replace('/hostsignup')
   }
 }

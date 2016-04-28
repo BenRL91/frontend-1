@@ -7,6 +7,12 @@ export default class Main extends Component {
   logOut(){
     cookie.set('current_user', null)
   }
+  checkIfLoggedIn(){
+    let user = cookie.getJSON('current_user')
+    if (!user){
+      hashHistory.push('/login');
+    }
+  }
   render(){
     return (
       <div className="main-wrapper">
@@ -17,7 +23,7 @@ export default class Main extends Component {
 
           <div className="main-nav">
             <Link to="/">Home</Link>
-            <Link to="/profile">Host A Trip</Link>
+            <Link to="/profile" onClick={::this.checkIfLoggedIn}>Host A Trip</Link>
             <Link to="/login">LOGIN/REGISTER</Link>
             <Link to="/"><button onClick={::this.logOut}>Log Out</button></Link>
           </div>
