@@ -50,20 +50,9 @@ export default class TripDetails extends Component {
 		}).fail(e => { console.log(...all, e) })
 
   }
-
-
+// ----------// ALL IS NOT DEFINED??//////-----------------
+// GETTING A WARNING ON THE SETSTATE FOR COMPONENT WILL MOUNT
 // original ajax call - single/////
-
- //  componentWillMount(){
-	// let trip_id = this.props.params.trip_id
-
- //        ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`).then( resp => {
- //          console.log(resp)
- //            this.setState({current_trip: resp.hosts})
-
- //            }
- //        )
- //    }
 
 
 			// request to get info on the driver
@@ -107,20 +96,23 @@ export default class TripDetails extends Component {
   				seats available: {trip.seats_available}
      	 	</div>
 
-     	 	<div className="trip-details-expand">
-  				<button> expand details </button>
+     	 	<div className="trip-details-para">
+  				{trip.comments}
      		</div>
 
      	</div>
+
+      <Link to="/edittrip"> EDIT THIS TRIP </Link>
 
      	<br/>
      	<br/>
 
 
      	 	<div className="trip-details-driver">
+          <img src={user.picture}/>
      	 		<span>{user.first_name} {user.last_name}</span>
      	 		<span>Verified Driver</span>
-     	 		<button> expand details </button>
+     	 		<Link to="/profile"> go to driver profile </Link>
      	 	</div>
 
      	 	<br/><br/>
@@ -132,3 +124,8 @@ export default class TripDetails extends Component {
     )
   }
 }
+
+
+
+// <Link to="/profile"> go to driver profile </Link>
+// NEED TO SPECIFY THAT YOURE GOING TO THAT SPECIFIC DRIVERS PROFILE//

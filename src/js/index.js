@@ -12,6 +12,7 @@ import HostTripBooking from './host_trip_booking';
 import HostSingleView from './host_single_view';
 import HostSignUp from './host_signup';
 import TripDetails from './trip_details';
+import EditTrip from './edit_trip';
 import Results from './results';
 import RiderTripBooking from './rider_trip_booking';
 import cookie from 'js-cookie';
@@ -48,7 +49,7 @@ function checkIfLoggedIn(state, replace){
 }
 
 
-
+// need to add LOGIN 1 2 3 and PROFILE/:ID and MYPROFILE////
 
 render((
   <Router history={ hashHistory }>
@@ -59,6 +60,7 @@ render((
       <Route path='/hosttripbooking' component={ HostTripBooking }/>
       <Route path='/hostsingleview'  component={ HostSingleView }/>
       <Route path='/tripdetails/:trip_id'     component={ TripDetails }/>
+      <Route path='/edittrip'     component={ TripDetails }/>
       <Route path='/ridertripbooking/:id' component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
       <Route path='/results'         component={ Results }/>
       <Route path='/hostsignup'      component={ HostSignUp }/>
