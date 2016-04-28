@@ -14,6 +14,8 @@ import { ajax } from 'jquery';
 export default class RiderTripBooking extends Component {
 
 	  book(rider_trip_booking) {
+      let id = this.props.params.id;
+
     ajax({
       url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
       type: 'PUT',
@@ -21,6 +23,7 @@ export default class RiderTripBooking extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_trip', {current_trip: resp.trip})
+        hashHistory.push('/rider_trip_confirmation')
       })
     }
 
@@ -49,7 +52,7 @@ export default class RiderTripBooking extends Component {
             </label>
 
             <label>
-              Credit Card Number:
+              Card Number:
               <input
                 type='text'
                 name='credit_card_number'
@@ -76,9 +79,6 @@ export default class RiderTripBooking extends Component {
           
 
         </SSF>
-
-
-      
 
 
       </div>

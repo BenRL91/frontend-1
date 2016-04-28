@@ -47,7 +47,7 @@ export default class TripDetails extends Component {
 		.then( respB => {
 			this.setState({current_user: respB.user})
 			cookie.set('saved_trip', {trip_id: this.props.params.trip_id})
-		}).fail(e => { console.log(...all, e) })
+		}).fail(e => { console.log( e) })
 
   }
 // ----------// ALL IS NOT DEFINED??//////-----------------
@@ -68,6 +68,7 @@ export default class TripDetails extends Component {
   render(){
   	let trip = this.state.current_trip;
   	let user = this.state.current_user;
+    let trip_id = this.props.params.trip_id;
 
     return (
       <div className="trip-details-wrapper">
@@ -102,7 +103,7 @@ export default class TripDetails extends Component {
 
      	</div>
 
-      <Link to="/edittrip"> EDIT THIS TRIP </Link>
+      <Link to={`/edittrip/${trip_id}`}> EDIT THIS TRIP </Link>
 
      	<br/>
      	<br/>
@@ -112,7 +113,7 @@ export default class TripDetails extends Component {
           <img src={user.picture}/>
      	 		<span>{user.first_name} {user.last_name}</span>
      	 		<span>Verified Driver</span>
-     	 		<Link to="/profile"> go to driver profile </Link>
+     	 		<Link to={`/profile/${trip.id}`}> go to driver profile </Link>
      	 	</div>
 
      	 	<br/><br/>
