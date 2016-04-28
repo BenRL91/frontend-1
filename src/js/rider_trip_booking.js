@@ -9,7 +9,7 @@ import { ajax } from 'jquery';
 
 
 // PUT REQUEST/////
-
+///need to make this so that were just sending backend the user ID because the CC info is dummy data//////
 
 export default class RiderTripBooking extends Component {
 
@@ -35,13 +35,6 @@ export default class RiderTripBooking extends Component {
 
       		<span> seats left on this trip ..interpolate.. </span>
 
-            <label>
-              How many seats do you need:
-              <input
-                type='text'
-                name='seats'
-                placeholder='number of seats'/>
-            </label>
 
             <span> Your price ..interpolate.. $80 </span>
             <span> You won't be charge for this trip until the day of departure, 
@@ -59,7 +52,7 @@ export default class RiderTripBooking extends Component {
               Credit Card Number:
               <input
                 type='text'
-                name='credit_card'
+                name='credit_card_number'
                 placeholder='CC number here'/>
             </label>
 
@@ -79,6 +72,9 @@ export default class RiderTripBooking extends Component {
             </label>
 
             <button>Book This Trip</button>
+
+          
+
         </SSF>
 
 
@@ -89,3 +85,21 @@ export default class RiderTripBooking extends Component {
     )
   }
 }
+
+
+
+  // DO WE NEED THIS?///////
+
+            // <label>
+            //   How many seats do you need:
+              // <input
+            //     type='text'
+            //     name='seats_available'
+            //     placeholder='number of seats'/>
+            // </label>
+
+
+
+
+
+
