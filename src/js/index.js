@@ -7,6 +7,7 @@ import Home from './home';
 import Login from './login';
 import LoginRiderBooking from './login_rider_booking';
 import Profile from './profile';
+import EditProfile from './edit_profile';
 import HostTripBooking from './host_trip_booking';
 import HostSingleView from './host_single_view';
 import HostSignUp from './host_signup';
