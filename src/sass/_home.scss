@@ -1,29 +1,36 @@
 //Home Component//
+.home-main-wrapper{
+	background: url('../images/hero1.jpg');
+	width:100vw;
+	height:100vh;
+	background-size: 100%;
 
-.home-wrapper {
-	display: flex;
-	justify-content: center;
-	padding-left: 100px;
-	padding-right: 100px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  		.search-wrapper {
-    		display: flex;
+	.home-wrapper {
+		display: flex;
+		justify-content: center;
+		padding-left: 100px;
+		padding-right: 100px;
+		padding-top:10%;
+		// box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  			.search-wrapper {
+    			display: flex;
 				justify-content:center;
 				align-items: center;
 				width: 60%;
 				height: 200px;
 				background: rgba(38, 144, 100, 0.20);
 				border-radius: 12px;
-				border: 1px solid black;
+				border: 1px solid gray;
 				margin-bottom: 55px;
-   			input{
-   				margin-right: 20px;
-   				margin-left: 5px;
-					border-radius: 5px;
-   			}
+   				input{
+   					margin-right: 20px;
+   					margin-left: 5px;
+					// border-radius: 5px;
+   				}
 
-   			button{
+   				button{
 					border-radius: 4px;
-   			}
-  		}
-}
+   				}
+  			}
+		}
+	}

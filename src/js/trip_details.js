@@ -125,7 +125,7 @@ export default class TripDetails extends Component {
 
      	 	<br/><br/>
 
-     	 	<Link to="/ridertripbooking">BOOK THIS TRIP!</Link>
+     	 	<Link to={`/ridertripbooking/${trip.id}`}>BOOK THIS TRIP!</Link>
 
 
      </div>

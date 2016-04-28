@@ -7,6 +7,9 @@ export default class Home extends Component {
 
   render(){
     return (
+     <div className='home-main-wrapper'>
+      
+
       <div className='home-wrapper'>
         <div className='search-wrapper'>
           <label>
@@ -26,6 +29,7 @@ export default class Home extends Component {
           <button onClick={() => { hashHistory.push('/results')}}>Search</button>
         </div>
       </div>
+     </div>
     )
   }
 }
