@@ -22,7 +22,6 @@ let current_user = null;
 
 if (cookie.getJSON('current_user')) {
   let user = cookie.getJSON('current_user').current_user
-  console.log(user)
   ajaxSetup({
             headers: {
               'Auth-Token': user.auth_token
@@ -35,7 +34,7 @@ if (cookie.getJSON('current_user')) {
 function checkIfDriver(state, replace){
   current_user = cookie.getJSON('current_user').current_user
   console.log(current_user)
-  if(current_user.driver){
+  if(!current_user.driver){
     replace('/hostsignup')
   }
 }

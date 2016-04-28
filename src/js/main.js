@@ -5,7 +5,6 @@ import { ajax } from 'jquery';
 
 export default class Main extends Component {
   logOut(){
-    console.log(cookie.getJSON('current_user'))
     cookie.set('current_user', null)
   }
   render(){

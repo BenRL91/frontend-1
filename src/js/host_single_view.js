@@ -5,7 +5,7 @@ import { ajax, ajaxSetup } from 'jquery';
 
 
 export default class HostSingleView extends Component {
- 
+
 
   render(){
 
@@ -16,7 +16,7 @@ export default class HostSingleView extends Component {
 
     		<span>SINGLE TRIP VIEW FOR Host
     		EVENTUALLY ENABLE HOST TO EDIT TRIP HERE</span>
-
+        {/*This will be trip_details with editing features if you are the creator of the trip*/}
     		<span> Trip:  </span> <button> edit </button>
 
 

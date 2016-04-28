@@ -24,7 +24,7 @@ export default class Profile extends Component {
             }
         )
     }
-           
+
 
           gettrips(trip){
             return (
@@ -44,7 +44,6 @@ export default class Profile extends Component {
   render(){
       let trips = this.state.current_user_trips;
       let current_user = cookie.getJSON('current_user')
-console.log(trips)
     return (
       <div className="profile-wrapper">
 
@@ -68,7 +67,7 @@ console.log(trips)
         </div>
 
 
-            
+
 
 
         <div className="profile-trips">

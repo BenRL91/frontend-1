@@ -36,23 +36,18 @@ export default class TripDetails extends Component {
 
 
   componentWillMount(){
-
   	let respA;
 
 	ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
 		.then( resp => {
 	        respA = resp;
-	        console.log('check here', resp)
 	        this.setState({current_trip: resp.hosts})
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		})
 		.then( respB => {
-			console.log('a', respA);
-			console.log('b', respB);
 			this.setState({current_user: respB.user})
 			cookie.set('saved_trip', {trip_id: this.props.params.trip_id})
-      console.log('checking cookie', cookie.getJSON('saved_trip'))
-		})
+		}).fail(e => { console.log(...all, e) })
 
   }
 
@@ -84,7 +79,6 @@ export default class TripDetails extends Component {
   render(){
   	let trip = this.state.current_trip;
   	let user = this.state.current_user;
-  	console.log(trip)
 
     return (
       <div className="trip-details-wrapper">
