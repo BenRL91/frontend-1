@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import Dropzone from 'react-dropzone';
 import cookie from 'js-cookie';
