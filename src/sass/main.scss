@@ -10,6 +10,7 @@
 @import '_hosttripbooking';
 @import '_results';
 @import '_tripdetails';
+@import '_ridertripbooking';
 
 
 
@@ -17,6 +18,7 @@
 
 .app {
   box-sizing: border-box;
+  position:relative;
   ul {
     list-style: none;
   }

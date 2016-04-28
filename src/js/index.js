@@ -58,7 +58,7 @@ render((
       <Route path='/hosttripbooking' component={ HostTripBooking }/>
       <Route path='/hostsingleview'  component={ HostSingleView }/>
       <Route path='/tripdetails/:trip_id'     component={ TripDetails }/>
-      <Route path='/ridertripbooking' component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
+      <Route path='/ridertripbooking/:id' component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
       <Route path='/results'         component={ Results }/>
       <Route path='/hostsignup'      component={ HostSignUp }/>
       <Route path='/loginriderbooking' component={ LoginRiderBooking }/>
