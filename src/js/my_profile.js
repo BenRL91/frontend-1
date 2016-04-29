@@ -12,7 +12,9 @@ export default class MyProfile extends Component {
   constructor(...args){
   super(...args);
   this.state = {
-    current_user_trips: []
+    current_user_trips: [],
+    current_user: {},
+    loading: true
     }
   }
 
@@ -20,12 +22,18 @@ export default class MyProfile extends Component {
     let user = cookie.getJSON('current_user').current_user
     if (user){
         ajax({
-        url: 'http://salty-river-31528.herokuapp.com/hosts',
+        url: `https://salty-river-31528.herokuapp.com/profile/${user.id}`,
+        type: 'GET',
         headers: {
           'Auth-Token': user.auth_token
         }
         }).then( resp => {
-            this.setState({current_user_trips: resp.host})
+          console.log(resp.user)
+            this.setState({
+              current_user_trips: resp.user.host,
+              current_user: resp.user,
+              loading: false
+            })
             }
         )
     }
@@ -34,7 +42,7 @@ export default class MyProfile extends Component {
 
           gettrips(trip){
             return (
-            <div className="profile_get_trips" key={trip.id}>
+            <div className="profile_get_trips" key={trip.host_id}>
               <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
 
                 <div className="get_trips_flex">
@@ -44,24 +52,27 @@ export default class MyProfile extends Component {
 
             </div>
           )}
-
-
-
-  render(){
-      let trips = this.state.current_user_trips;
-      let current_user = cookie.getJSON('current_user')
+renderLoading(){
+  return (
+    <div>Loading...</div>
+    )
+}
+renderPage(){
+  let trips = this.state.current_user_trips;
+      let current_user = this.state.current_user
+      console.log(current_user)
     return (
       <div className="profile-wrapper">
 
       <div className="profile-header">
         <div className="profile-picture">
-          <img src= {current_user.current_user.pictures} />
+          <img src= {current_user.pictures[0].image_url} />
           </div>
 
           <div className="profile-user-details">
 
             <div className="profile-name">
-              {current_user.current_user.first_name} {current_user.current_user.last_name}
+              {current_user.first_name} {current_user.last_name}
             </div>
 
             <div className="profile-status">
@@ -86,17 +97,24 @@ export default class MyProfile extends Component {
 
            { trips.map(::this.gettrips) }
 
-      		</div>
+          </div>
 
 
 
-        <Link className="hidden edit-btn" to={`/editprofile/${current_user.current_user.id}`}> EDIT YOUR PROFILE </Link>
+        <Link className="hidden edit-btn" to={`/editprofile/${current_user.id}`}> EDIT YOUR PROFILE </Link>
 
 
-      	</div>
+        </div>
 
 
       </div>
     )
   }
+  render(){
+      let {loading} = this.state;
+      return loading
+      ? this.renderLoading()
+      : this.renderPage()
+ }
 }
+

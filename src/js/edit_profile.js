@@ -24,7 +24,7 @@ export default class EditProfile extends Component {
     data.append('password', user_details.password)
     data.append('pictures', this.file)
     ajax({
-      url: `https://salty-river-31528.herokuapp.com/users/${id}`,
+      url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
       type: 'PUT',
       data: data,
       dataType: 'JSON',
@@ -45,7 +45,7 @@ export default class EditProfile extends Component {
     let id = this.props.params.user_id;
 
     ajax({
-      url: `https://salty-river-31528.herokuapp.com/users/${id}`,
+      url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
       type: 'DELETE'
     }).then( resp => {
       console.log(resp)
