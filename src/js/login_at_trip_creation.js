@@ -3,43 +3,78 @@ import { Link, hashHistory } from 'react-router';
 import { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
+import Dropzone from 'react-dropzone';
 
 export default class Login extends Component {
+  constructor(...args){
+    super(...args)
+    this.state={
+      preview: 'http://fillmurray.com/50/50'
+    }
+  }
+
 
   register(new_user_credentials) {
+    let data = new FormData;
+    data.append('first_name', new_user_credentials.first_name)
+    data.append('last_name', new_user_credentials.last_name)
+    data.append('user_name', new_user_credentials.user_name)
+    data.append('email', new_user_credentials.email)
+    data.append('password', new_user_credentials.password)
+    data.append('pictures', this.file)
+
+
     ajax({
       url: 'https://salty-river-31528.herokuapp.com/register',
       type: 'POST',
-      data: new_user_credentials
+      data: data,
+      dataType: 'json',
+      cache: false,
+      processData: false,
+      contentType: false
+
     }).then(resp => {
-      let trip_id = cookie.getJSON('saved_trip').trip_id;
-      console.log(resp)
-      cookie.set('current_user', {current_user: resp.user})
-      hashHistory.push(`/tripdetails/${trip_id}`);
+        console.log(resp)
+        cookie.set('current_user', {current_user: resp.user})
+        let user = resp
+        if (!user.driver){
+          hashHistory.push('/hostsignup')
+        }else {
+          let trip_id = cookie.getJSON('current_trip').id
+          hashHistory.push(`/hosttripbooking`)
+        }
       })
     }
 
-  // register(new_user_credentials){
-  //   users.post({ user: new_user_credentials}).then(response => {
-  //     cookie.set('current_user', {current_user: response.user});
-  //   })
-  // }
 
   login(user_credentials){
     ajax({
       url: 'https://salty-river-31528.herokuapp.com/logins',
       type: 'POST',
       data: user_credentials
-    }).then( resp => {
-      let trip_id = cookie.getJSON('saved_trip').trip_id;
-      console.log(resp)
-      cookie.set('current_user', {current_user: resp.user})
-      hashHistory.push(`/tripdetails/${trip_id}`);
+    }).then(resp => {
+        console.log(resp)
+        cookie.set('current_user', {current_user: resp.user})
+        let user = resp
+        if (!user.driver){
+          hashHistory.push('/hostsignup')
+        }else {
+          let trip_id = cookie.getJSON('current_trip').id
+          hashHistory.push(`/hosttripbooking`)
+        }
+      })
+    }
+
+
+  dropHandler([file]){
+    this.setState({
+      preview: file.preview
     })
+    this.file= file
   }
-  // login(user_credentials){
-  //   users.get({ user: user_credentials.})
-  // }
+
+
+
   render(){
 
     return (
@@ -61,6 +96,9 @@ export default class Login extends Component {
               placeholder='Type Your Password'/>
           </label>
           <button>Log In</button>
+
+
+
         </SSF>
         {/*Registration Form*/}
         <SSF className='register-form' onData={::this.register}>
@@ -99,6 +137,9 @@ export default class Login extends Component {
                 name='password'
                 placeholder='placeholder'/>
             </label>
+
+            <Dropzone onDrop={::this.dropHandler}> <img src={this.state.preview}/> </Dropzone>
+
             <button>Register</button>
         </SSF>
       </div>

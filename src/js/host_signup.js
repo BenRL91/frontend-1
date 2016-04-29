@@ -7,6 +7,7 @@ import cookie from 'js-cookie';
 export default class HostSignUp extends Component {
   dataHandler(data){
     let user = cookie.getJSON('current_user').current_user
+    console.log(cookie.getJSON('current_user'))
     let user_id = cookie.getJSON('current_user').current_user.id
     let token = cookie.getJSON('current_user').current_user.auth_token
     data.first_name = user.first_name
@@ -20,6 +21,10 @@ export default class HostSignUp extends Component {
       }
     }).then(resp => {
       console.log(resp)
+      let current_user = cookie.getJSON('current_user').current_user
+      current_user.driver = true
+      cookie.set('current_user', { current_user });
+      console.log(cookie.getJSON('current_user'))
       hashHistory.push('/hosttripbooking')
     }).fail(e => console.log(e))
   }

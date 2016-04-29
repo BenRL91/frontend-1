@@ -51,6 +51,7 @@ export default class RiderTripBooking extends Component {
 
 
   render(){
+		console.log(cookie.getJSON('current_user'))
     return (
       <div className="rider-trip-booking-wrapper">
 
@@ -103,9 +104,7 @@ export default class RiderTripBooking extends Component {
 					Add me to the trip!
 					<input
 						type='hidden'
-						name='user_id'
-						value={cookie.getJSON('current_user')
-						.current_user.id}/>
+						name='user_id'/>
 					<button>Book This Trip</button>
 				</SSF>
 
