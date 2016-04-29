@@ -5,7 +5,10 @@ import cookie from 'js-cookie'
 
 
 
-export default class Profile extends Component {
+//////MY PROFILE HAS EDITING CAPABILITIES ONLY AVAILABLE FOR CREATOR OF PROFILE////
+
+
+export default class MyProfile extends Component {
   constructor(...args){
   super(...args);
   this.state = {
@@ -15,7 +18,7 @@ export default class Profile extends Component {
 
   componentWillMount(){
     let user = cookie.getJSON('current_user').current_user
-
+    if (user){
         ajax({
         url: 'http://salty-river-31528.herokuapp.com/hosts',
         headers: {
@@ -26,6 +29,7 @@ export default class Profile extends Component {
             }
         )
     }
+    }
 
 
           gettrips(trip){
@@ -35,7 +39,7 @@ export default class Profile extends Component {
 
                 <div className="get_trips_flex">
                   <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
-                  <Link className="profile-trip-details" to="/hostsingleview"> details + </Link>
+                  <Link className="profile-trip-details" to={`/tripdetails/${trip.id}`}> details + </Link>
                 </div>
 
             </div>
@@ -51,7 +55,7 @@ export default class Profile extends Component {
 
       <div className="profile-header">
         <div className="profile-picture">
-          {current_user.current_user.pictures[0]} 
+          <img src="http://www.fillmurray.com/100/100"/>
           </div>
 
           <div className="profile-user-details">
@@ -74,25 +78,25 @@ export default class Profile extends Component {
 
         <div className="profile-trips">
           <div className="profile-new-trips">
-            <span className="your-trips"> Trips </span>
+            <span className="your-trips"> Your Trips </span>
+            <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
           </div>
 
           <div className="profile-trips-list">
 
            { trips.map(::this.gettrips) }
 
-          </div>
+      		</div>
 
 
-        </div>
+
+        <Link className="hidden edit-btn" to={`/editprofile/${current_user.current_user.id}`}> EDIT YOUR PROFILE </Link>
+
+
+      	</div>
 
 
       </div>
     )
   }
 }
-
-
-
-     // shouldn't be available for outside viewer     
-     // <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>

@@ -15,6 +15,7 @@ import cookie from 'js-cookie';
 export default class RiderTripBooking extends Component {
 
 	  book(rider_trip_booking) {
+
 			let tripData
 			let {id} = this.props.params;
 			ajax(`https://salty-river-31528.herokuapp.com/hosts/${id}`).then(
@@ -28,24 +29,32 @@ export default class RiderTripBooking extends Component {
 						ajax({
 				      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
 				      type: 'PUT',
-				      data: tripData
+				      data: tripData,
+              headers: {
+                'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+              }
 				    }).then(resp => {
 								console.log('put check 1', tripData.seats_available)
 				        console.log('put check 2', resp)
 				        cookie.set('current_trip', {current_trip: resp.trip})
+                hashHistory.push('/ridertripconfirmation')
 				      }).fail(e => console.log(e))
 					}else {
 						ajax({
 							url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
 							type: 'PUT',
-							data: tripData
+							data: tripData,
+              headers: {
+                'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+              }
 						}).then(resp => {
 								console.log('put check 1', tripData.seats_available)
 								console.log('put check 2', resp)
 								cookie.set('current_trip', {current_trip: resp.trip})
+                hashHistory.push('/ridertripnoseats')
 							}).fail(e => console.log(e))					}
 				}
-			)
+			) 
     }
 
 
@@ -61,8 +70,8 @@ export default class RiderTripBooking extends Component {
       		<span> seats left on this trip ..interpolate.. </span>
 
 
-            <span> Your price ..interpolate.. $80 </span>
-            <span> You won't be charge for this trip until the day of departure,
+            <span> Your price ..interpolate.. $80 </span><br/>
+            <span> You won't be charge for this trip until the day of departure,<br/>
             this will leave time for other riders to book a seat, and lower the price for you (& them). </span>
 
             <label>
@@ -74,7 +83,7 @@ export default class RiderTripBooking extends Component {
             </label>
 
             <label>
-              Credit Card Number:
+              Card Number:
               <input
                 type='text'
                 name='credit_card_number'
@@ -107,8 +116,6 @@ export default class RiderTripBooking extends Component {
 						name='user_id'/>
 					<button>Book This Trip</button>
 				</SSF>
-
-
 
 
 

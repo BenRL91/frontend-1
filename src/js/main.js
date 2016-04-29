@@ -24,6 +24,7 @@ export default class Main extends Component {
 
           <div className="main-nav">
             <Link to="/">Home</Link>
+            <Link to="/myprofile"> Profile </Link>
             <Link to="/hosttripbooking">Host A Trip</Link>
             <Link to="/login">LOGIN/REGISTER</Link>
             <Link to="/"><button onClick={::this.logOut}>Log Out</button></Link>
