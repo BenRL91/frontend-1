@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import SSF from 'react-simple-serial-form';
 import { ajax } from 'jquery';
+import cookie from 'js-cookie';
 
 
        //// add me to route to RIDER TRIP BOOKED AFTER COOKIE.SET // hashHistory.push('/tripdetails');
@@ -14,22 +15,44 @@ import { ajax } from 'jquery';
 export default class RiderTripBooking extends Component {
 
 	  book(rider_trip_booking) {
-      let id = this.props.params.id;
 
-    ajax({
-      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
-      type: 'PUT',
-      data: rider_trip_booking
-    }).then(resp => {
-        console.log(resp)
-        cookie.set('current_trip', {current_trip: resp.trip})
-        hashHistory.push('/rider_trip_confirmation')
-      })
+			let tripData
+			let {id} = this.props.params;
+			ajax(`https://salty-river-31528.herokuapp.com/hosts/${id}`).then(
+				resp => {
+					tripData = resp.hosts
+					console.log('actual resp',resp.hosts)
+					console.log('get check 1', tripData.seats_available)
+					if (tripData.seats_available > 0){
+						tripData.seats_available -= 1
+						console.log('updated seat value', tripData.seats_available)
+						ajax({
+				      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
+				      type: 'PUT',
+				      data: tripData
+				    }).then(resp => {
+								console.log('put check 1', tripData.seats_available)
+				        console.log('put check 2', resp)
+				        cookie.set('current_trip', {current_trip: resp.trip})
+				      }).fail(e => console.log(e))
+					}else {
+						ajax({
+							url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
+							type: 'PUT',
+							data: tripData
+						}).then(resp => {
+								console.log('put check 1', tripData.seats_available)
+								console.log('put check 2', resp)
+								cookie.set('current_trip', {current_trip: resp.trip})
+							}).fail(e => console.log(e))					}
+				}
+			)
     }
 
 
 
   render(){
+		console.log(cookie.getJSON('current_user'))
     return (
       <div className="rider-trip-booking-wrapper">
 
@@ -40,7 +63,7 @@ export default class RiderTripBooking extends Component {
 
 
             <span> Your price ..interpolate.. $80 </span>
-            <span> You won't be charge for this trip until the day of departure, 
+            <span> You won't be charge for this trip until the day of departure,
             this will leave time for other riders to book a seat, and lower the price for you (& them). </span>
 
             <label>
@@ -74,11 +97,18 @@ export default class RiderTripBooking extends Component {
                 placeholder='###'/>
             </label>
 
-            <button>Book This Trip</button>
 
-          
+
 
         </SSF>
+				<SSF onData={::this.book}>
+					Add me to the trip!
+					<input
+						type='hidden'
+						name='user_id'/>
+					<button>Book This Trip</button>
+				</SSF>
+
 
 
       </div>
@@ -97,9 +127,3 @@ export default class RiderTripBooking extends Component {
             //     name='seats_available'
             //     placeholder='number of seats'/>
             // </label>
-
-
-
-
-
-

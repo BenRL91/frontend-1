@@ -19,7 +19,14 @@ export default class Profile extends Component {
   }
 
   componentWillMount(){
-        ajax('http://salty-river-31528.herokuapp.com/hosts').then( resp => {
+    let user = cookie.getJSON('current_user').current_user
+
+        ajax({
+        url: 'http://salty-river-31528.herokuapp.com/hosts',
+        headers: {
+          'Auth-Token': user.auth_token
+        }
+        }).then( resp => {
             this.setState({current_user_trips: resp.host})
             }
         )

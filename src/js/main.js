@@ -5,7 +5,8 @@ import { ajax } from 'jquery';
 
 export default class Main extends Component {
   logOut(){
-    cookie.set('current_user', null)
+    cookie.set('current_user', {})
+    cookie.remove('newTrip')
   }
   checkIfLoggedIn(){
     let user = cookie.getJSON('current_user')
@@ -23,7 +24,7 @@ export default class Main extends Component {
 
           <div className="main-nav">
             <Link to="/">Home</Link>
-            <Link to="/profile" onClick={::this.checkIfLoggedIn}>Host A Trip</Link>
+            <Link to="/hosttripbooking">Host A Trip</Link>
             <Link to="/login">LOGIN/REGISTER</Link>
             <Link to="/"><button onClick={::this.logOut}>Log Out</button></Link>
           </div>

@@ -10,27 +10,50 @@ export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
     this.state = {
-      starting_point: null,
-      destination: null
+      trip: {
+        comments: "",
+        date_arrive: "",
+        date_leave: "",
+        departing_city: "",
+        destination: "",
+        seat_price: "",
+        seats_available : ""
+      }
     }
   }
-
+componentWillMount(){
+  let storedTrip = cookie.getJSON('newTrip')
+  console.log('trip', storedTrip)
+  if (storedTrip) {
+    this.setState({
+      trip: storedTrip.newTrip
+    })
+  }
+}
   book(trip_details){
-    ajax({
-      url: 'https://salty-river-31528.herokuapp.com/hosts',
-      type: 'POST',
-      data: trip_details
-    }).then( resp => {
-      console.log(resp)
-    		}
-    	)
-    	hashHistory.push('/profile');
-    }
+    let user = cookie.getJSON('current_user')
+    cookie.set('newTrip', { newTrip: trip_details })
+    if (!user.current_user){
+      hashHistory.push('/loginattripcreation')
+    }else if(user.current_user && !user.current_user.driver){
+      hashHistory.push('/hostsignup')
+    }else {
+      ajax({
+        url: 'https://salty-river-31528.herokuapp.com/hosts',
+        type: 'POST',
+        data: trip_details
+      }).then( resp => {
+        console.log(resp)
+      hashHistory.push('/drivertripconfirmation')
+    })
+  }
+}
 
 
 
 
   render(){
+    let { trip } = this.state;
     console.log(cookie.getJSON('current_user'))
     return (
 
@@ -44,6 +67,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='departing_city'
+                defaultValue={trip.departing_city}
                 placeholder='Where are you leaving from?'/>
             </label>
 
@@ -52,6 +76,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='date'
                 name='date_leave'
+                defaultValue={trip.date_leave}
                 placeholder='When are you leaving?'/>
             </label>
 
@@ -60,7 +85,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='destination'
-                defaultValue='AB'
+                defaultValue={trip.destination}
                 placeholder='Where are you driving to?'/>
             </label>
 
@@ -70,6 +95,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='date'
                 name='date_arrive'
+                defaultValue={trip.date_arrive}
                 placeholder='Whats your ETA?'/>
             </label>
 
@@ -78,7 +104,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='seats_available'
-                defaultValue='4'
+                defaultValue={trip.seats_available}
                 placeholder='Number of seats you want to make available'/>
             </label>
 
@@ -87,7 +113,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='seat_price'
-                defaultValue='3'
+                defaultValue={trip.seat_price}
                 placeholder='List the price for all seats'/>
             </label>
 
@@ -103,6 +129,7 @@ export default class HostTripBooking extends Component {
               <input
                 type='text'
                 name='comments'
+                defaultValue={trip.comments}
                 placeholder='tell us about your trip'/>
             </label>
 
