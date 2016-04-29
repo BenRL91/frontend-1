@@ -55,7 +55,7 @@ export default class MyProfile extends Component {
 
       <div className="profile-header">
         <div className="profile-picture">
-          <img src="http://www.fillmurray.com/100/100"/>
+          <img src= {current_user.current_user.pictures} />
           </div>
 
           <div className="profile-user-details">
