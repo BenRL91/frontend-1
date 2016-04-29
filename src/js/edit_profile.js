@@ -16,6 +16,7 @@ export default class EditProfile extends Component {
 
   edit_profile(user_details){
     let id = this.props.params.user_id;
+    let user = cookie.getJSON('current_user').current_user
         let data = new FormData;
     data.append('first_name', user_details.first_name)
     data.append('last_name', user_details.last_name)
@@ -24,13 +25,16 @@ export default class EditProfile extends Component {
     data.append('password', user_details.password)
     data.append('pictures', this.file)
     ajax({
-      url: `https://salty-river-31528.herokuapp.com/users/${id}`,
+      url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
       type: 'PUT',
       data: data,
       dataType: 'JSON',
       cache: false,
       processData: false,
-      contentType: false
+      contentType: false,
+      headers: {
+        'Auth-Token': user.auth_token
+      }
 
     }).then( resp => {
       console.log(resp)
@@ -45,7 +49,7 @@ export default class EditProfile extends Component {
     let id = this.props.params.user_id;
 
     ajax({
-      url: `https://salty-river-31528.herokuapp.com/users/${id}`,
+      url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
       type: 'DELETE'
     }).then( resp => {
       console.log(resp)
