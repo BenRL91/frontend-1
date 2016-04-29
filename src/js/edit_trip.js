@@ -61,11 +61,15 @@ export default class EditTrip extends Component {
       hashHistory.push('/profile')
     })
   }
+
+
 renderLoading(){
   return (
     <div>Loading...</div>
     )
 }
+
+
 renderPage(){
   let trip = this.state.current_trip;
     let user = this.state.current_user;

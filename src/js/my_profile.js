@@ -8,7 +8,7 @@ import cookie from 'js-cookie'
 //////MY PROFILE HAS EDITING CAPABILITIES ONLY AVAILABLE FOR CREATOR OF PROFILE////
 
 
-export default class Profile extends Component {
+export default class MyProfile extends Component {
   constructor(...args){
   super(...args);
   this.state = {
@@ -18,7 +18,7 @@ export default class Profile extends Component {
 
   componentWillMount(){
     let user = cookie.getJSON('current_user').current_user
-
+    if (user){
         ajax({
         url: 'http://salty-river-31528.herokuapp.com/hosts',
         headers: {
@@ -29,6 +29,7 @@ export default class Profile extends Component {
             }
         )
     }
+    }
 
 
           gettrips(trip){
@@ -38,7 +39,7 @@ export default class Profile extends Component {
 
                 <div className="get_trips_flex">
                   <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
-                  <Link className="profile-trip-details" to="/hostsingleview"> details + </Link>
+                  <Link className="profile-trip-details" to={`/tripdetails/${trip.id}`}> details + </Link>
                 </div>
 
             </div>
@@ -86,6 +87,10 @@ export default class Profile extends Component {
            { trips.map(::this.gettrips) }
 
       		</div>
+
+
+
+        <Link className="hidden edit-btn" to={`/editprofile/${current_user.current_user.id}`}> EDIT YOUR PROFILE </Link>
 
 
       	</div>

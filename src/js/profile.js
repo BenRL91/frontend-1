@@ -51,7 +51,7 @@ export default class Profile extends Component {
 
       <div className="profile-header">
         <div className="profile-picture">
-          <img src="http://www.fillmurray.com/100/100"/>
+          {current_user.current_user.pictures[0]} 
           </div>
 
           <div className="profile-user-details">
@@ -74,7 +74,7 @@ export default class Profile extends Component {
 
         <div className="profile-trips">
           <div className="profile-new-trips">
-            <span className="your-trips"> Your Trips </span>
+            <span className="your-trips"> Trips </span>
           </div>
 
           <div className="profile-trips-list">

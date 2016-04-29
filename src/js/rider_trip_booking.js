@@ -29,7 +29,10 @@ export default class RiderTripBooking extends Component {
 						ajax({
 				      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
 				      type: 'PUT',
-				      data: tripData
+				      data: tripData,
+              headers: {
+                'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+              }
 				    }).then(resp => {
 								console.log('put check 1', tripData.seats_available)
 				        console.log('put check 2', resp)
@@ -40,7 +43,10 @@ export default class RiderTripBooking extends Component {
 						ajax({
 							url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
 							type: 'PUT',
-							data: tripData
+							data: tripData,
+              headers: {
+                'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+              }
 						}).then(resp => {
 								console.log('put check 1', tripData.seats_available)
 								console.log('put check 2', resp)

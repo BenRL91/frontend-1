@@ -8,6 +8,7 @@ import Login from './login';
 import LoginRiderBooking from './login_rider_booking';
 import LoginAtTripCreation from './login_at_trip_creation';
 import Profile from './profile';
+import MyProfile from './my_profile';
 import EditProfile from './edit_profile';
 import HostTripBooking from './host_trip_booking';
 import HostSingleView from './host_single_view';
@@ -36,19 +37,25 @@ if (cookie.getJSON('current_user').current_user !== undefined) {
 
 
 
-function checkIfDriver(state, replace){
-  current_user = cookie.getJSON('current_user')
-  console.log(current_user)
-  if(!current_user.current_user.driver){
-    replace('/hostsignup')
-  }
-}
+// function checkIfDriver(state, replace){
+//   current_user = cookie.getJSON('current_user')
+//   console.log(current_user)
+//   if(!current_user.current_user.driver){
+//     replace('/hostsignup')
+//   }
+// }
 
 
 function checkIfLoggedIn(state, replace){
   let user = cookie.getJSON('current_user');
   let trip_id = cookie.getJSON('saved_trip');
   if (!user) {replace('/loginriderbooking')}
+}
+function checkIfLoggedInProfile(state, replace){
+    let user = cookie.getJSON('current_user');
+    console.log(user)
+      if (!user.current_user) {replace('/login')}
+
 }
 
 
@@ -59,7 +66,9 @@ render((
     <Route path='/'                          component={ Main }>
       <IndexRoute                            component={ Home }/>
       <Route path='/login'                   component={ Login }/>
-      <Route path='/profile'                 component={ Profile }          onEnter={checkIfDriver}/>
+      <Route path='/profile/:user_id'        component={ Profile }/>
+      <Route path='/myprofile'               component={ MyProfile } onEnter={checkIfLoggedInProfile}/>
+      <Route path='/editprofile/:user_id'    component={ EditProfile }/>
       <Route path='/hosttripbooking'         component={ HostTripBooking }/>
       <Route path='/hostsingleview'          component={ HostSingleView }/>
       <Route path='/tripdetails/:trip_id'    component={ TripDetails }/>
