@@ -54,20 +54,20 @@ function checkIfLoggedIn(state, replace){
 
 render((
   <Router history={ hashHistory }>
-    <Route path='/'                  component={ Main }>
-      <IndexRoute                    component={ Home }/>
-      <Route path='/login'           component={ Login }/>
-      <Route path='/profile'         component={ Profile } onEnter={checkIfDriver}/>
-      <Route path='/hosttripbooking' component={ HostTripBooking }/>
-      <Route path='/hostsingleview'  component={ HostSingleView }/>
-      <Route path='/tripdetails/:trip_id'     component={ TripDetails }/>
-      <Route path='/edittrip'     component={ TripDetails }/>
-      <Route path='/ridertripbooking/:id' component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
-      <Route path='/results'         component={ Results }/>
-      <Route path='/hostsignup'      component={ HostSignUp }/>
-      <Route path='/loginriderbooking' component={ LoginRiderBooking }/>
-      <Route path='loginattripcreation' component={LoginAtTripCreation}/>
-      <Route path='/drivertripconfirmation' component={DriverTripConfirmation}/>
+    <Route path='/'                          component={ Main }>
+      <IndexRoute                            component={ Home }/>
+      <Route path='/login'                   component={ Login }/>
+      <Route path='/profile'                 component={ Profile } onEnter={checkIfDriver}/>
+      <Route path='/hosttripbooking'         component={ HostTripBooking }/>
+      <Route path='/hostsingleview'          component={ HostSingleView }/>
+      <Route path='/tripdetails/:trip_id'    component={ TripDetails }/>
+      <Route path='/edittrip'                component={ TripDetails }/>
+      <Route path='/ridertripbooking/:id'    component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
+      <Route path='/results'                 component={ Results }/>
+      <Route path='/hostsignup'              component={ HostSignUp }/>
+      <Route path='/loginriderbooking'       component={ LoginRiderBooking }/>
+      <Route path='loginattripcreation'      component={ LoginAtTripCreation }/>
+      <Route path='/drivertripconfirmation'  component={ DriverTripConfirmation }/>
 
     </Route>
   </Router>
