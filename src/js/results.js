@@ -3,7 +3,6 @@ import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
 
 
-
 export default class Results extends Component {
   constructor(...args){
     super(...args);
