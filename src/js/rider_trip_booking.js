@@ -34,6 +34,7 @@ export default class RiderTripBooking extends Component {
 								console.log('put check 1', tripData.seats_available)
 				        console.log('put check 2', resp)
 				        cookie.set('current_trip', {current_trip: resp.trip})
+                hashHistory.push('/ridertripconfirmation')
 				      }).fail(e => console.log(e))
 					}else {
 						ajax({
@@ -44,9 +45,10 @@ export default class RiderTripBooking extends Component {
 								console.log('put check 1', tripData.seats_available)
 								console.log('put check 2', resp)
 								cookie.set('current_trip', {current_trip: resp.trip})
+                hashHistory.push('/ridertripnoseats')
 							}).fail(e => console.log(e))					}
 				}
-			)
+			) 
     }
 
 
@@ -62,8 +64,8 @@ export default class RiderTripBooking extends Component {
       		<span> seats left on this trip ..interpolate.. </span>
 
 
-            <span> Your price ..interpolate.. $80 </span>
-            <span> You won't be charge for this trip until the day of departure,
+            <span> Your price ..interpolate.. $80 </span><br/>
+            <span> You won't be charge for this trip until the day of departure,<br/>
             this will leave time for other riders to book a seat, and lower the price for you (& them). </span>
 
             <label>

@@ -5,6 +5,9 @@ import cookie from 'js-cookie'
 
 
 
+//////MY PROFILE HAS EDITING CAPABILITIES ONLY AVAILABLE FOR CREATOR OF PROFILE////
+
+
 export default class Profile extends Component {
   constructor(...args){
   super(...args);
@@ -75,24 +78,20 @@ export default class Profile extends Component {
         <div className="profile-trips">
           <div className="profile-new-trips">
             <span className="your-trips"> Your Trips </span>
+            <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
           </div>
 
           <div className="profile-trips-list">
 
            { trips.map(::this.gettrips) }
 
-          </div>
+      		</div>
 
 
-        </div>
+      	</div>
 
 
       </div>
     )
   }
 }
-
-
-
-     // shouldn't be available for outside viewer     
-     // <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>

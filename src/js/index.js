@@ -17,6 +17,8 @@ import TripDetails from './trip_details';
 import EditTrip from './edit_trip';
 import Results from './results';
 import RiderTripBooking from './rider_trip_booking';
+import RiderTripConfirmation from './rider_trip_confirmation';
+import RiderTripNoSeats from './rider_trip_no_seats';
 import cookie from 'js-cookie';
 import { ajaxSetup } from 'jquery';
 
@@ -57,12 +59,14 @@ render((
     <Route path='/'                          component={ Main }>
       <IndexRoute                            component={ Home }/>
       <Route path='/login'                   component={ Login }/>
-      <Route path='/profile'                 component={ Profile } onEnter={checkIfDriver}/>
+      <Route path='/profile'                 component={ Profile }          onEnter={checkIfDriver}/>
       <Route path='/hosttripbooking'         component={ HostTripBooking }/>
       <Route path='/hostsingleview'          component={ HostSingleView }/>
       <Route path='/tripdetails/:trip_id'    component={ TripDetails }/>
-      <Route path='/edittrip'                component={ TripDetails }/>
+      <Route path='/edittrip/:trip_id'       component={ EditTrip }/>
       <Route path='/ridertripbooking/:id'    component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
+      <Route path='/ridertripconfirmation'   component={ RiderTripConfirmation }/>
+      <Route path='/ridertripnoseats'        component={ RiderTripNoSeats }/>
       <Route path='/results'                 component={ Results }/>
       <Route path='/hostsignup'              component={ HostSignUp }/>
       <Route path='/loginriderbooking'       component={ LoginRiderBooking }/>

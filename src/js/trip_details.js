@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
 import cookie from 'js-cookie';
+import $ from 'jquery';
 
 
 export default class TripDetails extends Component {
@@ -15,28 +16,19 @@ export default class TripDetails extends Component {
   }
 
 
-
-			//example of returning multiple promises
-
- //  tmp() {
-
- //  	let respA;
-
-	// ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
-	// 	.then( resp => {
-	//         respA = resp;
-	//         return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.user_id}`);
-	// 	})
-	// 	.then( respB => {
-	// 		console.log('a', respA);
-	// 		console.log('b', respB);
-	// 	})
-
- //  }
-
-
   componentWillMount(){
   	let respA;
+    let token = cookie.getJSON('current_user').current_user.id;
+    console.log(token)
+
+    ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
+    .then( resp => {
+      // console.log(resp)
+      if (resp.hosts.user_id === token){
+        $('.edit-btn').removeClass('hidden')
+      }
+
+    })
 
 	ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
 		.then( resp => {
@@ -50,9 +42,14 @@ export default class TripDetails extends Component {
 		}).fail(e => { console.log( e) })
 
   }
-// ----------// ALL IS NOT DEFINED??//////-----------------
-// GETTING A WARNING ON THE SETSTATE FOR COMPONENT WILL MOUNT
-// original ajax call - single/////
+
+
+  // check auth
+  // IF logged in SHOW EDIT BUTTON
+  // ELSE dont show edit button
+  //***** CHECK HERE IF USER CREATED THE TRIP THEYRE VIEWING, 
+  // IF SO MAKE AN EDIT BUTTON AVAILABLE**** 1st FRIDAY****
+
 
 
 			// request to get info on the driver
@@ -103,7 +100,7 @@ export default class TripDetails extends Component {
 
      	</div>
 
-      <Link to={`/edittrip/${trip_id}`}> EDIT THIS TRIP </Link>
+      <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> EDIT THIS TRIP </Link>
 
      	<br/>
      	<br/>
