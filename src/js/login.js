@@ -21,7 +21,7 @@ export default class Login extends Component {
     data.append('user_name', new_user_credentials.user_name)
     data.append('email', new_user_credentials.email)
     data.append('password', new_user_credentials.password)
-    data.append('pictures', this.file)
+    data.append('image', this.file)
 
 
     ajax({

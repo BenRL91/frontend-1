@@ -23,7 +23,7 @@ export default class EditProfile extends Component {
     data.append('user_name', user_details.user_name)
     data.append('email', user_details.email)
     data.append('password', user_details.password)
-    data.append('pictures', this.file)
+    data.append('image', this.file)
     ajax({
       url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
       type: 'PUT',
