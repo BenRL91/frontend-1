@@ -4,6 +4,7 @@ import cookie from 'js-cookie';
 import $, { ajax } from 'jquery';
 
 export default class Main extends Component {
+
   logOut(){
     cookie.remove('current_user')
     cookie.remove('newTrip')
@@ -11,6 +12,7 @@ export default class Main extends Component {
   }
 
   render(){
+     let user = cookie.getJSON('current_user').current_user;
     return (
       <div className="main-wrapper">
         <div className='top-main-wrapper'>
@@ -24,6 +26,7 @@ export default class Main extends Component {
             <Link to="/hosttripbooking">Host A Trip</Link>
             <Link to="/login">LOGIN/REGISTER</Link>
             <Link to="/"><button className='logout' onClick={::this.logOut}>Log Out</button></Link>
+            <Link to='/myprofile'> Hello, {user.first_name} </Link>
           </div>
         </div>
         {this.props.children}
@@ -33,6 +36,6 @@ export default class Main extends Component {
   }
 }
 
-
+// ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
             // Move me back when we have data
             // <Link to={`/profile/${{user_name}}`}>Profile</Link>

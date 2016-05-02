@@ -11,6 +11,7 @@
 @import '_results';
 @import '_tripdetails';
 @import '_ridertripbooking';
+@import '_drivertripconfirmation';
 
 
 
@@ -26,19 +27,20 @@ $tangerine: #ffa800;
 ///mixins////
 
 
-@mixin button (){
-  height:30px;
-  border:none;
-  background-color: #a2a2a2;
-  font-weight: bold;
-}
+// @mixin button (){
+//   height:30px;
+//   border:none;
+//   background-color: #a2a2a2;
+//   font-weight: bold;
+//   width:100px;
+// }
 
 
-@mixin button-hover (){
-  background-color: #d3d3d3;
-  color:white;
+// @mixin button-hover (){
+//   background-color: #d3d3d3;
+//   color:white;
 
-}
+// }
 
 //Overall Application default styling//
 
@@ -66,10 +68,25 @@ $tangerine: #ffa800;
 
 /////////general button/////////////
 
+button{
+  height:30px;
+  border:none;
+  background-color: #a2a2a2;
+  font-weight: bold;
+  width:100px;
+}
+
+button:hover{
+  background-color: #d3d3d3;
+}
+
 button:focus{
   outline:none;
 }
 
+button:active{
+  box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
+}
 
 
 // how to change that ugly yellow??

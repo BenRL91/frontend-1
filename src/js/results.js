@@ -21,10 +21,10 @@ export default class Results extends Component {
         </div>
 
         <div className="results-dates-price-flex">
-          <div className="results-dates"> Leaving <b>{trip.date_leave}</b> Returning <b>{trip.date_arrive}</b></div>
+          <div className="results-dates"> <b>{trip.date_leave}</b></div>
           <div className="results-price"> $ {trip.seat_price} </div>
 
-        <Link to={`/tripdetails/${trip.id}`}> <b>TRIP DETAILS</b></Link>
+        <Link className="results-arrow" to={`/tripdetails/${trip.id}`}> <b> → </b></Link>
         </div>
 
       </div>

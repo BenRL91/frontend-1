@@ -1,3 +1,12 @@
+$mint: #c3e9d4;
+$pistachio: #bed9b9;
+$storm: #2e2e2e;
+$ocean: #004973;
+$shamrock: #1fbb62;
+$tangerine: #ffa800;
+
+
+
 .trip-details-wrapper{
 	margin-left: 100px; 
 	margin-right: 100px;
@@ -10,38 +19,36 @@
 	.trip-details{
 
 		display:flex;
-		flex-direction:column;
+		width:100%;
+		height: 100px;
+		margin-bottom: 20px;
+		border:1px solid black;
+		padding-top: 10px;
+		padding-left: 20px;
 
 
-		.trip-details-cities{
-
-		}
-
-		.trip-details-dates{
-
-		}
-
-		.trip-details-duration{
-
-		}
-
-		.trip-details-price{
+		.trip-details-cities-dates{
 
 		}
 
 		.trip-details-seats{
 
 		}
+	}
 
-		.trip-details-para{
+
+
+		.trip-details-price{
+			display:flex;
+			justify-content:flex-end;
 
 		}
-	}
-	
 
-	.hidden{
+		
+	
+.hidden{
 		display:none;
-	}
+}
 
 
 	.trip-details-driver{
@@ -49,16 +56,29 @@
 		justify-content:center;
 		flex-direction:column;
 
-		span{
+		.trip-details-driver-name{
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.trip-details-driver-link{
+			font-weight: bold;
+			color: $tangerine;
+		}
+
+		.trip-details-para{
 
 		}
 
-		button{
-			width: 200px;
 
-		}
 
 
 	}
+		.book-btn{
+			font-weight: bold;
+			color:black;
+
+		}
+
 
 }
