@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
-import { ajax, ajaxSetup } from 'jquery';
+import $, { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
 import Dropzone from 'react-dropzone';
@@ -36,6 +36,7 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
+        $('.logout').removeClass('hidden');
         hashHistory.push('/');
       })
     }
@@ -49,6 +50,7 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
+      $('.logout').removeClass('hidden');
       hashHistory.push('/')
     })
   }

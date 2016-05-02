@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import cookie from 'js-cookie';
-import { ajax } from 'jquery';
+import $, { ajax } from 'jquery';
 
 export default class Main extends Component {
   logOut(){
-    cookie.set('current_user', {})
+    cookie.remove('current_user')
     cookie.remove('newTrip')
+    $('.logout').addClass('hidden');
   }
-  checkIfLoggedIn(){
-    let user = cookie.getJSON('current_user')
-    if (!user){
-      hashHistory.push('/login');
-    }
-  }
+
   render(){
     return (
       <div className="main-wrapper">
@@ -27,7 +23,7 @@ export default class Main extends Component {
             <Link to="/myprofile"> Profile </Link>
             <Link to="/hosttripbooking">Host A Trip</Link>
             <Link to="/login">LOGIN/REGISTER</Link>
-            <Link to="/"><button onClick={::this.logOut}>Log Out</button></Link>
+            <Link to="/"><button className='logout' onClick={::this.logOut}>Log Out</button></Link>
           </div>
         </div>
         {this.props.children}

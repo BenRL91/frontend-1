@@ -8,7 +8,7 @@ import SSF from 'react-simple-serial-form';
 export default class EditTrip extends Component {
   constructor(...args){
     super(...args);
-    this.state = { 
+    this.state = {
       current_trip: {},
       current_user: {},
       loading: true
@@ -58,7 +58,7 @@ export default class EditTrip extends Component {
     }).then( resp => {
       console.log(resp)
       // cookie.set('current_trip', {current_trip: resp.trip)
-      hashHistory.push('/profile')
+      hashHistory.push('/myprofile')
     })
   }
 
@@ -126,7 +126,7 @@ renderPage(){
           <input
             type='text'
             name='seat_price'
-            defaultValue= {trip.seat_price}/>   
+            defaultValue= {trip.seat_price}/>
         </label>
 
         <label>
@@ -145,13 +145,13 @@ renderPage(){
             defaultValue= {trip.comments}/>
         </label>
 
-     
+
           <button className="edit-trip-submit"> submit changes </button>
 
 
 
        </SSF>
-      
+
           <button onClick={::this.deleteHandler} className="edit-trip-delete">DELETE this trip</button>
 
       </div>
@@ -166,11 +166,10 @@ renderPage(){
   }
   render(){
     let {loading} = this.state;
-    return (loading 
-    ? this.renderLoading() 
+    return (loading
+    ? this.renderLoading()
     : this.renderPage()
     )
-  	
-}
-}
 
+}
+}

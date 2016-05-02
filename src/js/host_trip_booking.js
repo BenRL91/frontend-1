@@ -4,7 +4,6 @@ import { ajax } from 'jquery';
 import token from './token';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
-import script from './google_script';
 
 export default class HostTripBooking extends Component {
   constructor(...args){
@@ -22,28 +21,40 @@ export default class HostTripBooking extends Component {
     }
   }
 componentWillMount(){
-  let storedTrip = cookie.getJSON('newTrip')
-  console.log('trip', storedTrip)
-  if (storedTrip) {
+  let storedTrip;
+  if (cookie.getJSON('newTrip')) {
+    storedTrip = cookie.getJSON('newTrip');
     this.setState({
       trip: storedTrip.newTrip
     })
+  }else storedTrip = null;
+}
+isDriver(user){
+  if (user.current_user.driver){
+    return true;
+  }else {
+    return false;
   }
 }
   book(trip_details){
     let user = cookie.getJSON('current_user')
+    console.log(user)
     cookie.set('newTrip', { newTrip: trip_details })
-    if (!user.current_user){
+    if (!user){
       hashHistory.push('/loginattripcreation')
-    }else if(user.current_user && !user.current_user.driver){
+    }else if(!this.isDriver(user)){
       hashHistory.push('/hostsignup')
     }else {
       ajax({
         url: 'https://salty-river-31528.herokuapp.com/hosts',
         type: 'POST',
-        data: trip_details
+        data: trip_details,
+        headers: {
+          'Auth-Token': user.current_user.auth_token
+        }
       }).then( resp => {
         console.log(resp)
+      cookie.remove('newTrip')
       hashHistory.push('/drivertripconfirmation')
     })
   }
@@ -54,7 +65,6 @@ componentWillMount(){
 
   render(){
     let { trip } = this.state;
-    console.log(cookie.getJSON('current_user'))
     return (
 
       <div className="host-booking-wrapper">

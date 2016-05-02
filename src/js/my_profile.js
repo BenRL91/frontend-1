@@ -13,7 +13,7 @@ export default class MyProfile extends Component {
   super(...args);
   this.state = {
     current_user_trips: [],
-    current_user: {},
+    current_user: null,
     loading: true
     }
   }
@@ -21,6 +21,9 @@ export default class MyProfile extends Component {
   componentWillMount(){
     let user = cookie.getJSON('current_user').current_user
     if (user){
+      console.log(user)
+      let url = `https://salty-river-31528.herokuapp.com/profile/${user.id}`
+      console.log('url', url)
         ajax({
         url: `https://salty-river-31528.herokuapp.com/profile/${user.id}`,
         type: 'GET',
@@ -28,7 +31,7 @@ export default class MyProfile extends Component {
           'Auth-Token': user.auth_token
         }
         }).then( resp => {
-          console.log(resp.user)
+          console.log(resp)
             this.setState({
               current_user_trips: resp.user.host,
               current_user: resp.user,
@@ -40,18 +43,18 @@ export default class MyProfile extends Component {
     }
 
 
-          gettrips(trip){
-            return (
-            <div className="profile_get_trips" key={trip.host_id}>
-              <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
+gettrips(trip){
+  return (
+  <div className="profile_get_trips" key={trip.host_id}>
+    <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
 
-                <div className="get_trips_flex">
-                  <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
-                  <Link className="profile-trip-details" to={`/tripdetails/${trip.id}`}> details + </Link>
-                </div>
+      <div className="get_trips_flex">
+        <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
+        <Link className="profile-trip-details" to={`/tripdetails/${trip.host_id}`}> details + </Link>
+      </div>
 
-            </div>
-          )}
+  </div>
+)}
 renderLoading(){
   return (
     <div>Loading...</div>
@@ -117,4 +120,3 @@ renderPage(){
       : this.renderPage()
  }
 }
-

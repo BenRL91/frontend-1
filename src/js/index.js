@@ -21,45 +21,51 @@ import RiderTripBooking from './rider_trip_booking';
 import RiderTripConfirmation from './rider_trip_confirmation';
 import RiderTripNoSeats from './rider_trip_no_seats';
 import cookie from 'js-cookie';
-import { ajaxSetup } from 'jquery';
+import $, { ajaxSetup } from 'jquery';
 
 
 
-let current_user = {};
-
-if (cookie.getJSON('current_user').current_user !== undefined) {
+let current_user;
+if (cookie.getJSON('current_user')) {
+  current_user = cookie.getJSON('current_user').current_user
   ajaxSetup({
             headers: {
-              'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+              'Auth-Token': current_user.auth_token
             }
           })
+          console.log('hey')
+  $('.logout').removeClass('hidden');
+}else {
+  current_user = null;
+  $('.logout').addClass('hidden');
 }
-
-
-
-// function checkIfDriver(state, replace){
-//   current_user = cookie.getJSON('current_user')
-//   console.log(current_user)
-//   if(!current_user.current_user.driver){
-//     replace('/hostsignup')
-//   }
-// }
-
-
 function checkIfLoggedIn(state, replace){
-  let user = cookie.getJSON('current_user');
-  let trip_id = cookie.getJSON('saved_trip');
-  if (!user) {replace('/loginriderbooking')}
+  if (cookie.getJSON('current_user')) {
+    current_user = cookie.getJSON('current_user').current_user
+    ajaxSetup({
+              headers: {
+                'Auth-Token': current_user.auth_token
+              }
+            })
+  }else {
+    current_user = null;
+  }  let trip_id = cookie.getJSON('saved_trip');
+  if (!current_user) {replace('/loginriderbooking')}
 }
+
 function checkIfLoggedInProfile(state, replace){
-    let user = cookie.getJSON('current_user');
-    console.log(user)
-      if (!user.current_user) {replace('/login')}
-
+  if (cookie.getJSON('current_user')) {
+    current_user = cookie.getJSON('current_user').current_user
+    ajaxSetup({
+              headers: {
+                'Auth-Token': current_user.auth_token
+              }
+            })
+  }else {
+    current_user = null;
+  }
+      if (!current_user) {replace('/login')}
 }
-
-
-// need to add LOGIN 1 2 3 and PROFILE/:ID and MYPROFILE////
 
 render((
   <Router history={ hashHistory }>
@@ -67,7 +73,7 @@ render((
       <IndexRoute                            component={ Home }/>
       <Route path='/login'                   component={ Login }/>
       <Route path='/profile/:user_id'        component={ Profile }/>
-      <Route path='/myprofile'               component={ MyProfile } onEnter={checkIfLoggedInProfile}/>
+      <Route path='/myprofile'               component={ MyProfile }        onEnter={checkIfLoggedInProfile}/>
       <Route path='/editprofile/:user_id'    component={ EditProfile }/>
       <Route path='/hosttripbooking'         component={ HostTripBooking }/>
       <Route path='/hostsingleview'          component={ HostSingleView }/>
@@ -81,15 +87,6 @@ render((
       <Route path='/loginriderbooking'       component={ LoginRiderBooking }/>
       <Route path='loginattripcreation'      component={ LoginAtTripCreation }/>
       <Route path='/drivertripconfirmation'  component={ DriverTripConfirmation }/>
-
-
     </Route>
   </Router>
 ), document.querySelector('.app'));
-
-
-
-
-
-		// Move me back when we have data
-      // <Route path='/profile/:user_name'/>
