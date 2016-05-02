@@ -22,9 +22,6 @@ $tangerine: #ffa800;
 
 }
 
-////////////////////////////////
-
-
 
 .home-main-wrapper{
 	background: url('../images/hero1.jpg');
@@ -53,6 +50,11 @@ $tangerine: #ffa800;
 				background: rgba(38, 144, 100, 0.20);
 				// border-radius: 12px;
 				margin-bottom: 55px;
+				label {
+					height: 100%;
+					display: flex;
+					align-items: center;
+				}
    				input{
    					margin-right: 20px;
    					margin-left: 5px;
@@ -78,7 +80,7 @@ $tangerine: #ffa800;
 
    				button:active{
 
-   				
+
  					box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
    				}
 
@@ -87,4 +89,3 @@ $tangerine: #ffa800;
    				}
   			}
 		}
-	

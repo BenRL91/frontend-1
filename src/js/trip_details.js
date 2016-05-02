@@ -18,14 +18,19 @@ export default class TripDetails extends Component {
 
   componentWillMount(){
   	let respA;
-    let token = cookie.getJSON('current_user').current_user.id;
-    console.log(token)
-
+    let user_id;
+    let user = cookie.getJSON('current_user')
+    if (user){
+      user_id = user.current_user.id;
+    }else {
+      user_id = null;
+    }
     ajax(`http://salty-river-31528.herokuapp.com/hosts/${this.props.params.trip_id}`)
     .then( resp => {
-      // console.log(resp)
-      if (resp.hosts.user_id === token){
-        $('.edit-btn').removeClass('hidden')
+      console.log(resp)
+      if (user_id === resp.hosts.user_id ){
+        $('.edit-btn').removeClass('hidden');
+        $('.book-btn').addClass('hidden');
       }
 
     })
@@ -37,6 +42,7 @@ export default class TripDetails extends Component {
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		})
 		.then( respB => {
+      console.log(respB)
 			this.setState({current_user: respB.user})
 			cookie.set('saved_trip', {trip_id: this.props.params.trip_id})
 		}).fail(e => { console.log( e) })
@@ -47,7 +53,7 @@ export default class TripDetails extends Component {
   // check auth
   // IF logged in SHOW EDIT BUTTON
   // ELSE dont show edit button
-  //***** CHECK HERE IF USER CREATED THE TRIP THEYRE VIEWING, 
+  //***** CHECK HERE IF USER CREATED THE TRIP THEYRE VIEWING,
   // IF SO MAKE AN EDIT BUTTON AVAILABLE**** 1st FRIDAY****
 
 
@@ -63,8 +69,8 @@ export default class TripDetails extends Component {
 
 
   render(){
-  	let trip = this.state.current_trip;
-  	let user = this.state.current_user;
+  	let trip    = this.state.current_trip;
+  	let user    = this.state.current_user;
     let trip_id = this.props.params.trip_id;
 
     return (
@@ -115,7 +121,7 @@ export default class TripDetails extends Component {
 
      	 	<br/><br/>
 
-     	 	<Link to={`/ridertripbooking/${trip.id}`}>BOOK THIS TRIP!</Link>
+     	 	<Link className='book-btn' to={`/ridertripbooking/${trip.id}`}>BOOK THIS TRIP!</Link>
 
 
      </div>

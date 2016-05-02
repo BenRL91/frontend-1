@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
-import { ajax, ajaxSetup } from 'jquery';
+import $, { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
 import Dropzone from 'react-dropzone';
@@ -21,14 +21,14 @@ export default class Login extends Component {
     data.append('user_name', new_user_credentials.user_name)
     data.append('email', new_user_credentials.email)
     data.append('password', new_user_credentials.password)
-    data.append('pictures', this.file)
+    data.append('image', this.file)
 
 
     ajax({
       url: 'https://salty-river-31528.herokuapp.com/register',
       type: 'POST',
       data: data,
-      dataType: 'json',
+      dataType: 'JSON',
       cache: false,
       processData: false,
       contentType: false
@@ -36,6 +36,7 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
+        $('.logout').removeClass('hidden');
         let user = resp
         if (!user.driver){
           hashHistory.push('/hostsignup')
@@ -55,6 +56,7 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
+        $('.logout').removeClass('hidden');
         let user = resp
         if (!user.driver){
           hashHistory.push('/hostsignup')
