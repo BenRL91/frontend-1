@@ -31,6 +31,10 @@ $tangerine: #ffa800;
 	width:100vw;
 	height:100vh;
 	background-size: 100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index: 0;
 
 	.home-wrapper {
 		display: flex;
