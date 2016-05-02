@@ -4,7 +4,6 @@ import { ajax } from 'jquery';
 import token from './token';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
-import script from './google_script';
 
 export default class HostTripBooking extends Component {
   constructor(...args){
