@@ -1,4 +1,13 @@
+$mint: #c3e9d4;
+$pistachio: #bed9b9;
+$storm: #2e2e2e;
+$ocean: #004973;
+$shamrock: #1fbb62;
+$tangerine: #ffa800;
+
+
 .host-booking-wrapper{
+	padding-top: 100px;
 	width:100vw;
 	display:flex;
 	justify-content:center;
@@ -10,8 +19,13 @@
 		flex-direction:column;
 
 		input{ 
+			// overflow:hidden;
+			// white-space:pre-wrap;
 			width:500px;
+			height:30px;
 			margin-bottom:20px;
+			
+
 		}
 
 		span{
@@ -29,13 +43,16 @@
 		}
 
 		button{
-			width:500px;
+			width:100%;
 			margin-bottom: 100px;
 		}
 
-		.trip-description input{
+		.trip-description textarea {
+			width:500px;
 			padding-bottom:200px;
+			margin-bottom: 20px;
 		}
+
 
 
 	}

@@ -1,3 +1,12 @@
+$mint: #c3e9d4;
+$pistachio: #bed9b9;
+$storm: #2e2e2e;
+$ocean: #004973;
+$shamrock: #1fbb62;
+$tangerine: #ffa800;
+
+
+
 .trip-details-wrapper{
 	margin-left: 100px; 
 	margin-right: 100px;
@@ -9,39 +18,76 @@
 
 	.trip-details{
 
-		display:flex;
-		flex-direction:column;
+		// display:flex;
+		width:100%;
+		height: 100px;
+		margin-bottom: 20px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		padding-top: 10px;
+		padding-left: 20px;
+		position:relative;
+		box-sizing:border-box;
+
+		.trip-details-flex{
+			display:flex;
+			justify-content:space-between;
+			width: 500px;
+			padding-top: 10px;
+		}
 
 
-		.trip-details-cities{
+		.trip-details-departing{
+			font-size: 20px;
+			// font-weight: bold;
 
 		}
 
-		.trip-details-dates{
-
-		}
-
-		.trip-details-duration{
-
-		}
-
-		.trip-details-price{
+		.trip-details-destination{
+			font-size: 20px;
+			text-align: right;
+			// font-weight: bold;
 
 		}
 
 		.trip-details-seats{
+			position:absolute;
+			right:300px;
+			top:0;
+			height:100px;
+			width:300px;
+			// background-color:$tangerine;
+			font-size: 20px;
+			// font-weight: bold;
+			// color:white;
+			text-align: center;
+			padding-top: 30px;
+			border-left: 1px solid $tangerine;
+			box-sizing:border-box;
 
-		}
-
-		.trip-details-para{
 
 		}
 	}
+
+		.trip-details-price{
+			position:absolute;
+			right:0;
+			top:0;
+			height:100px;
+			width:300px;
+			background-color:$tangerine;
+			font-size: 30px;
+			font-weight: bold;
+			color:white;
+			text-align: center;
+			padding-top: 30px;
+			box-sizing:border-box;
+
+		}
+
 	
-
-	.hidden{
+.hidden{
 		display:none;
-	}
+}
 
 
 	.trip-details-driver{
@@ -49,16 +95,29 @@
 		justify-content:center;
 		flex-direction:column;
 
-		span{
+		.trip-details-driver-name{
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.trip-details-driver-link{
+			font-weight: bold;
+			color: $tangerine;
+		}
+
+		.trip-details-para{
 
 		}
 
-		button{
-			width: 200px;
 
-		}
 
 
 	}
+		.book-btn{
+			font-weight: bold;
+			color:black;
+
+		}
+
 
 }

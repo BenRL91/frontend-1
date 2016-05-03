@@ -73,55 +73,62 @@ export default class TripDetails extends Component {
   	let user    = this.state.current_user;
     let trip_id = this.props.params.trip_id;
 
+
     return (
       <div className="trip-details-wrapper">
 
 
       	<div className="trip-details">
 
+         <div className="trip-details-flex">
 
-  			 <div className="trip-details-cities">
-  				departure: {trip.departing_city} <br/> destination: {trip.destination}
-     		 </div>
+  			   <div className="trip-details-departing">
+  				  {trip.departing_city} <br/> {trip.date_leave} 
+     		   </div>
 
-     		 <div className="trip-details-dates">
-  				{trip.date_leave} to {trip.date_arrive}
-     		 </div>
+           <div className="trip-details-destination">
+            {trip.destination} <br/> {trip.date_arrive}
+           </div>
 
-     		 <div className="trip-details-duration">
-  				trip duration{/*need to estimate*/}
-     	 	</div>
+     		    {/*<div className="trip-details-duration">
+  				  trip durationneed to estimate* calc by taking hour leave - hour arrive when those fields are created
+     	 	    </div>*/}
+         </div>
+
+
+        <div className="trip-details-seats">
+          seats available: {trip.seats_available}
+        </div>
+
 
      	 	<div className="trip-details-price">
-  				$ {trip.seat_price}
+  				<span>${trip.seat_price}</span>
      		 </div>
-
-     		 <div className="trip-details-seats">
-  				seats available: {trip.seats_available}
-     	 	</div>
-
-     	 	<div className="trip-details-para">
-  				{trip.comments}
-     		</div>
-
-     	</div>
+      </div>
 
       <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> EDIT THIS TRIP </Link>
 
-     	<br/>
-     	<br/>
+      <br/>
+      <br/>
 
 
-     	 	<div className="trip-details-driver">
+        <div className="trip-details-driver">
           <img src={user.picture}/>
-     	 		<span>{user.first_name} {user.last_name}</span>
-     	 		<span>Verified Driver</span>
-     	 		<Link to={`/profile/${trip.id}`}> go to driver profile </Link>
+
+          <span className="trip-details-driver-name">DRIVERS NAME</span>
+          <span>Verified Driver</span>
+
+          <Link className="trip-details-driver-link" to={`/profile/${trip.id}`}> visit drivers profile </Link>
+     	 	 
+          <div className="trip-details-para">
+  				  Trip Description: {trip.comments}
+     		  </div>
+
      	 	</div>
 
      	 	<br/><br/>
 
-     	 	<Link className='book-btn' to={`/ridertripbooking/${trip.id}`}>BOOK THIS TRIP!</Link>
+     	 	<Link className='book-btn' to={`/ridertripbooking/${trip.id}`}> + Book Trip</Link>
 
 
      </div>

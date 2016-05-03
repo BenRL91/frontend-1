@@ -1,3 +1,18 @@
+$mint: #c3e9d4;
+$pistachio: #bed9b9;
+$storm: #2e2e2e;
+$ocean: #004973;
+$shamrock: #1fbb62;
+$tangerine: #ffa800;
+
+
+
+
+.results-wrapper{
+	padding-top:100px;
+
+}
+
 .trip-listing-wrapper{
 	display:flex;
 	// flex-direction:column;
@@ -8,6 +23,7 @@
 	padding-bottom: 5px;
 	margin-bottom: 20px;
 	line-height: 50px;
+
 
 	img{
 		object-fit:cover;
@@ -40,11 +56,26 @@
 		justify-content:space-between;
 		width:50%;
 
+	}
+	// fix the alignment of the columns here///**********
+
 
 		.results-price{
 			// margin-left: 50px;
 		}
 
+		.results-arrow{
+			font-size: 25px;
+			color: $tangerine;
+		}
+
+		.results-arrow:hover{
+			color: $storm;
+		}
+
+		.results-arrow a:visited{
+
+		}
+
 	}
 
-}

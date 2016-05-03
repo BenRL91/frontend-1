@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
-import { ajax, ajaxSetup } from 'jquery';
+import $, { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
 

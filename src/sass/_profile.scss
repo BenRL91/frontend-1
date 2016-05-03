@@ -1,4 +1,15 @@
+$mint: #c3e9d4;
+$pistachio: #bed9b9;
+$storm: #2e2e2e;
+$ocean: #004973;
+$shamrock: #1fbb62;
+$tangerine: #ffa800;
 
+
+.profile-trips{
+	padding-left: 150px;
+	padding-right: 150px;
+}
 
 .profile-wrapper{
 	width:100vw;
@@ -11,14 +22,18 @@
 
 
 .profile-header{
-	padding-left: 100px;
-	padding-right: 100px;
-	// padding-top: 100px;
+	padding-left: 150px;
+	padding-right: 150px;
+	padding-top: 10%;
 	display:flex;
-	// justify-content:space-between;
+	justify-content:space-around;
 
-	.profile-picture{
-		border-radius:50%;
+	.profile-picture img{
+		width:300px;
+		height:300px;
+		object-fit:cover;
+		border-radius: 300px;
+		
 
 	}
 
@@ -28,7 +43,8 @@
 
 		.profile-name{
 			font-weight: bold;
-			font-size: 30px;
+			width:400px;
+			font-size: 35px;
 			
 		}
 
@@ -55,6 +71,7 @@
 	.profile-new-trips{
 		display:flex;
 		justify-content:space-between;
+		padding-bottom: 15px;
 		margin-bottom: 50px;
 		border-bottom: 1px solid #a2a2a2;
 
@@ -65,7 +82,9 @@
 
 		.new-trips-btn{
 			background-color: transparent;
-			color:#48de23;
+			color:$tangerine;
+			font-weight: bold;
+			font-size: 20px;
 			// width:10%;
 		}
 	}
@@ -73,6 +92,7 @@
 
 	.profile-trips-list{
 
+		
 		.profile_get_trips{
 			display:flex;
 			justify-content:space-between;
@@ -117,3 +137,4 @@
 	}
 
 }
+
