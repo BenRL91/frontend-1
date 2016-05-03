@@ -3,14 +3,13 @@ import { Link, hashHistory } from 'react-router';
 import {ajax} from 'jquery';
 import cookie from 'js-cookie'
 
-
-
 export default class Profile extends Component {
   constructor(...args){
   super(...args);
   this.state = {
     current_user_trips: [],
-    current_user: null
+    current_user: null,
+    loading: true
     }
   }
 
@@ -18,29 +17,22 @@ export default class Profile extends Component {
     let user;
     if (cookie.getJSON('current_user')){
       user = cookie.getJSON('current_user').current_user
-      ajax({
-        url: 'http://salty-river-31528.herokuapp.com/hosts',
-        headers: {
-          'Auth-Token': user.auth_token
-        }
-      }).then( resp => {
-        this.setState({current_user_trips: resp.host})
-        return ajax(`http://salty-river-31528.herokuapp.com/profile/${resp.host.user_id}`)
+         ajax(`http://salty-river-31528.herokuapp.com/profile/${user.id}`)
         .then(prof => {
           console.log('user', prof)
           this.setState({
-            current_user: {}
+            current_user: prof,
+            current_user_trips: prof.user.host,
+            loading: false
           })
         })
-      }
-    )
+    }
   }
-}
 
 
 gettrips(trip){
   return (
-  <div className="profile_get_trips" key={trip.id}>
+  <div className="profile_get_trips" key={trip.host_id}>
     <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
 
       <div className="get_trips_flex">
@@ -51,22 +43,25 @@ gettrips(trip){
   </div>
 )}
 
-
-
-render(){
-    let trips = this.state.current_user_trips;
+renderLoading(){
+  return(
+    <div>Loading...</div>
+  )
+}
+renderPage(){
+  let { current_user, current_user_trips } = this.state;
   return (
     <div className="profile-wrapper">
 
     <div className="profile-header">
       <div className="profile-picture">
-        <img src={current_user.current_user.pictures[0].image_url}/>
+        <img src={current_user.user.pictures[0].image_url}/>
         </div>
 
         <div className="profile-user-details">
 
           <div className="profile-name">
-            {current_user.current_user.first_name} {current_user.current_user.last_name}
+            {current_user.user.first_name} {current_user.user.last_name}
           </div>
 
           <div className="profile-status">
@@ -88,7 +83,7 @@ render(){
 
         <div className="profile-trips-list">
 
-         { trips.map(::this.gettrips) }
+         { current_user_trips.map(::this.gettrips) }
 
         </div>
 
@@ -99,6 +94,15 @@ render(){
     </div>
     )
   }
+  render(){
+    let { loading } = this.state;
+    return(
+      loading
+      ? this.renderLoading()
+      : this.renderPage()
+    )
+  }
+
 }
 
 

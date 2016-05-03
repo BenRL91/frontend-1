@@ -27,12 +27,8 @@ import $, { ajaxSetup } from 'jquery';
 
 let current_user;
 if (cookie.getJSON('current_user')) {
-<<<<<<< HEAD
   current_user = cookie.getJSON('current_user').current_user;
-=======
-  current_user = cookie.getJSON('current_user').current_user
   console.log(cookie.getJSON('current_user'))
->>>>>>> 575f2e558d36f279af6e3effc6d09597462af378
   ajaxSetup({
             headers: {
               'Auth-Token': current_user.auth_token
