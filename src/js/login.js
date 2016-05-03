@@ -36,7 +36,6 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        $('.logout').removeClass('hidden');
         hashHistory.push('/');
       })
     }
@@ -50,7 +49,6 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      $('.logout').removeClass('hidden');
       hashHistory.push('/')
     })
   }

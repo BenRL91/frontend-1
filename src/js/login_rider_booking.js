@@ -14,17 +14,12 @@ export default class Login extends Component {
     }).then(resp => {
       let trip_id = cookie.getJSON('saved_trip').trip_id;
       console.log(resp)
-      $('.logout').removeClass('hidden');
       cookie.set('current_user', {current_user: resp.user})
       hashHistory.push(`/tripdetails/${trip_id}`);
       })
     }
 
-  // register(new_user_credentials){
-  //   users.post({ user: new_user_credentials}).then(response => {
-  //     cookie.set('current_user', {current_user: response.user});
-  //   })
-  // }
+
 
   login(user_credentials){
     ajax({
@@ -35,13 +30,10 @@ export default class Login extends Component {
       let trip_id = cookie.getJSON('saved_trip').trip_id;
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      $('.logout').removeClass('hidden');
       hashHistory.push(`/tripdetails/${trip_id}`);
     })
   }
-  // login(user_credentials){
-  //   users.get({ user: user_credentials.})
-  // }
+
   render(){
 
     return (

@@ -36,7 +36,6 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        $('.logout').removeClass('hidden');
         let user = resp
         if (!user.driver){
           hashHistory.push('/hostsignup')
@@ -56,7 +55,6 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        $('.logout').removeClass('hidden');
         let user = resp
         if (!user.driver){
           hashHistory.push('/hostsignup')

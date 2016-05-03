@@ -27,17 +27,14 @@ import $, { ajaxSetup } from 'jquery';
 
 let current_user;
 if (cookie.getJSON('current_user')) {
-  current_user = cookie.getJSON('current_user').current_user
+  current_user = cookie.getJSON('current_user').current_user;
   ajaxSetup({
             headers: {
               'Auth-Token': current_user.auth_token
             }
           })
-          console.log('hey')
-  $('.logout').removeClass('hidden');
 }else {
   current_user = null;
-  $('.logout').addClass('hidden');
 }
 function checkIfLoggedIn(state, replace){
   if (cookie.getJSON('current_user')) {
@@ -67,8 +64,12 @@ function checkIfLoggedInProfile(state, replace){
       if (!current_user) {replace('/login')}
 }
 
+function addCoolToElement(Comp, props) {
+  return <Comp {...props} cool="true"/>
+}
+
 render((
-  <Router history={ hashHistory }>
+  <Router history={ hashHistory } createElement={addCoolToElement}>
     <Route path='/'                          component={ Main }>
       <IndexRoute                            component={ Home }/>
       <Route path='/login'                   component={ Login }/>
