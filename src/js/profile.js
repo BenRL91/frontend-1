@@ -14,10 +14,8 @@ export default class Profile extends Component {
   }
 
   componentWillMount(){
-    let user;
-    if (cookie.getJSON('current_user')){
-      user = cookie.getJSON('current_user').current_user
-         ajax(`http://salty-river-31528.herokuapp.com/profile/${user.id}`)
+    let { user_id } = this.props.params;
+         ajax(`http://salty-river-31528.herokuapp.com/profile/${user_id}`)
         .then(prof => {
           console.log('user', prof)
           this.setState({
@@ -27,7 +25,6 @@ export default class Profile extends Component {
           })
         })
     }
-  }
 
 
 gettrips(trip){
