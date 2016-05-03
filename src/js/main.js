@@ -17,6 +17,7 @@ export default class Main extends Component {
     cookie.remove('newTrip')
   }
   render(){
+
     return (
       <div className="main-wrapper">
         <div className='top-main-wrapper'>
@@ -35,6 +36,7 @@ export default class Main extends Component {
                       onClick={::this.logOut}>Log Out
                     </button>
            </Link>
+
             <Link to='/myprofile'> Hello, user.first_name </Link>
           </div>
         </div>

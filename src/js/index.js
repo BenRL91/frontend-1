@@ -27,8 +27,11 @@ import $, { ajaxSetup } from 'jquery';
 
 let current_user;
 if (cookie.getJSON('current_user')) {
+
+
   current_user = cookie.getJSON('current_user').current_user;
   console.log(cookie.getJSON('current_user'))
+
   ajaxSetup({
             headers: {
               'Auth-Token': current_user.auth_token
