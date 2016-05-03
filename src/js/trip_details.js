@@ -77,18 +77,18 @@ export default class TripDetails extends Component {
     return (
       <div className="trip-details-wrapper">
 
-      <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> EDIT THIS TRIP </Link>
+      <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> + EDIT YOUR TRIP </Link>
 
         <div className="trip-details">
 
          <div className="trip-details-flex">
 
            <div className="trip-details-departing">
-            {trip.departing_city} <br/> {trip.date_leave} 
+            <b>{trip.departing_city}</b> <br/> {trip.date_leave} 
            </div>
 
            <div className="trip-details-destination">
-            {trip.destination} <br/> {trip.date_arrive}
+            <b>{trip.destination}</b> <br/> {trip.date_arrive}
            </div>
 
             {/*<div className="trip-details-duration">
@@ -98,7 +98,8 @@ export default class TripDetails extends Component {
 
 
         <div className="trip-details-seats">
-          seats available: {trip.seats_available}
+          <b>{trip.seats_available}</b>
+          <br/>  seats available
         </div>
 
 

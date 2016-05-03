@@ -15,6 +15,19 @@ $tangerine: #ffa800;
 	justify-content:center;
 	flex-direction:column;
 
+	.edit-btn{
+		color: $shamrock;
+		position: absolute;
+		top: 120px;
+		right: 110px;
+		font-weight: bold;
+		font-size: 20px;
+
+	}
+
+	.edit-btn:hover{
+		color: $mint;
+	}
 
 	.trip-details{
 
@@ -31,22 +44,19 @@ $tangerine: #ffa800;
 		.trip-details-flex{
 			display:flex;
 			justify-content:space-between;
-			width: 500px;
-			padding-top: 10px;
+			width: 48%;
+			padding-top: 15px;
 		}
-
 
 		.trip-details-departing{
 			font-size: 20px;
 			// font-weight: bold;
-
 		}
 
 		.trip-details-destination{
 			font-size: 20px;
 			text-align: right;
 			// font-weight: bold;
-
 		}
 
 		.trip-details-seats{
@@ -55,16 +65,16 @@ $tangerine: #ffa800;
 			top:0;
 			height:100px;
 			width:300px;
-			// background-color:$tangerine;
+			// background-color:#ff7100;
+			background-color:$tangerine;
 			font-size: 20px;
 			// font-weight: bold;
-			// color:white;
+			color:white;
 			text-align: center;
-			padding-top: 30px;
-			border-left: 1px solid $tangerine;
+			padding-top: 25px;
+			border-right: 3px solid white;
 			box-sizing:border-box;
-
-
+			text-align: center;
 		}
 	}
 
@@ -94,6 +104,7 @@ $tangerine: #ffa800;
 		display:flex;
 		justify-content:center;
 		flex-direction:column;
+		border: 1px solid black;
 
 		.trip-details-driver-name{
 			font-weight: bold;
