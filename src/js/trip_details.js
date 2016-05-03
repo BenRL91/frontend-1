@@ -80,26 +80,31 @@ export default class TripDetails extends Component {
 
       	<div className="trip-details">
 
+         <div className="trip-details-flex">
 
-  			 <div className="trip-details-cities-dates">
-  				departure: {trip.departing_city} {trip.date_leave} <br/> destination: {trip.destination} {trip.date_arrive}
-     		 </div>
+  			   <div className="trip-details-departing">
+  				  {trip.departing_city} <br/> {trip.date_leave} 
+     		   </div>
+
+           <div className="trip-details-destination">
+            {trip.destination} <br/> {trip.date_arrive}
+           </div>
+
+     		    {/*<div className="trip-details-duration">
+  				  trip durationneed to estimate* calc by taking hour leave - hour arrive when those fields are created
+     	 	    </div>*/}
+         </div>
 
 
-     		 {/*<div className="trip-details-duration">
-  				trip durationneed to estimate* calc by taking hour leave - hour arrive when those fields are created
-     	 	</div>*/}
-
-
-         <div className="trip-details-seats">
+        <div className="trip-details-seats">
           seats available: {trip.seats_available}
         </div>
 
 
-      </div>
      	 	<div className="trip-details-price">
   				<span>${trip.seat_price}</span>
      		 </div>
+      </div>
 
       <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> EDIT THIS TRIP </Link>
 

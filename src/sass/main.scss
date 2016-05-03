@@ -59,6 +59,9 @@ $tangerine: #ffa800;
   a:hover{
     color: black;
   }
+  a:active{
+    border:none;
+  }
   h1, h2, h3, h4 {
     margin: 0;
   }
@@ -73,7 +76,7 @@ button{
   border:none;
   background-color: #a2a2a2;
   font-weight: bold;
-  width:100px;
+  // width:100%;
 }
 
 button:hover{

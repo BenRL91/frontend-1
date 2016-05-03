@@ -136,11 +136,12 @@ isDriver(user){
 
              <label className="trip-description">
               Trip Description:
-              <input
+              <textarea
                 type='text'
                 name='comments'
                 defaultValue={trip.comments}
-                placeholder='tell us about your trip'/>
+                placeholder='tell us about your trip'>
+            </textarea>
             </label>
 
 
