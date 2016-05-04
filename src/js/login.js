@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, hashHistory } from 'react-router';
 import $, { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
@@ -6,12 +6,19 @@ import cookie from 'js-cookie';
 import Dropzone from 'react-dropzone';
 
 export default class Login extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func
+  }
+
   constructor(...args){
     super(...args)
     this.state={
-      preview: '../images/camera.png'
+      preview: '../images/camera.png',
+      message1: '',
+      message2: ''
     }
   }
+
 
 
   register(new_user_credentials) {
@@ -33,11 +40,18 @@ export default class Login extends Component {
       processData: false,
       contentType: false
 
+
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        hashHistory.push('/');
-      })
+        if (this.props.onLogin) {
+          this.props.onLogin();
+        }
+      }).fail(e => {
+        if(e){
+        this.setState({message2: 'register failed, try again'})
+      }
+     })
     }
 
 
@@ -49,7 +63,14 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      hashHistory.push('/')
+      if (this.props.onLogin) {
+        this.props.onLogin();
+      }
+    }).fail(e =>{
+      console.log(e)
+      if(e){
+        this.setState({message1: 'login failed, try again'})
+      }
     })
   }
 
@@ -74,6 +95,9 @@ export default class Login extends Component {
 
         <span className="login">LOGIN</span>
         <br/><br/>
+        <span className="failed-message"> {this.state.message1} </span>
+        <span className="success-message"> {this.state.success1} </span>
+        <br/>
 
           <label>
             Username:
@@ -99,6 +123,9 @@ export default class Login extends Component {
 
           <span className="register">REGISTER</span>
           <br/><br/>
+          <span className="failed-message"> {this.state.message2} </span>
+          <span className="success-message"> {this.state.success2} </span>
+          <br/>
 
             <label>
               First Name:

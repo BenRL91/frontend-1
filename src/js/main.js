@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, hashHistory } from 'react-router';
 import cookie from 'js-cookie';
 import { ajax } from 'jquery';
@@ -6,9 +6,31 @@ import classNames from 'classnames';
 import Modal from './modal';
 import Login from './login';
 
+import RiderTripBooking from './rider_trip_booking';
+
+// const LOGIN_REQUIRED = [
+//   /\/ridertripbooking\/\d+/
+// ]
 
 
 export default class Main extends Component {
+  // static contextTypes = {
+  //   router: PropTypes.object.isRequired
+  // }
+
+  static childContextTypes = {
+    requireLogin: PropTypes.func.isRequired
+  }
+
+  getChildContext() {
+    return {
+      requireLogin: () => {
+        this.setState({showLogin: true});
+      }
+    };
+  }
+
+
   constructor(...args){
     super(...args);
     this.state = {
@@ -17,19 +39,46 @@ export default class Main extends Component {
     }
   }
 
+  // isLoginRequired() {
+  //   if (cookie.getJSON('current_user')) {
+  //     return false;
+  //   }
+  //   let { pathname } = this.props.location;
+  //   // debugger;
+  //   return LOGIN_REQUIRED.find(regx => regx.exec(pathname));
+  // }
+
   showLoginHandler(event) {
     event.preventDefault();
     this.setState({showLogin: true});
   }
 
   hideLoginHandler() {
-    this.setState({showLogin: false});
+    // if (!this.isLoginRequired()) {
+      this.setState({showLogin: false});
+    // }
   }
 
   logOut(){
     cookie.remove('current_user')
     cookie.remove('newTrip')
   }
+
+  // componentWillMount() {
+  //   // console.log('route ==>', this.context.router.getCurrentPathname())
+  //   // window.RR = this.context.router;
+  //   console.log('what the fuck?', this.isLoginRequired())
+  //   if (this.isLoginRequired()) {
+  //     this.setState({showLogin: true});
+  //   }
+  // }
+
+  // componentWillReceiveProps(props, context) {
+  //   // console.log('route ==>', context.router.getCurrentPathname())
+  //   // if (this.isLoginRequired()) {
+  //     this.setState({showLogin: true});
+  //   // }
+  // }
 
 
   render(){
@@ -59,8 +108,9 @@ export default class Main extends Component {
 
         {this.props.children}
 
+
         <Modal show={this.state.showLogin} onCloseRequest={::this.hideLoginHandler}>
-          <Login/>
+          <Login onLogin={::this.hideLoginHandler}/>
         </Modal>
       </div>
     )

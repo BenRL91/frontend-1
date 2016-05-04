@@ -81,12 +81,13 @@ $tangerine: #ffa800;
     background: rgba(0,0,0,0.5);
   }
   .modal-content {
-    position: absolute;
-    top: 130px;
-    bottom: 200px;
-    left: 200px;
-    right: 200px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background: white;
+    // padding:3em;
   }
 }
 

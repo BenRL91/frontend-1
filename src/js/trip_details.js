@@ -3,9 +3,12 @@ import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
 import cookie from 'js-cookie';
 import $ from 'jquery';
+import Modal from './modal';
+import Login from './login';
 
 
 export default class TripDetails extends Component {
+
 
   constructor(...args){
   super(...args);
@@ -125,17 +128,24 @@ export default class TripDetails extends Component {
   				  Trip Description: {trip.comments}
      		  </div>
 
-     	 	</div>
 
-     	 	<br/><br/>
+        </div>
 
-     	 	<Link className='book-btn' to={`/ridertripbooking/${trip.id}`}> + Book Trip</Link>
+        <Link className='book-btn' to={`/ridertripbooking/${trip.id}`}> + Book Trip</Link>
+        <br/><br/>
+
 
 
      </div>
     )
   }
 }
+
+
+
+          // <Modal show={this.state.showLogin} onCloseRequest={::this.hideLoginHandler}>
+          //    <Login/>
+          // </Modal>
 
 
 
