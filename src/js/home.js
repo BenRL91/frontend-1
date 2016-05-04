@@ -12,8 +12,7 @@ export default class Home extends Component {
   console.log(suggest);
 }
 dataHandler(query){
-  console.log('q1', query.departure)
-  console.log('q2', query.destination)
+  hashHistory.push('/results')
 }
   render(){
     return (

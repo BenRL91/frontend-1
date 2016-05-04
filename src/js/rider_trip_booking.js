@@ -7,40 +7,12 @@ import requireLogin from './login_require';
 
        //// add me to route to RIDER TRIP BOOKED AFTER COOKIE.SET // hashHistory.push('/tripdetails');
 
-// function requireLogin() {
-//   return WrappedComponent => {
-//     return class LoginWrapper extends Component {
-//       static contextTypes = {
-//         requireLogin: PropTypes.func.isRequired
-//       }
-
-//       componentWillMount() {
-//         this.context.requireLogin();
-//       }
-
-//       render() {
-//         return (
-//           <WrappedComponent/>
-//         );
-//       }
-//     }
-//   }
-// }
 
 // PUT REQUEST/////
 ///need to make this so that were just sending backend the user ID because the CC info is dummy data//////
 
 @requireLogin()
 export default class RiderTripBooking extends Component {
-
-    // static contextTypes = {
-    //   requireLogin: PropTypes.func.isRequired
-    // }
-
-    // componentWillMount() {
-    //   console.log('ctx', this.context);
-    //   this.context.requireLogin();
-    // }
 
 	  book(rider_trip_booking) {
 

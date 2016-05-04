@@ -39,6 +39,12 @@ export default class Main extends Component {
     }
   }
 
+  componentWillMount() {
+    hashHistory.listen(() => {
+      this.setState({showLogin: false});
+    })
+  }
+
   // isLoginRequired() {
   //   if (cookie.getJSON('current_user')) {
   //     return false;
