@@ -9,7 +9,11 @@ export default class Login extends Component {
   constructor(...args){
     super(...args)
     this.state={
-      preview: '../images/camera.png'
+      preview: '../images/camera.png',
+      message1: '',
+      message2: '',
+      success1: '',
+      success2: ''
     }
   }
 
@@ -36,8 +40,12 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        hashHistory.push('/');
-      })
+        
+      }).fail(e => {
+        if(e){
+        this.setState({message2: 'register failed, try again'})
+      }
+     })
     }
 
 
@@ -49,7 +57,12 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      hashHistory.push('/')
+      
+    }).fail(e =>{
+      console.log(e)
+      if(e){
+        this.setState({message1: 'login failed, try again'})
+      }
     })
   }
 
@@ -74,6 +87,9 @@ export default class Login extends Component {
 
         <span className="login">LOGIN</span>
         <br/><br/>
+        <span className="failed-message"> {this.state.message1} </span>
+        <span className="success-message"> {this.state.success1} </span>
+        <br/>
 
           <label>
             Username:
@@ -99,6 +115,9 @@ export default class Login extends Component {
 
           <span className="register">REGISTER</span>
           <br/><br/>
+          <span className="failed-message"> {this.state.message2} </span>
+          <span className="success-message"> {this.state.success2} </span>
+          <br/>
 
             <label>
               First Name:
