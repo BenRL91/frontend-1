@@ -34,8 +34,15 @@
     justify-content: space-between;
   }
 
+
+.dropzone-flex{
+  // width:100%;
+  display:flex;
+  justify-content:center;
+
+
   .dropzone{
-    width:400px;
+    width:200px;
     height:200px;
     border:2px dotted black;
     margin-bottom: 10px
@@ -43,11 +50,15 @@
   }
 
   .dropzone img{
-    width:100px;
-    object-fit:fit;
-    margin:auto;
+    width:200px;
+    height:200px;
+    object-fit:cover;
+    
 
   }
+
+}
+
 
   .failed-message{
     color:red;

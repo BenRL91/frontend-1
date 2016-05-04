@@ -163,7 +163,9 @@ export default class Login extends Component {
                 placeholder='placeholder'/>
             </label>
 
+            <div className="dropzone-flex">
             <Dropzone className="dropzone" onDrop={::this.dropHandler}> <img src={this.state.preview}/> </Dropzone>
+            </div>
 
             <button>Register</button>
         </SSF>
