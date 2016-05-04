@@ -94,7 +94,7 @@ export default class Login extends Component {
       <SSF className='login-form' onData={::this.login}>
 
         <span className="login">LOGIN</span>
-        <br/><br/>
+        <br/>
         <span className="failed-message"> {this.state.message1} </span>
         <span className="success-message"> {this.state.success1} </span>
         <br/>
@@ -122,7 +122,7 @@ export default class Login extends Component {
         <SSF className='register-form' onData={::this.register}>
 
           <span className="register">REGISTER</span>
-          <br/><br/>
+          <br/>
           <span className="failed-message"> {this.state.message2} </span>
           <span className="success-message"> {this.state.success2} </span>
           <br/>
