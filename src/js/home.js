@@ -1,33 +1,47 @@
 import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import token from './token';
-
-
+import { ajax } from 'jquery';
+import GeoSuggest from 'react-geosuggest';
+import SSF from 'react-simple-serial-form';
 export default class Home extends Component {
 
+
+  onSuggestSelect(suggest) {
+  console.log(suggest);
+}
+dataHandler(query){
+  console.log('q1', query.departure)
+  console.log('q2', query.destination)
+}
   render(){
     return (
      <div className='home-main-wrapper'>
-      
 
       <div className='home-wrapper'>
-        <div className='search-wrapper'>
-          <label>
+        <SSF onData={::this.dataHandler} className='search-wrapper'>
+          <div className='geo-wrapper'>
+            <label>
             Departure:
-            <input
-              type='text'
+            <GeoSuggest
+              placeholder="Start typing!"
+              onSuggestSelect={this.onSuggestSelect}
               name='departure'
-              placeholder='Choose a starting point'/>
-          </label>
-          <label>
+              />
+            </label>
+          </div>
+          <div className='geo-wrapper'>
+            <label>
             Destination:
-            <input
-              type='select'
+            <GeoSuggest
+              placeholder="Start typing!"
+              onSuggestSelect={this.onSuggestSelect}
               name='destination'
-              placeholder='Choose an end point'/>
-          </label>
+            />
+            </label>
+          </div>
           <button onClick={() => { hashHistory.push('/results')}}>Search</button>
-        </div>
+        </SSF>
       </div>
      </div>
     )

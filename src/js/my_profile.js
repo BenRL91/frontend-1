@@ -104,7 +104,7 @@ renderPage(){
 
 
 
-        <Link className="hidden edit-btn" to={`/editprofile/${current_user.id}`}> EDIT YOUR PROFILE </Link>
+        <Link className="edit-btn" to={`/editprofile/${current_user.id}`}> EDIT YOUR PROFILE </Link>
 
 
         </div>
