@@ -1,9 +1,8 @@
 /* CSS Entry Point */
 
 // Turn on freq used libraries
-@import 'normalize-css/normalize';
 // @import 'font-awesome/scss/font-awesome';
-
+@import 'normalize-css/normalize';
 @import '_main';
 @import '_home';
 @import '_profile';
@@ -47,6 +46,7 @@ $tangerine: #ffa800;
 .app {
   box-sizing: border-box;
   position:relative;
+  font-size: 12px;
 
   ul {
     list-style: none;

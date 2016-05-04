@@ -79,6 +79,7 @@ $tangerine: #ffa800;
     bottom: 0;
     right: 0;
     background: rgba(0,0,0,0.5);
+   
   }
   .modal-content {
     position: fixed;
@@ -87,7 +88,8 @@ $tangerine: #ffa800;
     left: 0;
     right: 0;
     background: white;
-    // padding:3em;
+    margin:9em;
+
   }
 }
 
