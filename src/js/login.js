@@ -9,7 +9,7 @@ export default class Login extends Component {
   constructor(...args){
     super(...args)
     this.state={
-      preview: 'http://fillmurray.com/50/50'
+      preview: '../images/camera.png'
     }
   }
 
@@ -66,9 +66,15 @@ export default class Login extends Component {
   render(){
 
     return (
+
       <div className='login-wrapper'>
       {/*Login Form*/}
+
       <SSF className='login-form' onData={::this.login}>
+
+        <span className="login">LOGIN</span>
+        <br/><br/>
+
           <label>
             Username:
             <input
@@ -90,6 +96,10 @@ export default class Login extends Component {
         </SSF>
         {/*Registration Form*/}
         <SSF className='register-form' onData={::this.register}>
+
+          <span className="register">REGISTER</span>
+          <br/><br/>
+
             <label>
               First Name:
               <input
@@ -126,7 +136,7 @@ export default class Login extends Component {
                 placeholder='placeholder'/>
             </label>
 
-            <Dropzone onDrop={::this.dropHandler}> <img src={this.state.preview}/> </Dropzone>
+            <Dropzone className="dropzone" onDrop={::this.dropHandler}> <img src={this.state.preview}/> </Dropzone>
 
             <button>Register</button>
         </SSF>
