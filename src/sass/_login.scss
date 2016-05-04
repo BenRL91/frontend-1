@@ -1,27 +1,51 @@
+
 .login-wrapper {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  padding-top: 30px;
 
   input{
     margin-left: 10px;
-    margin-bottom:20px;
+    margin-bottom:10px;
     width: 300px;
   }
   .register-form {
     display: flex;
     flex-direction: column;
     align-items: space-between;
-    // TODO: Fix Dis //
-    // padding-right: 130px;
-    // border-right: 1px solid rgb(141, 142, 141);
+      .register{
+        font-weight: bold;
+        font-size: 20px;
+      }
   }
   .login-form {
     @extend .register-form;
+
+    .login{
+      font-weight: bold;
+      font-size: 20px;
+    }
+
   }
   label {
     @extend .login-form;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .dropzone{
+    width:400px;
+    height:200px;
+    border:2px dotted black;
+    margin-bottom: 10px
+
+  }
+
+  .dropzone img{
+    width:100px;
+    object-fit:fit;
+    margin:auto;
+
   }
 }
