@@ -51,7 +51,12 @@ function checkIfLoggedIn(state, replace){
   }else {
     current_user = null;
   }  let trip_id = cookie.getJSON('saved_trip');
-  if (!current_user) {replace('/loginriderbooking')}
+  if (!current_user) {
+    // replace('/loginriderbooking')
+
+  }
+  console.log('state', state);
+  state.jd = 'foo';
 }
 
 function checkIfLoggedInProfile(state, replace){

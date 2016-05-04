@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, hashHistory } from 'react-router';
 import $, { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
@@ -6,16 +6,19 @@ import cookie from 'js-cookie';
 import Dropzone from 'react-dropzone';
 
 export default class Login extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func
+  }
+
   constructor(...args){
     super(...args)
     this.state={
       preview: '../images/camera.png',
       message1: '',
-      message2: '',
-      success1: '',
-      success2: ''
+      message2: ''
     }
   }
+
 
 
   register(new_user_credentials) {
@@ -37,10 +40,13 @@ export default class Login extends Component {
       processData: false,
       contentType: false
 
+
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        
+        if (this.props.onLogin) {
+          this.props.onLogin();
+        }
       }).fail(e => {
         if(e){
         this.setState({message2: 'register failed, try again'})
@@ -57,7 +63,9 @@ export default class Login extends Component {
     }).then( resp => {
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
-      
+      if (this.props.onLogin) {
+        this.props.onLogin();
+      }
     }).fail(e =>{
       console.log(e)
       if(e){
