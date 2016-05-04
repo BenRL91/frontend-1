@@ -4,7 +4,9 @@ import { ajax } from 'jquery';
 import token from './token';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
-
+import Modal from './modal';
+import LoginAtTripCreation from './login_at_trip_creation';
+import HostSignUp from './host_signup';
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
@@ -17,7 +19,9 @@ export default class HostTripBooking extends Component {
         destination: "",
         seat_price: "",
         seats_available : ""
-      }
+      },
+      showLogin: false,
+      showLoginDriver: false
     }
   }
 componentWillMount(){
@@ -29,6 +33,15 @@ componentWillMount(){
     })
   }else storedTrip = null;
 }
+
+  showLoginHandler(event) {
+    event.preventDefault();
+    this.setState({showLogin: true});
+  }
+
+  hideLoginHandler() {
+    this.setState({showLogin: false});
+  }
 isDriver(user){
   if (user.current_user.driver){
     return true;
@@ -38,12 +51,13 @@ isDriver(user){
 }
   book(trip_details){
     let user = cookie.getJSON('current_user')
-    console.log(user)
     cookie.set('newTrip', { newTrip: trip_details })
     if (!user){
-      hashHistory.push('/loginattripcreation')
+      // hashHistory.push('/loginattripcreation')
+      this.setState({showLogin: true})
     }else if(!this.isDriver(user)){
-      hashHistory.push('/hostsignup')
+      // hashHistory.push('/hostsignup')
+      this.setState({showLoginDriver: true})
     }else {
       ajax({
         url: 'https://salty-river-31528.herokuapp.com/hosts',
@@ -149,6 +163,12 @@ isDriver(user){
             <button>HOST</button>
 
      	 </SSF>
+         <Modal show={this.state.showLogin} onCloseRequest={::this.hideLoginHandler}>
+            <LoginAtTripCreation/>
+         </Modal>
+         <Modal show={this.state.showLoginDriver} onCloseRequest={::this.hideLoginHandler}>
+            <HostSignUp/>
+         </Modal>
       </div>
     )
   }

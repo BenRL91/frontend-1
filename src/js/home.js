@@ -4,6 +4,7 @@ import token from './token';
 import { ajax } from 'jquery';
 import GeoSuggest from 'react-geosuggest';
 import SSF from 'react-simple-serial-form';
+
 export default class Home extends Component {
 
 
@@ -40,7 +41,7 @@ dataHandler(query){
             />
             </label>
           </div>
-          <button onClick={() => { hashHistory.push('/results')}}>Search</button>
+          <button >Search</button>
         </SSF>
       </div>
      </div>
