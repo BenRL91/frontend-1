@@ -84,7 +84,7 @@ export default class TripDetails extends Component {
          <div className="trip-details-flex">
 
            <div className="trip-details-departing">
-            <b>{trip.departing_city}</b> <br/> {trip.date_leave} 
+            <b>{trip.departing_city}</b> <br/> {trip.date_leave}
            </div>
 
            <div className="trip-details-destination">
@@ -119,8 +119,8 @@ export default class TripDetails extends Component {
           <span className="trip-details-driver-name">DRIVERS NAME</span>
           <span>Verified Driver</span>
 
-          <Link className="trip-details-driver-link" to={`/profile/${trip.id}`}> visit drivers profile </Link>
-     	 	 
+          <Link className="trip-details-driver-link" to={`/profile/${trip.user_id}`}> visit drivers profile </Link>
+
           <div className="trip-details-para">
   				  Trip Description: {trip.comments}
      		  </div>
