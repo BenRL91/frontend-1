@@ -24,8 +24,9 @@ export default class Main extends Component {
 
   getChildContext() {
     return {
-      requireLogin: () => {
-        this.setState({showLogin: true});
+      requireLogin: (required) => {
+        console.log('requiring login');
+        this.setState({showLogin: required, requireLogin: required});
       }
     };
   }
@@ -35,13 +36,15 @@ export default class Main extends Component {
     super(...args);
     this.state = {
       current_user: cookie.getJSON('current_user'),
-      showLogin: false
+      showLogin: false,
+      requireLogin: false
     }
   }
 
   componentWillMount() {
     hashHistory.listen(() => {
-      this.setState({showLogin: false});
+      console.log('removing login');
+      this.hideLoginHandler();
     })
   }
 
@@ -61,7 +64,9 @@ export default class Main extends Component {
 
   hideLoginHandler() {
     // if (!this.isLoginRequired()) {
-      this.setState({showLogin: false});
+      if (!this.state.requireLogin) {
+        this.setState({showLogin: false});
+      }
     // }
   }
 

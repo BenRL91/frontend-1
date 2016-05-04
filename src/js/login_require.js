@@ -8,8 +8,13 @@ export default function requireLogin() {
       }
 
       componentWillMount() {
-        this.context.requireLogin();
+        this.context.requireLogin(true);
       }
+
+      componentWillUnmount() {
+        this.context.requireLogin(false);
+      }
+
 
       render() {
         return (
