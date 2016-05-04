@@ -13,7 +13,7 @@ export default class Login extends Component {
   constructor(...args){
     super(...args)
     this.state={
-      preview: '../images/camera.png',
+      preview: '../images/placeholder1.png',
       message1: '',
       message2: ''
     }

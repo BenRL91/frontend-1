@@ -117,9 +117,9 @@ export default class TripDetails extends Component {
 
 
         <div className="trip-details-driver">
-          <img src={user.picture}/>
+          <img src={user.pictures}/>
 
-          <span className="trip-details-driver-name">DRIVERS NAME</span>
+          <span className="trip-details-driver-name">{user.first_name}</span>
           <span>Verified Driver</span>
 
           <Link className="trip-details-driver-link" to={`/profile/${trip.user_id}`}> visit drivers profile </Link>
