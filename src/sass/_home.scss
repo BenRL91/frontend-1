@@ -46,8 +46,12 @@ $tangerine: #ffa800;
    					width: 200px;
 					// border-radius: 5px;
    				}
-
-
-   				}
+   			 }
   			}
-		}
+	  	}
+      .geosuggest {
+          height: 100px;
+     }
+.geosuggest__input {
+  height: 100%;
+}
