@@ -14,7 +14,8 @@ export default class TripDetails extends Component {
   super(...args);
   this.state = {
     current_trip: {},
-    current_user: {}
+    current_user: {},
+    loading: true
     }
   }
 
@@ -46,7 +47,7 @@ export default class TripDetails extends Component {
 		})
 		.then( respB => {
       console.log(respB)
-			this.setState({current_user: respB.user})
+			this.setState({current_user: respB.user, loading: false})
 			cookie.set('saved_trip', {trip_id: this.props.params.trip_id})
 		}).fail(e => { console.log( e) })
 
@@ -70,75 +71,86 @@ export default class TripDetails extends Component {
   //   })
   // }
 
-
-  render(){
-  	let trip    = this.state.current_trip;
-  	let user    = this.state.current_user;
+renderLoading(){
+  return (
+    <div>Loading...</div>
+    )
+}
+renderPage(){
+      let trip    = this.state.current_trip;
+    let user    = this.state.current_user;
     let trip_id = this.props.params.trip_id;
 
-
+    console.log('user', user.pictures)
     return (
       <div className="trip-details-wrapper">
 
       <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> + EDIT YOUR TRIP </Link>
 
+
+
         <div className="trip-details">
 
          <div className="trip-details-flex">
-
            <div className="trip-details-departing">
             <b>{trip.departing_city}</b> <br/> {trip.date_leave}
            </div>
 
-           <div className="trip-details-destination">
+            <div className="direction-line">  </div> <div className="direction-arrow"> ► </div>
+
+            <div className="trip-details-destination">
             <b>{trip.destination}</b> <br/> {trip.date_arrive}
-           </div>
+            </div>
+            </div>
 
-            {/*<div className="trip-details-duration">
-            trip durationneed to estimate* calc by taking hour leave - hour arrive when those fields are created
-            </div>*/}
-         </div>
-
-
-        <div className="trip-details-seats">
+          <div className="trip-details-seats">
           <b>{trip.seats_available}</b>
           <br/>  seats available
-        </div>
+          </div>
 
-
-        <div className="trip-details-price">
+          <div className="trip-details-price">
           <span>${trip.seat_price}</span>
-         </div>
-      </div>
-
-
-      <br/>
-      <br/>
+          </div>
+    
 
 
         <div className="trip-details-driver">
-          <img src={user.pictures}/>
+          <div className="trip-details-driver-flex">
 
-          <span className="trip-details-driver-name">{user.first_name}</span>
-          <span>Verified Driver</span>
+            <img src={user.pictures[0].image_url}/>
 
-          <Link className="trip-details-driver-link" to={`/profile/${trip.user_id}`}> visit drivers profile </Link>
+            <div className="driver-content-flex">
+              <div>
+                <span className="trip-details-driver-name">{user.first_name}</span> 
+                  <br/>
+                <Link className="trip-details-driver-link" to={`/profile/${trip.user_id}`}> view drivers profile </Link>
+              </div>
 
-          <div className="trip-details-para">
-  				  Trip Description: {trip.comments}
-     		  </div>
-
+              <div className="trip-details-para">
+                Trip Description: {trip.comments}
+               </div>
+            </div>
 
         </div>
-
-        <Link className='book-btn' to={`/ridertripbooking/${trip.id}`}> + Book Trip</Link>
-        <br/><br/>
+        </div>
 
 
+      </div>
 
+
+
+
+           <Link className='book-btn' to={`/ridertripbooking/${trip.id}`}> Book Trip → </Link>
      </div>
     )
   }
+  render(){
+    let {loading} = this.state;
+    return (loading
+    ? this.renderLoading()
+    : this.renderPage()
+    )
+}
 }
 
 

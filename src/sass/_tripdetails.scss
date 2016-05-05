@@ -8,12 +8,10 @@ $tangerine: #ffa800;
 
 
 .trip-details-wrapper{
-	margin-left: 100px; 
-	margin-right: 100px;
+	margin-left: 10vw; 
+	margin-right: 10vw;
 	margin-top:100px;
-	display:flex;
-	justify-content:center;
-	flex-direction:column;
+
 
 	.edit-btn{
 		color: $shamrock;
@@ -30,51 +28,72 @@ $tangerine: #ffa800;
 	}
 
 	.trip-details{
-
 		// display:flex;
 		width:100%;
-		height: 100px;
-		margin-bottom: 20px;
+		height: 50vh;
+		// margin-bottom: 20px;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		padding-top: 10px;
-		padding-left: 20px;
+		// padding-top: 10px;
+		// padding-left: 20px;
 		position:relative;
 		box-sizing:border-box;
 
 		.trip-details-flex{
 			display:flex;
 			justify-content:space-between;
-			width: 48%;
-			padding-top: 15px;
+			width: 50%;
+			border-right: 3px solid white;
+			padding-top: 25px;
+			padding-left: 15px;
+			padding-right: 15px;
+			background-color:$tangerine;
+			height:100px;
+			box-sizing:border-box;
 		}
 
 		.trip-details-departing{
+			color:white;
 			font-size: 20px;
-			// font-weight: bold;
+			padding-right: 10px;
+		}
+
+		.direction-line{
+			margin-top: 20px;
+			width:18vw;
+			height:3px;
+			background-color:$mint;
+			// position:relative;
+		}
+
+		.direction-arrow{
+			// position:absolute;
+			margin-top: 5px;
+			color: $mint;
+			font-size: 30px;
 		}
 
 		.trip-details-destination{
-			font-size: 20px;
-			text-align: right;
-			// font-weight: bold;
+			color:white;
+			font-size: 20px;	
+			padding-left: 10px;
+
+			// text-align: right;
 		}
 
 		.trip-details-seats{
+
 			position:absolute;
-			right:300px;
+			right:20vw;
 			top:0;
 			height:100px;
-			width:300px;
-			// background-color:#ff7100;
+			width:20vw;
 			background-color:$tangerine;
 			font-size: 20px;
-			// font-weight: bold;
 			color:white;
 			text-align: center;
 			padding-top: 25px;
 			border-right: 3px solid white;
 			box-sizing:border-box;
-			text-align: center;
 		}
 	}
 
@@ -83,7 +102,7 @@ $tangerine: #ffa800;
 			right:0;
 			top:0;
 			height:100px;
-			width:300px;
+			width:20vw;
 			background-color:$tangerine;
 			font-size: 30px;
 			font-weight: bold;
@@ -91,30 +110,42 @@ $tangerine: #ffa800;
 			text-align: center;
 			padding-top: 30px;
 			box-sizing:border-box;
+			// border-bottom: 3px solid white;
+
 
 		}
 
+
 	
-.hidden{
-		display:none;
-}
-
-
 	.trip-details-driver{
+		position:absolute;
+		bottom:0;
+		left:0;
+		right:0;
+		height:50%;
+
+
+	.trip-details-driver-flex{
 		display:flex;
-		justify-content:center;
-		flex-direction:column;
-		border: 1px solid black;
-		height:30vh;
-		width:100%;
-		text-align: center;
+		align-items:center;
+
 
 		img{
-			// text-align: center;
-			// width:150px;
-			// height:150px;
-			// border-radius: 150px;
-			// not working, img not showing
+			width:15vw;
+			height:15vh;
+			object-fit:cover;
+			margin-right: 2vw;
+			margin-bottom: 1vh;
+			margin-left: 2vh;
+
+		}
+
+
+		.driver-content-flex{
+			width:100%;
+			display:flex;
+			justify-content:space-between;
+
 		}
 
 		.trip-details-driver-name{
@@ -125,30 +156,36 @@ $tangerine: #ffa800;
 		.trip-details-driver-link{
 			font-weight: bold;
 			font-size: 15px;
-
 			color: $tangerine;
 		}
 
 		.trip-details-para{
+			margin-right: 3vw;
+			width:35vw;
+			font-size: 14px;
+			// background-color: $tangerine;
+
+		}	
+
 
 		}
-
-
-
 
 	}
+
+
+
+.hidden{
+		display:none;
+}
+
 		.book-btn{
-			width:100%;
-			text-align: center;
-			font-weight: 25px;
-			color:$tangerine;
-			margin-top: 10px;
-			background-color: #a2a2a2;
-			height:25px;
+			color: $ocean;
+			position: absolute;
+			top: 15vh;
+			right: 11vw;
 			font-weight: bold;
-			color:black;
+			font-size: 20px;
 
-		}
-
+		  }
 
 }

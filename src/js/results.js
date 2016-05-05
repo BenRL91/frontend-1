@@ -16,17 +16,19 @@ export default class Results extends Component {
 
 
         <div className="results-img-cities-flex">
-         <img src="http://www.fillmurray.com/50/50" alt="temp"/>
+         <img src={trip.user.picture} alt="temp"/>
          <div className="results-cities"> <b>{trip.departing_city}</b> to <b>{trip.destination}</b> </div>
         </div>
 
         <div className="results-dates-price-flex">
           <div className="results-dates"> <b>{trip.date_leave}</b></div>
-          <div className="results-price"> $ {trip.seat_price} </div>
+
+          <div className="results-dates-arrow-flex">
+            <div className="results-price"> $ {trip.seat_price} /person </div>
 
         <Link className="results-arrow" to={`/tripdetails/${trip.id}`}> <b> → </b></Link>
         </div>
-
+        </div>
       </div>
     )
   }
@@ -34,6 +36,7 @@ export default class Results extends Component {
     ajax('https://salty-river-31528.herokuapp.com/hosts')
     .then(trips => {
       this.setState({trips: trips.host})
+      console.log(trips)
     })
   }
   render(){
