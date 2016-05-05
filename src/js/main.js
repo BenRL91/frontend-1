@@ -41,7 +41,7 @@ export default class Main extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     hashHistory.listen(() => {
       console.log('removing login');
       this.hideLoginHandler();
@@ -64,7 +64,8 @@ export default class Main extends Component {
 
   hideLoginHandler() {
     // if (!this.isLoginRequired()) {
-      if (!this.state.requireLogin) {
+      console.log('closing', !this.state.requireLogin, cookie.getJSON('current_user'))
+      if (!this.state.requireLogin || cookie.getJSON('current_user')) {
         this.setState({showLogin: false});
       }
     // }

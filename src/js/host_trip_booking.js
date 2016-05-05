@@ -7,6 +7,9 @@ import cookie from 'js-cookie';
 import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
 import HostSignUp from './host_signup';
+import requireLogin from './login_require';
+
+@requireLogin()
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
@@ -21,7 +24,8 @@ export default class HostTripBooking extends Component {
         seats_available : ""
       },
       showLogin: false,
-      showLoginDriver: false
+      showLoginDriver: false,
+      showSignup: false
     }
   }
 componentWillMount(){
@@ -40,7 +44,15 @@ componentWillMount(){
   }
 
   hideLoginHandler() {
-    this.setState({showLogin: false});
+    console.log('closing', !this.state.requireLogin, cookie.getJSON('current_user'))
+    if (!this.state.requireLogin || cookie.getJSON('current_user')) {
+      this.setState({showLogin: false});
+    }
+  }
+  showSignuphHandler(){
+    if (!cookie.getJSON('current_user').driver){
+      this.setState({showSignup: true})
+    }else{this.setState({showSignup: false})}
   }
 isDriver(user){
   if (user.current_user.driver){
@@ -163,11 +175,8 @@ isDriver(user){
             <button>HOST</button>
 
      	 </SSF>
-         <Modal show={this.state.showLogin} onCloseRequest={::this.hideLoginHandler}>
-            <LoginAtTripCreation/>
-         </Modal>
          <Modal show={this.state.showLoginDriver} onCloseRequest={::this.hideLoginHandler}>
-            <HostSignUp/>
+            <HostSignUp onSignIn={::this.showSignuphHandler}/>
          </Modal>
       </div>
     )

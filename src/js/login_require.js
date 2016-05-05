@@ -15,10 +15,9 @@ export default function requireLogin() {
         this.context.requireLogin(false);
       }
 
-
       render() {
         return (
-          <WrappedComponent/>
+          <WrappedComponent {...this.props}/>
         );
       }
     }

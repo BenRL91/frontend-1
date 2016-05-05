@@ -13,7 +13,10 @@ import requireLogin from './login_require';
 
 @requireLogin()
 export default class RiderTripBooking extends Component {
-
+	constructor(...args){
+		super(...args);
+		console.log('my class', args)
+	}
 	  book(rider_trip_booking) {
 
 			let tripData
@@ -21,25 +24,17 @@ export default class RiderTripBooking extends Component {
 			ajax(`https://salty-river-31528.herokuapp.com/riders/${id}`).then(
 				resp => {
 					tripData = resp.hosts
-					// console.log('actual resp',resp.hosts)
-					// console.log('get check 1', tripData.seats_available)
 					if (tripData.seats_available > 0){
 						tripData.seats_available -= 1
-						// console.log('updated seat value', tripData.seats_available)
 						console.log(tripData.seats_available)
 						ajax({
 				      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
 				      type: 'PUT',
 				      data: {seats_available: tripData.seats_available},
-							// dataType: 'JSON',
-							// processData: false,
-							// cache: false,
               headers: {
                 'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
               }
 				    }).then(resp => {
-								// console.log('put check 1', tripData.seats_available)
-				        // console.log('put check 2', resp)
 				        cookie.set('current_trip', {current_trip: resp.trip})
                 hashHistory.push('/ridertripconfirmation')
 				      }).fail(e => console.log(e))
@@ -48,15 +43,10 @@ export default class RiderTripBooking extends Component {
 							url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
 							type: 'PUT',
 							data: {seats_available: tripData.seats_available},
-							// dataType: 'JSON',
-							// processData: false,
-							// cache: false,
               headers: {
                 'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
               }
 						}).then(resp => {
-								// console.log('put check 1', tripData.seats_available)
-								// console.log('put check 2', resp)
 								cookie.set('current_trip', {current_trip: resp.trip})
                 hashHistory.push('/ridertripnoseats')
 							}).fail(e => console.log(e))					}
@@ -67,7 +57,6 @@ export default class RiderTripBooking extends Component {
 
 
   render(){
-		// console.log(cookie.getJSON('current_user'))
     return (
       <div className="rider-trip-booking-wrapper">
 
@@ -130,15 +119,3 @@ export default class RiderTripBooking extends Component {
     )
   }
 }
-
-
-
-  // DO WE NEED THIS?///////
-
-            // <label>
-            //   How many seats do you need:
-              // <input
-            //     type='text'
-            //     name='seats_available'
-            //     placeholder='number of seats'/>
-            // </label>
