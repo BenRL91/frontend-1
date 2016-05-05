@@ -19,29 +19,36 @@ dataHandler(query){
      <div className='home-main-wrapper'>
 
       <div className='home-wrapper'>
+
         <SSF onData={::this.dataHandler} className='search-wrapper'>
-          <div className='geo-wrapper'>
+          
+           <div className='geo-wrapper'>
+
             <label>
-            Departure:
-            <GeoSuggest
-              placeholder="Start typing!"
-              onSuggestSelect={this.onSuggestSelect}
-              name='departure'
+             Departure:
+              <GeoSuggest
+                placeholder="where your trip starts"
+                onSuggestSelect={this.onSuggestSelect}
+                name='departure'
               />
-            </label>
-          </div>
-          <div className='geo-wrapper'>
-            <label>
-            Destination:
-            <GeoSuggest
-              placeholder="Start typing!"
-              onSuggestSelect={this.onSuggestSelect}
-              name='destination'
-            />
-            </label>
-          </div>
-          <button >Search</button>
+             </label>
+            </div>
+
+            <div className='geo-wrapper'>
+              <label>
+               Destination:
+               <GeoSuggest
+                placeholder="enter your destination"
+                onSuggestSelect={this.onSuggestSelect}
+                name='destination'
+               />
+             </label>
+           </div>
+
+            <button> Search Trips </button>
+
         </SSF>
+
       </div>
      </div>
     )
