@@ -39,8 +39,11 @@ dataHandler(query){
      <div className='home-main-wrapper'>
 
       <div className='home-wrapper'>
+
         <SSF onData={::this.dataHandler} className='search-wrapper'>
-          <div className='geo-wrapper'>
+
+           <div className='geo-wrapper'>
+
             <label>
             Departure:
             <GeoSuggest
@@ -60,8 +63,9 @@ dataHandler(query){
             />
             </label>
           </div>
-          <button>Search</button>
+            <button> Search Trips </button>
         </SSF>
+
       </div>
      </div>
     )

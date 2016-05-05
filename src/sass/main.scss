@@ -2,6 +2,7 @@
 
 // Turn on freq used libraries
 // @import 'font-awesome/scss/font-awesome';
+@import '_geosuggest';
 @import 'normalize-css/normalize';
 @import '_main';
 @import '_home';
@@ -23,23 +24,6 @@ $ocean: #004973;
 $shamrock: #1fbb62;
 $tangerine: #ffa800;
 
-///mixins////
-
-
-// @mixin button (){
-//   height:30px;
-//   border:none;
-//   background-color: #a2a2a2;
-//   font-weight: bold;
-//   width:100px;
-// }
-
-
-// @mixin button-hover (){
-//   background-color: #d3d3d3;
-//   color:white;
-
-// }
 
 //Overall Application default styling//
 
