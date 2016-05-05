@@ -15,10 +15,8 @@ $tangerine: #ffa800;
   height:60px;
   // background-color: $ocean;
   border-bottom: 5px solid $pistachio;
-
   padding-top: 1%;
   box-sizing:border-box;
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   .main-logo{
@@ -88,8 +86,10 @@ $tangerine: #ffa800;
     left: 0;
     right: 0;
     background: white;
-    margin:9em;
-    overflow-y:scroll
+    margin:15em;
+    overflow-y:scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 
   }
 }
