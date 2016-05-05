@@ -5,13 +5,33 @@ import { ajax } from 'jquery';
 import GeoSuggest from 'react-geosuggest';
 import SSF from 'react-simple-serial-form';
 
+let latA;
+let lngA;
+let latB;
+let lngB;
+
 export default class Home extends Component {
 
 
-  onSuggestSelect(suggest) {
-  console.log(suggest);
+onSuggestSelectDepart(suggest) {
+console.log(suggest);
+latA = suggest.location.lat;
+lngA = suggest.location.lng;
+}
+onSuggestSelectDest(suggest) {
+console.log(suggest);
+latB = suggest.location.lat;
+lngB = suggest.location.lng;
 }
 dataHandler(query){
+  console.log('query', query)
+  query.latA = latA;
+  query.lngA = lngA;
+  query.latB = latB;
+  query.lngB = lngB;
+  console.log('latA, longA', latA, lngA)
+  console.log('latB, longB', latB, lngB)
+
   hashHistory.push('/results')
 }
   render(){
@@ -25,7 +45,7 @@ dataHandler(query){
             Departure:
             <GeoSuggest
               placeholder="Start typing!"
-              onSuggestSelect={this.onSuggestSelect}
+              onSuggestSelect={this.onSuggestSelectDepart}
               name='departure'
               />
             </label>
@@ -35,12 +55,12 @@ dataHandler(query){
             Destination:
             <GeoSuggest
               placeholder="Start typing!"
-              onSuggestSelect={this.onSuggestSelect}
+              onSuggestSelect={this.onSuggestSelectDest}
               name='destination'
             />
             </label>
           </div>
-          <button >Search</button>
+          <button>Search</button>
         </SSF>
       </div>
      </div>

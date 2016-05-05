@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import SSF from 'react-simple-serial-form';
 import { ajax } from 'jquery';
 import cookie from 'js-cookie';
 
 export default class HostSignUp extends Component {
+
   dataHandler(data){
     let user = cookie.getJSON('current_user').current_user
     console.log(cookie.getJSON('current_user'))
@@ -26,6 +27,7 @@ export default class HostSignUp extends Component {
       cookie.set('current_user', { current_user });
       console.log(cookie.getJSON('current_user'))
       hashHistory.push('/hosttripbooking')
+      this.props.onSignIn()
     }).fail(e => console.log(e))
   }
   render(){
