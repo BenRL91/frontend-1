@@ -92,7 +92,7 @@ render((
       <Route path='/ridertripbooking/:id'    component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
       <Route path='/ridertripconfirmation'   component={ RiderTripConfirmation }/>
       <Route path='/ridertripnoseats'        component={ RiderTripNoSeats }/>
-      <Route path='/results/:lat/:lng'                 component={ Results }/>
+      <Route path='/results/:lat/:lng/:rad'                 component={ Results }/>
       <Route path='/hostsignup'              component={ HostSignUp }/>
       <Route path='/loginriderbooking'       component={ LoginRiderBooking }/>
       <Route path='loginattripcreation'      component={ LoginAtTripCreation }/>

@@ -8,8 +8,6 @@ import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
 import HostSignUp from './host_signup';
 import requireLogin from './login_require';
-import GeoSuggest from 'react-geosuggest';
-
 
 @requireLogin
 export default class HostTripBooking extends Component {
@@ -27,7 +25,6 @@ export default class HostTripBooking extends Component {
       },
       showLogin: false,
       showLoginDriver: false,
-      showSignup: false
     }
   }
 componentWillMount(){
@@ -96,50 +93,21 @@ isDriver(user){
 
 
 
-onSuggestSelectDepart(suggest) {
-console.log(suggest);
-latA = suggest.location.lat;
-lngA = suggest.location.lng;
-}
-onSuggestSelectDest(suggest) {
-console.log(suggest);
-latB = suggest.location.lat;
-lngB = suggest.location.lng;
-}
-dataHandler(query){
-  console.log('query', query)
-  query.latA = latA;
-  query.lngA = lngA;
-  query.latB = latB;
-  query.lngB = lngB;
-  console.log('latA, longA', latA, lngA)
-  console.log('latB, longB', latB, lngB)
-
-  hashHistory.push('/results')
-}
-
-
-
 
   render(){
-    let { trip, showSignup } = this.state;
-    let user_id = cookie.getJSON('current_user').id;
-    console.log(user_id)
+    let { trip } = this.state;
     return (
 
       <div className="host-booking-wrapper">
-       <Modal show={showSignup} onCloseRequest={ x => x}>
-          <div cassName='signup-banner'>You must become a driver in order to book a trip, please visit <Link to={`/editprofile/${user_id}`}>Profile Edit</Link> to sign up!</div>
-       </Modal>
      	 <SSF className='host-trip-form' onData={::this.book}>
      	 HOST TRIP BOOKING PAGE <br/><br/>
 
             <label>
               Departure City:
-              <GeoSuggest
+              <input
                 type='text'
                 name='departing_city'
-                onSuggestSelect={this.onSuggestSelectDepart}
+                defaultValue={trip.departing_city}
                 placeholder='Where are you leaving from?'/>
             </label>
 
@@ -148,15 +116,16 @@ dataHandler(query){
               <input
                 type='date'
                 name='date_leave'
+                defaultValue={trip.date_leave}
                 placeholder='When are you leaving?'/>
             </label>
 
             <label>
               Destination:
-              <GeoSuggest
+              <input
                 type='text'
                 name='destination'
-                onSuggestSelect={this.onSuggestSelectDest}
+                defaultValue={trip.destination}
                 placeholder='Where are you driving to?'/>
             </label>
 
@@ -166,6 +135,7 @@ dataHandler(query){
               <input
                 type='date'
                 name='date_arrive'
+                defaultValue={trip.date_arrive}
                 placeholder='Whats your ETA?'/>
             </label>
 
@@ -174,6 +144,7 @@ dataHandler(query){
               <input
                 type='text'
                 name='seats_available'
+                defaultValue={trip.seats_available}
                 placeholder='Number of seats you want to make available'/>
             </label>
 
@@ -182,6 +153,7 @@ dataHandler(query){
               <input
                 type='text'
                 name='seat_price'
+                defaultValue={trip.seat_price}
                 placeholder='List the price for all seats'/>
             </label>
 
@@ -197,6 +169,7 @@ dataHandler(query){
               <textarea
                 type='text'
                 name='comments'
+                defaultValue={trip.comments}
                 placeholder='tell us about your trip'>
             </textarea>
             </label>
