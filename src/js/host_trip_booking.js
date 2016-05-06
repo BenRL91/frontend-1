@@ -8,6 +8,8 @@ import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
 import HostSignUp from './host_signup';
 import requireLogin from './login_require';
+import GeoSuggest from 'react-geosuggest';
+
 
 @requireLogin
 export default class HostTripBooking extends Component {
@@ -94,6 +96,30 @@ isDriver(user){
 
 
 
+onSuggestSelectDepart(suggest) {
+console.log(suggest);
+latA = suggest.location.lat;
+lngA = suggest.location.lng;
+}
+onSuggestSelectDest(suggest) {
+console.log(suggest);
+latB = suggest.location.lat;
+lngB = suggest.location.lng;
+}
+dataHandler(query){
+  console.log('query', query)
+  query.latA = latA;
+  query.lngA = lngA;
+  query.latB = latB;
+  query.lngB = lngB;
+  console.log('latA, longA', latA, lngA)
+  console.log('latB, longB', latB, lngB)
+
+  hashHistory.push('/results')
+}
+
+
+
 
   render(){
     let { trip, showSignup } = this.state;
@@ -110,10 +136,10 @@ isDriver(user){
 
             <label>
               Departure City:
-              <input
+              <GeoSuggest
                 type='text'
                 name='departing_city'
-                defaultValue={trip.departing_city}
+                onSuggestSelect={this.onSuggestSelectDepart}
                 placeholder='Where are you leaving from?'/>
             </label>
 
@@ -122,16 +148,15 @@ isDriver(user){
               <input
                 type='date'
                 name='date_leave'
-                defaultValue={trip.date_leave}
                 placeholder='When are you leaving?'/>
             </label>
 
             <label>
               Destination:
-              <input
+              <GeoSuggest
                 type='text'
                 name='destination'
-                defaultValue={trip.destination}
+                onSuggestSelect={this.onSuggestSelectDest}
                 placeholder='Where are you driving to?'/>
             </label>
 
@@ -141,7 +166,6 @@ isDriver(user){
               <input
                 type='date'
                 name='date_arrive'
-                defaultValue={trip.date_arrive}
                 placeholder='Whats your ETA?'/>
             </label>
 
@@ -150,7 +174,6 @@ isDriver(user){
               <input
                 type='text'
                 name='seats_available'
-                defaultValue={trip.seats_available}
                 placeholder='Number of seats you want to make available'/>
             </label>
 
@@ -159,7 +182,6 @@ isDriver(user){
               <input
                 type='text'
                 name='seat_price'
-                defaultValue={trip.seat_price}
                 placeholder='List the price for all seats'/>
             </label>
 
@@ -175,7 +197,6 @@ isDriver(user){
               <textarea
                 type='text'
                 name='comments'
-                defaultValue={trip.comments}
                 placeholder='tell us about your trip'>
             </textarea>
             </label>
