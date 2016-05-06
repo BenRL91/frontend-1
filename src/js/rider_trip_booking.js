@@ -54,14 +54,14 @@ export default class RiderTripBooking extends Component {
 		// 	)
     // }
 			let {id} = this.props.params;
-
+			console.log(cookie.getJSON('current_user').current_user.auth_token)
 		ajax({
 			url: `https://salty-river-31528.herokuapp.com/riders/${id}`,
 			type: 'PUT',
 			headers: {
 				'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
 			}
-		})
+		}).then(resp => console.log('resp', resp))
 	}
 
 
