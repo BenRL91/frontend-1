@@ -93,6 +93,13 @@ export default class EditProfile extends Component {
     return (
     <div className="edit-profile-wrapper">
 
+    <div className="edit-profile-wrapper-flex">
+
+      <Dropzone className="dropzone" onDrop={::this.dropHandler}> 
+       <img src={this.state.preview}/>
+      </Dropzone>
+
+    <div>
       <SSF className='register-form' onData={::this.edit_profile}>
         <label>
           First Name:
@@ -127,14 +134,22 @@ export default class EditProfile extends Component {
           placeholder='placeholder'/>
         </label>
 
-        <Dropzone onDrop={::this.dropHandler}> <img src={this.state.preview}/></Dropzone>
 
-        <button>Save</button>
+        <button className="save-btn">
+        Update your account
+        </button>
+
       </SSF>
 
+       <button onClick={::this.deleteHandler} className="edit-profile-delete"> 
+       DELETE your account 
+       </button>
 
-       <button onClick={::this.deleteHandler} className="edit-profile-delete"> DELETE your account </button>
     </div>
+
+    </div>
+    </div>
+
 
     )}
 

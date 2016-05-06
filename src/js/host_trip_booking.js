@@ -143,6 +143,14 @@ dataHandler(query){
                 placeholder='Where are you leaving from?'/>
             </label>
 
+              <input
+                type='hidden'
+                name='depart_latitude'/>
+
+              <input
+                type='hidden'
+                name='depart_longitude'/>
+
             <label>
               Date:
               <input
@@ -159,6 +167,15 @@ dataHandler(query){
                 onSuggestSelect={this.onSuggestSelectDest}
                 placeholder='Where are you driving to?'/>
             </label>
+
+              <input
+                type='hidden'
+                name='destination_longitude'/>
+
+              <input
+                type='hidden'
+                name='destination_longitude'/>
+
 
 
             <label>

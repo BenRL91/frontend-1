@@ -50,7 +50,7 @@ gettrips(trip){
 
       <div className="get_trips_flex">
         <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
-        <Link className="profile-trip-details" to={`/tripdetails/${trip.host_id}`}> details + </Link>
+        <Link className="profile-trip-details" to={`/tripdetails/${trip.host_id}`}> details →  </Link>
       </div>
 
   </div>
@@ -78,10 +78,19 @@ renderPage(){
               {current_user.first_name} {current_user.last_name}
             </div>
 
-            <div className="profile-status">
-              Rider / Driver status
+            <div className="profile-username">
+              username: {current_user.user_name}
             </div>
 
+            <div className="profile-email">
+              email: {current_user.email}
+            </div>
+
+            <div className="profile-homecity">
+              {current_user.home_city}
+            </div>
+
+            <Link className="edit-btn" to={`/editprofile/${current_user.id}`}> EDIT YOUR PROFILE </Link>
 
           </div>
         </div>
@@ -91,10 +100,12 @@ renderPage(){
 
 
         <div className="profile-trips">
+
           <div className="profile-new-trips">
             <span className="your-trips"> Your Trips </span>
             <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
           </div>
+          
 
           <div className="profile-trips-list">
 
@@ -104,7 +115,6 @@ renderPage(){
 
 
 
-        <Link className="edit-btn" to={`/editprofile/${current_user.id}`}> EDIT YOUR PROFILE </Link>
 
 
         </div>
