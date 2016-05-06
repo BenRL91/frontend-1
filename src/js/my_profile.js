@@ -79,7 +79,7 @@ renderPage(){
             </div>
 
             <div className="profile-username">
-              username: {current_user.user_name}
+              <i class="fa fa-user" aria-hidden="true"></i> {current_user.user_name}
             </div>
 
             <div className="profile-email">

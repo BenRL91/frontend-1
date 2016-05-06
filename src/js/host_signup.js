@@ -32,8 +32,8 @@ export default class HostSignUp extends Component {
   }
   render(){
     return (
-      <div>
-        <SSF onData={::this.dataHandler}>
+      <div className="host-signup">
+        <SSF className="ssf" onData={::this.dataHandler}>
           <input
             type='tel'
             name='phone'
