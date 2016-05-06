@@ -23,7 +23,7 @@ console.log(suggest);
 latB = suggest.location.lat;
 lngB = suggest.location.lng;
 }
-dataHandler(query){
+dataHandlerDepart(query){
   console.log('query', query)
   query.latA = latA;
   query.lngA = lngA;
@@ -32,7 +32,18 @@ dataHandler(query){
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
 
-  hashHistory.push('/results')
+  hashHistory.push(`/results/${query.latA}/${query.lngA}`)
+}
+dataHandlerDest(query){
+  console.log('query', query)
+  query.latA = latA;
+  query.lngA = lngA;
+  query.latB = latB;
+  query.lngB = lngB;
+  console.log('latA, longA', latA, lngA)
+  console.log('latB, longB', latB, lngB)
+
+  hashHistory.push(`/results/${query.latB}/${query.lngB}`)
 }
   render(){
     return (
@@ -40,7 +51,7 @@ dataHandler(query){
 
       <div className='home-wrapper'>
 
-        <SSF onData={::this.dataHandler} className='search-wrapper'>
+        <SSF onData={::this.dataHandlerDepart} className='search-wrapper'>
 
            <div className='geo-wrapper'>
 
@@ -53,16 +64,20 @@ dataHandler(query){
               />
             </label>
           </div>
-          <div className='geo-wrapper'>
-            <label>
-            Destination:
-            <GeoSuggest
-              placeholder="Start typing!"
-              onSuggestSelect={this.onSuggestSelectDest}
-              name='destination'
-            />
-            </label>
-          </div>
+            <button> Search Trips </button>
+        </SSF>
+        <SSF onData={::this.dataHandlerDest} className='search-wrapper'>
+
+        <div className='geo-wrapper'>
+          <label>
+          Destination:
+          <GeoSuggest
+            placeholder="Start typing!"
+            onSuggestSelect={this.onSuggestSelectDest}
+            name='destination'
+          />
+          </label>
+        </div>
             <button> Search Trips </button>
         </SSF>
 
