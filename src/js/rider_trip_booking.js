@@ -11,7 +11,7 @@ import requireLogin from './login_require';
 // PUT REQUEST/////
 ///need to make this so that were just sending backend the user ID because the CC info is dummy data//////
 
-@requireLogin()
+@requireLogin
 export default class RiderTripBooking extends Component {
 	constructor(...args){
 		super(...args);
@@ -19,40 +19,50 @@ export default class RiderTripBooking extends Component {
 	}
 	  book(rider_trip_booking) {
 
-			let tripData
+		// 	let tripData
+		// 	let {id} = this.props.params;
+		// 	ajax(`https://salty-river-31528.herokuapp.com/riders/${id}`).then(
+		// 		resp => {
+		// 			tripData = resp.hosts
+		// 			if (tripData.seats_available > 0){
+		// 				tripData.seats_available -= 1
+		// 				console.log(tripData.seats_available)
+		// 				ajax({
+		// 		      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
+		// 		      type: 'PUT',
+		// 		      data: {seats_available: tripData.seats_available},
+    //           headers: {
+    //             'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+    //           }
+		// 		    }).then(resp => {
+		// 		        cookie.set('current_trip', {current_trip: resp.trip})
+    //             hashHistory.push('/ridertripconfirmation')
+		// 		      }).fail(e => console.log(e))
+		// 			}else {
+		// 				ajax({
+		// 					url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
+		// 					type: 'PUT',
+		// 					data: {seats_available: tripData.seats_available},
+    //           headers: {
+    //             'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+    //           }
+		// 				}).then(resp => {
+		// 						cookie.set('current_trip', {current_trip: resp.trip})
+    //             hashHistory.push('/ridertripnoseats')
+		// 					}).fail(e => console.log(e))					}
+		// 		}
+		// 	)
+    // }
 			let {id} = this.props.params;
-			ajax(`https://salty-river-31528.herokuapp.com/riders/${id}`).then(
-				resp => {
-					tripData = resp.hosts
-					if (tripData.seats_available > 0){
-						tripData.seats_available -= 1
-						console.log(tripData.seats_available)
-						ajax({
-				      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
-				      type: 'PUT',
-				      data: {seats_available: tripData.seats_available},
-              headers: {
-                'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
-              }
-				    }).then(resp => {
-				        cookie.set('current_trip', {current_trip: resp.trip})
-                hashHistory.push('/ridertripconfirmation')
-				      }).fail(e => console.log(e))
-					}else {
-						ajax({
-							url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
-							type: 'PUT',
-							data: {seats_available: tripData.seats_available},
-              headers: {
-                'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
-              }
-						}).then(resp => {
-								cookie.set('current_trip', {current_trip: resp.trip})
-                hashHistory.push('/ridertripnoseats')
-							}).fail(e => console.log(e))					}
-				}
-			)
-    }
+
+		ajax({
+			url: `https://salty-river-31528.herokuapp.com/riders/${id}`,
+			type: 'PUT',
+			headers: {
+				'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
+			}
+		})
+	}
 
 
 
@@ -61,7 +71,7 @@ export default class RiderTripBooking extends Component {
       <div className="rider-trip-booking-wrapper">
 
 
-      <SSF className='rider-trip-booking' onData={::this.book}>
+      <SSF className='rider-trip-booking' onData={(x) => x}>
 
       		<span> seats left on this trip ..interpolate.. </span>
 

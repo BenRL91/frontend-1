@@ -9,7 +9,7 @@ import LoginAtTripCreation from './login_at_trip_creation';
 import HostSignUp from './host_signup';
 import requireLogin from './login_require';
 
-@requireLogin()
+@requireLogin
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
@@ -29,6 +29,12 @@ export default class HostTripBooking extends Component {
     }
   }
 componentWillMount(){
+  let { showSignup } = this.state;
+  if (!cookie.getJSON('current_user').driver){
+    this.setState({
+      showSignup: true
+    })
+  }
   let storedTrip;
   if (cookie.getJSON('newTrip')) {
     storedTrip = cookie.getJSON('newTrip');
@@ -90,11 +96,15 @@ isDriver(user){
 
 
   render(){
-    let { trip } = this.state;
+    let { trip, showSignup } = this.state;
+    let user_id = cookie.getJSON('current_user').id;
+    console.log(user_id)
     return (
 
       <div className="host-booking-wrapper">
-
+       <Modal show={showSignup} onCloseRequest={ x => x}>
+          <div cassName='signup-banner'>You must become a driver in order to book a trip, please visit <Link to={`/editprofile/${user_id}`}>Profile Edit</Link> to sign up!</div>
+       </Modal>
      	 <SSF className='host-trip-form' onData={::this.book}>
      	 HOST TRIP BOOKING PAGE <br/><br/>
 
@@ -169,15 +179,8 @@ isDriver(user){
                 placeholder='tell us about your trip'>
             </textarea>
             </label>
-
-
-
             <button>HOST</button>
-
      	 </SSF>
-         <Modal show={this.state.showLoginDriver} onCloseRequest={::this.hideLoginHandler}>
-            <HostSignUp onSignIn={::this.showSignuphHandler}/>
-         </Modal>
       </div>
     )
   }

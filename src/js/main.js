@@ -8,15 +8,10 @@ import Login from './login';
 
 import RiderTripBooking from './rider_trip_booking';
 
-// const LOGIN_REQUIRED = [
-//   /\/ridertripbooking\/\d+/
-// ]
+
 
 
 export default class Main extends Component {
-  // static contextTypes = {
-  //   router: PropTypes.object.isRequired
-  // }
 
   static childContextTypes = {
     requireLogin: PropTypes.func.isRequired
@@ -43,19 +38,10 @@ export default class Main extends Component {
 
   componentDidMount() {
     hashHistory.listen(() => {
-      console.log('removing login');
       this.hideLoginHandler();
     })
   }
 
-  // isLoginRequired() {
-  //   if (cookie.getJSON('current_user')) {
-  //     return false;
-  //   }
-  //   let { pathname } = this.props.location;
-  //   // debugger;
-  //   return LOGIN_REQUIRED.find(regx => regx.exec(pathname));
-  // }
 
   showLoginHandler(event) {
     event.preventDefault();
@@ -63,12 +49,9 @@ export default class Main extends Component {
   }
 
   hideLoginHandler() {
-    // if (!this.isLoginRequired()) {
-      console.log('closing', !this.state.requireLogin, cookie.getJSON('current_user'))
       if (!this.state.requireLogin || cookie.getJSON('current_user')) {
         this.setState({showLogin: false});
       }
-    // }
   }
 
   logOut(){
@@ -76,21 +59,6 @@ export default class Main extends Component {
     cookie.remove('newTrip')
   }
 
-  // componentWillMount() {
-  //   // console.log('route ==>', this.context.router.getCurrentPathname())
-  //   // window.RR = this.context.router;
-  //   console.log('what the fuck?', this.isLoginRequired())
-  //   if (this.isLoginRequired()) {
-  //     this.setState({showLogin: true});
-  //   }
-  // }
-
-  // componentWillReceiveProps(props, context) {
-  //   // console.log('route ==>', context.router.getCurrentPathname())
-  //   // if (this.isLoginRequired()) {
-  //     this.setState({showLogin: true});
-  //   // }
-  // }
 
 
   render(){
@@ -128,8 +96,3 @@ export default class Main extends Component {
     )
   }
 }
-
-            // <Link className='register' to="/login">LOGIN/REGISTER</Link>
-// ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
-            // Move me back when we have data
-            // <Link to={`/profile/${{user_name}}`}>Profile</Link>

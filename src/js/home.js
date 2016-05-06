@@ -5,13 +5,33 @@ import { ajax } from 'jquery';
 import GeoSuggest from 'react-geosuggest';
 import SSF from 'react-simple-serial-form';
 
+let latA;
+let lngA;
+let latB;
+let lngB;
+
 export default class Home extends Component {
 
 
-  onSuggestSelect(suggest) {
-  console.log(suggest);
+onSuggestSelectDepart(suggest) {
+console.log(suggest);
+latA = suggest.location.lat;
+lngA = suggest.location.lng;
+}
+onSuggestSelectDest(suggest) {
+console.log(suggest);
+latB = suggest.location.lat;
+lngB = suggest.location.lng;
 }
 dataHandler(query){
+  console.log('query', query)
+  query.latA = latA;
+  query.lngA = lngA;
+  query.latB = latB;
+  query.lngB = lngB;
+  console.log('latA, longA', latA, lngA)
+  console.log('latB, longB', latB, lngB)
+
   hashHistory.push('/results')
 }
   render(){
@@ -21,32 +41,29 @@ dataHandler(query){
       <div className='home-wrapper'>
 
         <SSF onData={::this.dataHandler} className='search-wrapper'>
-          
+
            <div className='geo-wrapper'>
 
             <label>
-             Departure:
-              <GeoSuggest
-                placeholder="where your trip starts"
-                onSuggestSelect={this.onSuggestSelect}
-                name='departure'
+            Departure:
+            <GeoSuggest
+              placeholder="Start typing!"
+              onSuggestSelect={this.onSuggestSelectDepart}
+              name='departure'
               />
-             </label>
-            </div>
-
-            <div className='geo-wrapper'>
-              <label>
-               Destination:
-               <GeoSuggest
-                placeholder="enter your destination"
-                onSuggestSelect={this.onSuggestSelect}
-                name='destination'
-               />
-             </label>
-           </div>
-
+            </label>
+          </div>
+          <div className='geo-wrapper'>
+            <label>
+            Destination:
+            <GeoSuggest
+              placeholder="Start typing!"
+              onSuggestSelect={this.onSuggestSelectDest}
+              name='destination'
+            />
+            </label>
+          </div>
             <button> Search Trips </button>
-
         </SSF>
 
       </div>
