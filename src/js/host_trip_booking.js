@@ -6,7 +6,9 @@ import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
 import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
+import GeoSuggest from 'react-geosuggest';
 
+let latA, lngA, latB, lngB;
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
@@ -45,6 +47,26 @@ export default class HostTripBooking extends Component {
       this.setState({showLogin: true})
     }
   }
+  componentWillMount(){
+    let { showSignup } = this.state;
+    if (!cookie.getJSON('current_user').driver){
+      this.setState({
+        showSignup: true
+      })
+    }
+    let storedTrip;
+    if (cookie.getJSON('newTrip')) {
+      storedTrip = cookie.getJSON('newTrip');
+      this.setState({
+        trip: storedTrip.newTrip
+      })
+    }else storedTrip = null;
+  }
+
+  showLoginHandler(event) {
+    event.preventDefault();
+    this.setState({showLogin: true});
+  }
 
   hideLoginHandler() {
       this.setState({showLogin: false});
@@ -65,6 +87,28 @@ export default class HostTripBooking extends Component {
     })
   }
 }
+onSuggestSelectDepart(suggest) {
+  console.log(suggest);
+  latA = suggest.location.lat;
+  lngA = suggest.location.lng;
+}
+onSuggestSelectDest(suggest) {
+  console.log(suggest);
+  latB = suggest.location.lat;
+  lngB = suggest.location.lng;
+}
+dataHandler(query){
+  console.log('query', query)
+  query.latA = latA;
+  query.lngA = lngA;
+  query.latB = latB;
+  query.lngB = lngB;
+  console.log('latA, longA', latA, lngA)
+  console.log('latB, longB', latB, lngB)
+
+  hashHistory.push('/results')
+}
+
   render(){
     let { showLogin, driver_info } = this.state;
     return (
@@ -78,24 +122,24 @@ export default class HostTripBooking extends Component {
                placeholder='Phone Number'
                defaultValue={driver_info}/>
            </label>
-     	 HOST TRIP BOOKING PAGE <br/><br/>
-
+     	 HOST TRIP BOOKING PAGE <br/><br/>​
             <label>
               Departure City:
-              <input
+              <GeoSuggest
                 type='text'
                 name='departing_city'
+                onSuggestSelect={this.onSuggestSelectDepart}
                 placeholder='Where are you leaving from?'/>
             </label>
-
+​
               <input
                 type='hidden'
                 name='depart_latitude'/>
-
+​
               <input
                 type='hidden'
                 name='depart_longitude'/>
-
+​
             <label>
               Date:
               <input
@@ -103,25 +147,26 @@ export default class HostTripBooking extends Component {
                 name='date_leave'
                 placeholder='When are you leaving?'/>
             </label>
-
+​
             <label>
               Destination:
-              <input
+              <GeoSuggest
                 type='text'
                 name='destination'
+                onSuggestSelect={this.onSuggestSelectDest}
                 placeholder='Where are you driving to?'/>
             </label>
-
+​
               <input
                 type='hidden'
                 name='destination_longitude'/>
-
+​
               <input
                 type='hidden'
                 name='destination_longitude'/>
-
-
-
+​
+​
+​
             <label>
               Date:
               <input
@@ -129,7 +174,7 @@ export default class HostTripBooking extends Component {
                 name='date_arrive'
                 placeholder='Whats your ETA?'/>
             </label>
-
+​
             <label>
               Seats Available:
               <input
@@ -137,7 +182,7 @@ export default class HostTripBooking extends Component {
                 name='seats_available'
                 placeholder='Number of seats you want to make available'/>
             </label>
-
+​
             <label>
               Total Price:
               <input
@@ -145,14 +190,14 @@ export default class HostTripBooking extends Component {
                 name='seat_price'
                 placeholder='List the price for all seats'/>
             </label>
-
-
+​
+​
             <span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
-            	you've listed 3 seats available. A suggested total is $75.
-            	Riders will reserve seats ahead of time, and the price will go down for them
-            	based on how many seats are filled.  But no worries, you will always get the total amount. </span>
-
-
+              you've listed 3 seats available. A suggested total is $75.
+              Riders will reserve seats ahead of time, and the price will go down for them
+              based on how many seats are filled.  But no worries, you will always get the total amount. </span>
+​
+​
              <label className="trip-description">
               Trip Description:
               <textarea
