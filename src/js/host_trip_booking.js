@@ -76,7 +76,7 @@ export default class HostTripBooking extends Component {
                type='tel'
                name='phone'
                placeholder='Phone Number'
-               defaultValue={driver_info.phone}/>
+               defaultValue={driver_info}/>
            </label>
      	 HOST TRIP BOOKING PAGE <br/><br/>
 
