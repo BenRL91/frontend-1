@@ -6,103 +6,97 @@ import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
 import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
-import HostSignUp from './host_signup';
 import GeoSuggest from 'react-geosuggest';
-​
-​
+
+let latA, lngA, latB, lngB;
+
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
     this.state = {
-      trip: {
-        comments: "",
-        date_arrive: "",
-        date_leave: "",
-        departing_city: "",
-        destination: "",
-        seat_price: "",
-        seats_available : ""
-      },
+      current_user: null,
+      user_is_driver: false,
       showLogin: false,
-      showLoginDriver: false,
-      showSignup: false
     }
   }
-componentWillMount(){
-  let { showSignup } = this.state;
-  if (!cookie.getJSON('current_user').driver){
-    this.setState({
-      showSignup: true
-    })
+    componentWillMount(){
+      let current_user = cookie.getJSON('current_user')
+      ? cookie.getJSON('current_user').current_user
+      : null;
+      let user_is_driver = current_user
+      ? current_user.driver
+      : false;
+        this.setState({
+          current_user,
+          user_is_driver
+        });
+    }
+
+  loginHandler(){
+    let current_user = cookie.getJSON('current_user')
+    ? cookie.getJSON('current_user').current_user
+    : null;
+      this.setState({ current_user });
+    if (current_user){
+      this.hideLoginHandler()
+      this.props.loginCheck()
+    }
   }
-  let storedTrip;
-  if (cookie.getJSON('newTrip')) {
-    storedTrip = cookie.getJSON('newTrip');
-    this.setState({
-      trip: storedTrip.newTrip
-    })
-  }else storedTrip = null;
-}
-​
+  showLoginHandler() {
+    let { current_user } = this.state;
+    if(!current_user){
+      this.setState({showLogin: true})
+    }
+  }
+  componentWillMount(){
+    let { showSignup } = this.state;
+    if (!cookie.getJSON('current_user').driver){
+      this.setState({
+        showSignup: true
+      })
+    }
+    let storedTrip;
+    if (cookie.getJSON('newTrip')) {
+      storedTrip = cookie.getJSON('newTrip');
+      this.setState({
+        trip: storedTrip.newTrip
+      })
+    }else storedTrip = null;
+  }
+
   showLoginHandler(event) {
     event.preventDefault();
     this.setState({showLogin: true});
   }
-​
+
   hideLoginHandler() {
-    console.log('closing', !this.state.requireLogin, cookie.getJSON('current_user'))
-    if (!this.state.requireLogin || cookie.getJSON('current_user')) {
       this.setState({showLogin: false});
-    }
   }
-  showSignuphHandler(){
-    if (!cookie.getJSON('current_user').driver){
-      this.setState({showSignup: true})
-    }else{this.setState({showSignup: false})}
-  }
-isDriver(user){
-  if (user.current_user.driver){
-    return true;
-  }else {
-    return false;
-  }
-}
+
   book(trip_details){
-    let user = cookie.getJSON('current_user')
-    cookie.set('newTrip', { newTrip: trip_details })
-    if (!user){
-      // hashHistory.push('/loginattripcreation')
+    let { current_user, showLogin } = this.state;
+    if(!current_user){
       this.setState({showLogin: true})
-    }else if(!this.isDriver(user)){
-      // hashHistory.push('/hostsignup')
-      this.setState({showLoginDriver: true})
     }else {
       ajax({
         url: 'https://salty-river-31528.herokuapp.com/hosts',
         type: 'POST',
-        data: trip_details,
-        headers: {
-          'Auth-Token': user.current_user.auth_token
-        }
+        data: trip_details
       }).then( resp => {
         console.log(resp)
-      cookie.remove('newTrip')
-      hashHistory.push('/drivertripconfirmation')
+      hashHistory.push('/driverconfirmation')
     })
   }
 }
-​
-​
-​
 onSuggestSelectDepart(suggest) {
-console.log(suggest);
-latA = suggest.location.lat;
-lngA = suggest.location.lng;
+  console.log(suggest);
+  latA = suggest.location.lat;
+  lngA = suggest.location.lng;
 }
 onSuggestSelectDest(suggest) {
-console.log(suggest);
-latB = suggest.location.lat;
-lngB = suggest.location.lng;
+  console.log(suggest);
+  latB = suggest.location.lat;
+  lngB = suggest.location.lng;
 }
 dataHandler(query){
   console.log('query', query)
@@ -112,26 +106,24 @@ dataHandler(query){
   query.lngB = lngB;
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
-​
+
   hashHistory.push('/results')
 }
-​
-​
-​
-​
+
   render(){
-    let { trip, showSignup } = this.state;
-    let user_id = cookie.getJSON('current_user').id;
-    console.log(user_id)
+    let { showLogin, driver_info } = this.state;
     return (
-​
       <div className="host-booking-wrapper">
-       <Modal show={showSignup} onCloseRequest={ x => x}>
-          <div cassName='signup-banner'>You must become a driver in order to book a trip, please visit <Link to={`/editprofile/${user_id}`}>Profile Edit</Link> to sign up!</div>
-       </Modal>
-       <SSF className='host-trip-form' onData={::this.book}>
-       HOST TRIP BOOKING PAGE <br/><br/>
-​
+     	 <SSF className='host-trip-form' onData={::this.book}>
+           <label>
+             Phone:
+             <input
+               type='tel'
+               name='phone'
+               placeholder='Phone Number'
+               defaultValue={driver_info}/>
+           </label>
+     	 HOST TRIP BOOKING PAGE <br/><br/>​
             <label>
               Departure City:
               <GeoSuggest
@@ -216,46 +208,11 @@ dataHandler(query){
             </textarea>
             </label>
             <button>HOST</button>
-       </SSF>
+     	 </SSF>
+       <Modal show={showLogin} onCloseRequest={::this.hideLoginHandler}>
+         <LoginAtTripCreation onLogin={::this.loginHandler}/>
+       </Modal>
       </div>
     )
   }
 }
-​
-​
-​
-​
-​
-// NEED TO INTERPERLATE ESTIMATE PRICES IN TIP PARAGRAPH/////
-​
-​
-​
-​
-​
-      ////*<script
-      // <div>
-      // src={`https://maps.googleapis.com/maps/api/js?key=${token}&callback=initMap`
-      // async defer/>
-        // <label>
-          // Starting:
-          // <input
-            // ref={input => this.input1 = input}
-            // onChange={() => this.getStartLocation(this.input1.value)}
-            // type='text'
-            // name='starting_point'
-            // defaultValue=''
-            // value={this.state.starting_point}
-            // placeholder='Type Start Point'/>
-        // </label>
-        // <label>
-          // Ending:
-          // <input
-          // ref={input => this.input2 = input}
-          // onChange={() => this.getEndLocation(this.input2.value)}
-          // type='text'
-          // name='starting_point'
-          // defaultValue=''
-          // value={this.state.destination}
-          // placeholder='Type Start Point'/>
-         // </label>
-// */////

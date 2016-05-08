@@ -3,7 +3,6 @@ import { Link, hashHistory } from 'react-router';
 import SSF from 'react-simple-serial-form';
 import { ajax } from 'jquery';
 import cookie from 'js-cookie';
-import requireLogin from './login_require';
 
        //// add me to route to RIDER TRIP BOOKED AFTER COOKIE.SET // hashHistory.push('/tripdetails');
 
@@ -11,7 +10,6 @@ import requireLogin from './login_require';
 // PUT REQUEST/////
 ///need to make this so that were just sending backend the user ID because the CC info is dummy data//////
 
-@requireLogin
 export default class RiderTripBooking extends Component {
 	constructor(...args){
 		super(...args);

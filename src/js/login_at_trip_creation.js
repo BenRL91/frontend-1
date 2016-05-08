@@ -37,13 +37,7 @@ export default class Login extends Component {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
         let user = resp
-        hashHistory.push('/hosttripbooking')
-        // if (!user.driver){
-        //   hashHistory.push('/hostsignup')
-        // }else {
-        //   let trip_id = cookie.getJSON('current_trip').id
-        //   hashHistory.push(`/hosttripbooking`)
-        // }
+        hashHistory.push('/hostbooking')
       })
     }
 
@@ -57,13 +51,7 @@ export default class Login extends Component {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
         let user = resp
-        hashHistory.push('/hosttripbooking')
-        // if (!user.driver){
-        //   hashHistory.push('/hostsignup')
-        // }else {
-        //   let trip_id = cookie.getJSON('current_trip').id
-        //   hashHistory.push(`/hosttripbooking`)
-        // }
+        hashHistory.push('/hostbooking')
       })
     }
 

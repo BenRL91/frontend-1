@@ -11,7 +11,6 @@ import Profile from './profile';
 import MyProfile from './my_profile';
 import EditProfile from './edit_profile';
 import HostTripBooking from './host_trip_booking';
-import HostSingleView from './host_single_view';
 import HostSignUp from './host_signup';
 import DriverTripConfirmation from './driver_trip_confirmation';
 import TripDetails from './trip_details';
@@ -21,47 +20,35 @@ import RiderTripBooking from './rider_trip_booking';
 import RiderTripConfirmation from './rider_trip_confirmation';
 import RiderTripNoSeats from './rider_trip_no_seats';
 import cookie from 'js-cookie';
-import $, { ajaxSetup } from 'jquery';
+import { ajaxSetup } from 'jquery';
 
 
 
-let current_user;
-if (cookie.getJSON('current_user')) {
-
-
-  current_user = cookie.getJSON('current_user').current_user;
-  console.log(cookie.getJSON('current_user'))
-
+let current_user = cookie.getJSON('current_user')
+? cookie.getJSON('current_user').current_user
+: null
+if ( current_user ){
   ajaxSetup({
-            headers: {
-              'Auth-Token': current_user.auth_token
-            }
-          })
-}else {
-  current_user = null;
+    headers: {
+      'Auth-Token': current_user.auth_token
+    }
+  })
 }
-
 
 render((
   <Router history={ hashHistory }>
-    <Route path='/'                          component={ Main }>
+    <Route   path='/'                        component={ Main }>
       <IndexRoute                            component={ Home }/>
-      <Route path='/login'                   component={ Login }/>
       <Route path='/profile/:user_id'        component={ Profile }/>
-      <Route path='/myprofile'               component={ MyProfile }/>
       <Route path='/editprofile/:user_id'    component={ EditProfile }/>
-      <Route path='/hosttripbooking'         component={ HostTripBooking }/>
-      <Route path='/hostsingleview'          component={ HostSingleView }/>
-      <Route path='/tripdetails/:trip_id'    component={ TripDetails }/>
+      <Route path='/hostbooking'             component={ HostTripBooking }/>
+      <Route path='/details/:trip_id'        component={ TripDetails }/>
       <Route path='/edittrip/:trip_id'       component={ EditTrip }/>
-      <Route path='/ridertripbooking/:id'    component={ RiderTripBooking }/>
-      <Route path='/ridertripconfirmation'   component={ RiderTripConfirmation }/>
-      <Route path='/ridertripnoseats'        component={ RiderTripNoSeats }/>
+      <Route path='/riderbooking/:id'        component={ RiderTripBooking }/>
+      <Route path='/riderconfirmation'       component={ RiderTripConfirmation }/>
+      <Route path='/ridernoseats'            component={ RiderTripNoSeats }/>
       <Route path='/results/:lat/:lng/:rad'  component={ Results }/>
-      <Route path='/hostsignup'              component={ HostSignUp }/>
-      <Route path='/loginriderbooking'       component={ LoginRiderBooking }/>
-      <Route path='loginattripcreation'      component={ LoginAtTripCreation }/>
-      <Route path='/drivertripconfirmation'  component={ DriverTripConfirmation }/>
+      <Route path='/driverconfirmation'      component={ DriverTripConfirmation }/>
     </Route>
   </Router>
 ), document.querySelector('.app'));

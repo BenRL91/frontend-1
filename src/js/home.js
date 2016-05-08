@@ -5,10 +5,7 @@ import { ajax } from 'jquery';
 import GeoSuggest from 'react-geosuggest';
 import SSF from 'react-simple-serial-form';
 
-let latA;
-let lngA;
-let latB;
-let lngB;
+let latA, lngA, latB, lngB;
 
 export default class Home extends Component {
 

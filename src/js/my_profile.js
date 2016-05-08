@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import {ajax} from 'jquery';
 import cookie from 'js-cookie'
-import requireLogin from './login_require';
-
 
 //////MY PROFILE HAS EDITING CAPABILITIES ONLY AVAILABLE FOR CREATOR OF PROFILE////
 
-@requireLogin
 export default class MyProfile extends Component {
   constructor(...args){
   super(...args);
@@ -104,7 +101,7 @@ renderPage(){
             <span className="your-trips"> Your Trips </span>
             <Link to="/hosttripbooking" className="new-trips-btn"> + MAKE A NEW TRIP </Link>
           </div>
-          
+
 
           <div className="profile-trips-list">
 
