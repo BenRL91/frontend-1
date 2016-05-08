@@ -40,59 +40,24 @@ if (cookie.getJSON('current_user')) {
 }else {
   current_user = null;
 }
-function checkIfLoggedIn(state, replace){
-  if (cookie.getJSON('current_user')) {
-    current_user = cookie.getJSON('current_user').current_user
-    ajaxSetup({
-              headers: {
-                'Auth-Token': current_user.auth_token
-              }
-            })
-  }else {
-    current_user = null;
-  }  let trip_id = cookie.getJSON('saved_trip');
-  if (!current_user) {
-    // replace('/loginriderbooking')
 
-  }
-  console.log('state', state);
-  state.jd = 'foo';
-}
-
-function checkIfLoggedInProfile(state, replace){
-  if (cookie.getJSON('current_user')) {
-    current_user = cookie.getJSON('current_user').current_user
-    ajaxSetup({
-              headers: {
-                'Auth-Token': current_user.auth_token
-              }
-            })
-  }else {
-    current_user = null;
-  }
-      if (!current_user) {replace('/login')}
-}
-
-function addCoolToElement(Comp, props) {
-  return <Comp {...props} cool="true"/>
-}
 
 render((
-  <Router history={ hashHistory } createElement={addCoolToElement}>
+  <Router history={ hashHistory }>
     <Route path='/'                          component={ Main }>
       <IndexRoute                            component={ Home }/>
       <Route path='/login'                   component={ Login }/>
       <Route path='/profile/:user_id'        component={ Profile }/>
-      <Route path='/myprofile'               component={ MyProfile }        onEnter={checkIfLoggedInProfile}/>
+      <Route path='/myprofile'               component={ MyProfile }/>
       <Route path='/editprofile/:user_id'    component={ EditProfile }/>
       <Route path='/hosttripbooking'         component={ HostTripBooking }/>
       <Route path='/hostsingleview'          component={ HostSingleView }/>
       <Route path='/tripdetails/:trip_id'    component={ TripDetails }/>
       <Route path='/edittrip/:trip_id'       component={ EditTrip }/>
-      <Route path='/ridertripbooking/:id'    component={ RiderTripBooking } onEnter={checkIfLoggedIn}/>
+      <Route path='/ridertripbooking/:id'    component={ RiderTripBooking }/>
       <Route path='/ridertripconfirmation'   component={ RiderTripConfirmation }/>
       <Route path='/ridertripnoseats'        component={ RiderTripNoSeats }/>
-      <Route path='/results/:lat/:lng/:rad'                 component={ Results }/>
+      <Route path='/results/:lat/:lng/:rad'  component={ Results }/>
       <Route path='/hostsignup'              component={ HostSignUp }/>
       <Route path='/loginriderbooking'       component={ LoginRiderBooking }/>
       <Route path='loginattripcreation'      component={ LoginAtTripCreation }/>

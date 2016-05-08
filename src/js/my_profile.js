@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import {ajax} from 'jquery';
 import cookie from 'js-cookie'
-
+import requireLogin from './login_require';
 
 
 //////MY PROFILE HAS EDITING CAPABILITIES ONLY AVAILABLE FOR CREATOR OF PROFILE////
 
-
+@requireLogin
 export default class MyProfile extends Component {
   constructor(...args){
   super(...args);
@@ -19,7 +19,7 @@ export default class MyProfile extends Component {
   }
 
   componentWillMount(){
-    let user = cookie.getJSON('current_user').current_user
+    let user = cookie.getJSON('current_user') ? cookie.getJSON('current_user').current_user : null
     if (user){
       console.log(user)
       let url = `https://salty-river-31528.herokuapp.com/profile/${user.id}`
@@ -37,10 +37,9 @@ export default class MyProfile extends Component {
               current_user: resp.user,
               loading: false
             })
-            }
-        )
-    }
-    }
+          })
+        }
+      }
 
 
 gettrips(trip){
