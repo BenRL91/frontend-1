@@ -32,11 +32,22 @@ export default class Results extends Component {
       </div>
     )
   }
+  // ?destination_latitude=${lat}&destination_longitude=${lng}&radius=${rad}
   componentWillMount(){
-    ajax('https://salty-river-31528.herokuapp.com/hosts')
-    .then(trips => {
-      this.setState({trips: trips.host})
-      console.log(trips)
+    let { lat, lng, rad } = this.props.params;
+    ajax({
+      url: 'https://salty-river-31528.herokuapp.com/dest_search',
+      type: 'GET',
+      data: {
+        destination_latitude: lat,
+        destination_longitude: lng,
+        radius: rad
+      }
+    })
+
+    .then(results => {
+      this.setState({trips: results.search})
+      console.log(results)
     })
   }
   render(){
