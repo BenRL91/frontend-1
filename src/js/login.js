@@ -39,9 +39,12 @@ export default class Login extends Component {
       cache: false,
       processData: false,
       contentType: false
-
-
     }).then(resp => {
+      ajaxSetup({
+        headers: {
+          'Auth-Token': resp.user.auth_token
+        }
+      })
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
         if (this.props.onLogin) {
@@ -61,6 +64,11 @@ export default class Login extends Component {
       type: 'POST',
       data: user_credentials
     }).then( resp => {
+      ajaxSetup({
+        headers: {
+          'Auth-Token': resp.user.auth_token
+        }
+      })
       console.log(resp)
       cookie.set('current_user', {current_user: resp.user})
       if (this.props.onLogin) {
