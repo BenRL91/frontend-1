@@ -7,11 +7,9 @@ import cookie from 'js-cookie';
 import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
 import HostSignUp from './host_signup';
-import requireLogin from './login_require';
 import GeoSuggest from 'react-geosuggest';
 ​
 ​
-@requireLogin
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
