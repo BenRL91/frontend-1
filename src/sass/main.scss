@@ -1,14 +1,16 @@
 /* CSS Entry Point */
 
 // Turn on freq used libraries
-// @import 'font-awesome/scss/font-awesome';
+@import 'font-awesome/scss/font-awesome';
 @import '_geosuggest';
 @import 'normalize-css/normalize';
 @import '_main';
 @import '_home';
 @import '_profile';
+@import '_editprofile';
 @import '_login';
 @import '_hosttripbooking';
+@import '_hostsignup';
 @import '_results';
 @import '_tripdetails';
 @import '_ridertripbooking';
