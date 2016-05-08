@@ -8,7 +8,9 @@ import Modal from './modal';
 import LoginAtTripCreation from './login_at_trip_creation';
 import HostSignUp from './host_signup';
 import requireLogin from './login_require';
-
+import GeoSuggest from 'react-geosuggest';
+​
+​
 @requireLogin
 export default class HostTripBooking extends Component {
   constructor(...args){
@@ -25,6 +27,7 @@ export default class HostTripBooking extends Component {
       },
       showLogin: false,
       showLoginDriver: false,
+      showSignup: false
     }
   }
 componentWillMount(){
@@ -42,12 +45,12 @@ componentWillMount(){
     })
   }else storedTrip = null;
 }
-
+​
   showLoginHandler(event) {
     event.preventDefault();
     this.setState({showLogin: true});
   }
-
+​
   hideLoginHandler() {
     console.log('closing', !this.state.requireLogin, cookie.getJSON('current_user'))
     if (!this.state.requireLogin || cookie.getJSON('current_user')) {
@@ -90,123 +93,147 @@ isDriver(user){
     })
   }
 }
-
-
-
-
+​
+​
+​
+onSuggestSelectDepart(suggest) {
+console.log(suggest);
+latA = suggest.location.lat;
+lngA = suggest.location.lng;
+}
+onSuggestSelectDest(suggest) {
+console.log(suggest);
+latB = suggest.location.lat;
+lngB = suggest.location.lng;
+}
+dataHandler(query){
+  console.log('query', query)
+  query.latA = latA;
+  query.lngA = lngA;
+  query.latB = latB;
+  query.lngB = lngB;
+  console.log('latA, longA', latA, lngA)
+  console.log('latB, longB', latB, lngB)
+​
+  hashHistory.push('/results')
+}
+​
+​
+​
+​
   render(){
-    let { trip } = this.state;
+    let { trip, showSignup } = this.state;
+    let user_id = cookie.getJSON('current_user').id;
+    console.log(user_id)
     return (
-
+​
       <div className="host-booking-wrapper">
-     	 <SSF className='host-trip-form' onData={::this.book}>
-     	 HOST TRIP BOOKING PAGE <br/><br/>
-
+       <Modal show={showSignup} onCloseRequest={ x => x}>
+          <div cassName='signup-banner'>You must become a driver in order to book a trip, please visit <Link to={`/editprofile/${user_id}`}>Profile Edit</Link> to sign up!</div>
+       </Modal>
+       <SSF className='host-trip-form' onData={::this.book}>
+       HOST TRIP BOOKING PAGE <br/><br/>
+​
             <label>
               Departure City:
-              <input
+              <GeoSuggest
                 type='text'
                 name='departing_city'
-                defaultValue={trip.departing_city}
+                onSuggestSelect={this.onSuggestSelectDepart}
                 placeholder='Where are you leaving from?'/>
             </label>
-
+​
               <input
                 type='hidden'
                 name='depart_latitude'/>
-
+​
               <input
                 type='hidden'
                 name='depart_longitude'/>
-
+​
             <label>
               Date:
               <input
                 type='date'
                 name='date_leave'
-                defaultValue={trip.date_leave}
                 placeholder='When are you leaving?'/>
             </label>
-
+​
             <label>
               Destination:
-              <input
+              <GeoSuggest
                 type='text'
                 name='destination'
-                defaultValue={trip.destination}
+                onSuggestSelect={this.onSuggestSelectDest}
                 placeholder='Where are you driving to?'/>
             </label>
-
+​
               <input
                 type='hidden'
                 name='destination_longitude'/>
-
+​
               <input
                 type='hidden'
                 name='destination_longitude'/>
-
-
-
+​
+​
+​
             <label>
               Date:
               <input
                 type='date'
                 name='date_arrive'
-                defaultValue={trip.date_arrive}
                 placeholder='Whats your ETA?'/>
             </label>
-
+​
             <label>
               Seats Available:
               <input
                 type='text'
                 name='seats_available'
-                defaultValue={trip.seats_available}
                 placeholder='Number of seats you want to make available'/>
             </label>
-
+​
             <label>
               Total Price:
               <input
                 type='text'
                 name='seat_price'
-                defaultValue={trip.seat_price}
                 placeholder='List the price for all seats'/>
             </label>
-
-
+​
+​
             <span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
-            	you've listed 3 seats available. A suggested total is $75.
-            	Riders will reserve seats ahead of time, and the price will go down for them
-            	based on how many seats are filled.  But no worries, you will always get the total amount. </span>
-
-
+              you've listed 3 seats available. A suggested total is $75.
+              Riders will reserve seats ahead of time, and the price will go down for them
+              based on how many seats are filled.  But no worries, you will always get the total amount. </span>
+​
+​
              <label className="trip-description">
               Trip Description:
               <textarea
                 type='text'
                 name='comments'
-                defaultValue={trip.comments}
                 placeholder='tell us about your trip'>
             </textarea>
             </label>
             <button>HOST</button>
-     	 </SSF>
+       </SSF>
       </div>
     )
   }
 }
-
-
-
-
-
+​
+​
+​
+​
+​
 // NEED TO INTERPERLATE ESTIMATE PRICES IN TIP PARAGRAPH/////
-
-
-
-
-
+​
+​
+​
+​
+​
       ////*<script
       // <div>
       // src={`https://maps.googleapis.com/maps/api/js?key=${token}&callback=initMap`
