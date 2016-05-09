@@ -164,11 +164,11 @@ dataHandler(query){
             </label>
 ​
 ​
-            <span className="host-span"> 
-            Tip: The price listed above is a suggested price calculated by 
-            the actual miles you're traveling and the daily gas prices.  
-            This tool is made available as a guideline, but you may charge 
-            what you want. 
+            <span className="host-span">
+            Tip: The price listed above is a suggested price calculated by
+            the actual miles you're traveling and the daily gas prices.
+            This tool is made available as a guideline, but you may charge
+            what you want.
             </span>
 ​
              <label className="trip-description">

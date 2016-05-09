@@ -8,10 +8,8 @@ import Login from './login';
 import LoginRiderBooking from './login_rider_booking';
 import LoginAtTripCreation from './login_at_trip_creation';
 import Profile from './profile';
-import MyProfile from './my_profile';
 import EditProfile from './edit_profile';
 import HostTripBooking from './host_trip_booking';
-import HostSignUp from './host_signup';
 import DriverTripConfirmation from './driver_trip_confirmation';
 import TripDetails from './trip_details';
 import EditTrip from './edit_trip';
@@ -47,7 +45,7 @@ render((
       <Route path='/riderbooking/:id'        component={ RiderTripBooking }/>
       <Route path='/riderconfirmation'       component={ RiderTripConfirmation }/>
       <Route path='/ridernoseats'            component={ RiderTripNoSeats }/>
-      <Route path='/results/:lat/:lng/:rad'  component={ Results }/>
+      <Route path='/results/:lat/:lng/:rad/:loc'  component={ Results }/>
       <Route path='/driverconfirmation'      component={ DriverTripConfirmation }/>
     </Route>
   </Router>

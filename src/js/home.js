@@ -29,7 +29,7 @@ dataHandlerDepart(query){
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
 
-  hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}`)
+  hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}/depart`)
 }
 dataHandlerDest(query){
   console.log('query', query)
@@ -40,7 +40,7 @@ dataHandlerDest(query){
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
 
-  hashHistory.push(`/results/${query.latB}/${query.lngB}/${query.rad}`)
+  hashHistory.push(`/results/${query.latB}/${query.lngB}/${query.rad}/dest`)
 }
   render(){
     return (
