@@ -51,6 +51,7 @@
   font-size: 1rem;
   padding: .5em .65em;
   cursor: pointer;
+  color: #a2a2a2;
 }
 .geosuggest-item:hover,
 .geosuggest-item:focus {
@@ -58,7 +59,8 @@
 }
 .geosuggest-item--active {
   background: #267dc0;
-  color: #fff;
+  color: #a2a2a2;
+  // normally text color white here//
 }
 .geosuggest-item--active:hover,
 .geosuggest-item--active:focus {

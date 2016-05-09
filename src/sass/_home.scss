@@ -24,11 +24,12 @@ $tangerine: #ffa800;
     			display: flex;
     			flex-direction: column;
 				align-items: center;
-				padding-top: 5vh;
+				padding-top: 4vh;
 				width: 70vw;
 				height: 30vh;
 				background-color: #222222;
 				color:white;
+
 
 				.geo-wrapper input{
 					color: #A9A9B3;
@@ -37,7 +38,18 @@ $tangerine: #ffa800;
   					border: 2px solid transparent;
   					box-shadow: 0 0 1px #3d464d;
   					padding: .5em 1em;
+
 				}
+
+				// input:checked{
+				// 	color: red;
+				// } def not working
+
+  					label{
+  						font-size: 1.35em;
+  						font-weight: 300;
+  					}
+
 
  				button{
  					margin-top: 4vh;
