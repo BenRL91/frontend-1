@@ -17,6 +17,14 @@
 @import '_drivertripconfirmation';
 
 
+
+// consistencies ********
+    // padding-top:10vh;
+
+
+
+
+
 ///color scheme ////
 
 $mint: #c3e9d4;
@@ -33,6 +41,7 @@ $tangerine: #ffa800;
   box-sizing: border-box;
   position:relative;
   font-size: 12px;
+  // background-color:  #222222;
 
   ul {
     list-style: none;
@@ -41,12 +50,14 @@ $tangerine: #ffa800;
     text-decoration: none;
     // color:black;
     color: black;
+    outline:none;
   }
   a:hover{
     color: black;
   }
   a:active{
     border:none;
+    outline:none;
   }
   h1, h2, h3, h4 {
     margin: 0;
