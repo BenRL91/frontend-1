@@ -30,8 +30,6 @@ export default class Profile extends Component {
         })
       })
     }
-
-
 gettrips(trip){
   return (
   <div className="profile_get_trips" key={trip.host_id}>
