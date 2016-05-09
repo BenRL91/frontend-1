@@ -10,6 +10,7 @@ export default class LoginAtTripBook extends Component {
     onLogin: PropTypes.func.isRequired
   }
   constructor(...args){
+    console.log('hey')
     super(...args)
     this.state={
       preview: 'http://fillmurray.com/50/50'
@@ -18,6 +19,7 @@ export default class LoginAtTripBook extends Component {
 
 
   register(new_user_credentials) {
+    console.log('registering')
     let data = new FormData;
     data.append('first_name', new_user_credentials.first_name)
     data.append('last_name', new_user_credentials.last_name)
@@ -50,6 +52,7 @@ export default class LoginAtTripBook extends Component {
 
 
   login(user_credentials){
+    console.log('logging in')
     ajax({
       url: 'https://salty-river-31528.herokuapp.com/logins',
       type: 'POST',
@@ -68,6 +71,7 @@ export default class LoginAtTripBook extends Component {
 
 
   dropHandler([file]){
+    console.log('previewing')
     this.setState({
       preview: file.preview
     })
@@ -77,7 +81,7 @@ export default class LoginAtTripBook extends Component {
 
 
   render(){
-
+    console.log('rendering')
     return (
       <div className='login-wrapper'>
       {/*Login Form*/}

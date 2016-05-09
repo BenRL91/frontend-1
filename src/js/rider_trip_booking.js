@@ -4,7 +4,7 @@ import SSF from 'react-simple-serial-form';
 import { ajax } from 'jquery';
 import cookie from 'js-cookie';
 import Modal from './modal';
-import LoginAtTripBook from './rider_trip_booking';
+import LoginAtTripBook from './login_rider_booking';
 
        //// add me to route to RIDER TRIP BOOKED AFTER COOKIE.SET // hashHistory.push('/tripdetails');
 
@@ -21,24 +21,25 @@ export default class RiderTripBooking extends Component {
 		}
 	}
 		componentWillMount(){
+			console.log('mounting')
 			let current_user = cookie.getJSON('current_user')
 			? cookie.getJSON('current_user').current_user
 			: null;
-				this.setState({
-					current_user
-				});
+			this.setState({current_user})
 		}
 
 	loginHandler(){
+		console.log('logging in')
 		let current_user = cookie.getJSON('current_user')
 		? cookie.getJSON('current_user').current_user
 		: null;
 			this.setState({ current_user });
-		if (current_user){
-			this.hideLoginHandler()
-		}
+			if (current_user){
+				this.hideLoginHandler()
+			}
 	}
 	showLoginHandler() {
+		console.log('showing');
 		let { current_user } = this.state;
 		console.log('current_user', current_user)
 		if(!current_user){
@@ -46,6 +47,7 @@ export default class RiderTripBooking extends Component {
 		}
 	}
 	hideLoginHandler() {
+		console.log('hiding')
 		let current_user = cookie.getJSON('current_user')
 		? cookie.getJSON('current_user').current_user
 		: null;
@@ -53,6 +55,7 @@ export default class RiderTripBooking extends Component {
 	}
 
 	  book(bookingInfo) {
+			console.log('trying to book')
 			let {id} = this.props.params;
 			let current_user = cookie.getJSON('current_user')
 			? cookie.getJSON('current_user').current_user

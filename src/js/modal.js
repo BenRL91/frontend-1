@@ -9,6 +9,7 @@ export default class Modal extends Component {
   }
 
   render(){
+    console.log('rendering modal')
     let wrapperClass = classnames('modal-wrapper', {shown: this.props.show})
     return (
       <div className={wrapperClass}>

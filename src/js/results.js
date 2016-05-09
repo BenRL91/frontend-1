@@ -40,8 +40,8 @@ export default class Results extends Component {
         url: 'https://salty-river-31528.herokuapp.com/depart_search',
         type: 'GET',
         data: {
-          destination_latitude: lat,
-          destination_longitude: lng,
+          depart_latitude: lat,
+          depart_longitude: lng,
           radius: rad
         }
       })

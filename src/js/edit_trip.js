@@ -75,7 +75,7 @@ renderLoading(){
 renderPage(){
   let trip = this.state.current_trip;
     let user = this.state.current_user;
-    console.log(trip.id)
+    console.log(trip)
 
 
 
