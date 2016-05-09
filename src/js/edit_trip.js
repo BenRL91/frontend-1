@@ -3,14 +3,14 @@ import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import GeoSuggest from 'react-geosuggest';
-
+import cookie from 'js-cookie';
 
 export default class EditTrip extends Component {
   constructor(...args){
     super(...args);
     this.state = {
       current_trip: {},
-      current_user: {},
+      current_user: null,
       loading: true
     }
 
@@ -19,8 +19,10 @@ export default class EditTrip extends Component {
 
   componentWillMount(){
     let id = this.props.params.trip_id;
-
-
+    let current_user = cookie.getJSON('current_user')
+    ? cookie.getJSON('current_user').current_user
+    : null
+    this.setState({current_user})
     ajax(`https://salty-river-31528.herokuapp.com/hosts/${id}`)
     .then(resp => {
       console.log(resp)
@@ -51,14 +53,14 @@ export default class EditTrip extends Component {
   deleteHandler(){
 
     let id = this.props.params.trip_id;
-
+    let { current_user } = this.state;
     ajax({
       url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
       type: 'DELETE'
     }).then( resp => {
       console.log(resp)
       // cookie.set('current_trip', {current_trip: resp.trip)
-      hashHistory.push('/myprofile')
+      hashHistory.push(`/profile/${current_user.id}`)
     })
   }
 

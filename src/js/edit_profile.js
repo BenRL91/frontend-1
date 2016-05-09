@@ -58,17 +58,17 @@ export default class EditProfile extends Component {
 
 
     deleteHandler(){
+      let id = this.props.params.user_id;
+      if(window.confirm('Are you sure you want do delete your profile?')){
+        ajax({
+          url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
+          type: 'DELETE'
+        }).then( resp => {
+          console.log(resp)
+          hashHistory.push('/')
+        }).fail(e => console.log(e))
+      }
 
-    let id = this.props.params.user_id;
-
-    ajax({
-      url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
-      type: 'DELETE'
-    }).then( resp => {
-      console.log(resp)
-      // cookie.set('current_trip', {current_trip: resp.trip)
-      hashHistory.push('/')
-    })
   }
 
   dropHandler([file]){

@@ -34,21 +34,39 @@ export default class Results extends Component {
   }
   // ?destination_latitude=${lat}&destination_longitude=${lng}&radius=${rad}
   componentWillMount(){
-    let { lat, lng, rad } = this.props.params;
-    ajax({
-      url: 'https://salty-river-31528.herokuapp.com/dest_search',
-      type: 'GET',
-      data: {
-        destination_latitude: lat,
-        destination_longitude: lng,
-        radius: rad
-      }
-    })
+    let { lat, lng, rad, loc } = this.props.params;
+    if (loc === 'depart'){
+      ajax({
+        url: 'https://salty-river-31528.herokuapp.com/depart_search',
+        type: 'GET',
+        data: {
+          destination_latitude: lat,
+          destination_longitude: lng,
+          radius: rad
+        }
+      })
 
-    .then(results => {
-      this.setState({trips: results.search})
-      console.log(results)
-    })
+      .then(results => {
+        this.setState({trips: results.search})
+        console.log(results)
+      })
+
+    }else if( loc === 'dest'){
+      ajax({
+        url: 'https://salty-river-31528.herokuapp.com/dest_search',
+        type: 'GET',
+        data: {
+          destination_latitude: lat,
+          destination_longitude: lng,
+          radius: rad
+        }
+      })
+
+      .then(results => {
+        this.setState({trips: results.search})
+        console.log(results)
+      })
+    }
   }
   render(){
     let { trips } = this.state;

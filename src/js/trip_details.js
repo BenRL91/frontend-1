@@ -89,7 +89,7 @@ renderPage(){
             </div>
 
           <div className="trip-details-seats">
-          <b>{current_trip.seats_available}</b>
+          <b>{current_trip.seats_left}</b>
           <br/>  seats available
           </div>
 

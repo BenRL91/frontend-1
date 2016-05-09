@@ -3,6 +3,8 @@ import { Link, hashHistory } from 'react-router';
 import SSF from 'react-simple-serial-form';
 import { ajax } from 'jquery';
 import cookie from 'js-cookie';
+import Modal from './modal';
+import LoginAtTripBook from './rider_trip_booking';
 
        //// add me to route to RIDER TRIP BOOKED AFTER COOKIE.SET // hashHistory.push('/tripdetails');
 
@@ -13,63 +15,72 @@ import cookie from 'js-cookie';
 export default class RiderTripBooking extends Component {
 	constructor(...args){
 		super(...args);
-		console.log('my class', args)
+		this.state = {
+			current_user: null,
+			showLogin: false
+		}
 	}
-	  book(rider_trip_booking) {
+		componentWillMount(){
+			let current_user = cookie.getJSON('current_user')
+			? cookie.getJSON('current_user').current_user
+			: null;
+				this.setState({
+					current_user
+				});
+		}
 
-		// 	let tripData
-		// 	let {id} = this.props.params;
-		// 	ajax(`https://salty-river-31528.herokuapp.com/riders/${id}`).then(
-		// 		resp => {
-		// 			tripData = resp.hosts
-		// 			if (tripData.seats_available > 0){
-		// 				tripData.seats_available -= 1
-		// 				console.log(tripData.seats_available)
-		// 				ajax({
-		// 		      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
-		// 		      type: 'PUT',
-		// 		      data: {seats_available: tripData.seats_available},
-    //           headers: {
-    //             'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
-    //           }
-		// 		    }).then(resp => {
-		// 		        cookie.set('current_trip', {current_trip: resp.trip})
-    //             hashHistory.push('/ridertripconfirmation')
-		// 		      }).fail(e => console.log(e))
-		// 			}else {
-		// 				ajax({
-		// 					url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
-		// 					type: 'PUT',
-		// 					data: {seats_available: tripData.seats_available},
-    //           headers: {
-    //             'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
-    //           }
-		// 				}).then(resp => {
-		// 						cookie.set('current_trip', {current_trip: resp.trip})
-    //             hashHistory.push('/ridertripnoseats')
-		// 					}).fail(e => console.log(e))					}
-		// 		}
-		// 	)
-    // }
+	loginHandler(){
+		let current_user = cookie.getJSON('current_user')
+		? cookie.getJSON('current_user').current_user
+		: null;
+			this.setState({ current_user });
+		if (current_user){
+			this.hideLoginHandler()
+		}
+	}
+	showLoginHandler() {
+		let { current_user } = this.state;
+		console.log('current_user', current_user)
+		if(!current_user){
+			this.setState({showLogin: true})
+		}
+	}
+	hideLoginHandler() {
+		let current_user = cookie.getJSON('current_user')
+		? cookie.getJSON('current_user').current_user
+		: null;
+			this.setState({showLogin: false, current_user  });
+	}
+
+	  book(bookingInfo) {
 			let {id} = this.props.params;
-			console.log(cookie.getJSON('current_user').current_user.auth_token)
-		ajax({
-			url: `https://salty-river-31528.herokuapp.com/riders/${id}`,
-			type: 'PUT',
-			headers: {
-				'Auth-Token': cookie.getJSON('current_user').current_user.auth_token
-			}
-		}).then(resp => console.log('resp', resp))
+			let current_user = cookie.getJSON('current_user')
+			? cookie.getJSON('current_user').current_user
+			: null;
+				this.setState({
+					current_user
+				});
+			if (current_user){
+				ajax({
+					url: `https://salty-river-31528.herokuapp.com/riders/${id}`,
+					type: 'PUT'
+				}).then(resp => console.log('resp', resp)).fail(e => alert(`You've already booked this trip!`))
+	}else {
+		this.setState({ showLogin: true})
 	}
+}
 
-
+fakeFunction(){
+	return;
+}
 
   render(){
+		let { showLogin } = this.state;
     return (
       <div className="rider-trip-booking-wrapper">
 
 
-      <SSF className='rider-trip-booking' onData={(x) => x}>
+      <SSF className='rider-trip-booking' onData={::this.fakeFunction}>
 
       		<span> seats left on this trip ..interpolate.. </span>
 
@@ -120,9 +131,9 @@ export default class RiderTripBooking extends Component {
 						name='user_id'/>
 					<button>Book This Trip</button>
 				</SSF>
-
-
-
+				<Modal show={showLogin} onCloseRequest={::this.hideLoginHandler}>
+          <LoginAtTripBook onLogin={::this.loginHandler}/>
+        </Modal>
       </div>
     )
   }
