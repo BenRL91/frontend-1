@@ -24,7 +24,7 @@ export default class Results extends Component {
           <div className="results-dates"> <b>{trip.date_leave}</b></div>
 
           <div className="results-dates-arrow-flex">
-            <div className="results-price"> $ {trip.seat_price} /person </div>
+            <div className="results-price"> $ {trip.seat_price} </div>
 
         <Link className="results-arrow" to={`/details/${trip.id}`}> <b> → </b></Link>
         </div>

@@ -12,30 +12,36 @@ $tangerine: #ffa800;
 .top-main-wrapper {
   display: flex;
   justify-content: space-between;
-  height:60px;
-  // background-color: $ocean;
-  border-bottom: 5px solid $pistachio;
+  height:10vh;
+  // background-color: #222222;
+  
   padding-top: 1%;
   box-sizing:border-box;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  .main-logo{
+  .main-logo img{
   	padding-left:100px;
-  	// padding-bottom:8px;
-  	// font-family: 'Poiret One', cursive;
-  	font-family: helvetica;
-  	font-size: 25px;
-  	font-weight: bold;
+    height:6vh;
+ 
+  }
+  a{
+    // color: white;
+
+    padding-right: 100px;
+
   }
 }
 .main-nav {
 
-  padding-top:6px;
+  padding-top:2vh;
   display: flex;
   justify-content: space-between;
   width: 50%;
-  padding-right: 100px;
   font-weight: bold;
+  font-size: 1.35em;
+  font-weight: 300;
+    // color: white;
+  
 
   button{
     background-color: transparent;

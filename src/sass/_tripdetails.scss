@@ -14,7 +14,7 @@ $tangerine: #ffa800;
 
 
 	.edit-btn{
-		color: $shamrock;
+		// color: $shamrock;
 		position: absolute;
 		top: 120px;
 		right: 110px;
@@ -32,7 +32,7 @@ $tangerine: #ffa800;
 		width:100%;
 		height: 50vh;
 		// margin-bottom: 20px;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		// box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		// padding-top: 10px;
 		// padding-left: 20px;
 		position:relative;
@@ -46,13 +46,13 @@ $tangerine: #ffa800;
 			padding-top: 25px;
 			padding-left: 15px;
 			padding-right: 15px;
-			background-color:$tangerine;
+			// background-color:$tangerine;
 			height:100px;
 			box-sizing:border-box;
 		}
 
 		.trip-details-departing{
-			color:white;
+			// color:white;
 			font-size: 20px;
 			padding-right: 10px;
 		}
@@ -73,7 +73,7 @@ $tangerine: #ffa800;
 		}
 
 		.trip-details-destination{
-			color:white;
+			// color:white;
 			font-size: 20px;	
 			padding-left: 10px;
 
@@ -87,12 +87,12 @@ $tangerine: #ffa800;
 			top:0;
 			height:100px;
 			width:20vw;
-			background-color:$tangerine;
+			// background-color:$tangerine;
 			font-size: 20px;
-			color:white;
+			// color:white;
 			text-align: center;
 			padding-top: 25px;
-			border-right: 3px solid white;
+			// border-right: 3px solid white;
 			box-sizing:border-box;
 		}
 	}
@@ -103,10 +103,10 @@ $tangerine: #ffa800;
 			top:0;
 			height:100px;
 			width:20vw;
-			background-color:$tangerine;
+			// background-color:$tangerine;
 			font-size: 30px;
 			font-weight: bold;
-			color:white;
+			// color:white;
 			text-align: center;
 			padding-top: 30px;
 			box-sizing:border-box;
