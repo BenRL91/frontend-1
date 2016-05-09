@@ -53,7 +53,7 @@ dataHandlerDest(query){
            <div className='geo-wrapper'>
 
             <label>
-            Departure:
+            Search all trips leaving from a specific location:
             <GeoSuggest
               placeholder="Start typing!"
               onSuggestSelect={this.onSuggestSelectDepart}
@@ -61,7 +61,7 @@ dataHandlerDest(query){
               />
             </label>
           </div>
-          <label>
+          <label className="radio">
             Within
             <input type='radio' selected={false} name='rad' value='1'/>
             <input type='radio' selected={false} name='rad' value='5'/>
@@ -75,7 +75,7 @@ dataHandlerDest(query){
 
         <div className='geo-wrapper'>
           <label>
-          Destination:
+          Search all trips arriving in a specific location:
           <GeoSuggest
             placeholder="Start typing!"
             onSuggestSelect={this.onSuggestSelectDest}
@@ -83,7 +83,7 @@ dataHandlerDest(query){
           />
           </label>
         </div>
-        <label>
+        <label className="radio">
           Within
           <input type='radio' selected={false} name='rad' value='1'/>
           <input type='radio' selected={false} name='rad' value='5'/>

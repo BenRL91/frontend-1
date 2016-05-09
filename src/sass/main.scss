@@ -62,19 +62,23 @@ button{
   border:none;
   background-color: #a2a2a2;
   font-weight: bold;
+   outline:none;
   // width:100%;
 }
 
 button:hover{
   background-color: #d3d3d3;
+   outline:none;
 }
 
 button:focus{
   outline:none;
+
 }
 
 button:active{
   box-shadow: 0px 3px 4px #aaa inset, 0px 2px 3px #fff;
+  outline:none;
 }
 
 

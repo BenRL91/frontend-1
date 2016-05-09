@@ -98,6 +98,7 @@ dataHandler(query){
     return (
       <div className="host-booking-wrapper">
      	 <SSF className='host-trip-form' onData={::this.book}>
+     	 SIGN UP TO HOST YOUR OWN TRIP <br/><br/>​
            <label>
              Phone:
              <input
@@ -106,7 +107,7 @@ dataHandler(query){
                placeholder='Phone Number'
                defaultValue={driver_info}/>
            </label>
-     	 HOST TRIP BOOKING PAGE <br/><br/>​
+           <br/>
             <label>
               Departure City:
               <GeoSuggest
@@ -168,26 +169,27 @@ dataHandler(query){
             </label>
 ​
             <label>
-              Total Price:
+              Price Per A Seat:
               <input
                 type='text'
                 name='seat_price'
-                placeholder='List the price for all seats'/>
+                placeholder='Suggestion Price Interpolated Here'/>
             </label>
 ​
 ​
-            <span className="host-span"> Tip: It looks like the estimate PPS (Price Per Seat) for your trip is $25,
-              you've listed 3 seats available. A suggested total is $75.
-              Riders will reserve seats ahead of time, and the price will go down for them
-              based on how many seats are filled.  But no worries, you will always get the total amount. </span>
-​
+            <span className="host-span"> 
+            Tip: The price listed above is a suggested price calculated by 
+            the actual miles you're traveling and the daily gas prices.  
+            This tool is made available as a guideline, but you may charge 
+            what you want. 
+            </span>
 ​
              <label className="trip-description">
               Trip Description:
               <textarea
                 type='text'
                 name='comments'
-                placeholder='tell us about your trip'>
+                placeholder='tell potential riders about your trip'>
             </textarea>
             </label>
             <button>HOST</button>

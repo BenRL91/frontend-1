@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
 import SSF from 'react-simple-serial-form';
-
+import GeoSuggest from 'react-geosuggest';
 
 
 export default class EditTrip extends Component {
@@ -87,7 +87,7 @@ renderPage(){
 
         <label>
          departure:
-          <input
+          <GeoSuggest
             type='text'
             name='departing_city'
             defaultValue={trip.departing_city}/>
@@ -103,7 +103,7 @@ renderPage(){
 
         <label>
          destination:
-            <input
+            <GeoSuggest
             type='text'
             name='destination'
             defaultValue={trip.destination}/>
