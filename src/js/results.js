@@ -26,7 +26,7 @@ export default class Results extends Component {
           <div className="results-dates-arrow-flex">
             <div className="results-price"> $ {trip.seat_price} /person </div>
 
-        <Link className="results-arrow" to={`/tripdetails/${trip.id}`}> <b> → </b></Link>
+        <Link className="results-arrow" to={`/details/${trip.id}`}> <b> → </b></Link>
         </div>
         </div>
       </div>

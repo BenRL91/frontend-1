@@ -56,6 +56,11 @@ export default class HostTripBooking extends Component {
   }
 
   book(trip_details){
+    trip_details.depart_latitude = latA;
+    trip_details.depart_longitude = lngA;
+    trip_details.destination_latitude = latB;
+    trip_details.destination_longitude = lngB;
+    console.log('trip_details', trip_details)
     let { current_user, showLogin } = this.state;
     console.log('current_user', current_user)
     if(!current_user){
@@ -90,9 +95,7 @@ dataHandler(query){
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
 
-  hashHistory.push('/results')
 }
-
   render(){
     let { showLogin, driver_info } = this.state;
     return (
@@ -116,14 +119,6 @@ dataHandler(query){
                 placeholder='Where are you leaving from?'/>
             </label>
 ​
-              <input
-                type='hidden'
-                name='depart_latitude'/>
-​
-              <input
-                type='hidden'
-                name='depart_longitude'/>
-​
             <label>
               Date:
               <input
@@ -140,14 +135,6 @@ dataHandler(query){
                 onSuggestSelect={this.onSuggestSelectDest}
                 placeholder='Where are you driving to?'/>
             </label>
-​
-              <input
-                type='hidden'
-                name='destination_longitude'/>
-​
-              <input
-                type='hidden'
-                name='destination_longitude'/>
 ​
 ​
 ​

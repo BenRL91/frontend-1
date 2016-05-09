@@ -63,11 +63,11 @@ dataHandlerDest(query){
           </div>
           <label>
             Within
-            <input type='radio' selected={false} name='rad' value='1'/>
-            <input type='radio' selected={false} name='rad' value='5'/>
-            <input type='radio' selected={false} name='rad' value='10'/>
-            <input type='radio' selected={false} name='rad' value='20'/>
-            <input type='radio' selected={false} name='rad' value='50'/>
+            <input type='radio' defaultChecked={false} name='rad' value='1'/>
+            <input type='radio' defaultChecked={false} name='rad' value='5'/>
+            <input type='radio' defaultChecked={false} name='rad' value='10'/>
+            <input type='radio' defaultChecked={false} name='rad' value='20'/>
+            <input type='radio' defaultChecked={true} name='rad' value='50'/>
           </label>
             <button> Search Trips </button>
         </SSF>
@@ -85,11 +85,11 @@ dataHandlerDest(query){
         </div>
         <label>
           Within
-          <input type='radio' selected={false} name='rad' value='1'/>
-          <input type='radio' selected={false} name='rad' value='5'/>
-          <input type='radio' selected={false} name='rad' value='10'/>
-          <input type='radio' selected={false} name='rad' value='20'/>
-          <input type='radio' selected={false} name='rad' value='50'/>
+          <input type='radio' defaultChecked={false} name='rad' value='1'/>
+          <input type='radio' defaultChecked={false} name='rad' value='5'/>
+          <input type='radio' defaultChecked={false} name='rad' value='10'/>
+          <input type='radio' defaultChecked={false} name='rad' value='20'/>
+          <input type='radio' defaultChecked={true} name='rad' value='50'/>
         </label>
             <button> Search Trips </button>
         </SSF>
