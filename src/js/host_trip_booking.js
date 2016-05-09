@@ -9,6 +9,7 @@ import LoginAtTripCreation from './login_at_trip_creation';
 import GeoSuggest from 'react-geosuggest';
 
 let latA, lngA, latB, lngB;
+
 export default class HostTripBooking extends Component {
   constructor(...args){
     super(...args);
