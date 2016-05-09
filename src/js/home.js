@@ -29,7 +29,7 @@ dataHandlerDepart(query){
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
 
-  hashHistory.push(`/results/${query.latA}/${query.lngA}`)
+  hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}`)
 }
 dataHandlerDest(query){
   console.log('query', query)
@@ -61,6 +61,14 @@ dataHandlerDest(query){
               />
             </label>
           </div>
+          <label>
+            Within
+            <input type='radio' selected={false} name='rad' value='1'/>
+            <input type='radio' selected={false} name='rad' value='5'/>
+            <input type='radio' selected={false} name='rad' value='10'/>
+            <input type='radio' selected={false} name='rad' value='20'/>
+            <input type='radio' selected={false} name='rad' value='50'/>
+          </label>
             <button> Search Trips </button>
         </SSF>
         <SSF onData={::this.dataHandlerDest} className='search-wrapper'>

@@ -34,7 +34,7 @@ export default class EditProfile extends Component {
     }
   }
   edit_profile(user_details){
-    let id = this.props.params.user_id;
+    let { user_id } = this.props.params;
     let user = cookie.getJSON('current_user').current_user
         let data = new FormData;
     data.append('first_name', user_details.first_name)
@@ -43,21 +43,16 @@ export default class EditProfile extends Component {
     data.append('email', user_details.email)
     data.append('image', this.file)
     ajax({
-      url: `https://salty-river-31528.herokuapp.com/profile/${id}`,
+      url: `https://salty-river-31528.herokuapp.com/profile/${user_id}`,
       type: 'PUT',
       data: data,
       dataType: 'JSON',
       cache: false,
       processData: false,
       contentType: false,
-      headers: {
-        'Auth-Token': user.auth_token
-      }
-
     }).then( resp => {
       console.log(resp)
-      // cookie.set('current_trip', {current_trip: resp.trip)
-      hashHistory.push('/myprofile')
+      hashHistory.push(`/profile/${user_id}`)
     })
   }
 
@@ -95,7 +90,7 @@ export default class EditProfile extends Component {
 
     <div className="edit-profile-wrapper-flex">
 
-      <Dropzone className="dropzone" onDrop={::this.dropHandler}> 
+      <Dropzone className="dropzone" onDrop={::this.dropHandler}>
        <img src={this.state.preview}/>
       </Dropzone>
 
@@ -141,8 +136,8 @@ export default class EditProfile extends Component {
 
       </SSF>
 
-       <button onClick={::this.deleteHandler} className="edit-profile-delete"> 
-       DELETE your account 
+       <button onClick={::this.deleteHandler} className="edit-profile-delete">
+       DELETE your account
        </button>
 
     </div>

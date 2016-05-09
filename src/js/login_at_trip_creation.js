@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link, hashHistory } from 'react-router';
-import $, { ajax, ajaxSetup } from 'jquery';
+import { ajax, ajaxSetup } from 'jquery';
 import SSF from 'react-simple-serial-form';
 import cookie from 'js-cookie';
 import Dropzone from 'react-dropzone';
 
 export default class Login extends Component {
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired
+  }
   constructor(...args){
     super(...args)
     this.state={
@@ -36,8 +39,12 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        let user = resp
-        hashHistory.push('/hostbooking')
+        ajaxSetup({
+          headers: {
+            'Auth-Token': resp.user.auth_token
+          }
+        })
+        this.props.onLogin()
       })
     }
 
@@ -50,8 +57,12 @@ export default class Login extends Component {
     }).then(resp => {
         console.log(resp)
         cookie.set('current_user', {current_user: resp.user})
-        let user = resp
-        hashHistory.push('/hostbooking')
+        ajaxSetup({
+          headers: {
+            'Auth-Token': resp.user.auth_token
+          }
+        })
+        this.props.onLogin()
       })
     }
 

@@ -38,42 +38,25 @@ export default class HostTripBooking extends Component {
       this.setState({ current_user });
     if (current_user){
       this.hideLoginHandler()
-      this.props.loginCheck()
     }
   }
   showLoginHandler() {
     let { current_user } = this.state;
+    console.log('current_user', current_user)
     if(!current_user){
       this.setState({showLogin: true})
     }
   }
-  componentWillMount(){
-    let { showSignup } = this.state;
-    if (!cookie.getJSON('current_user').driver){
-      this.setState({
-        showSignup: true
-      })
-    }
-    let storedTrip;
-    if (cookie.getJSON('newTrip')) {
-      storedTrip = cookie.getJSON('newTrip');
-      this.setState({
-        trip: storedTrip.newTrip
-      })
-    }else storedTrip = null;
-  }
-
-  showLoginHandler(event) {
-    event.preventDefault();
-    this.setState({showLogin: true});
-  }
-
   hideLoginHandler() {
-      this.setState({showLogin: false});
+    let current_user = cookie.getJSON('current_user')
+    ? cookie.getJSON('current_user').current_user
+    : null;
+      this.setState({showLogin: false, current_user  });
   }
 
   book(trip_details){
     let { current_user, showLogin } = this.state;
+    console.log('current_user', current_user)
     if(!current_user){
       this.setState({showLogin: true})
     }else {
