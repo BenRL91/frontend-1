@@ -13,7 +13,6 @@ export default class Profile extends Component {
     loading: true
     }
   }
-
   componentWillMount(){
     let { user_id } = this.props.params;
     let current_user = cookie.getJSON('current_user')
@@ -56,7 +55,7 @@ if (user_id == currentID){
 }else {
   console.log('failing')
   return false;
-}
+  }
 }
 renderLoading(){
   return(
@@ -75,6 +74,7 @@ renderEditLink(){
 }
 renderPage(){
   let { profile, current_user_trips } = this.state;
+  console.log('pro', profile)
   return (
     <div className="profile-wrapper">
 

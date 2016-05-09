@@ -41,16 +41,39 @@ renderLoading(){
     <div>Loading...</div>
     )
 }
+allowEdit(){
+  let { current_trip } = this.state;
+  let user_id = cookie.getJSON('current_user')
+? cookie.getJSON('current_user').current_user.id
+: null;
+  let currentID = current_trip
+  ? current_trip.user_id
+  : null;
+if (user_id == currentID){
+  console.log('matching')
+  return true;
+}else {
+  console.log('failing')
+  return false;
+  }
+}
+renderEditLink(){
+  let { current_trip } = this.state;
+  console.log(current_trip)
+  if(this.allowEdit()){
+    return(
+      <Link className="edit-btn" to={`/edittrip/${current_trip.id}`}> + EDIT YOUR TRIP </Link>
+    )
+  }else {
+    return;
+  }
+}
 renderPage(){
     let { current_trip, driver} = this.state;
     let { trip_id } = this.props.params;
     return (
       <div className="trip-details-wrapper">
-
-      <Link className="hidden edit-btn" to={`/edittrip/${trip_id}`}> + EDIT YOUR TRIP </Link>
-
-
-
+        {::this.renderEditLink()}
         <div className="trip-details">
 
          <div className="trip-details-flex">
