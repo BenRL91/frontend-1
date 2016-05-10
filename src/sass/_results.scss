@@ -6,28 +6,29 @@ $shamrock: #1fbb62;
 $tangerine: #ffa800;
 
 
-
+.results-wrapper-top{
+	background-color: #222222;
+	width:100vw;
+	height:100%;
+	min-height:100vh;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
+}
 
 .results-wrapper{
-	// margin-left: 20vw;
-	// margin-right: 20vw;
-	// margin-bottom: 20vh;
-	background-color: #222222;
-	color:white;
+	background-color: white;
 	width: 70vw;
-	margin: 10vh auto;
+	margin: auto;
+
 }
 
 .trip-listing-wrapper{
 	box-sizing:border-box;
-	// width:100%;
 	display:flex;
 	justify-content:space-between;
 	border-bottom: 3px solid #e9e9e9;
 	padding-top: 2vh;
 	padding-bottom: 2vh;
-	// margin-bottom: 3vh;
-	// margin-top: 3vh;
 	line-height: 50px;
 	font-size: 1.35em;
   	font-weight: 300;
@@ -35,8 +36,8 @@ $tangerine: #ffa800;
 
 	img{
 		box-sizing:border-box;
-		height:6vh;
-		width:6vw;
+		height:100px;
+		width:100px;
 		padding-left: 1vw;
 		padding-right: 1vw;
 		object-fit:cover;
@@ -44,55 +45,58 @@ $tangerine: #ffa800;
 
 	}
 
-
-	// .results-cities{
-	// 	width:500px;
-	// 	display:flex;
-	// 	justify-content:space-between;
-
-	// }
-
-	// .results-dates{
-	// 	width:500px;
-	// 	// display:flex;
-	// 	// justify-content:space-between;
-
-
-	// }
-
 	.results-img-cities-flex{
 		display:flex;
 		justify-content:space-between;	
 	}
 
+
+	.results-cities{
+
+		.fa{
+			padding-right: 10px;
+		}
+		.fa-circle-o{
+			color:#85FF85;
+			
+		}
+		.fa-bullseye{
+			color:#FF1F1F;
+		}
+
+	}
+
 	.results-dates-price-flex{
 		display:flex;
 		justify-content:space-between;
-		width:50%;
+		width:20%;
 
 	}
 
-	.results-dates-arrow-flex{
-		display:flex;
-		justify-content:space-between;
-		width:40%;
-
-	}
 	// fix the alignment of the columns here///**********
 
 
-		.results-price{
-			// margin-left: 50px;
+		.results-date-price{
+
+			.results-price{
+				font-weight: bold;
+				font-size: 22px;
+				.fa-user{
+					font-size: 15px;
+				}
+			}
+
 		}
 
 		.results-arrow{
 			font-size: 35px;
 			color: $tangerine;
 			padding-right: 2vw;
+			padding-top: 25px;
 		}
 
 		.results-arrow:hover{
-			color: white;
+			color: $mint;
 		}
 
 		.results-arrow a:visited{

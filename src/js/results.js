@@ -3,6 +3,7 @@ import { Link, hashHistory } from 'react-router';
 import { ajax } from 'jquery';
 
 
+
 export default class Results extends Component {
   constructor(...args){
     super(...args);
@@ -16,18 +17,24 @@ export default class Results extends Component {
 
 
         <div className="results-img-cities-flex">
+
          <img src={trip.user.picture} alt="temp"/>
-         <div className="results-cities"> • {trip.departing_city} <br/> • {trip.destination} </div>
+
+         <div className="results-cities"> 
+          <i className="fa fa-circle-o" aria-hidden="true"></i>
+          {trip.departing_city} <br/> 
+          <i className="fa fa-bullseye" aria-hidden="true"></i>
+          {trip.destination} </div>
+
         </div>
+
 
         <div className="results-dates-price-flex">
-          <div className="results-dates"> <b>{trip.date_leave}</b></div>
 
-          <div className="results-dates-arrow-flex">
-            <div className="results-price"> $ {trip.seat_price} </div>
+            <div className="results-date-price"> {trip.date_leave} <br/>  <div className="results-price"> ${trip.seat_price} </div> </div>
 
-        <Link className="results-arrow" to={`/details/${trip.id}`}> <b> → </b></Link>
-        </div>
+            <Link className="results-arrow" to={`/details/${trip.id}`}> <b> → </b></Link>
+
         </div>
       </div>
     )
@@ -70,8 +77,11 @@ export default class Results extends Component {
   render(){
     let { trips } = this.state;
     return (
+      <div className='results-wrapper-top'>
+
       <div className='results-wrapper'>
         {trips.map(::this.makeTripListing)}
+      </div>
       </div>
     )
   }
