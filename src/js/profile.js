@@ -117,14 +117,16 @@ renderPage(){
         </div>
 
         <div className="profile-trips-list">
-
-         { current_user_trips.map(::this.gettrips) }
+        Booked Trips
+        { profile.trips_ridden.map(::this.gettrips)}
+        <hr></hr>
+        Hosted Trips
+        { current_user_trips.map(::this.gettrips) }
 
         </div>
 
 
       </div>
-
 
     </div>
     )
