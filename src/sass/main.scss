@@ -105,11 +105,13 @@ button:active{
 
     }
     .fa-circle-o{
-      color:#85FF85;
+      // color:#85FF85;
+      color: $newblue;
       padding-right: 10px;
       
     }
     .fa-bullseye{
+      // color:$ocean;
       color:#FF1F1F;
       padding-right: 10px;
     }

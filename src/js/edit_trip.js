@@ -80,13 +80,14 @@ renderPage(){
 
 
     return (
-      <div className="trip-details-wrapper">
+      <div className="edit-profile-wrapper">
 
 
-      <div className="trip-details">
+      <div className="edit-profile-wrapper-flex">
 
-        <SSF className='edit-trip-form' onData={::this.edit}>
-
+        <SSF className='register-form' onData={::this.edit}>
+        EDIT YOUR TRIP DETAILS
+        <br/><br/>
         <label>
          departure:
           <GeoSuggest
@@ -120,10 +121,6 @@ renderPage(){
         </label>
 
         <label>
-          trip duration{/*need to estimate*/}
-        </label>
-
-        <label>
          price:
           <input
             type='text'
@@ -141,20 +138,20 @@ renderPage(){
 
         <label>
          description of trip:
-          <input
+          <textarea
             type='text'
             name='comments'
             defaultValue= {trip.comments}/>
         </label>
 
 
-          <button className="edit-trip-submit"> submit changes </button>
+          <button className="save-btn"> submit changes </button>
 
 
 
        </SSF>
 
-          <button onClick={::this.deleteHandler} className="edit-trip-delete">DELETE this trip</button>
+          <button onClick={::this.deleteHandler} className="save-btn">DELETE this trip</button>
 
       </div>
 

@@ -57,13 +57,16 @@ export default class Results extends Component {
 
         <div className="results-dates-price-flex">
 
-            <div className="results-date-price"> {trip.date_leave}
-            <br/>
-            <div className="results-price"> Currently ${breakdown.passenger_price} </div>
-            <div className="results-price"> As Low As ${breakdown.lowest}! </div>
-            </div>
+            <div className="results-date-price"> Leaving <br/> <b>{trip.date_leave}</b></div>
+          
+             <div>
+                <div className="results-price"> Currently <b>${breakdown.passenger_price}</b></div>
+                <div className="results-price"> As low as <b>${breakdown.lowest}</b> </div>
+              </div>
+        
 
-            <Link className="results-arrow" to={`/details/${trip.id}`}> <b> → </b></Link>
+
+            <Link className="results-arrow" to={`/details/${trip.id}`}> <b> <i className="fa fa-arrow-right" aria-hidden="true"></i></b></Link>
 
         </div>
       </div>
