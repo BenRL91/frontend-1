@@ -17,7 +17,7 @@ export default class Results extends Component {
 
         <div className="results-img-cities-flex">
          <img src={trip.user.picture} alt="temp"/>
-         <div className="results-cities"> <b>{trip.departing_city}</b> to <b>{trip.destination}</b> </div>
+         <div className="results-cities"> • {trip.departing_city} <br/> • {trip.destination} </div>
         </div>
 
         <div className="results-dates-price-flex">
