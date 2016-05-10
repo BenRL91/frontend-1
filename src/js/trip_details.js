@@ -30,7 +30,6 @@ export default class TripDetails extends Component {
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		}).fail(e => { console.log(e)})
 		.then( respB => {
-      console.log(respB)
 			this.setState({driver: respB.user, loading: false})
 			cookie.set('saved_trip', {trip_id})
 		}).fail(e => { console.log( e) })
@@ -50,16 +49,13 @@ allowEdit(){
   ? current_trip.user_id
   : null;
 if (user_id == currentID){
-  console.log('matching')
   return true;
 }else {
-  console.log('failing')
   return false;
   }
 }
 renderEditLink(){
   let { current_trip } = this.state;
-  console.log(current_trip)
   if(this.allowEdit()){
     return(
       <Link className="edit-btn" to={`/edittrip/${current_trip.id}`}> + EDIT YOUR TRIP </Link>

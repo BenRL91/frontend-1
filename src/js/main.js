@@ -23,7 +23,6 @@ export default class Main extends Component {
     let current_user = cookie.getJSON('current_user')
     ? cookie.getJSON('current_user').current_user
     : null;
-    console.log('current user', current_user)
       this.setState({ current_user });
     let user_is_driver = current_user ? current_user.driver : false;
       this.setState({ user_is_driver });
