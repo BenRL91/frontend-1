@@ -11,7 +11,34 @@ export default class Results extends Component {
       trips: []
     }
   }
+  breakdownTotalPrice(total, seats_available, seats_left, discount){
+    if (seats_left === 100){
+      seats_left = seats_available
+    }
+    let breakdown = {};
+    let even_split = total / (seats_available - seats_left + 1)
+    let residual = even_split * discount
+    let driver_price;
+    driver_price = seats_available === seats_left
+                 ? even_split
+                 : even_split - (even_split * discount)
+
+    let passenger_price = seats_available - seats_left >= 0
+                 ? even_split + (residual / (seats_available - seats_left))
+                 : even_split
+
+    breakdown.driver_price = driver_price.toFixed(2)
+    breakdown.passenger_price = passenger_price.toFixed(2)
+    if (breakdown.passenger_price === 'Infinity'){
+      breakdown.passenger_price = 0
+    }
+    console.log('even_split', even_split.toFixed(2))
+    return (
+      breakdown
+    )
+  }
   makeTripListing(trip){
+    this.breakdownTotalPrice(trip.total_price, trip.seats_available, trip.seats_available, .2)
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
 
@@ -20,9 +47,9 @@ export default class Results extends Component {
 
          <img src={trip.user.picture} alt="temp"/>
 
-         <div className="results-cities"> 
+         <div className="results-cities">
           <i className="fa fa-circle-o" aria-hidden="true"></i>
-          {trip.departing_city} <br/> 
+          {trip.departing_city} <br/>
           <i className="fa fa-bullseye" aria-hidden="true"></i>
           {trip.destination} </div>
 

@@ -23,9 +23,12 @@ export default class TripDetails extends Component {
     let current_user = cookie.getJSON('current_user')
     ? cookie.getJSON('current_user').current_user
     : null
-	ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`)
+  	ajax(`http://salty-river-31528.herokuapp.com/hosts/${trip_id}`)
 		.then( resp => {
 	        respA = resp;
+          if (resp.hosts.seats_left === 100){
+              resp.hosts.seats_left = resp.hosts.seats_available
+          }
 	        this.setState({current_trip: resp.hosts})
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		}).fail(e => { console.log(e)})
@@ -61,7 +64,9 @@ renderEditLink(){
       <Link className="edit-btn" to={`/edittrip/${current_trip.id}`}> + EDIT YOUR TRIP </Link>
     )
   }else {
-    return;
+    return(
+      <Link className='book-btn' to={`/riderbooking/${current_trip.id}`}> Book Trip → </Link>
+    );
   }
 }
 renderPage(){

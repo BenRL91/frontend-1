@@ -23,7 +23,7 @@ export default class Profile extends Component {
           this.setState({
             current_user,
             profile: profile.user,
-            current_user_trips: profile.user.host,
+            current_user_trips: profile.user.trips_hosted,
             loading: false
         })
       })
