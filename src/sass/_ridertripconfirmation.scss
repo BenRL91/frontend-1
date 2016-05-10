@@ -1,0 +1,22 @@
+$mint: #c3e9d4;
+$pistachio: #bed9b9;
+$storm: #2e2e2e;
+$ocean: #004973;
+$shamrock: #1fbb62;
+$tangerine: #ffa800;
+
+.rider-trip-confirmation-wrapper{
+	padding-top: 100px;
+	display:flex;
+  flex-direction: column;
+	align-items:center;
+  span{
+    font-size: 30px;
+    color: $tangerine;
+  }
+  .riderlink {
+    color: $ocean !important;
+    font-size: 32px !important;
+    margin-top: 35px;
+  }
+}

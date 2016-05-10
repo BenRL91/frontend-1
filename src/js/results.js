@@ -32,7 +32,6 @@ export default class Results extends Component {
       </div>
     )
   }
-  // ?destination_latitude=${lat}&destination_longitude=${lng}&radius=${rad}
   componentWillMount(){
     let { lat, lng, rad, loc } = this.props.params;
     if (loc === 'depart'){

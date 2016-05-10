@@ -13,9 +13,13 @@ $tangerine: #ffa800;
 	justify-content:center;
 
 }
-
 .driver-trip-confirmation-wrapper span{
 	font-size: 30px;
 	color: $tangerine;
 
+}
+.driverlink {
+	color: $ocean !important;
+	font-size: 32px !important;
+	margin-top: 35px;
 }
