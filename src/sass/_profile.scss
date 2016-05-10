@@ -9,62 +9,58 @@ $tangerine: #ffa800;
 
 
 .profile-wrapper{
+	background-color: #222222;
 	width:100vw;
-	height:100vh;
-	// padding-left: 100px;
-	// padding-right: 100px;
-	// padding-top: 100px;
+	height:100%;
+	min-height:100vh;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
 
-}
+.profile-wrapper-inside{
+	background-color: white;
+	width:70vw;
+	margin: auto;
+	box-sizing:border-box;
+
 
 
 .profile-header{
-	padding-left: 150px;
-	padding-right: 150px;
-	padding-top: 100px;
+	padding:20px;
 	display:flex;
 	align-items:center;
-	justify-content:center;
-
+	justify-content:space-between;
 
 	.profile-picture img{
 		width:300px;
 		height:300px;
 		object-fit:cover;
-		border-radius: 300px;
-		
-
+		// border-radius: 300px;
 	}
+
 
 	.profile-user-details{
 		margin-left: 50px;
-		
-
+		font-size: 20px;
+		width:100%;
+		margin-right: 20%;
 		.profile-name{
 			font-weight: bold;
-			width:400px;
-			font-size: 35px;
+			// width:400px;
+			font-size: 35px;	
+		}
+		.profile-username{
 			
 		}
-
-		.profile-username{
-			font-size: 20px;
-
-		}
-
 		.profile-email{
-			font-size: 20px;
+			
 		}
-
 		.profile-homecity{
-			font-size: 20px;
+			
 		}
-
 		.edit-btn{
-			font-size: 16px;
+		
 			color: $tangerine;
 		}
-
 		.edit-btn{
 			
 		}
@@ -76,36 +72,12 @@ $tangerine: #ffa800;
 }
 
 .profile-trips{
-	// padding-left: 100px;
-	// padding-right: 100px;
-	// padding-top: 100px;
 
-	margin-top:100px;
-	margin-left: 20vw;
-	margin-right: 20vw;
-	margin-bottom: 20vh;
-	border: 20px solid $mint;
-	border-radius: 30px;
 
 	button{
 		width:200px;
 	}
 
-	.profile-new-trips{
-		display:flex;
-		justify-content:space-between;
-		padding: 15px;
-		margin-bottom: 50px;
-		// border-bottom: 1px solid #a2a2a2;
-		background-color: $mint;
-
-		.your-trips{
-			color:$ocean;
-			font-size: 20px;
-			font-weight: bold;
-			display:flex;
-			justify-content:space-between;
-		}
 
 		.new-trips-btn{
 			background-color: transparent;
@@ -122,6 +94,18 @@ $tangerine: #ffa800;
 
 
 	.profile-trips-list{
+		font-size: 20px;
+
+		.booked-trips{
+			padding:20px;
+			color:$tangerine;
+		}
+
+		.hosted-trips{
+			padding:20px;
+			color:$tangerine;
+			
+		}
 
 		
 		.profile_get_trips{
@@ -172,4 +156,6 @@ $tangerine: #ffa800;
 	}
 
 }
+}
+
 

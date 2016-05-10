@@ -1,16 +1,46 @@
 .rider-trip-booking-wrapper{
 	display:flex;
-	justify-content:center;
-	padding-top:100px;
+	// justify-content:center;
+	flex-direction:column;
+	align-items:center;
+	background-color: #222222;
+	width:100vw;
+	min-height:100vh;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
 
 
 
 	.rider-trip-booking{
 		display:flex;
 		flex-direction:column;
+		align-items:center;
+		width:70vw;
+		padding: 20px;
+		box-sizing:border-box;
+		background-color: white;
+		font-size: 15px;
 
+		label{
+			width:40vw;
+			display:flex;
+			justify-content:space-between;
+			padding:10px;
+		}
+
+		input{
+			width:60%;
+		}
 	}
 
+	.rider-trip-booking-book{
+		display:flex;
+		align-items:center;
+		button{
+			width:70vw;
+
+		}
+	}
 
 
 }
