@@ -67,7 +67,10 @@ export default class RiderTripBooking extends Component {
 				ajax({
 					url: `https://salty-river-31528.herokuapp.com/riders/${id}`,
 					type: 'PUT'
-				}).then(resp => console.log('resp', resp)).fail(e => alert(`You've already booked this trip!`))
+				}).then(resp => {
+					console.log('resp', resp)
+					hashHistory.push('/riderconfirmation')})
+					.fail(e => alert(`You've already booked this trip!`))
 	}else {
 		this.setState({ showLogin: true})
 	}

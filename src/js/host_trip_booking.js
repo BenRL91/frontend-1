@@ -19,18 +19,18 @@ export default class HostTripBooking extends Component {
       showLogin: false,
     }
   }
-    componentWillMount(){
-      let current_user = cookie.getJSON('current_user')
-      ? cookie.getJSON('current_user').current_user
-      : null;
-      let user_is_driver = current_user
-      ? current_user.driver
-      : false;
-        this.setState({
-          current_user,
-          user_is_driver
-        });
-    }
+  componentWillMount(){
+    let current_user = cookie.getJSON('current_user')
+    ? cookie.getJSON('current_user').current_user
+    : null;
+    let user_is_driver = current_user
+    ? current_user.driver
+    : false;
+      this.setState({
+        current_user,
+        user_is_driver
+      });
+  }
 
   loginHandler(){
     let current_user = cookie.getJSON('current_user')
