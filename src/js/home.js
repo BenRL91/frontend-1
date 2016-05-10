@@ -91,11 +91,13 @@ dataHandlerDest(query){
 
         <label className="radio">
           Search Radius by Mile
-          <input type='radio' defaultChecked={false} name='rad' value='1'/>1
-          <input type='radio' defaultChecked={false} name='rad' value='5'/>5
-          <input type='radio' defaultChecked={true} name='rad' value='10'/>10
-          <input type='radio' defaultChecked={false} name='rad' value='20'/>20
-          <input type='radio' defaultChecked={false} name='rad' value='50'/>50
+
+          <input type='radio' defaultChecked={false} name='rad' value='1'/>1 
+          <input type='radio' defaultChecked={false} name='rad' value='5'/>5 
+          <input type='radio' defaultChecked={true} name='rad' value='10'/>10 
+          <input type='radio' defaultChecked={false} name='rad' value='20'/>20 
+          <input type='radio' defaultChecked={false} name='rad' value='50'/>50 
+
         </label>
 
             <button> Search Trips </button>
