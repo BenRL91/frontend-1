@@ -20,7 +20,6 @@ export default class Profile extends Component {
     : null;
          ajax(`http://salty-river-31528.herokuapp.com/profile/${user_id}`)
         .then(profile => {
-          console.log('user', profile)
           this.setState({
             current_user,
             profile: profile.user,
@@ -50,7 +49,6 @@ allowEdit(){
   ? current_user.id
   : null;
 if (user_id == currentID){
-  console.log('matching')
   return true;
 }else {
   console.log('failing')
@@ -74,7 +72,7 @@ renderEditLink(){
 }
 renderPage(){
   let { profile, current_user_trips } = this.state;
-  console.log('pro', profile)
+  console.log('profile', profile)
   return (
     <div className="profile-wrapper">
 

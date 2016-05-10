@@ -25,7 +25,6 @@ export default class EditTrip extends Component {
     this.setState({current_user})
     ajax(`https://salty-river-31528.herokuapp.com/hosts/${id}`)
     .then(resp => {
-      console.log(resp)
       this.setState({
         current_trip: resp.hosts,
         loading: false
@@ -75,7 +74,6 @@ renderLoading(){
 renderPage(){
   let trip = this.state.current_trip;
     let user = this.state.current_user;
-    console.log(trip)
 
 
 
