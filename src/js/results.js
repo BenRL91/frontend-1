@@ -16,21 +16,20 @@ export default class Results extends Component {
       seats_left = seats_available
     }
     let breakdown = {};
-    let even_split = total / (seats_available - seats_left + 1)
+    let even_split = total / ((seats_available + 1) - (seats_left - 1))
     let residual = even_split * discount
     let driver_price;
     driver_price = seats_available === seats_left
-                 ? even_split
-                 : even_split - (even_split * discount)
-
+       ? even_split
+       : even_split - (even_split * discount)
     let passenger_price = seats_available - seats_left >= 0
-                 ? even_split + (residual / (seats_available - seats_left))
-                 : even_split
-
+       ? even_split + (residual / (seats_left - (seats_left - 1)))
+       : even_split
     breakdown.driver_price = driver_price.toFixed(2)
     breakdown.passenger_price = passenger_price.toFixed(2)
+    breakdown.lowest = (total / ((seats_available + 1))+ (residual / seats_available)).toFixed(2)
     if (breakdown.passenger_price === 'Infinity'){
-      breakdown.passenger_price = 0
+      breakdown.passenger_price = driver_price
     }
     console.log('even_split', even_split.toFixed(2))
     return (
@@ -38,7 +37,7 @@ export default class Results extends Component {
     )
   }
   makeTripListing(trip){
-    this.breakdownTotalPrice(trip.total_price, trip.seats_available, trip.seats_available, .2)
+    let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, trip.seats_left, .2)
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
 
@@ -58,7 +57,11 @@ export default class Results extends Component {
 
         <div className="results-dates-price-flex">
 
-            <div className="results-date-price"> {trip.date_leave} <br/>  <div className="results-price"> ${trip.seat_price} </div> </div>
+            <div className="results-date-price"> {trip.date_leave}
+            <br/>
+            <div className="results-price"> Currently ${breakdown.passenger_price} </div>
+            <div className="results-price"> As Low As ${breakdown.lowest}! </div>
+            </div>
 
             <Link className="results-arrow" to={`/details/${trip.id}`}> <b> → </b></Link>
 

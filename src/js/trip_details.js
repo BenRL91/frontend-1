@@ -38,6 +38,31 @@ export default class TripDetails extends Component {
 		}).fail(e => { console.log( e) })
 
   }
+  breakdownTotalPrice(total, seats_available, seats_left, discount){
+    if (seats_left === 100){
+      seats_left = seats_available
+    }
+    let breakdown = {};
+    let even_split = total / ((seats_available + 1) - (seats_left - 1))
+    let residual = even_split * discount
+    let driver_price;
+    driver_price = seats_available === seats_left
+       ? even_split
+       : even_split - (even_split * discount)
+    let passenger_price = seats_available - seats_left >= 0
+       ? even_split + (residual / (seats_left - (seats_left - 1)))
+       : even_split
+    breakdown.driver_price = driver_price.toFixed(2)
+    breakdown.passenger_price = passenger_price.toFixed(2)
+    breakdown.average = (even_split.toFixed(2))
+    if (breakdown.passenger_price === 'Infinity'){
+      breakdown.passenger_price = driver_price
+    }
+    console.log('even_split', even_split.toFixed(2))
+    return (
+      breakdown
+    )
+  }
 renderLoading(){
   return (
     <div>Loading...</div>
@@ -74,6 +99,9 @@ renderEditLink(){
 renderPage(){
     let { current_trip, driver} = this.state;
     let { trip_id } = this.props.params;
+    console.log(current_trip)
+    let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
+
     return (
       <div className="trip-details-wrapper">
         <div className="trip-details">
@@ -101,7 +129,7 @@ renderPage(){
         </div>
 
         <div className="trip-details-seats">
-          <div>{current_trip.seats_left} seats available for ${current_trip.seat_price} each
+          <div>{current_trip.seats_left} seats available for ${breakdown.passenger_price} each
           </div>
 
           <div className="book-edit">
