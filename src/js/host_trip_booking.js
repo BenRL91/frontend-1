@@ -161,7 +161,10 @@ renderPage(){
   return (
     <div className="host-booking-wrapper">
      <SSF className='host-trip-form' onData={::this.book}>
-     SIGN UP TO HOST YOUR OWN TRIP <br/><br/>​
+     <b>SIGN UP TO HOST YOUR OWN TRIP</b> <br/>
+     <i className="fa fa-road" aria-hidden="true"></i>
+
+     <br/>​
          <label>
            First Name:
            <input
@@ -294,19 +297,28 @@ renderPage(){
           </label>
 ​
 ​
-          <span className="host-span">
-          Tip: The price listed above is a suggested price calculated by
-          the actual miles you're traveling and the daily gas prices.
-          This tool is made available as a guideline, but you may charge
-          what you want.
-          </span>
+          <div className="host-span">
+            <i className="fa fa-info-circle" aria-hidden="true"></i> 
+            <div>The price listed above is a suggested price calculated by
+              the actual miles you're traveling, an average MPG, 
+              and the daily gas prices in your area.
+              <b>The price is a total for all the seats you have made available
+              for this trip.</b>  The actual price charged to each rider will vary
+              based on how many seats are booked, giving more incentive to riders,
+              but don't worry, the total price will be covered no matter how many
+              riders join your trip.
+              This tool is made available as a guideline, but you may charge
+              what you want.</div>
+
+
+          </div>
 ​
            <label className="trip-description">
             Trip Description:
             <textarea
               type='text'
               name='comments'
-              placeholder='tell potential riders about your trip'>
+              placeholder='get potential riders excited about your trip by giving them a description here'>
           </textarea>
           </label>
           <button>HOST</button>

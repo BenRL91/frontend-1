@@ -34,7 +34,8 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #ffa800;
+$tangerine: #D92626;
+$newblue: #33CCCC;
 
 
 //Overall Application default styling//
@@ -54,9 +55,9 @@ $tangerine: #ffa800;
     color: $shamrock;
     outline:none;
   }
-  a:hover{
-    color: $mint;
-  }
+  // a:hover{
+  //   color: $mint;
+  // }
   a:active{
     border:none;
     outline:none;

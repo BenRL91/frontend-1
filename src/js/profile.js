@@ -31,13 +31,17 @@ export default class Profile extends Component {
 gettrips(trip){
   return (
   <div className="profile_get_trips" key={trip.host_id}>
-    <span className="profile-cities"> {trip.departing_city} to {trip.destination} </span>
+    <div className="profile-cities"> 
 
-      <div className="get_trips_flex">
-        <span className="profile-dates"> {trip.date_leave} to {trip.date_arrive} </span>
-        <Link className="profile-trip-details" to={`/details/${trip.host_id}`}> details + </Link>
-      </div>
+      <i className="fa fa-circle-o" aria-hidden="true"></i>
+      {trip.departing_city} 
+      <br/>
 
+      <i className="fa fa-bullseye" aria-hidden="true"></i>
+      {trip.destination} 
+
+    </div>
+    <Link className="profile-trip-details" to={`/details/${trip.host_id}`}> details + </Link>
   </div>
 )}
 allowEdit(){
@@ -57,7 +61,9 @@ if (user_id == currentID){
 }
 renderLoading(){
   return(
-  <i className="fa fa-spinner" aria-hidden="true"></i>
+
+    <i className="fa fa-spinner" aria-hidden="true"></i>
+
   )
 }
 renderEditLink(){
@@ -91,18 +97,24 @@ renderPage(){
             {profile.first_name} {profile.last_name}
           </div>
 
+            <br/>
+
           <div className="profile-status">
             Driver status:{profile.driver.toString()}
           </div>
+
+           <br/>
 
           <div className="profile-email">
             <i className="fa fa-envelope-o" aria-hidden="true"></i> {profile.email}
           </div>
 
+            <br/>
+
           <div className="profile-status">
             <i className="fa fa-user" aria-hidden="true"></i> {profile.user_name}
           </div>
-
+             <br/>
 
           <div className="profile-edit">
           {this.renderEditLink()}
@@ -119,10 +131,12 @@ renderPage(){
 
 
         <div className="profile-trips-list">
-          <span className="booked-trips">Booked Trips</span>
+          <div className="booked-trips"><b>Booked Trips</b></div>
             { profile.trips_ridden.map(::this.gettrips)}
-          <hr></hr>
-          <span className="hosted-trips">Hosted Trips</span>
+            <br/>
+            <br/>
+         
+          <div className="hosted-trips"><b>Hosted Trips</b></div>
             { current_user_trips.map(::this.gettrips) }
         </div>
 
