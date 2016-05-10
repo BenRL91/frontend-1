@@ -64,7 +64,9 @@ renderEditLink(){
   let { user_id } = this.props.params;
   if(this.allowEdit()){
     return(
-      <Link className="edit-btn" to={`/editprofile/${user_id}`}> EDIT YOUR PROFILE </Link>
+      <Link className="edit-btn" to={`/editprofile/${user_id}`}> 
+      <i className="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT YOUR PROFILE 
+      </Link>
     )
   }else {
     return;
@@ -75,6 +77,8 @@ renderPage(){
   console.log('profile', profile)
   return (
     <div className="profile-wrapper">
+    <div className="profile-wrapper-inside">
+
 
     <div className="profile-header">
       <div className="profile-picture">
@@ -92,11 +96,11 @@ renderPage(){
           </div>
 
           <div className="profile-email">
-            email:{profile.email}
+            <i className="fa fa-envelope-o" aria-hidden="true"></i> {profile.email}
           </div>
 
           <div className="profile-status">
-            username:{profile.user_name}
+            <i className="fa fa-user" aria-hidden="true"></i> {profile.user_name}
           </div>
 
 
@@ -112,22 +116,19 @@ renderPage(){
 
 
       <div className="profile-trips">
-        <div className="profile-new-trips">
-          <span className="your-trips"> Trips </span>
-        </div>
+
 
         <div className="profile-trips-list">
-        Booked Trips
-        { profile.trips_ridden.map(::this.gettrips)}
-        <hr></hr>
-        Hosted Trips
-        { current_user_trips.map(::this.gettrips) }
-
+          <span className="booked-trips">Booked Trips</span>
+            { profile.trips_ridden.map(::this.gettrips)}
+          <hr></hr>
+          <span className="hosted-trips">Hosted Trips</span>
+            { current_user_trips.map(::this.gettrips) }
         </div>
 
 
       </div>
-
+    </div>
     </div>
     )
   }

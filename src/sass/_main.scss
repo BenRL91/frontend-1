@@ -14,14 +14,13 @@ $tangerine: #ffa800;
   justify-content: space-between;
   height:10vh;
   // background-color: #222222;
-  
   padding-top: 1%;
   box-sizing:border-box;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   .main-logo img{
   	padding-left:100px;
-    height:6vh;
+    height:7vh;
  
   }
   a{
@@ -32,7 +31,6 @@ $tangerine: #ffa800;
   }
 }
 .main-nav {
-
   padding-top:2vh;
   display: flex;
   justify-content: space-between;

@@ -92,8 +92,6 @@ fakeFunction(){
 
 
             <span> Your price ..interpolate.. $80 </span><br/>
-            <span> You won't be charge for this trip until the day of departure,<br/>
-            this will leave time for other riders to book a seat, and lower the price for you (& them). </span>
 
             <label>
               Name as it appears on card:
@@ -130,8 +128,8 @@ fakeFunction(){
 
 
         </SSF>
-				<SSF onData={::this.book}>
-					Add me to the trip!
+				<SSF className='rider-trip-booking-book'onData={::this.book}>
+				
 					<input
 						type='hidden'
 						name='user_id'/>

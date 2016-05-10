@@ -5,18 +5,24 @@ $ocean: #004973;
 $shamrock: #1fbb62;
 $tangerine: #ffa800;
 
-.rider-trip-confirmation-wrapper{
-	padding-top: 100px;
-	display:flex;
-  flex-direction: column;
-	align-items:center;
-  span{
+.rider-trip-confirmation-wrapper-top{
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  display:flex;
+  justify-content:center;
+  background-color: #222222;
+  width:100vw;
+  min-height:100vh;
+.rider-trip-confirmation-wrapper {
+    height:200px;
+    width:70vw;
+    background-color: white;
     font-size: 30px;
     color: $tangerine;
-  }
-  .riderlink {
-    color: $ocean !important;
-    font-size: 32px !important;
-    margin-top: 35px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
   }
 }
+

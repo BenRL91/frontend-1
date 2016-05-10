@@ -237,7 +237,7 @@ renderPage(){
           </label>
 
           <label>
-            Date:
+            Estimate Leave Time:
             <input
               type='time'
               name='time_leave'
@@ -262,7 +262,7 @@ renderPage(){
           </label>
 ​
 ​          <label>
-            Date:
+            Estimate Time of Arrival:
             <input
               type='time'
               name='time_arrive'

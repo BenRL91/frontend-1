@@ -11,11 +11,15 @@ render(){
 	if (current_user){
 		return(
 
-
-			<div className="driver-trip-confirmation-wrapper">
-
-			<span>Thanks for booking your trip with Lifteri!</span>
-			<Link className='driverlink' to={`/profile/${current_user.id}`}>View Your Profile</Link>
+			<div className="driver-trip-confirmation-wrapper-top">
+				<div className="driver-trip-confirmation-wrapper">
+					<span>Thanks for booking your trip with Lifteri!</span>
+					<Link className='driverlink' to={`/profile/${current_user.id}`}>
+						View Trips in Your Profile
+					</Link>
+					<br/>
+					<i className="fa fa-car" aria-hidden="true"></i>
+				</div>
 			</div>
 
 

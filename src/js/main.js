@@ -80,7 +80,7 @@ export default class Main extends Component {
       <div className="main-wrapper">
         <div className='top-main-wrapper'>
           <div className="main-logo">
-            <Link to="/"><img src="../images/lifteri22.png"/></Link>
+            <Link to="/"><img src="../images/lifteripainted.png"/></Link>
           </div>
           <div className="main-nav">
             <Link to="/">Home</Link>
