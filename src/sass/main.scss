@@ -100,15 +100,20 @@ button:active{
 
 
     .fa{
-      padding-right: 10px;
+      text-align: center;
+
     }
     .fa-circle-o{
       color:#85FF85;
+      padding-right: 10px;
       
     }
     .fa-bullseye{
       color:#FF1F1F;
+      padding-right: 10px;
     }
 
 
-    
+    .fa-spinner{
+    font-size: 30px;
+    }

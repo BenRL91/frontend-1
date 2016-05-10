@@ -16,25 +16,11 @@ $tangerine: #ffa800;
 	padding-bottom: 10vh;
 
 
-	// .edit-btn{
-	// 	// color: $shamrock;
-	// 	// position: absolute;
-	// 	// top: 120px;
-	// 	// right: 110px;
-	// 	font-weight: bold;
-	// 	font-size: 20px;
-	// }
-	// .edit-btn:hover{
-	// 	color: $mint;
-	// }
-
-
 .trip-details{
 	background-color: white;
 	width: 70vw;
 	height: 500px;
 	margin: auto;
-	// padding:15px;
 	box-sizing:border-box;
 
 		.trip-details-flex{
@@ -42,6 +28,7 @@ $tangerine: #ffa800;
 			padding-bottom: 50px;
 			box-sizing:border-box;
 			padding:20px;
+			border-bottom: 5px solid #222222;
 
 			.trip-details-departing{
 				display:flex;
@@ -63,8 +50,8 @@ $tangerine: #ffa800;
 		width:100%;
 		margin-bottom: 20px;
 		font-size: 20px;
-		// background-color: #222222;
-		color:$pistachio;
+		border-bottom: 5px solid #222222;
+		// color:$ocean;
 
 		.book-edit{
 				box-sizing:border-box;
@@ -72,7 +59,6 @@ $tangerine: #ffa800;
 
 			.book-btn{
 				position:relative;
-				// position:absolute;
 				color: $tangerine;
 				font-weight: bold;
 				font-size: 20px;

@@ -23,7 +23,7 @@ export default class Profile extends Component {
           this.setState({
             current_user,
             profile: profile.user,
-            current_user_trips: profile.user.host,
+            current_user_trips: profile.user.trips_hosted,
             loading: false
         })
       })
@@ -57,7 +57,7 @@ if (user_id == currentID){
 }
 renderLoading(){
   return(
-    <div>Loading...</div>
+  <i className="fa fa-spinner" aria-hidden="true"></i>
   )
 }
 renderEditLink(){
@@ -90,7 +90,20 @@ renderPage(){
           <div className="profile-status">
             Driver status:{profile.driver.toString()}
           </div>
+
+          <div className="profile-email">
+            email:{profile.email}
+          </div>
+
+          <div className="profile-status">
+            username:{profile.user_name}
+          </div>
+
+
+          <div className="profile-edit">
           {this.renderEditLink()}
+          </div>
+
         </div>
       </div>
 

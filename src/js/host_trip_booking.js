@@ -152,7 +152,7 @@ dataHandler(query){
 }
 renderLoading(){
   return (
-    <div>Loading...</div>
+    <i className="fa fa-spinner" aria-hidden="true"></i>
   )
 }
 renderPage(){
@@ -235,6 +235,14 @@ renderPage(){
               onSuggestSelect={this.onSuggestSelectDepart}
               placeholder='Where are you leaving from?'/>
           </label>
+
+          <label>
+            Date:
+            <input
+              type='time'
+              name='time_leave'
+              placeholder='What time are you leaving?'/>
+          </label>
 ​
           <label>
             Date:
@@ -253,14 +261,20 @@ renderPage(){
               placeholder='Where are you driving to?'/>
           </label>
 ​
-​
+​          <label>
+            Date:
+            <input
+              type='time'
+              name='time_arrive'
+              placeholder='What time will you arrive?'/>
+          </label>
 ​
           <label>
             Date:
             <input
               type='date'
               name='date_arrive'
-              placeholder='Whats your ETA?'/>
+              placeholder='What date will you arrive?'/>
           </label>
 ​
           <label>
