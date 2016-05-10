@@ -8,138 +8,121 @@ $tangerine: #ffa800;
 
 
 .trip-details-wrapper{
-	margin-left: 10vw; 
-	margin-right: 10vw;
-	margin-top:100px;
+	background-color: #222222;
+	width:100vw;
+	height:100%;
+	min-height:100vh;
+	padding-top: 10vh;
+	padding-bottom: 10vh;
 
 
-	.edit-btn{
-		// color: $shamrock;
-		position: absolute;
-		top: 120px;
-		right: 110px;
-		font-weight: bold;
-		font-size: 20px;
+	// .edit-btn{
+	// 	// color: $shamrock;
+	// 	// position: absolute;
+	// 	// top: 120px;
+	// 	// right: 110px;
+	// 	font-weight: bold;
+	// 	font-size: 20px;
+	// }
+	// .edit-btn:hover{
+	// 	color: $mint;
+	// }
 
-	}
 
-	.edit-btn:hover{
-		color: $mint;
-	}
-
-	.trip-details{
-		width:100%;
-		height: 50vh;
-		position:relative;
-		box-sizing:border-box;
+.trip-details{
+	background-color: white;
+	width: 70vw;
+	height: 500px;
+	margin: auto;
+	// padding:15px;
+	box-sizing:border-box;
 
 		.trip-details-flex{
-			display:flex;
-			justify-content:space-between;
-			width: 50%;
-			border-right: 3px solid white;
-			padding-top: 25px;
-			padding-left: 15px;
-			padding-right: 15px;
-			// background-color:$tangerine;
-			height:100px;
+			font-size: 15px;
+			padding-bottom: 50px;
 			box-sizing:border-box;
+			padding:20px;
+
+			.trip-details-departing{
+				display:flex;
+				justify-content:space-between;
+			}
+
+			.trip-details-destination{
+				display:flex;
+				justify-content:space-between;
+			}
 		}
 
-		.trip-details-departing{
-			// color:white;
-			font-size: 20px;
-			padding-right: 10px;
+
+	.trip-details-seats{
+		box-sizing:border-box;
+		padding:20px;
+		display:flex;
+		justify-content:space-between;
+		width:100%;
+		margin-bottom: 20px;
+		font-size: 20px;
+		// background-color: #222222;
+		color:$pistachio;
+
+		.book-edit{
+				position:relative;
+				box-sizing:border-box;
+
+
+			.book-btn{
+				position:absolute;
+				color: $tangerine;
+				font-weight: bold;
+				font-size: 20px;
+				&:hover{
+					color:$mint;
+				}
+
+			}
+			.edit{
+				position:absolute;
+				top:0;
+				right:0;
+					// top: 100px;
+					// right:16vw;
+			}
 		}
 
-		.direction-line{
-			margin-top: 20px;
-			width:18vw;
-			height:3px;
-			background-color:$mint;
-			// position:relative;
-		}
-
-		.direction-arrow{
-			// position:absolute;
-			margin-top: 5px;
-			color: $mint;
-			font-size: 30px;
-		}
-
-		.trip-details-destination{
-			// color:white;
-			font-size: 20px;	
-			padding-left: 10px;
-
-			// text-align: right;
-		}
-
-		.trip-details-seats{
-
-			position:absolute;
-			right:20vw;
-			top:0;
-			height:100px;
-			width:20vw;
-			// background-color:$tangerine;
-			font-size: 20px;
-			// color:white;
-			text-align: center;
-			padding-top: 25px;
-			// border-right: 3px solid white;
-			box-sizing:border-box;
-		}
 	}
 
-		.trip-details-price{
-			position:absolute;
-			right:0;
-			top:0;
-			height:100px;
-			width:20vw;
-			// background-color:$tangerine;
-			font-size: 30px;
-			font-weight: bold;
-			// color:white;
-			text-align: center;
-			padding-top: 30px;
-			box-sizing:border-box;
-			// border-bottom: 3px solid white;
+	
 
-
-		}
 
 
 	
 	.trip-details-driver{
-		position:absolute;
-		bottom:0;
-		left:0;
-		right:0;
-		height:50%;
-
-
-	.trip-details-driver-flex{
 		display:flex;
 		align-items:center;
 
 
-		img{
-			width:15vw;
-			height:15vh;
-			object-fit:cover;
-			margin-right: 2vw;
-			margin-bottom: 1vh;
-			margin-left: 2vh;
 
-		}
+	.trip-details-driver-flex{
+		display:flex;
+		justify-content:space-between;
+		width:100%;
+		box-sizing:border-box;
+		padding:20px;
 
 
 		.driver-content-flex{
-			width:100%;
 			display:flex;
-			justify-content:space-between;
+			flex-direction:column;
+			margin-right: 2vw;
+			margin-bottom: 1vh;
+			// margin-left: 20px;
+
+				img{
+					width:200px;
+					height:200px;
+					object-fit:cover;
+				}
 
 		}
 
@@ -155,17 +138,12 @@ $tangerine: #ffa800;
 		}
 
 		.trip-details-para{
-			margin-right: 3vw;
-			width:35vw;
 			font-size: 14px;
-			// background-color: $tangerine;
 
 		}	
-
-
-		}
-
-	}
+	 }
+  }
+}
 
 
 
@@ -173,14 +151,8 @@ $tangerine: #ffa800;
 		display:none;
 }
 
-		.book-btn{
-			color: $ocean;
-			position: absolute;
-			top: 15vh;
-			right: 11vw;
-			font-weight: bold;
-			font-size: 20px;
 
-		  }
+
+
 
 }
