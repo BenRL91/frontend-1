@@ -67,12 +67,12 @@ $tangerine: #ffa800;
 		color:$pistachio;
 
 		.book-edit{
-				position:relative;
 				box-sizing:border-box;
 
 
 			.book-btn{
-				position:absolute;
+				position:relative;
+				// position:absolute;
 				color: $tangerine;
 				font-weight: bold;
 				font-size: 20px;
