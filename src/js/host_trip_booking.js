@@ -272,7 +272,7 @@ renderPage(){
           </label>
 ​
           <label>
-            Price Per A Seat:
+            Total Price:
             <input
               type='text'
               name='seat_price'

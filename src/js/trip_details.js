@@ -61,8 +61,8 @@ renderEditLink(){
   let { current_trip } = this.state;
   if(this.allowEdit()){
     return(
-      <Link className="book-btn" to={`/edittrip/${current_trip.id}`}> 
-      + EDIT YOUR TRIP 
+      <Link className="book-btn" to={`/edittrip/${current_trip.id}`}>
+      + EDIT YOUR TRIP
       </Link>
     )
   }else {
@@ -84,7 +84,7 @@ renderPage(){
           <div className="trip-details-departing">
             <div>
               <i className="fa fa-circle-o" aria-hidden="true"></i>
-              <b>{current_trip.departing_city}</b> 
+              <b>{current_trip.departing_city}</b>
             </div>
            {current_trip.date_leave}
           </div>
@@ -92,7 +92,7 @@ renderPage(){
           <div className="trip-details-destination">
             <div>
               <i className="fa fa-bullseye" aria-hidden="true"></i>
-              <b>{current_trip.destination}</b> 
+              <b>{current_trip.destination}</b>
             </div>
            {current_trip.date_arrive}
          </div>
@@ -105,7 +105,6 @@ renderPage(){
           </div>
 
           <div className="book-edit">
-           <Link className='book-btn' to={`/riderbooking/${current_trip.id}`}> Book Trip → </Link>
            {::this.renderEditLink()}
           </div>
         </div>
@@ -119,7 +118,7 @@ renderPage(){
               <span className="trip-details-driver-name">{driver.first_name} {driver.last_name}</span>
               <Link className="trip-details-driver-link" to={`/profile/${driver.id}`}> view drivers profile </Link>
               </div>
-    
+
 
               <div className="trip-details-para">
                 Trip Description: {current_trip.comments}

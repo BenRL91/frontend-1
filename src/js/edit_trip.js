@@ -44,7 +44,7 @@ export default class EditTrip extends Component {
     }).then( resp => {
       console.log(resp)
       // cookie.set('current_trip', {current_trip: resp.trip)
-      hashHistory.push(`/tripdetails/${id}`)
+      hashHistory.push(`/details/${id}`)
     })
   }
 
@@ -53,14 +53,16 @@ export default class EditTrip extends Component {
 
     let id = this.props.params.trip_id;
     let { current_user } = this.state;
-    ajax({
-      url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
-      type: 'DELETE'
-    }).then( resp => {
-      console.log(resp)
-      // cookie.set('current_trip', {current_trip: resp.trip)
-      hashHistory.push(`/profile/${current_user.id}`)
-    })
+    if (window.confirm('Are you sure you want to delete this trip?')){
+
+      ajax({
+        url: `https://salty-river-31528.herokuapp.com/hosts/${id}`,
+        type: 'DELETE'
+      }).then( resp => {
+        console.log(resp)
+        hashHistory.push(`/profile/${current_user.id}`)
+      })
+    }
   }
 
 
