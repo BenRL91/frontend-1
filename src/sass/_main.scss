@@ -10,7 +10,6 @@ $tangerine: #00CCCC;
   a {
     text-decoration: none;
     color:black;
-    outline:none;
   }
   a:hover{
     color: $mint;
@@ -36,12 +35,6 @@ $tangerine: #00CCCC;
     height:7vh;
  
   }
-  // a{
-  //   // color: white;
-
-  //   padding-right: 100px;
-
-  // }
 }
 .main-nav {
   padding-top:2vh;
@@ -51,7 +44,7 @@ $tangerine: #00CCCC;
   width: 50%;
   font-weight: bold;
   font-size: 1.35em;
-  font-weight: 300;
+  // font-weight: 300;
     // color: white;
 
     .main-link{
