@@ -110,7 +110,7 @@ renderEditLink(){
 }
 showBreakdown(priceSet, index, arr){
   let { current_trip } = this.state;
-  if (index === 0 || index === 1){
+  if (index === 0){
     return;
   }else {
     return (
@@ -124,7 +124,7 @@ renderPage(){
     let { current_trip, driver, riders} = this.state;
     let { trip_id } = this.props.params;
     let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
-    let current_price = current_trip.seats_available - current_trip.seats_left + 1 <= 0
+    let current_price = current_trip.seats_available - (current_trip.seats_left + 1) <= 0
     ? current_trip.seats_available - current_trip.seats_left + 1
     : 0
     return (
