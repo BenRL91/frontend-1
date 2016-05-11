@@ -48,13 +48,13 @@ export default class Results extends Component {
          <img src={trip.user.picture} alt="temp"/>
 
          <div className="results-cities">
-          <i className="fa fa-circle-o" aria-hidden="true"></i>
             <div className='depart'>
+          <i className="fa fa-circle-o" aria-hidden="true"></i>
               {trip.departing_city} 
             </div>
           <br/>
+            <div className='destination'>
           <i className="fa fa-bullseye" aria-hidden="true"></i>
-            <div className='depart'>
               {trip.destination} 
             </div>
           </div>
@@ -63,7 +63,7 @@ export default class Results extends Component {
 
         <div className="results-dates-price-flex">
 
-            <div className="results-date-price"> Leaving <br/> <b>{trip.date_leave}</b></div>
+            <div className="results-date">  <b>{trip.date_leave}</b></div>
 
              <div>
                 <div className="results-price"> Currently <b>${breakdown.passenger_price}</b></div>
