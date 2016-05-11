@@ -27,7 +27,9 @@ export default class HostTripBooking extends Component {
         license_plate: "",
         license_number: ""
       },
-      loading: true
+      loading: true,
+      suggested_price: 'Suggested Price',
+      processing: false
     }
   }
   componentWillMount(){
@@ -90,17 +92,18 @@ export default class HostTripBooking extends Component {
     if(xA === undefined || xB === undefined){
       return 'You must select a departure location and a destination to calculate a price.'
     }else {
+      this.setState({processing: true})
       ajax({
-        url: 'https://salty-river-31528.herokuapp.com/pps/:host_id',
-        type: 'GET',
-        date: {
+        url: 'https://salty-river-31528.herokuapp.com/pps/',
+        type: 'POST',
+        data: {
           depart_latitude: xA,
           depart_longitude: yA,
           destination_latitude: xB,
           destination_longitude: yB
         }
       }).then(price => {
-        return price.toFixed(2)
+        this.setState({suggested_price: Math.abs(price.total_price.toFixed(2)), processing: false})
       })
     }
   }
@@ -151,11 +154,13 @@ onSuggestSelectDepart(suggest) {
   console.log(suggest);
   latA = suggest.location.lat;
   lngA = suggest.location.lng;
+  this.getSuggestedPrice(latA, lngA, latB, lngB)
 }
 onSuggestSelectDest(suggest) {
   console.log(suggest);
   latB = suggest.location.lat;
   lngB = suggest.location.lng;
+  this.getSuggestedPrice(latA, lngA, latB, lngB)
 }
 dataHandler(query){
   console.log('query', query)
@@ -167,14 +172,18 @@ dataHandler(query){
   console.log('latB, longB', latB, lngB)
 
 }
+processing(){
+  return (
+    'Estimating...'
+  )
+}
 renderLoading(){
   return (
     <i className="fa fa-spinner" aria-hidden="true"></i>
   )
 }
 renderPage(){
-  let { showLogin, driver_info } = this.state;
-  console.log('driver', driver_info)
+  let { showLogin, driver_info, suggested_price, processing } = this.state;
   return (
     <div className="host-booking-wrapper">
      <SSF className='host-trip-form' onData={::this.book}>
@@ -215,7 +224,7 @@ renderPage(){
              defaultValue={driver_info.phone}/>
          </label>
          <label>
-           Credid Card Info:
+           Credit Card Info:
            <input
              type='text'
              name='credit_card_number'
@@ -252,7 +261,7 @@ renderPage(){
             <GeoSuggest
               type='text'
               name='departing_city'
-              onSuggestSelect={this.onSuggestSelectDepart}
+              onSuggestSelect={::this.onSuggestSelectDepart}
               placeholder='Where are you leaving from?'/>
           </label>
 
@@ -277,7 +286,7 @@ renderPage(){
             <GeoSuggest
               type='text'
               name='destination'
-              onSuggestSelect={this.onSuggestSelectDest}
+              onSuggestSelect={::this.onSuggestSelectDest}
               placeholder='Where are you driving to?'/>
           </label>
 ​
@@ -306,12 +315,13 @@ renderPage(){
           </label>
 ​
           <label>
-          <span>{::this.getSuggestedPrice}</span>
+          {/*Here is the suggested price*/}
+          <span>{processing ? this.processing() : suggested_price}</span>
             Total Price:
             <input
               type='text'
               name='seat_price'
-              placeholder='Suggestion Price Interpolated Here'/>
+              placeholder={suggested_price}/>
           </label>
 ​
 ​

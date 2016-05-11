@@ -39,23 +39,24 @@ export default class Results extends Component {
   }
   makeTripListing(trip){
     let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, trip.seats_left, .2)
+    let url = `/profile/${trip.user.user_id}`
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
 
 
         <div className="results-img-cities-flex">
 
-         <img src={trip.user.picture} alt="temp"/>
+         <Link to={url}><img src={trip.user.picture} alt={`Profile picture of ${trip.user.first_name} ${trip.user.last_name}`}/></Link>
 
          <div className="results-cities">
             <div className='depart'>
           <i className="fa fa-circle-o" aria-hidden="true"></i>
-              {trip.departing_city} 
+              {trip.departing_city}
             </div>
           <br/>
             <div className='destination'>
           <i className="fa fa-bullseye" aria-hidden="true"></i>
-              {trip.destination} 
+              {trip.destination}
             </div>
           </div>
         </div>

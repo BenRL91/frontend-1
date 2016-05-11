@@ -20,7 +20,7 @@ console.log(suggest);
 latB = suggest.location.lat;
 lngB = suggest.location.lng;
 }
-dataHandlerDepart(query){
+dataHandler(query){
   console.log('query', query)
   query.latA = latA;
   query.lngA = lngA;
@@ -29,18 +29,7 @@ dataHandlerDepart(query){
   console.log('latA, longA', latA, lngA)
   console.log('latB, longB', latB, lngB)
 
-  hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}/depart`)
-}
-dataHandlerDest(query){
-  console.log('query', query)
-  query.latA = latA;
-  query.lngA = lngA;
-  query.latB = latB;
-  query.lngB = lngB;
-  console.log('latA, longA', latA, lngA)
-  console.log('latB, longB', latB, lngB)
-
-  hashHistory.push(`/results/${query.latB}/${query.lngB}/${query.rad}/dest`)
+  hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}/${query.travel}`)
 }
   render(){
     return (
@@ -48,14 +37,14 @@ dataHandlerDest(query){
 
       <div className='home-wrapper'>
 
-        <SSF onData={::this.dataHandlerDepart} className='search-wrapper'>
+        <SSF onData={::this.dataHandler} className='search-wrapper'>
 
            <div className='geo-wrapper'>
 
             <label>
             Search all trips leaving from a specific location:
             <GeoSuggest
-              placeholder="Departure"
+              placeholder="Choose a Location"
               onSuggestSelect={this.onSuggestSelectDepart}
               name='departure'
               />
@@ -70,40 +59,16 @@ dataHandlerDest(query){
             <input type='radio' defaultChecked={false} name='rad' value='20'/>20
             <input type='radio' defaultChecked={false} name='rad' value='50'/>50
           </label>
-
-            <button> Search Trips </button>
-
-        </SSF>
-
-
-        <SSF onData={::this.dataHandlerDest} className='search-wrapper'>
-
-        <div className='geo-wrapper'>
           <label>
-          Search all trips arriving in a specific location:
-          <GeoSuggest
-            placeholder="Destination"
-            onSuggestSelect={this.onSuggestSelectDest}
-            name='destination'
-          />
+            <select name='travel'>
+              <option value='depart'>Departing from</option>
+              <option value='dest'>Traveling to</option>
+            </select>
           </label>
-        </div>
-
-        <label className="radio">
-          Search Radius by Mile
-
-          <input type='radio' defaultChecked={false} name='rad' value='1'/>1 
-          <input type='radio' defaultChecked={false} name='rad' value='5'/>5 
-          <input type='radio' defaultChecked={true} name='rad' value='10'/>10 
-          <input type='radio' defaultChecked={false} name='rad' value='20'/>20 
-          <input type='radio' defaultChecked={false} name='rad' value='50'/>50 
-
-        </label>
 
             <button> Search Trips </button>
 
         </SSF>
-
       </div>
      </div>
     )

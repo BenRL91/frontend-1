@@ -5,14 +5,14 @@ import cookie from 'js-cookie';
 
 export default class TripDetails extends Component {
 
-
   constructor(...args){
   super(...args);
   this.state = {
     current_trip: null,
     current_user: null,
     driver: null,
-    loading: true
+    loading: true,
+    riders: null,
     }
   }
 
@@ -29,37 +29,41 @@ export default class TripDetails extends Component {
           if (resp.hosts.seats_left === 100){
               resp.hosts.seats_left = resp.hosts.seats_available
           }
-	        this.setState({current_trip: resp.hosts})
+          console.log(resp)
+	        this.setState({current_trip: resp.hosts, riders: resp.riders})
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		}).fail(e => { console.log(e)})
 		.then( respB => {
 			this.setState({driver: respB.user, loading: false})
 			cookie.set('saved_trip', {trip_id})
 		}).fail(e => { console.log( e) })
-
   }
   breakdownTotalPrice(total, seats_available, seats_left, discount){
+    let breakdownArr = [];
     if (seats_left === 100){
       seats_left = seats_available
     }
-    let breakdown = {};
-    let even_split = total / ((seats_available + 1) - (seats_left - 1))
-    let residual = even_split * discount
-    let driver_price;
-    driver_price = seats_available === seats_left
-       ? even_split
-       : even_split - (even_split * discount)
-    let passenger_price = seats_available - seats_left >= 0
-       ? even_split + (residual / (seats_left - (seats_left - 1)))
-       : even_split
-    breakdown.driver_price = driver_price.toFixed(2)
-    breakdown.passenger_price = passenger_price.toFixed(2)
-    breakdown.average = (even_split.toFixed(2))
-    if (breakdown.passenger_price === 'Infinity'){
-      breakdown.passenger_price = driver_price
+    for( seats_left = 0; seats_left < seats_available + 1; seats_left++){
+      let breakdown = {}
+      let even_split = total / ((seats_available + 1) - (seats_left - 1))
+      let residual = even_split * discount
+      let driver_price;
+      driver_price = seats_available === seats_left
+      ? even_split
+      : even_split - (even_split * discount)
+      let passenger_price = seats_available - seats_left >= 0
+      ? even_split + (residual / (seats_left - (seats_left - 1)))
+      : even_split
+      breakdown.driver_price = driver_price.toFixed(2)
+      breakdown.passenger_price = passenger_price.toFixed(2)
+      breakdown.average = (even_split.toFixed(2))
+      if (breakdown.passenger_price === 'Infinity'){
+        breakdown.passenger_price = driver_price
+      }
+      breakdownArr.push(breakdown)
     }
     return (
-      breakdown
+      breakdownArr.reverse()
     )
   }
 renderLoading(){
@@ -81,6 +85,15 @@ if (user_id == currentID){
   return false;
   }
 }
+showRiders(rider){
+  let url = `https://salty-river-31528.herokuapp.com/profile/${rider.id}`
+  return (
+    <div key={rider.id}>
+      <Link to={url}><img src={rider.pictures[0]}/></Link>
+      <span>{rider.first_name}, {rider.last_name}</span>
+    </div>
+  )
+}
 renderEditLink(){
   let { current_trip } = this.state;
   if(this.allowEdit()){
@@ -95,11 +108,25 @@ renderEditLink(){
     );
   }
 }
+showBreakdown(priceSet, index, arr){
+  let { current_trip } = this.state;
+  if (index === 0){
+    return;
+  }else {
+    return (
+      <div key={ index }>
+      Price with {index} Passengers: ${priceSet.passenger_price}
+      </div>
+    )
+  }
+}
 renderPage(){
-    let { current_trip, driver} = this.state;
+    let { current_trip, driver, riders} = this.state;
+    let current_price = current_trip.seats_available - current_trip.seats_left + 1
+    console.log('cp', current_trip)
     let { trip_id } = this.props.params;
     let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
-
+    console.log('current breakdown', breakdown)
     return (
       <div className="trip-details-wrapper">
         <div className="trip-details">
@@ -127,7 +154,8 @@ renderPage(){
         </div>
 
         <div className="trip-details-seats">
-          <div>{current_trip.seats_left} seats available for ${breakdown.passenger_price} each
+          <div>Current seat available for ${breakdown[current_price].passenger_price}
+          {breakdown.map(::this.showBreakdown)}
           </div>
 
           <div className="book-edit">
@@ -153,7 +181,7 @@ renderPage(){
 
         </div>
         </div>
-
+        {riders.map(::this.showRiders)}
 
       </div>
      </div>
