@@ -29,7 +29,6 @@ export default class TripDetails extends Component {
           if (resp.hosts.seats_left === 100){
               resp.hosts.seats_left = resp.hosts.seats_available
           }
-          console.log(resp)
 	        this.setState({current_trip: resp.hosts, riders: resp.riders})
 	        return ajax(`https://salty-river-31528.herokuapp.com/profile/${resp.hosts.user_id}`);
 		}).fail(e => { console.log(e)})
@@ -123,10 +122,8 @@ showBreakdown(priceSet, index, arr){
 renderPage(){
     let { current_trip, driver, riders} = this.state;
     let current_price = current_trip.seats_available - current_trip.seats_left + 1
-    console.log('cp', current_trip)
     let { trip_id } = this.props.params;
     let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
-    console.log('current breakdown', breakdown)
     return (
       <div className="trip-details-wrapper">
         <div className="trip-details">
