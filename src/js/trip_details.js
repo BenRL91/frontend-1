@@ -151,9 +151,10 @@ renderPage(){
         </div>
 
         <div className="trip-details-seats">
-         Current seat available for ${breakdown[current_price].passenger_price}
+        <div>
+         Currently ${breakdown[current_price].passenger_price}
           {breakdown.map(::this.showBreakdown)}
-       
+        </div>
 
           <div className="book-edit">
            {::this.renderEditLink()}
