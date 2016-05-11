@@ -48,7 +48,7 @@ export default class Results extends Component {
       seats = trip.seats_left
     }
     let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, seats, .2)
-    let current_price = trip.seats_available - seats + 1 <= 0
+    let current_price = trip.seats_available - (seats + 1) <= 0
     ? trip.seats_available - seats + 1
     : 0
     let url = `/profile/${trip.user.user_id}`
