@@ -86,7 +86,24 @@ export default class HostTripBooking extends Component {
     : null;
       this.setState({showLogin: false, current_user  });
   }
-
+  getSuggestedPrice(xA, yA, xB, yB){
+    if(xA === undefined || xB === undefined){
+      return 'You must select a departure location and a destination to calculate a price.'
+    }else {
+      ajax({
+        url: 'https://salty-river-31528.herokuapp.com/pps/:host_id',
+        type: 'GET',
+        date: {
+          depart_latitude: xA,
+          depart_longitude: yA,
+          destination_latitude: xB,
+          destination_longitude: yB
+        }
+      }).then(price => {
+        return price.toFixed(2)
+      })
+    }
+  }
   book(data){
     let driver_details = {};
     let trip_info = {};
@@ -161,7 +178,7 @@ renderPage(){
   return (
     <div className="host-booking-wrapper">
      <SSF className='host-trip-form' onData={::this.book}>
-     SIGN UP TO HOST YOUR OWN TRIP <br/><br/>​
+       SIGN UP TO HOST YOUR OWN TRIP <br/><br/>​
          <label>
            First Name:
            <input
@@ -286,6 +303,7 @@ renderPage(){
           </label>
 ​
           <label>
+          <span>{::this.getSuggestedPrice}</span>
             Total Price:
             <input
               type='text'

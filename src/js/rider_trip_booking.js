@@ -21,7 +21,6 @@ export default class RiderTripBooking extends Component {
 		}
 	}
 		componentWillMount(){
-			console.log('mounting')
 			let current_user = cookie.getJSON('current_user')
 			? cookie.getJSON('current_user').current_user
 			: null;
@@ -29,7 +28,6 @@ export default class RiderTripBooking extends Component {
 		}
 
 	loginHandler(){
-		console.log('logging in')
 		let current_user = cookie.getJSON('current_user')
 		? cookie.getJSON('current_user').current_user
 		: null;
@@ -39,7 +37,6 @@ export default class RiderTripBooking extends Component {
 			}
 	}
 	showLoginHandler() {
-		console.log('showing');
 		let { current_user } = this.state;
 		console.log('current_user', current_user)
 		if(!current_user){
@@ -47,7 +44,6 @@ export default class RiderTripBooking extends Component {
 		}
 	}
 	hideLoginHandler() {
-		console.log('hiding')
 		let current_user = cookie.getJSON('current_user')
 		? cookie.getJSON('current_user').current_user
 		: null;
@@ -55,7 +51,6 @@ export default class RiderTripBooking extends Component {
 	}
 
 	  book(bookingInfo) {
-			console.log('trying to book')
 			let {id} = this.props.params;
 			let current_user = cookie.getJSON('current_user')
 			? cookie.getJSON('current_user').current_user
@@ -68,7 +63,6 @@ export default class RiderTripBooking extends Component {
 					url: `https://salty-river-31528.herokuapp.com/riders/${id}`,
 					type: 'PUT'
 				}).then(resp => {
-					console.log('resp', resp)
 					hashHistory.push('/riderconfirmation')})
 					.fail(e => alert(`You've already booked this trip!`))
 	}else {
@@ -129,7 +123,7 @@ fakeFunction(){
 
         </SSF>
 				<SSF className='rider-trip-booking-book'onData={::this.book}>
-				
+
 					<input
 						type='hidden'
 						name='user_id'/>

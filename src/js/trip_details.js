@@ -58,7 +58,6 @@ export default class TripDetails extends Component {
     if (breakdown.passenger_price === 'Infinity'){
       breakdown.passenger_price = driver_price
     }
-    console.log('even_split', even_split.toFixed(2))
     return (
       breakdown
     )
@@ -99,7 +98,6 @@ renderEditLink(){
 renderPage(){
     let { current_trip, driver} = this.state;
     let { trip_id } = this.props.params;
-    console.log(current_trip)
     let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
 
     return (
