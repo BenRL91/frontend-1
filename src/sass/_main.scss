@@ -5,7 +5,20 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #D92626;
+$tangerine: #00CCCC;
+
+  a {
+    text-decoration: none;
+    color:black;
+    outline:none;
+  }
+  a:hover{
+    color: $mint;
+  }
+  a:active{
+    border:none;
+    outline:none;
+  }
 
 
 
@@ -23,12 +36,12 @@ $tangerine: #D92626;
     height:7vh;
  
   }
-  a{
-    // color: white;
+  // a{
+  //   // color: white;
 
-    padding-right: 100px;
+  //   padding-right: 100px;
 
-  }
+  // }
 }
 .main-nav {
   padding-top:2vh;
@@ -39,6 +52,14 @@ $tangerine: #D92626;
   font-size: 1.35em;
   font-weight: 300;
     // color: white;
+
+    .main-link{
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+
+
+    }
   
 
   button{
@@ -55,7 +76,7 @@ $tangerine: #D92626;
     border:none;
     padding:0;
     margin:0;
-    color: #a2a2a2;
+    color: $mint;
   }
 
 
