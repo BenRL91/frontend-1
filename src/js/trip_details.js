@@ -53,14 +53,15 @@ export default class TripDetails extends Component {
       let passenger_price = seats_available - seats_left >= 0
       ? even_split + (residual / (seats_left - (seats_left - 1)))
       : even_split
-      breakdown.driver_price = driver_price.toFixed(2)
-      breakdown.passenger_price = passenger_price.toFixed(2)
+      breakdown.driver_price = `$${driver_price.toFixed(2)}`
+      breakdown.passenger_price = `$${passenger_price.toFixed(2)}`
       breakdown.average = (even_split.toFixed(2))
       if (breakdown.passenger_price === 'Infinity'){
         breakdown.passenger_price = driver_price
       }
       breakdownArr.push(breakdown)
     }
+    breakdownArr.push({passenger_price: 'This trip is completely booked!'})
     return (
       breakdownArr.reverse()
     )
@@ -109,21 +110,23 @@ renderEditLink(){
 }
 showBreakdown(priceSet, index, arr){
   let { current_trip } = this.state;
-  if (index === 0){
+  if (index === 0 || index === 1){
     return;
   }else {
     return (
       <div className="price-breakdown-wrapper" key={ index }>
-      Price with {index} Passengers: ${priceSet.passenger_price}
+        Price with {index} Passengers: {priceSet.passenger_price}
       </div>
     )
   }
 }
 renderPage(){
     let { current_trip, driver, riders} = this.state;
-    let current_price = current_trip.seats_available - current_trip.seats_left + 1
     let { trip_id } = this.props.params;
     let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
+    let current_price = current_trip.seats_available - current_trip.seats_left + 1 <= 0
+    ? current_trip.seats_available - current_trip.seats_left + 1
+    : 0
     return (
       <div className="trip-details-wrapper">
         <div className="trip-details">
@@ -152,7 +155,7 @@ renderPage(){
 
         <div className="trip-details-seats">
         <div>
-         Currently ${breakdown[current_price].passenger_price}
+         Currently {breakdown[current_price].passenger_price}
           {breakdown.map(::this.showBreakdown)}
         </div>
 

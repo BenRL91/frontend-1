@@ -27,14 +27,15 @@ export default class Results extends Component {
       let passenger_price = seats_available - seats_left >= 0
       ? even_split + (residual / (seats_left - (seats_left - 1)))
       : even_split
-      breakdown.driver_price = driver_price.toFixed(2)
-      breakdown.passenger_price = passenger_price.toFixed(2)
+      breakdown.driver_price = `$${driver_price.toFixed(2)}`
+      breakdown.passenger_price = `$${passenger_price.toFixed(2)}`
       breakdown.average = (even_split.toFixed(2))
       if (breakdown.passenger_price === 'Infinity'){
         breakdown.passenger_price = driver_price
       }
       breakdownArr.push(breakdown)
     }
+    breakdownArr.push({passenger_price: 'This trip is completely booked!'})
     return (
       breakdownArr.reverse()
     )
@@ -46,8 +47,10 @@ export default class Results extends Component {
     }else {
       seats = trip.seats_left
     }
-    let current_price = trip.seats_available - seats + 1
     let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, seats, .2)
+    let current_price = trip.seats_available - seats + 1 <= 0
+    ? trip.seats_available - seats + 1
+    : 0
     let url = `/profile/${trip.user.user_id}`
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
@@ -76,8 +79,8 @@ export default class Results extends Component {
             <div className="results-date">  <b>{trip.date_leave}</b></div>
 
              <div>
-                <div className="results-price"> Currently <b>${breakdown[current_price].passenger_price}</b></div>
-                <div className="results-price"> As low as <b>${breakdown[breakdown.length - 1].passenger_price}</b> </div>
+                <div className="results-price"> Currently <b>{breakdown[current_price].passenger_price}</b></div>
+                <div className="results-price"> As low as <b>{breakdown[breakdown.length - 1].passenger_price}</b> </div>
               </div>
 
 
