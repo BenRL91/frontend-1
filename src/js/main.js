@@ -36,7 +36,7 @@ export default class Main extends Component {
   getLink(){
     let { current_user } = this.state;
     let shownLink = current_user
-    ?  <div>
+    ?  <div className="main-link">
           <Link className='logout' to="/">
             <button
               className='logout'

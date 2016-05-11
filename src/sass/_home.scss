@@ -5,7 +5,7 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #D92626;
+$tangerine: #00CCCC;
 
 
 .home-main-wrapper{
@@ -30,18 +30,28 @@ $tangerine: #D92626;
 				align-items: center;
 				padding-top: 4vh;
 				width: 70vw;
-				height: 220px;
+				height: 300px;
 				background-color: #222222;
 				color:white;
 
+				.geo-wrapper{
+					select{
+						width: 40vw;
+						height:40px;
+						color:white;
+						background-color: transparent;
+
+					}
+				}
 
 				.geo-wrapper input{
 					color: #A9A9B3;
   					margin: 1em auto;
-					width: 35vw;
+					width: 40vw;
   					border: 2px solid transparent;
-  					box-shadow: 0 0 1px #3d464d;
+  					// box-shadow: 0 0 1px #3d464d;
   					padding: .5em 1em;
+  					box-sizing:border-box;
 
 				}
 
@@ -57,6 +67,7 @@ $tangerine: #D92626;
 
  				button{
  					margin-top: 4vh;
+ 					// margin-bottom: 4vh;
  					padding-left: 2vw;
  					padding-right: 2vw;
  					width: 20vw;

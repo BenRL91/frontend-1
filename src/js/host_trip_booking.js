@@ -316,18 +316,12 @@ renderPage(){
 ​
           <label>
           {/*Here is the suggested price*/}
-          <span>{processing ? this.processing() : suggested_price}</span>
-            Total Price:
-            <input
-              type='text'
-              name='seat_price'
-              placeholder={suggested_price}/>
-          </label>
-​
-​
+          <div className="price-machine">{processing ? this.processing() : suggested_price}</div>
           <div className="host-span">
             <i className="fa fa-info-circle" aria-hidden="true"></i>
-            <div>The price listed above is a suggested price calculated by
+            <div>(You must have your departure, destination, and seat availability filled out to see suggested price).
+              <br/>
+              The price listed above is a suggested price calculated by
               the actual miles you're traveling, an average MPG,
               and the daily gas prices in your area.
               <b>The price is a total for all the seats you have made available
@@ -337,9 +331,16 @@ renderPage(){
               riders join your trip.
               This tool is made available as a guideline, but you may charge
               what you want.</div>
-
-
           </div>
+            <br/>
+            Total Price:
+            <input
+              type='text'
+              name='seat_price'
+              placeholder={suggested_price}/>
+          </label>
+​
+​
 ​
            <label className="trip-description">
             Trip Description:

@@ -2,6 +2,7 @@
 
 // Turn on freq used libraries
 @import 'font-awesome/scss/font-awesome';
+@import 'react-select/dist/react-select';
 @import '_geosuggest';
 @import 'normalize-css/normalize';
 @import '_main';
@@ -34,7 +35,7 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #D92626;
+$tangerine: #005252;
 $newblue: #33CCCC;
 
 
@@ -49,19 +50,19 @@ $newblue: #33CCCC;
   ul {
     list-style: none;
   }
-  a {
-    text-decoration: none;
-    // color:black;
-    color: $newblue;
-    outline:none;
-  }
-  // a:hover{
-  //   color: $mint;
+  // a {
+  //   text-decoration: none;
+  //   // color:black;
+  //   color: $newblue;
+  //   outline:none;
   // }
-  a:active{
-    border:none;
-    outline:none;
-  }
+  // // a:hover{
+  // //   color: $mint;
+  // // }
+  // a:active{
+  //   border:none;
+  //   outline:none;
+  // }
   h1, h2, h3, h4 {
     margin: 0;
   }

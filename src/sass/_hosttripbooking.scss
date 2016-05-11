@@ -3,7 +3,7 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #D92626;
+$tangerine: #00CCCC;
 
 
 .host-booking-wrapper{
@@ -34,8 +34,6 @@ $tangerine: #D92626;
 		}
 
 	
-
-
 
 		input{ 
   			color: #A9A9B3;
@@ -92,6 +90,16 @@ $tangerine: #D92626;
   			padding: .5em 1em;
 			padding-bottom:20vh;
 
+		}
+
+		.price-machine{
+			padding-bottom: 15px;
+			padding-top: 15px;
+			margin-bottom: 10px;
+			// background-color: $mint;
+			font-size: 18px;
+			border-bottom: 1px solid black;
+			color: $tangerine;
 		}
 
 	}

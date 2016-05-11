@@ -4,6 +4,7 @@ import token from './token';
 import { ajax } from 'jquery';
 import GeoSuggest from 'react-geosuggest';
 import SSF from 'react-simple-serial-form';
+import Select from 'react-select';
 
 let latA, lngA, latB, lngB;
 
@@ -38,11 +39,20 @@ dataHandler(query){
       <div className='home-wrapper'>
 
         <SSF onData={::this.dataHandler} className='search-wrapper'>
-
-           <div className='geo-wrapper'>
-
-            <label>
             Search all trips leaving from a specific location:
+            <br/>
+
+
+<div className='geo-wrapper'>
+             <select name='travel'>
+               <option value='depart'>Departing from</option>
+               <option value='dest'>Traveling to</option>
+             </select> 
+           
+
+           
+            
+            <label>
             <GeoSuggest
               placeholder="Choose a Location"
               onSuggestSelect={this.onSuggestSelectDepart}
@@ -60,13 +70,12 @@ dataHandler(query){
             <input type='radio' defaultChecked={false} name='rad' value='50'/>50
           </label>
           <label>
-            <select name='travel'>
-              <option value='depart'>Departing from</option>
-              <option value='dest'>Traveling to</option>
-            </select>
           </label>
 
             <button> Search Trips </button>
+
+            <br/>
+            <br/>
 
         </SSF>
       </div>
@@ -74,3 +83,14 @@ dataHandler(query){
     )
   }
 }
+
+
+
+// react select fix
+//  <Select
+//      name="travel"
+//      options={[
+//      {value: 'depart', label: 'Departing from'} , 
+//      {value: 'dest', label: 'Traveling to'}
+//               ]}
+//             />
