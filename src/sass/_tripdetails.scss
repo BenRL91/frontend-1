@@ -6,6 +6,10 @@ $shamrock: #1fbb62;
 $tangerine: #00CCCC;
 
 
+// .highlight{
+// 	color:red;
+// }
+
 
 .trip-details-wrapper{
 	background-color: #222222;
@@ -82,7 +86,6 @@ $tangerine: #00CCCC;
 		// width:70vw;
 		margin-bottom: 20px;
 		font-size: 15px;
-		border-bottom: 5px solid #222222;
 		// color:$ocean;
 
 		.current-price{
@@ -121,6 +124,16 @@ $tangerine: #00CCCC;
 		}
 
 	}
+
+
+.trip-price-explanation{
+	
+	padding-left:20px;
+	border-bottom: 5px solid #222222;
+	div{
+		width: 40%;
+	}
+}
 
 	
 

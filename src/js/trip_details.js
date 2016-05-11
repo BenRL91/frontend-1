@@ -165,6 +165,16 @@ renderPage(){
           </div>
         </div>
 
+        <div className="trip-price-explanation">
+          <div>
+            <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <b>The price goes down as more riders join this trip.</b>
+              The prices are calculated from the trips distance, average MPG, and daily gas prices.
+              You won't be charged until the trip has started to ensure as many 
+              seats are filled as possible.
+          </div>
+        </div>
+
 
         <div className="trip-details-driver">
           <div className="trip-details-driver-flex">
