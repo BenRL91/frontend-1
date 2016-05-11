@@ -50,19 +50,9 @@ $newblue: #33CCCC;
   ul {
     list-style: none;
   }
-  // a {
-  //   text-decoration: none;
-  //   // color:black;
-  //   color: $newblue;
-  //   outline:none;
-  // }
-  // // a:hover{
-  // //   color: $mint;
-  // // }
-  // a:active{
-  //   border:none;
-  //   outline:none;
-  // }
+  a {
+    outline:none;
+  }
   h1, h2, h3, h4 {
     margin: 0;
   }

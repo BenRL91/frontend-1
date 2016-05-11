@@ -34,13 +34,19 @@ $tangerine: #00CCCC;
 				background-color: #222222;
 				color:white;
 
+				span{
+					font-size: 1.35em;
+  					font-weight: 300;
+				}
+
 				.geo-wrapper{
 					select{
 						width: 40vw;
 						height:40px;
 						color:white;
 						background-color: transparent;
-
+						font-size: 1.35em;
+  						font-weight: 300;
 					}
 				}
 
@@ -67,10 +73,10 @@ $tangerine: #00CCCC;
 
  				button{
  					margin-top: 4vh;
- 					// margin-bottom: 4vh;
  					padding-left: 2vw;
  					padding-right: 2vw;
  					width: 20vw;
+ 					font-size: 1.35em;
  				}
 
  				.radio {

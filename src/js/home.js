@@ -39,7 +39,7 @@ dataHandler(query){
       <div className='home-wrapper'>
 
         <SSF onData={::this.dataHandler} className='search-wrapper'>
-            Search all trips leaving from a specific location:
+            Search all trips leaving from or going to a specific location:
             <br/>
 
 
