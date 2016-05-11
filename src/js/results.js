@@ -40,8 +40,14 @@ export default class Results extends Component {
     )
   }
   makeTripListing(trip){
-    let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, trip.seats_left, .2)
-    let current_price = trip.seats_available - trip.seats_left + 1
+    let seats;
+    if (trip.seats_left === 100){
+      seats = trip.seats_available
+    }else {
+      seats = trip.seats_left
+    }
+    let current_price = trip.seats_available - seats + 1
+    let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, seats, .2)
     let url = `/profile/${trip.user.user_id}`
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
@@ -71,7 +77,7 @@ export default class Results extends Component {
 
              <div>
                 <div className="results-price"> Currently <b>${breakdown[current_price].passenger_price}</b></div>
-                <div className="results-price"> As low as <b>${breakdown[length - 1].passenger_price}</b> </div>
+                <div className="results-price"> As low as <b>${breakdown[breakdown.length - 1].passenger_price}</b> </div>
               </div>
 
 
@@ -97,7 +103,6 @@ export default class Results extends Component {
 
       .then(results => {
         this.setState({trips: results.search})
-        console.log(results)
       })
 
     }else if( loc === 'dest'){
@@ -113,7 +118,6 @@ export default class Results extends Component {
 
       .then(results => {
         this.setState({trips: results.search})
-        console.log(results)
       })
     }
   }

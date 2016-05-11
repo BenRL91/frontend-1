@@ -12,23 +12,18 @@ export default class Home extends Component {
 
 
 onSuggestSelectDepart(suggest) {
-console.log(suggest);
 latA = suggest.location.lat;
 lngA = suggest.location.lng;
 }
 onSuggestSelectDest(suggest) {
-console.log(suggest);
 latB = suggest.location.lat;
 lngB = suggest.location.lng;
 }
 dataHandler(query){
-  console.log('query', query)
   query.latA = latA;
   query.lngA = lngA;
   query.latB = latB;
   query.lngB = lngB;
-  console.log('latA, longA', latA, lngA)
-  console.log('latB, longB', latB, lngB)
 
   hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}/${query.travel}`)
 }
@@ -47,11 +42,11 @@ dataHandler(query){
              <select name='travel'>
                <option value='depart'>Departing from</option>
                <option value='dest'>Traveling to</option>
-             </select> 
-           
+             </select>
 
-           
-            
+
+
+
             <label>
             <GeoSuggest
               placeholder="Choose a Location"
@@ -83,14 +78,3 @@ dataHandler(query){
     )
   }
 }
-
-
-
-// react select fix
-//  <Select
-//      name="travel"
-//      options={[
-//      {value: 'depart', label: 'Departing from'} , 
-//      {value: 'dest', label: 'Traveling to'}
-//               ]}
-//             />
