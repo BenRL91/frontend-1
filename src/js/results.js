@@ -41,7 +41,7 @@ export default class Results extends Component {
   }
   makeTripListing(trip){
     let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, trip.seats_left, .2)
-    let current_price = current_trip.seats_available - current_trip.seats_left + 1
+    let current_price = trip.seats_available - trip.seats_left + 1
     let url = `/profile/${trip.user.user_id}`
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
