@@ -18,6 +18,7 @@ export default class Results extends Component {
     let breakdown = {};
     let even_split = total / ((seats_available + 1) - (seats_left - 1))
     let residual = even_split * discount
+    let max_residual = (total / seats_available + 1) * .2
     let driver_price;
     driver_price = seats_available === seats_left
        ? even_split
@@ -27,7 +28,7 @@ export default class Results extends Component {
        : even_split
     breakdown.driver_price = driver_price.toFixed(2)
     breakdown.passenger_price = passenger_price.toFixed(2)
-    breakdown.lowest = (total / ((seats_available + 1))+ (residual / seats_available)).toFixed(2)
+    breakdown.lowest = (total / ((seats_available + 1))+ (max_residual / seats_available)).toFixed(2)
     if (breakdown.passenger_price === 'Infinity'){
       breakdown.passenger_price = driver_price
     }
@@ -63,12 +64,12 @@ export default class Results extends Component {
         <div className="results-dates-price-flex">
 
             <div className="results-date-price"> Leaving <br/> <b>{trip.date_leave}</b></div>
-          
+
              <div>
                 <div className="results-price"> Currently <b>${breakdown.passenger_price}</b></div>
                 <div className="results-price"> As low as <b>${breakdown.lowest}</b> </div>
               </div>
-        
+
 
 
             <Link className="results-arrow" to={`/details/${trip.id}`}> <b> <i className="fa fa-arrow-right" aria-hidden="true"></i></b></Link>
