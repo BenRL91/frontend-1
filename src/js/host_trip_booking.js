@@ -103,7 +103,7 @@ export default class HostTripBooking extends Component {
           destination_longitude: yB
         }
       }).then(price => {
-        this.setState({suggested_price: Math.abs(price.total_price.toFixed(2)), processing: false})
+        this.setState({suggested_price: Math.abs(price.total_price).toFixed(2), processing: false})
       })
     }
   }

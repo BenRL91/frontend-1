@@ -12,33 +12,36 @@ export default class Results extends Component {
     }
   }
   breakdownTotalPrice(total, seats_available, seats_left, discount){
+    let breakdownArr = [];
     if (seats_left === 100){
       seats_left = seats_available
     }
-    let breakdown = {};
-    let even_split = total / ((seats_available + 1) - (seats_left - 1))
-    let residual = even_split * discount
-    let max_residual = (total / seats_available + 1) * .2
-    let driver_price;
-    driver_price = seats_available === seats_left
-       ? even_split
-       : even_split - (even_split * discount)
-    let passenger_price = seats_available - seats_left >= 0
-       ? even_split + (residual / (seats_left - (seats_left - 1)))
-       : even_split
-    breakdown.driver_price = driver_price.toFixed(2)
-    breakdown.passenger_price = passenger_price.toFixed(2)
-    breakdown.lowest = (total / ((seats_available + 1))+ (max_residual / seats_available)).toFixed(2)
-    if (breakdown.passenger_price === 'Infinity'){
-      breakdown.passenger_price = driver_price
+    for( seats_left = 0; seats_left < seats_available + 1; seats_left++){
+      let breakdown = {}
+      let even_split = total / ((seats_available + 1) - (seats_left - 1))
+      let residual = even_split * discount
+      let driver_price;
+      driver_price = seats_available === seats_left
+      ? even_split
+      : even_split - (even_split * discount)
+      let passenger_price = seats_available - seats_left >= 0
+      ? even_split + (residual / (seats_left - (seats_left - 1)))
+      : even_split
+      breakdown.driver_price = driver_price.toFixed(2)
+      breakdown.passenger_price = passenger_price.toFixed(2)
+      breakdown.average = (even_split.toFixed(2))
+      if (breakdown.passenger_price === 'Infinity'){
+        breakdown.passenger_price = driver_price
+      }
+      breakdownArr.push(breakdown)
     }
-    console.log('even_split', even_split.toFixed(2))
     return (
-      breakdown
+      breakdownArr.reverse()
     )
   }
   makeTripListing(trip){
     let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, trip.seats_left, .2)
+    let current_price = current_trip.seats_available - current_trip.seats_left + 1
     let url = `/profile/${trip.user.user_id}`
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
@@ -67,8 +70,8 @@ export default class Results extends Component {
             <div className="results-date">  <b>{trip.date_leave}</b></div>
 
              <div>
-                <div className="results-price"> Currently <b>${breakdown.passenger_price}</b></div>
-                <div className="results-price"> As low as <b>${breakdown.lowest}</b> </div>
+                <div className="results-price"> Currently <b>${breakdown[current_price].passenger_price}</b></div>
+                <div className="results-price"> As low as <b>${breakdown[length - 1].passenger_price}</b> </div>
               </div>
 
 

@@ -1,1 +1,1 @@
-export default 'AIzaSyD8IM-TagZqvrEkI4Fpxry33yCO_C5Zyy8';
+export default 'AIzaSyC20Vg1wcdDdGrsf80DTxkxH8hs7lxI6dU';
