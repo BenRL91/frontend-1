@@ -48,10 +48,15 @@ export default class Results extends Component {
 
          <div className="results-cities">
           <i className="fa fa-circle-o" aria-hidden="true"></i>
-          {trip.departing_city} <br/>
+            <div className='depart'>
+              {trip.departing_city} 
+            </div>
+          <br/>
           <i className="fa fa-bullseye" aria-hidden="true"></i>
-          {trip.destination} </div>
-
+            <div className='depart'>
+              {trip.destination} 
+            </div>
+          </div>
         </div>
 
 
