@@ -13,13 +13,13 @@ $tangerine: #00CCCC;
 	height:100%;
 	min-height:100vh;
 	padding-top: 10vh;
-	padding-bottom: 10vh;
+	// padding-bottom: 10vh;
 
 
 .trip-details{
 	background-color: white;
 	width: 70vw;
-	height: 500px;
+	min-height: 500px;
 	margin: auto;
 	box-sizing:border-box;
 
@@ -47,11 +47,17 @@ $tangerine: #00CCCC;
 		padding:20px;
 		display:flex;
 		justify-content:space-between;
-		width:100%;
+		// width:70vw;
 		margin-bottom: 20px;
 		font-size: 20px;
 		border-bottom: 5px solid #222222;
 		// color:$ocean;
+
+		.price-breakdown-wrapper{
+		// 	display:flex;
+		// justify-content:space-between;
+		// flex-direction:row;
+		}
 
 		.book-edit{
 				box-sizing:border-box;
@@ -86,6 +92,7 @@ $tangerine: #00CCCC;
 	.trip-details-driver{
 		display:flex;
 		align-items:center;
+		// height:100%;
 
 
 
@@ -124,7 +131,7 @@ $tangerine: #00CCCC;
 		}
 
 		.trip-details-para{
-			font-size: 14px;
+			font-size: 15px;
 
 		}	
 	 }

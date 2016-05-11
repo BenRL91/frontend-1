@@ -104,7 +104,7 @@ renderEditLink(){
     )
   }else {
     return(
-      <Link className='book-btn' to={`/riderbooking/${current_trip.id}`}> Book Trip → </Link>
+      <Link className='book-btn' to={`/riderbooking/${current_trip.id}`}> Book Trip <i className="fa fa-arrow-right" aria-hidden="true"></i> </Link>
     );
   }
 }
@@ -114,7 +114,7 @@ showBreakdown(priceSet, index, arr){
     return;
   }else {
     return (
-      <div key={ index }>
+      <div className="price-breakdown-wrapper" key={ index }>
       Price with {index} Passengers: ${priceSet.passenger_price}
       </div>
     )
@@ -154,9 +154,9 @@ renderPage(){
         </div>
 
         <div className="trip-details-seats">
-          <div>Current seat available for ${breakdown[current_price].passenger_price}
+         Current seat available for ${breakdown[current_price].passenger_price}
           {breakdown.map(::this.showBreakdown)}
-          </div>
+       
 
           <div className="book-edit">
            {::this.renderEditLink()}
@@ -184,7 +184,7 @@ renderPage(){
         {riders.map(::this.showRiders)}
 
       </div>
-     </div>
+ </div>
     )
   }
   render(){
