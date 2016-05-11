@@ -3,7 +3,7 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #ffa800;
+$tangerine: #D92626;
 
 
 .host-booking-wrapper{
@@ -28,6 +28,10 @@ $tangerine: #ffa800;
 		width:70vw;
 		box-sizing:border-box;
 		margin-bottom:10vh;
+
+		.fa-road{
+			font-size: 30px;
+		}
 
 	
 
@@ -59,13 +63,23 @@ $tangerine: #ffa800;
 		}
 
 		.host-span{
+			display:flex;
+			justify-content:space-between;
 			width:500px;
 			font-size: small;
 			padding-bottom: 20px;
+
+			.fa-info-circle{
+				font-size: 30px;
+				color: orange;
+				padding-right: 10px;
+
+			}
 		}
 
 		button{
-			width:200px;
+			width:35vw;
+			// width:200px;
 			margin-bottom: 20px;
 		}
 
@@ -73,6 +87,7 @@ $tangerine: #ffa800;
   			margin: 1em auto;
 			border: 2px solid transparent;
   			box-shadow: 0 0 1px #3d464d;
+  			box-sizing:border-box;
 			width: 35vw;
   			padding: .5em 1em;
 			padding-bottom:20vh;

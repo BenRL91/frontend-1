@@ -3,7 +3,8 @@ $pistachio: #bed9b9;
 $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
-$tangerine: #ffa800;
+$tangerine: #D92626;
+$newblue:#33CCCC;
 
 
 
@@ -31,8 +32,8 @@ $tangerine: #ffa800;
 	justify-content:space-between;
 
 	.profile-picture img{
-		width:300px;
-		height:300px;
+		width:200px;
+		height:200px;
 		object-fit:cover;
 		// border-radius: 300px;
 	}
@@ -40,13 +41,14 @@ $tangerine: #ffa800;
 
 	.profile-user-details{
 		margin-left: 50px;
-		font-size: 20px;
+		font-size: 18px;
 		width:100%;
 		margin-right: 20%;
 		.profile-name{
 			font-weight: bold;
 			// width:400px;
-			font-size: 35px;	
+			font-size: 20px;
+
 		}
 		.profile-username{
 			
@@ -58,11 +60,10 @@ $tangerine: #ffa800;
 			
 		}
 		.edit-btn{
-		
 			color: $tangerine;
 		}
-		.edit-btn{
-			
+		.edit-btn:hover{
+			color: $newblue;
 		}
 
 
@@ -83,7 +84,7 @@ $tangerine: #ffa800;
 			background-color: transparent;
 			color:$tangerine;
 			font-weight: bold;
-			font-size: 20px;
+			font-size: 15px;
 			// width:10%;
 		}
 
@@ -94,60 +95,47 @@ $tangerine: #ffa800;
 
 
 	.profile-trips-list{
-		font-size: 20px;
+		font-size: 15px;
+		min-height:200px;
+
 
 		.booked-trips{
 			padding:20px;
-			color:$tangerine;
+			color:$newblue;
+			border-top: 5px solid #222222;
+
 		}
 
 		.hosted-trips{
 			padding:20px;
-			color:$tangerine;
-			
+			color:$newblue;
+			border-top: 5px solid #222222;
+
 		}
 
 		
 		.profile_get_trips{
 			display:flex;
 			justify-content:space-between;
-
 			border-bottom: 3px solid #e9e9e9;
-			padding-top: 2vh;
-			padding-bottom: 2vh;
+			padding:2vh;
+			width:100%;
+			box-sizing:border-box;
+
+			
 
 
-			span{
-				margin-left: 10px;
-				font-weight: bold;
+
+			.profile-trip-details{
 				font-size: 15px;
-
-			}
-
-			span:hover{
-				color: #48de23;
+				color: $tangerine;
 			}
 
 			.profile-cities{
 
 			}
 
-			.get_trips_flex{
-				display:flex;
-				justify-content:space-between;
-				// width: 600px;
-				width:50%;
 
-				.profile-dates{
-					// margin-right: 30px;
-			
-				}
-
-				.profile-trip-details{
-					font-size: 20px;
-					color: $tangerine;
-					padding-right: 2vw;
-				}
 
 			}
 
@@ -156,6 +144,6 @@ $tangerine: #ffa800;
 	}
 
 }
-}
+
 
 

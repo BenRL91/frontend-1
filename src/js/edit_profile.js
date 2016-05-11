@@ -89,6 +89,7 @@ export default class EditProfile extends Component {
     <div className="edit-profile-wrapper">
 
     <div className="edit-profile-wrapper-flex">
+        EDIT YOUR PROFILE DETAILS
 
       <Dropzone className="dropzone" onDrop={::this.dropHandler}>
        <img src={this.state.preview}/>
@@ -96,6 +97,8 @@ export default class EditProfile extends Component {
 
     <div>
       <SSF className='register-form' onData={::this.edit_profile}>
+        <br/><br/>
+
         <label>
           First Name:
         <input
@@ -136,7 +139,7 @@ export default class EditProfile extends Component {
 
       </SSF>
 
-       <button onClick={::this.deleteHandler} className="edit-profile-delete">
+       <button onClick={::this.deleteHandler} className="save-btn">
        DELETE your account
        </button>
 

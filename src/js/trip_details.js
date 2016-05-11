@@ -86,7 +86,7 @@ renderEditLink(){
   if(this.allowEdit()){
     return(
       <Link className="book-btn" to={`/edittrip/${current_trip.id}`}>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT YOUR TRIP
+      <i className="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT YOUR TRIP
       </Link>
     )
   }else {
