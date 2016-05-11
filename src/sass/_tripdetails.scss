@@ -23,6 +23,38 @@ $tangerine: #00CCCC;
 	margin: auto;
 	box-sizing:border-box;
 
+
+.other-riders-title{
+	font-size:20px;
+	border-top: 5px solid #222222;
+	padding:10px;
+	box-sizing:border-box;
+	text-align: center;
+}
+
+	.other-riders-wrapper{
+		display:flex;
+		justify-content:space-around;
+		padding-top: 30px;
+		padding-bottom: 30px;
+
+
+		.other-riders{
+			display:flex;
+			flex-direction:column;
+			img{
+				width:100px;
+				height:100px;
+				object-fit:cover;
+			}
+
+			img:hover{
+				opacity:0.4;
+			}
+		}
+	}
+
+
 		.trip-details-flex{
 			font-size: 15px;
 			padding-bottom: 50px;
@@ -49,9 +81,15 @@ $tangerine: #00CCCC;
 		justify-content:space-between;
 		// width:70vw;
 		margin-bottom: 20px;
-		// font-size: 20px;
+		font-size: 15px;
 		border-bottom: 5px solid #222222;
 		// color:$ocean;
+
+		.current-price{
+			color:red;
+			font-size:20px;
+			font-weight:bold;
+		}
 
 		.price-breakdown-wrapper{
 		// 	display:flex;

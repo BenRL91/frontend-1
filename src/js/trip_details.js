@@ -87,9 +87,9 @@ if (user_id == currentID){
 showRiders(rider){
   let url = `https://salty-river-31528.herokuapp.com/profile/${rider.id}`
   return (
-    <div key={rider.id}>
+    <div className='other-riders' key={rider.id}>
       <Link to={url}><img src={rider.pictures[0]}/></Link>
-      <span>{rider.first_name}, {rider.last_name}</span>
+      <span><b>{rider.first_name}, {rider.last_name}</b></span>
     </div>
   )
 }
@@ -152,7 +152,7 @@ renderPage(){
 
         <div className="trip-details-seats">
         <div>
-         Currently ${breakdown[current_price].passenger_price}
+        <div className='current-price'>Currently ${breakdown[current_price].passenger_price}</div>
           {breakdown.map(::this.showBreakdown)}
         </div>
 
@@ -179,9 +179,17 @@ renderPage(){
 
         </div>
         </div>
-        {riders.map(::this.showRiders)}
 
-      </div>
+        <div className='other-riders-title'>
+         <b>other riders on this trip</b>
+        </div>
+
+        <div className='other-riders-wrapper'>
+          {riders.map(::this.showRiders)}
+        </div>
+        </div>
+
+      
  </div>
     )
   }
