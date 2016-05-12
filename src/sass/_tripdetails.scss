@@ -6,9 +6,10 @@ $shamrock: #1fbb62;
 $tangerine: #00CCCC;
 
 
-// .highlight{
-// 	color:red;
-// }
+.highlight{
+	color:$tangerine;
+
+}
 
 
 .trip-details-wrapper{
@@ -17,7 +18,7 @@ $tangerine: #00CCCC;
 	height:100%;
 	min-height:100vh;
 	padding-top: 10vh;
-	// padding-bottom: 10vh;
+	padding-bottom: 10vh;
 
 
 .trip-details{
@@ -30,7 +31,7 @@ $tangerine: #00CCCC;
 
 .other-riders-title{
 	font-size:20px;
-	border-top: 5px solid #222222;
+	border-top: 3px solid #222222;
 	padding:10px;
 	box-sizing:border-box;
 	text-align: center;
@@ -60,11 +61,11 @@ $tangerine: #00CCCC;
 
 
 		.trip-details-flex{
-			font-size: 15px;
+			font-size: 20px;
 			padding-bottom: 50px;
 			box-sizing:border-box;
 			padding:20px;
-			border-bottom: 5px solid #222222;
+			border-bottom: 3px solid #222222;
 
 			.trip-details-departing{
 				display:flex;
@@ -75,6 +76,7 @@ $tangerine: #00CCCC;
 				display:flex;
 				justify-content:space-between;
 			}
+
 		}
 
 
@@ -82,16 +84,30 @@ $tangerine: #00CCCC;
 		box-sizing:border-box;
 		padding:20px;
 		display:flex;
-		justify-content:space-between;
-		// width:70vw;
-		margin-bottom: 20px;
-		font-size: 15px;
+		justify-content:center;
+		align-items:center;
+		flex-direction:column;
+		border-bottom: 3px solid #222222;
+		// margin-bottom: 20px;
+		font-size: 20px;
 		// color:$ocean;
 
 		.current-price{
-			color:red;
-			font-size:20px;
+			// display:flex;
+			// flex-direction:column;
+			// align-items:center;
+			color:$tangerine;
+			font-size:25px;
 			font-weight:bold;
+			text-align: center;
+			// width:300px;
+
+		}
+
+		.try{
+			display:flex;
+			flex-direction:column;
+			align-items:center;
 		}
 
 		.price-breakdown-wrapper{
@@ -100,42 +116,54 @@ $tangerine: #00CCCC;
 		// flex-direction:row;
 		}
 
+
+		.trip-price-explanation{
+			margin-top:20px;
+			width:40%;
+			padding-top:10px;
+			font-size:15px;
+
+			.fa-info-circle{
+				margin-right:15px;
+				
+			}
+	
+			// padding-left:20px;
+				div{
+					// width: 40%;
+				}
+
+		}
+
+	}
+
+	
 		.book-edit{
-				box-sizing:border-box;
+			box-sizing:border-box;
+			width:70vw;
+			display:flex;
+			justify-content:space-between;
+			// border-bottom: 5px solid #222222;
+			padding:25px;
+			background-color: $ocean;
+			color: $mint;
+			font-weight: bold;
+			font-size: 25px;
 
 
 			.book-btn{
-				position:relative;
 				color: $tangerine;
-				font-weight: bold;
-				font-size: 20px;
+				position:relative;
 				&:hover{
 					color:$mint;
 				}
-
 			}
 			.edit{
 				position:absolute;
 				top:0;
 				right:0;
-					// top: 100px;
-					// right:16vw;
 			}
 		}
-
-	}
-
-
-.trip-price-explanation{
-	
-	padding-left:20px;
-	border-bottom: 5px solid #222222;
-	div{
-		width: 40%;
-	}
-}
-
-	
 
 
 
@@ -157,15 +185,16 @@ $tangerine: #00CCCC;
 
 		.driver-content-flex{
 			display:flex;
-			flex-direction:column;
+			// flex-direction:column;
 			margin-right: 2vw;
-			margin-bottom: 1vh;
+			// margin-bottom: 1vh;
 			// margin-left: 20px;
 
 				img{
 					width:200px;
 					height:200px;
 					object-fit:cover;
+					margin-right: 15px;
 				}
 
 		}
@@ -179,10 +208,12 @@ $tangerine: #00CCCC;
 			font-weight: bold;
 			font-size: 15px;
 			color: $tangerine;
+
 		}
 
 		.trip-details-para{
 			font-size: 15px;
+			width:50%;
 
 		}	
 	 }
