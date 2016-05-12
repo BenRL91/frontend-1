@@ -67,15 +67,36 @@ $tangerine: #00CCCC;
 			padding:20px;
 			border-bottom: 3px solid #222222;
 
-			.trip-details-departing{
-				display:flex;
-				justify-content:space-between;
+					.separate{
+						display:flex;
+						justify-content:space-between;
+						width: 150px;
+
+					}
+
+			.trip-details-departing-wrapper{
+					display:flex;
+					justify-content:space-between;
+
+
+				.trip-details-departing{
+					display:flex;
+					justify-content:space-between;
+				}
 			}
 
-			.trip-details-destination{
+
+
+			.trip-details-destination-wrapper{
 				display:flex;
 				justify-content:space-between;
-			}
+
+				.trip-details-destination{
+					display:flex;
+					justify-content:space-between;
+					// width: 20vw;
+				}
+		    }
 
 		}
 
@@ -119,7 +140,7 @@ $tangerine: #00CCCC;
 
 		.trip-price-explanation{
 			margin-top:20px;
-			width:40%;
+			width:50%;
 			padding-top:10px;
 			font-size:15px;
 
@@ -185,7 +206,7 @@ $tangerine: #00CCCC;
 
 		.driver-content-flex{
 			display:flex;
-			// flex-direction:column;
+			flex-direction:column;
 			margin-right: 2vw;
 			// margin-bottom: 1vh;
 			// margin-left: 20px;
