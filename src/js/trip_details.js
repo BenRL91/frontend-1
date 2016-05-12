@@ -61,7 +61,7 @@ export default class TripDetails extends Component {
       }
       breakdownArr.push(breakdown)
     }
-    breakdownArr.push({passenger_price: 'This trip is completely booked!'})
+    breakdownArr.push({passenger_price: 'all seats booked'})
     return (
       breakdownArr.reverse()
     )
@@ -115,7 +115,7 @@ showBreakdown(priceSet, index, arr){
   }else {
     return (
       <div className={`price-breakdown-wrapper ${this.highlight(index)}`} key={ index }>
-        Price with {index} Passengers: {priceSet.passenger_price}
+        {index}: {priceSet.passenger_price}
       </div>
     )
   }
@@ -154,24 +154,28 @@ renderPage(){
       <div className="trip-details-wrapper">
         <div className="trip-details">
 
+          <div className="book-edit">
+          <div> Trip Details </div> {::this.renderEditLink()}
+          </div>
         <div className="trip-details-flex">
 
-
+        <div className="trip-details-departing-wrapper">
           <div className="trip-details-departing">
-            <div>
-              <i className="fa fa-circle-o" aria-hidden="true"></i>
-              <b>{current_trip.departing_city}</b>
-            </div>
-              {current_trip.date_leave}
+            <div className="separate">Departure <i className="fa fa-circle-o" aria-hidden="true"></i></div>
+            <div>{current_trip.departing_city}</div>
           </div>
+            <div>{current_trip.date_leave}</div>
+        </div>
+
         <br/>
-          <div className="trip-details-destination">
-            <div>
-              <i className="fa fa-bullseye" aria-hidden="true"></i>
-              <b>{current_trip.destination}</b>
-            </div>
-           {current_trip.date_arrive}
-         </div>
+
+          <div className="trip-details-destination-wrapper">
+           <div className="trip-details-destination">
+            <div className="separate"> Destination <i className="fa fa-bullseye" aria-hidden="true"></i></div>
+            <div>{current_trip.destination}</div>
+           </div>
+            <div>{current_trip.date_arrive}</div>
+          </div>
 
 
         </div>
@@ -180,22 +184,20 @@ renderPage(){
         <div>
 
         <div className='current-price'>Currently {breakdown[current_price].passenger_price}</div>
-          {breakdown.map(::this.showBreakdown)}
+          Price Breakdown for Number of Riders<br/>
+          <div className="try">{breakdown.map(::this.showBreakdown)}</div>
         </div>
 
-          <div className="book-edit">
-           {::this.renderEditLink()}
-          </div>
-        </div>
 
         <div className="trip-price-explanation">
           <div>
             <i className="fa fa-info-circle" aria-hidden="true"></i>
-              <b>The price goes down as more riders join this trip.</b>
+              <b>The price goes down as more riders join this trip.</b><br/>
               The prices are calculated from the trips distance, average MPG, and daily gas prices.
               You won't be charged until the trip has started to ensure as many
               seats are filled as possible.
           </div>
+        </div>
         </div>
 
 
