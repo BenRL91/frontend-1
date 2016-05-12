@@ -170,7 +170,7 @@ renderPage(){
 
 
         <div className="trip-details-seats">
-         
+
           <div>
             <div className='current-price'>Currently {breakdown[current_price].passenger_price}</div>
             <br/>

@@ -31,14 +31,14 @@ export default class Profile extends Component {
 gettrips(trip){
   return (
   <div className="profile_get_trips" key={trip.host_id}>
-    <div className="profile-cities"> 
+    <div className="profile-cities">
 
       <i className="fa fa-circle-o" aria-hidden="true"></i>
-      {trip.departing_city} 
+      {trip.departing_city}
       <br/>
 
       <i className="fa fa-bullseye" aria-hidden="true"></i>
-      {trip.destination} 
+      {trip.destination}
 
     </div>
     <Link className="profile-trip-details" to={`/details/${trip.host_id}`}> details + </Link>
@@ -70,8 +70,8 @@ renderEditLink(){
   let { user_id } = this.props.params;
   if(this.allowEdit()){
     return(
-      <Link className="edit-btn" to={`/editprofile/${user_id}`}> 
-      <i className="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT YOUR PROFILE 
+      <Link className="edit-btn" to={`/editprofile/${user_id}`}>
+      <i className="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT YOUR PROFILE
       </Link>
     )
   }else {
@@ -96,15 +96,14 @@ renderPage(){
           <div className="profile-name">
             {profile.first_name} {profile.last_name}
           </div>
-
-            <br/>
-
-          <div className="profile-status">
-            Driver status:{profile.driver.toString()}
-          </div>
-
            <br/>
-
+           <div className="profile-name">
+             {profile.car_info}
+           </div>
+           <br/>
+           <div className="profile-name">
+             {profile.home_city}
+           </div>
           <div className="profile-email">
             <i className="fa fa-envelope-o" aria-hidden="true"></i> {profile.email}
           </div>
@@ -135,7 +134,7 @@ renderPage(){
             { profile.trips_ridden.map(::this.gettrips)}
             <br/>
             <br/>
-         
+
           <div className="hosted-trips"><b>Hosted Trips</b></div>
             { current_user_trips.map(::this.gettrips) }
         </div>
