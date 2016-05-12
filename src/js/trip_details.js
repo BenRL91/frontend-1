@@ -102,7 +102,11 @@ renderEditLink(){
       <i className="fa fa-pencil-square-o" aria-hidden="true"></i> EDIT YOUR TRIP
       </Link>
     )
-  }else {
+  }else  if(!this.allowEdit() && current_trip.seats_left === 0){
+      return(
+        <Link className='book-btn' to='/'>Back to Search</Link>
+      )
+    }else {
     return(
       <Link className='book-btn' to={`/riderbooking/${current_trip.id}`}> Book Trip <i className="fa fa-arrow-right" aria-hidden="true"></i> </Link>
     );
@@ -190,7 +194,7 @@ renderPage(){
 
            <div className="trip-details-seats-wrapper">
 
-            <i className="fa fa-credit-card" aria-hidden="true"></i> 
+            <i className="fa fa-credit-card" aria-hidden="true"></i>
 
                 <div className="trip-details-seats">
 
@@ -203,9 +207,9 @@ renderPage(){
                       average MPG, and daily gas prices. You won't be <br/>
                       charged until the trip has started
                       to ensure the <br/>
-                      most seats are filled 
+                      most seats are filled
                       so that everyone gets the <br/>lowest price.
-                      
+
                       <br/><br/>
                   </div>
                   </div>
@@ -236,12 +240,12 @@ renderPage(){
         <div className="user-icon">
          <i className="fa fa-users" aria-hidden="true"></i>
         </div>
-         
+
 
         <div className='other-riders-wrapper'>
             <div className="driver-content-flex">
               <img src={driver.pictures[0].image_url}/>
-              <span className="trip-details-driver-name"> 
+              <span className="trip-details-driver-name">
                 <i className="fa fa-car" aria-hidden="true"></i>
                 {driver.first_name} {driver.last_name}
               </span>
