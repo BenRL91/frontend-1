@@ -10,10 +10,13 @@ let latA, lngA, latB, lngB;
 
 export default class Home extends Component {
 
-
+stopAutoComplete(){
+ this.input.refs.input.refs.input.autocomplete = "off"
+}
 onSuggestSelectDepart(suggest) {
 latA = suggest.location.lat;
 lngA = suggest.location.lng;
+this.stopAutoComplete()
 }
 onSuggestSelectDest(suggest) {
 latB = suggest.location.lat;
@@ -26,6 +29,9 @@ dataHandler(query){
   query.lngB = lngB;
 
   hashHistory.push(`/results/${query.latA}/${query.lngA}/${query.rad}/${query.travel}`)
+}
+componentDidMount(){
+  this.stopAutoComplete()
 }
   render(){
     return (
@@ -49,8 +55,9 @@ dataHandler(query){
 
             <label>
             <GeoSuggest
+              ref={geo => this.input = geo}
               placeholder="Choose a Location"
-              onSuggestSelect={this.onSuggestSelectDepart}
+              onSuggestSelect={::this.onSuggestSelectDepart}
               name='departure'
               />
             </label>
