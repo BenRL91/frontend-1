@@ -110,12 +110,12 @@ renderEditLink(){
 }
 showBreakdown(priceSet, index, arr){
   let { current_trip } = this.state;
-  if (index === 0){
+  if (index === 0 || index === arr.length - 1){
     return;
   }else {
     return (
       <div className={`price-breakdown-wrapper ${this.highlight(index)}`} key={ index }>
-        Price with {index} Seats Filled: {priceSet.passenger_price}
+        Price with {index} Passengers: {priceSet.passenger_price}
       </div>
     )
   }
@@ -123,31 +123,39 @@ showBreakdown(priceSet, index, arr){
 highlight(index){
   let { current_trip, driver, riders} = this.state;
   let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
-  let current_price = current_trip.seats_available - (current_trip.seats_left + 1) <= 0
-  ? current_trip.seats_available - current_trip.seats_left + 1
-  : 0
+  let current_price = this.getCurrentPrice()
   if(index === current_price){
     return 'highlight'
   }else {
     return
   }
 }
+getCurrentPrice(){
+  let { current_trip } = this.state;
+  let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
+  let price;
+  if (current_trip.seats_available === current_trip.seats_left){
+    price = 1
+  }else if (current_trip.seats_available > current_trip.seats_left && current_trip.seats_left !== 0){
+    price = (breakdown.length - (current_trip.seats_left + 1))
+  }else if (current_trip.seats_left === 0){
+    price = 0
+  }
+  return price;
+}
 renderPage(){
     let { current_trip, driver, riders} = this.state;
     let { trip_id } = this.props.params;
     let breakdown = this.breakdownTotalPrice(current_trip.seat_price, current_trip.seats_available, current_trip.seats_left, .2)
-    let current_price = current_trip.seats_available - (current_trip.seats_left + 1) <= 0
-    ? current_trip.seats_available - current_trip.seats_left + 1
-    : 0
+    let current_price = this.getCurrentPrice()
+    console.log(current_price)
+    console.log(current_trip)
     return (
       <div className="trip-details-wrapper">
         <div className="trip-details">
 
-          <div className="book-edit">
-            Trip Details
-           {::this.renderEditLink()}
-          </div>
         <div className="trip-details-flex">
+
 
           <div className="trip-details-departing">
             <div>
@@ -165,32 +173,30 @@ renderPage(){
            {current_trip.date_arrive}
          </div>
 
+
         </div>
-
-
 
         <div className="trip-details-seats">
-         
-          <div>
-            <div className='current-price'>Currently {breakdown[current_price].passenger_price}</div>
-            <br/>
-            <div className="try">{breakdown.map(::this.showBreakdown)}</div>
-          </div>
+        <div>
 
-
-          <div className="trip-price-explanation">
-            <div>
-              <i className="fa fa-info-circle" aria-hidden="true"></i>
-              <b>The price goes down as more riders join this trip.</b>
-              <br/>
-              The prices are calculated from the trips distance, average MPG, and daily gas prices.
-              You won't be charged until the trip has started to ensure as many 
-              seats are filled as possible.
-            </div>
-          </div>
-
+        <div className='current-price'>Currently {breakdown[current_price].passenger_price}</div>
+          {breakdown.map(::this.showBreakdown)}
         </div>
 
+          <div className="book-edit">
+           {::this.renderEditLink()}
+          </div>
+        </div>
+
+        <div className="trip-price-explanation">
+          <div>
+            <i className="fa fa-info-circle" aria-hidden="true"></i>
+              <b>The price goes down as more riders join this trip.</b>
+              The prices are calculated from the trips distance, average MPG, and daily gas prices.
+              You won't be charged until the trip has started to ensure as many
+              seats are filled as possible.
+          </div>
+        </div>
 
 
         <div className="trip-details-driver">
@@ -198,17 +204,13 @@ renderPage(){
             <div className="driver-content-flex">
 
               <img src={driver.pictures[0].image_url}/>
-              <div>
-              <span className="trip-details-driver-name">{driver.first_name} {driver.last_name}</span><br/><br/>
-              <Link className="trip-details-driver-link" to={`/profile/${driver.id}`}> view drivers profile </Link><br/><br/>
-              <div><i className="fa fa-star" aria-hidden="true"></i> Verified Driver </div>
+              <span className="trip-details-driver-name">{driver.first_name} {driver.last_name}</span>
+              <Link className="trip-details-driver-link" to={`/profile/${driver.id}`}> view drivers profile </Link>
               </div>
-              </div>
-
 
 
               <div className="trip-details-para">
-                <b>Trip Description:</b> <br/> {current_trip.comments}
+                Trip Description: {current_trip.comments}
                </div>
 
 
@@ -216,7 +218,7 @@ renderPage(){
         </div>
 
         <div className='other-riders-title'>
-         <b>riders on this trip</b>
+         <b>other riders on this trip</b>
         </div>
 
         <div className='other-riders-wrapper'>

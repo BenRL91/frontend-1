@@ -40,6 +40,24 @@ export default class Results extends Component {
       breakdownArr.reverse()
     )
   }
+  getCurrentPrice(trip){
+    let price;
+    let seats;
+    if (trip.seats_left === 100){
+      seats = trip.seats_available
+    }else {
+      seats = trip.seats_left
+    }
+    let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, seats, .2)
+    if (trip.seats_available === seats){
+      price = 1
+    }else if (trip.seats_available > seats && seats !== 0){
+      price = (breakdown.length - (seats + 1))
+    }else if (seats === 0){
+      price = 0
+    }
+    return price;
+  }
   makeTripListing(trip){
     let seats;
     if (trip.seats_left === 100){
@@ -48,9 +66,8 @@ export default class Results extends Component {
       seats = trip.seats_left
     }
     let breakdown = this.breakdownTotalPrice(trip.seat_price, trip.seats_available, seats, .2)
-    let current_price = trip.seats_available - (seats + 1) <= 0
-    ? trip.seats_available - seats + 1
-    : 0
+    let current_price = this.getCurrentPrice(trip)
+    console.log(current_price)
     let url = `/profile/${trip.user.user_id}`
     return(
       <div key={trip.id} className='trip-listing-wrapper'>
@@ -80,7 +97,7 @@ export default class Results extends Component {
 
              <div>
                 <div className="results-price"> Currently <b>{breakdown[current_price].passenger_price}</b></div>
-                <div className="results-price"> As low as <b>{breakdown[breakdown.length - 1].passenger_price}</b> </div>
+                <div className="results-price"> As low as <b>{breakdown[breakdown.length - 2].passenger_price}</b> </div>
               </div>
 
 
