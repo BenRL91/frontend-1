@@ -111,6 +111,7 @@ export default class HostTripBooking extends Component {
         }
       }).then(price => {
         this.setState({suggested_price: Math.abs(price.total_price).toFixed(2), processing: false})
+        this.suggestHandler();
       })
     }
   }
@@ -188,6 +189,20 @@ renderLoading(){
   return (
     <i className="fa fa-spinner" aria-hidden="true"></i>
   )
+}
+componentDidMount(){
+console.log('refs', this)
+}
+suggestHandler(){
+  let { suggested_price } = this.state;
+  console.log("sug1", this.input.value)
+  this.input.value = suggested_price
+  console.log("sug2", this.input.value)
+}
+changeHandler(){
+  console.log(1, this.input.value)
+  this.input.value = this.input.value
+  console.log(2, this.input.value)
 }
 renderPage(){
   let { showLogin, driver_info, suggested_price, processing } = this.state;
@@ -344,9 +359,12 @@ renderPage(){
             <br/>
             Total Price:
             <input
+              ref={input => this.input = input}
               type='text'
               name='seat_price'
-              placeholder={suggested_price}/>
+              placeholder={suggested_price}
+              onChange={::this.changeHandler}
+              defaultValue=''/>
           </label>
 ​
 ​

@@ -43,9 +43,17 @@ export default class Main extends Component {
               onClick={::this.logOut}>Log Out
             </button>
           </Link>
-          <Link to={`/profile/${current_user.id}`}> Hello, {current_user.first_name}! </Link>
+          <Link className='proflink' to={`/profile/${current_user.id}`}> Hello, {current_user.first_name}! </Link>
        </div>
-    :  <a href="#" onClick={::this.showLoginHandler}>Login</a>
+    :  <div className="main-link">
+          <a href="#" onClick={::this.showLoginHandler}>Login</a>
+          <Link className='logout' to="/">
+          <button
+          className='logout hidden'
+          onClick={::this.logOut}>Log Out
+          </button>
+          </Link>
+       </div>
     return shownLink;
     this.setState({ current_user })
   }
