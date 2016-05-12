@@ -35,7 +35,7 @@ export default class Results extends Component {
       }
       breakdownArr.push(breakdown)
     }
-    breakdownArr.push({passenger_price: 'This trip is completely booked!'})
+    breakdownArr.push({passenger_price: 'Seats Full'})
     return (
       breakdownArr.reverse()
     )
