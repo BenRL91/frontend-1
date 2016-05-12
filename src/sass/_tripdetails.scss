@@ -184,12 +184,6 @@ $tangerine: #00CCCC;
 			font-size:15px;
 			color:black;
 
-			.fa-info-circle{
-				margin-right:15px;
-				
-			}
-	
-			// padding-left:20px;
 				div{
 					// width: 40%;
 				}
@@ -243,10 +237,18 @@ $tangerine: #00CCCC;
 		box-sizing:border-box;
 		padding:20px;
 
+		.fa-suitcase{
+				padding-right:70px;
+			// box-sizing:border-box;
+			font-size: 30px;
+
+		}
+
 
 
 		.trip-details-para{
 			font-size: 15px;
+			padding-right: 70px;
 			// width:50%;
 
 		}	

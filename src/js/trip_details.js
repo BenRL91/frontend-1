@@ -198,7 +198,6 @@ renderPage(){
                     Currently {breakdown[current_price].passenger_price}
                   <div className="trip-price-explanation">
                   <div>
-                    <i className="fa fa-info-circle" aria-hidden="true"></i>
                       The price goes down as more riders join this trip.<br/>
                       The prices are calculated from the trips distance, average MPG, and daily gas prices.
                       <br/>You won't be charged until the trip has started to ensure as many
@@ -218,14 +217,11 @@ renderPage(){
 
         <div className="trip-details-driver">
           <div className="trip-details-driver-flex">
-
-
+            <i className="fa fa-suitcase" aria-hidden="true"></i>
               <div className="trip-details-para">
                 Trip Description From The Driver: {current_trip.comments}
-               </div>
-
-
-        </div>
+              </div>
+          </div>
         </div>
 
       <div className='other-riders-title'>

@@ -21,11 +21,18 @@ $tangerine: #00CCCC;
 		width:70vw;
 		background-color: white;
 		font-size: 30px;
-		color: $tangerine;
 		display:flex;
 		flex-direction:column;
 		align-items:center;
 		justify-content:center;
+
+		.driverlink{
+			color: $tangerine;
+
+		}
+		.driverlink:hover{
+			color:$mint;
+		}
 
 	}
 }

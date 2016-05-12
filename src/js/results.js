@@ -163,10 +163,11 @@ export default class Results extends Component {
     console.log(' no results ')
     return(
 
-			<div className="no-trip-wrapper-top">
-				<div className="no-trip--wrapper">
-					<span>Thanks for booking your trip with Lifteri!</span>
-					<Link className='go-back' to='/'>
+			<div className="driver-trip-confirmation-wrapper-top">
+				<div className="driver-trip-confirmation-wrapper">
+					<span>Sorry, no trips are available at this time.</span>
+          <br/>
+					<Link className='driverlink' to='/'>
             Head back to the Search.
 					</Link>
 					<br/>

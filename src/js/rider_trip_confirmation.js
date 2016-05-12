@@ -8,10 +8,10 @@ render(){
 	: null
 	if (current_user){
 		return(
-		<div className="rider-trip-confirmation-wrapper-top">
-			<div className="rider-trip-confirmation-wrapper">
+		<div className="driver-trip-confirmation-wrapper-top">
+			<div className="driver-trip-confirmation-wrapper">
 				<span>Thanks for booking your trip with Lifteri!</span>
-				<Link className='riderlink' to={`/profile/${current_user.id}`}>
+				<Link className='driverlink' to={`/profile/${current_user.id}`}>
 					View Your Profile
 				</Link>
 				<i className="fa fa-car" aria-hidden="true"></i>
