@@ -115,7 +115,7 @@ showBreakdown(priceSet, index, arr){
   }else {
     return (
       <div className={`price-breakdown-wrapper ${this.highlight(index)}`} key={ index }>
-        when {index} people join, the price will be $ {priceSet.passenger_price}
+        {index} |  {priceSet.passenger_price}
       </div>
     )
   }
@@ -199,17 +199,25 @@ renderPage(){
                   <div className="trip-price-explanation">
                   <div>
                       The price goes down as more riders join this trip.<br/>
-                      The prices are calculated from the trips distance, average MPG, and daily gas prices.
-                      <br/>You won't be charged until the trip has started to ensure as many
-                      seats are filled as possible.
+                      The price is calculated by the distance of the trip, <br/>
+                      average MPG, and daily gas prices. You won't be <br/>
+                      charged until the trip has started
+                      to ensure the <br/>
+                      most seats are filled 
+                      so that everyone gets the <br/>lowest price.
+                      
                       <br/><br/>
                   </div>
                   </div>
                   </div>
 
-                 <div className="try">
-                   {breakdown.map(::this.showBreakdown)}
+                  <div>
+                    # of seats booked | Price for each rider
+                    <div className="try">
+                    {breakdown.map(::this.showBreakdown)}
+                    </div>
                  </div>
+
               </div>
           </div>
 
@@ -233,7 +241,10 @@ renderPage(){
         <div className='other-riders-wrapper'>
             <div className="driver-content-flex">
               <img src={driver.pictures[0].image_url}/>
-              <span className="trip-details-driver-name">{driver.first_name} {driver.last_name}</span>
+              <span className="trip-details-driver-name"> 
+                <i className="fa fa-car" aria-hidden="true"></i>
+                {driver.first_name} {driver.last_name}
+              </span>
               <Link className="trip-details-driver-link" to={`/profile/${driver.id}`}> view drivers profile </Link>
             </div>
           {riders.map(::this.showRiders)}
