@@ -11,6 +11,13 @@ import GeoSuggest from 'react-geosuggest';
 let latA, lngA, latB, lngB;
 
 export default class HostTripBooking extends Component {
+  stopAutoComplete(){
+   this.input1.refs.input.refs.input.autocomplete = "off"
+   this.input2.refs.input.refs.input.autocomplete = "off"
+  }
+  componentDidMount(){
+    this.stopAutoComplete()
+  }
   constructor(...args){
     super(...args);
     this.state = {
@@ -259,6 +266,7 @@ renderPage(){
           <label>
             Departure City:
             <GeoSuggest
+              ref={geo => this.input1 = geo}
               type='text'
               name='departing_city'
               onSuggestSelect={::this.onSuggestSelectDepart}
@@ -284,6 +292,7 @@ renderPage(){
           <label>
             Destination:
             <GeoSuggest
+              ref={geo => this.input2 = geo}
               type='text'
               name='destination'
               onSuggestSelect={::this.onSuggestSelectDest}
