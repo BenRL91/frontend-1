@@ -141,7 +141,8 @@ export default class Results extends Component {
       })
     }
   }
-  render(){
+  renderResults(){
+    console.log("results")
     let { trips } = this.state;
     return (
       <div className='results-wrapper-top'>
@@ -150,6 +151,32 @@ export default class Results extends Component {
         {trips.map(::this.makeTripListing)}
       </div>
       </div>
+    )
+  }
+  renderNoResults(){
+    console.log(' no results ')
+    return(
+
+			<div className="no-trip-wrapper-top">
+				<div className="no-trip--wrapper">
+					<span>Thanks for booking your trip with Lifteri!</span>
+					<Link className='go-back' to='/'>
+            Head back to the Search.
+					</Link>
+					<br/>
+					<i className="fa fa-car" aria-hidden="true"></i>
+				</div>
+			</div>
+		)
+	}
+  render(){
+    let { trips } = this.state;
+    console.log(trips.length)
+    return (
+      trips.length <= 0
+      ? this.renderNoResults()
+      : this.renderResults()
+
     )
   }
 }
