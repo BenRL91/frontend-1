@@ -4,10 +4,13 @@ $storm: #2e2e2e;
 $ocean: #004973;
 $shamrock: #1fbb62;
 $tangerine: #00CCCC;
+$highlight: #60e34f;
+
+// C1ED45
 
 
 .highlight{
-	background-color: #C1ED45;
+	background-color: $highlight;
 
 }
 
@@ -113,6 +116,13 @@ $tangerine: #00CCCC;
 			}
 
 
+					.dest{
+						white-space:nowrap;
+						overflow:hidden;
+						text-overflow:ellipsis;
+						width: 40vw;
+					}	
+
 
 			.trip-details-destination-wrapper{
 				display:flex;
@@ -122,7 +132,6 @@ $tangerine: #00CCCC;
 				.trip-details-destination{
 					display:flex;
 					justify-content:space-between;
-					// width: 20vw;
 				}
 		    }
 
@@ -158,7 +167,7 @@ $tangerine: #00CCCC;
 		.current-price{
 
 			font-size:25px;
-			color:#C1ED45;
+			color:$highlight;
 
 		}
 

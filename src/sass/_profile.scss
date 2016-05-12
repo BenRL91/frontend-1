@@ -101,14 +101,17 @@ $newblue:#33CCCC;
 
 		.booked-trips{
 			padding:20px;
-			color:$newblue;
+			// color:$newblue;
+			font-size: 18px;
 			border-top: 5px solid #222222;
 
 		}
 
 		.hosted-trips{
 			padding:20px;
-			color:$newblue;
+			// color:$newblue;
+			font-size: 18px;
+
 			border-top: 5px solid #222222;
 
 		}
@@ -132,6 +135,21 @@ $newblue:#33CCCC;
 			}
 
 			.profile-cities{
+				font-size: 18px;
+
+				.flex{
+					display:flex;
+				}
+
+				.depart-flex{
+					font-size:15px;
+					padding-right: 28px;
+				}
+
+				.dest-flex{
+					font-size:15px;
+					padding-right: 18px;
+				}
 
 			}
 

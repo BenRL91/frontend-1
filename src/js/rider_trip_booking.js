@@ -82,10 +82,7 @@ fakeFunction(){
 
       <SSF className='rider-trip-booking' onData={::this.fakeFunction}>
 
-      		<span> seats left on this trip ..interpolate.. </span>
-
-
-            <span> Your price ..interpolate.. $80 </span><br/>
+      		
 
             <label>
               Name as it appears on card:

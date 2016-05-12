@@ -32,13 +32,20 @@ gettrips(trip){
   return (
   <div className="profile_get_trips" key={trip.host_id}>
     <div className="profile-cities">
+      <div className="flex">
+      <div className="depart-flex">
+        Departing </div>
+        {trip.departing_city}
+      </div>
+     
+        <br/>
 
-      <i className="fa fa-circle-o" aria-hidden="true"></i>
-      {trip.departing_city}
-      <br/>
+      <div className="flex">
+      <div className="dest-flex">
+        Destination  </div>
+        {trip.destination}
+      </div>
 
-      <i className="fa fa-bullseye" aria-hidden="true"></i>
-      {trip.destination}
 
     </div>
     <Link className="profile-trip-details" to={`/details/${trip.host_id}`}> details + </Link>
@@ -130,12 +137,12 @@ renderPage(){
 
 
         <div className="profile-trips-list">
-          <div className="booked-trips"><b>Booked Trips</b></div>
+          <div className="booked-trips"><b>Trips You've Been a Rider on</b></div>
             { profile.trips_ridden.map(::this.gettrips)}
             <br/>
             <br/>
 
-          <div className="hosted-trips"><b>Hosted Trips</b></div>
+          <div className="hosted-trips"><b>Trips You've Been a Driver on</b></div>
             { current_user_trips.map(::this.gettrips) }
         </div>
 

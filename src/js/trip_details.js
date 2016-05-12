@@ -167,7 +167,11 @@ renderPage(){
         <div className="trip-details-departing-wrapper">
           <div className="trip-details-departing">
             <div className="separate">Departure </div>
-            <div>{current_trip.departing_city}</div>
+            <div className="dest" 
+                 title={current_trip.departing_city}>
+                 {current_trip.departing_city}
+            </div>
+
           </div>
             <div>{current_trip.date_leave}</div>
         </div>
@@ -177,8 +181,11 @@ renderPage(){
           <div className="trip-details-destination-wrapper">
            <div className="trip-details-destination">
             <div className="separate"> Destination </div>
-            <div>{current_trip.destination}</div>
-           </div>
+            <div className="dest" 
+                 title={current_trip.destination}>
+                 {current_trip.destination}</div>
+            </div>
+            
             <div>{current_trip.date_arrive}</div>
           </div>
         </div>
@@ -227,7 +234,7 @@ renderPage(){
           <div className="trip-details-driver-flex">
             <i className="fa fa-suitcase" aria-hidden="true"></i>
               <div className="trip-details-para">
-                Trip Description From The Driver: {current_trip.comments}
+                Trip Description From {driver.first_name} {driver.last_name}: {current_trip.comments}
               </div>
           </div>
         </div>
