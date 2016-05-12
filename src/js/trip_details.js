@@ -61,7 +61,7 @@ export default class TripDetails extends Component {
       }
       breakdownArr.push(breakdown)
     }
-    breakdownArr.push({passenger_price: 'all seats booked'})
+    breakdownArr.push({passenger_price: 'all seats are booked'})
     return (
       breakdownArr.reverse()
     )
@@ -115,7 +115,7 @@ showBreakdown(priceSet, index, arr){
   }else {
     return (
       <div className={`price-breakdown-wrapper ${this.highlight(index)}`} key={ index }>
-        {index}: {priceSet.passenger_price}
+        when {index} people join, the price will be $ {priceSet.passenger_price}
       </div>
     )
   }
@@ -157,11 +157,16 @@ renderPage(){
           <div className="book-edit">
           <div> Trip Details </div> {::this.renderEditLink()}
           </div>
+
+
         <div className="trip-details-flex">
 
+        <div className="the-trip"><i className="fa fa-map-marker" aria-hidden="true"></i></div>
+
+      <div>
         <div className="trip-details-departing-wrapper">
           <div className="trip-details-departing">
-            <div className="separate">Departure <i className="fa fa-circle-o" aria-hidden="true"></i></div>
+            <div className="separate">Departure </div>
             <div>{current_trip.departing_city}</div>
           </div>
             <div>{current_trip.date_leave}</div>
@@ -171,62 +176,73 @@ renderPage(){
 
           <div className="trip-details-destination-wrapper">
            <div className="trip-details-destination">
-            <div className="separate"> Destination <i className="fa fa-bullseye" aria-hidden="true"></i></div>
+            <div className="separate"> Destination </div>
             <div>{current_trip.destination}</div>
            </div>
             <div>{current_trip.date_arrive}</div>
           </div>
+        </div>
 
 
         </div>
 
-        <div className="trip-details-seats">
-        <div>
-
-        <div className='current-price'>Currently {breakdown[current_price].passenger_price}</div>
-          Price Breakdown for Number of Riders<br/>
-          <div className="try">{breakdown.map(::this.showBreakdown)}</div>
-        </div>
 
 
-        <div className="trip-price-explanation">
-          <div>
-            <i className="fa fa-info-circle" aria-hidden="true"></i>
-              <b>The price goes down as more riders join this trip.</b><br/>
-              The prices are calculated from the trips distance, average MPG, and daily gas prices.
-              You won't be charged until the trip has started to ensure as many
-              seats are filled as possible.
+           <div className="trip-details-seats-wrapper">
+
+            <i className="fa fa-credit-card" aria-hidden="true"></i> 
+
+                <div className="trip-details-seats">
+
+                  <div className='current-price'>
+                    Currently {breakdown[current_price].passenger_price}
+                  <div className="trip-price-explanation">
+                  <div>
+                      The price goes down as more riders join this trip.<br/>
+                      The prices are calculated from the trips distance, average MPG, and daily gas prices.
+                      <br/>You won't be charged until the trip has started to ensure as many
+                      seats are filled as possible.
+                      <br/><br/>
+                  </div>
+                  </div>
+                  </div>
+
+                 <div className="try">
+                   {breakdown.map(::this.showBreakdown)}
+                 </div>
+              </div>
           </div>
-        </div>
-        </div>
+
 
 
         <div className="trip-details-driver">
           <div className="trip-details-driver-flex">
-            <div className="driver-content-flex">
+            <i className="fa fa-suitcase" aria-hidden="true"></i>
+              <div className="trip-details-para">
+                Trip Description From The Driver: {current_trip.comments}
+              </div>
+          </div>
+        </div>
 
+      <div className='other-riders-title'>
+        <div className="user-icon">
+         <i className="fa fa-users" aria-hidden="true"></i>
+        </div>
+         
+
+        <div className='other-riders-wrapper'>
+            <div className="driver-content-flex">
               <img src={driver.pictures[0].image_url}/>
               <span className="trip-details-driver-name">{driver.first_name} {driver.last_name}</span>
               <Link className="trip-details-driver-link" to={`/profile/${driver.id}`}> view drivers profile </Link>
-              </div>
-
-
-              <div className="trip-details-para">
-                Trip Description: {current_trip.comments}
-               </div>
-
-
-        </div>
-        </div>
-
-        <div className='other-riders-title'>
-         <b>other riders on this trip</b>
-        </div>
-
-        <div className='other-riders-wrapper'>
+            </div>
           {riders.map(::this.showRiders)}
         </div>
-        </div>
+      </div>
+
+
+
+  </div>
 
 
  </div>
@@ -240,3 +256,8 @@ renderPage(){
     )
 }
 }
+
+
+
+
+        // <i className="fa fa-usd" aria-hidden="true"></i>
