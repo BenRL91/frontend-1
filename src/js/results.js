@@ -8,7 +8,8 @@ export default class Results extends Component {
   constructor(...args){
     super(...args);
     this.state = {
-      trips: []
+      trips: [],
+      loading: true
     }
   }
   breakdownTotalPrice(total, seats_available, seats_left, discount){
@@ -122,7 +123,7 @@ export default class Results extends Component {
       })
 
       .then(results => {
-        this.setState({trips: results.search})
+        this.setState({trips: results.search, loading: false})
       })
 
     }else if( loc === 'dest'){
@@ -137,11 +138,17 @@ export default class Results extends Component {
       })
 
       .then(results => {
-        this.setState({trips: results.search})
+        this.setState({trips: results.search, loading: false})
       })
     }
   }
-  render(){
+  renderLoading(){
+    return (
+      <div>Loading...</div>
+    )
+  }
+  renderResults(){
+    console.log("results")
     let { trips } = this.state;
     return (
       <div className='results-wrapper-top'>
@@ -150,6 +157,32 @@ export default class Results extends Component {
         {trips.map(::this.makeTripListing)}
       </div>
       </div>
+    )
+  }
+  renderNoResults(){
+    console.log(' no results ')
+    return(
+
+			<div className="no-trip-wrapper-top">
+				<div className="no-trip--wrapper">
+					<span>Thanks for booking your trip with Lifteri!</span>
+					<Link className='go-back' to='/'>
+            Head back to the Search.
+					</Link>
+					<br/>
+					<i className="fa fa-car" aria-hidden="true"></i>
+				</div>
+			</div>
+		)
+	}
+  render(){
+    let { trips, loading } = this.state;
+    console.log(trips.length)
+    return (
+      trips.length <= 0
+      ? loading ? this.renderLoading() : this.renderNoResults()
+      : loading ? this.renderLoading() : this.renderResults()
+
     )
   }
 }
