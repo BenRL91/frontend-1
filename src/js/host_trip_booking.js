@@ -15,9 +15,6 @@ export default class HostTripBooking extends Component {
    this.input1.refs.input.refs.input.autocomplete = "off"
    this.input2.refs.input.refs.input.autocomplete = "off"
   }
-  componentDidMount(){
-    this.stopAutoComplete()
-  }
   constructor(...args){
     super(...args);
     this.state = {
@@ -190,9 +187,6 @@ renderLoading(){
     <i className="fa fa-spinner" aria-hidden="true"></i>
   )
 }
-componentDidMount(){
-console.log('refs', this)
-}
 suggestHandler(){
   let { suggested_price } = this.state;
   console.log("sug1", this.input.value)
@@ -281,6 +275,7 @@ renderPage(){
           <label>
             Departure City:
             <GeoSuggest
+              onChange={::this.stopAutoComplete}
               ref={geo => this.input1 = geo}
               type='text'
               name='departing_city'
@@ -307,6 +302,7 @@ renderPage(){
           <label>
             Destination:
             <GeoSuggest
+              onChange={::this.stopAutoComplete}
               ref={geo => this.input2 = geo}
               type='text'
               name='destination'

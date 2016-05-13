@@ -11,6 +11,7 @@ let latA, lngA, latB, lngB;
 export default class Home extends Component {
 
 stopAutoComplete(){
+  console.log(this.input)
  this.input.refs.input.refs.input.autocomplete = "off"
 }
 onSuggestSelectDepart(suggest) {
