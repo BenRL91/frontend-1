@@ -44,7 +44,7 @@ componentDidMount(){
             <br/>
 
 
-<div className='geo-wrapper'>
+          <div className='geo-wrapper'>
              <select name='travel'>
                <option value='depart'>Departing from</option>
                <option value='dest'>Traveling to</option>

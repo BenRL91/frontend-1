@@ -27,10 +27,12 @@ $tangerine: #00CCCC;
 	display:flex;
 	justify-content:space-between;
 	border-bottom: 3px solid #e9e9e9;
-	padding-top: 1vh;
-	padding-bottom: 1vh;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	font-size: 1.35em;
   	font-weight: 300;
+
+
 
 
 	img{
@@ -50,17 +52,21 @@ $tangerine: #00CCCC;
 
 
 	.results-cities{
-		// display:flex;
-		// align-items:center;
-		padding-top:2vh;
+		padding-top: 5px;
+
+		.dest{
+			width:100px;
+		}
 
 		.depart{
+			display:flex;
 			width:30vw;
 			white-space:nowrap;
 			overflow:hidden;
 			text-overflow:ellipsis;
 		}
 		.destination{
+			display:flex;
 			width:30vw;
 			white-space:nowrap;
 			overflow:hidden;

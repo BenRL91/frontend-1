@@ -80,25 +80,28 @@ export default class Results extends Component {
 
          <div className="results-cities">
             <div className='depart'>
-          <i className="fa fa-circle-o" aria-hidden="true"></i>
-              {trip.departing_city}
+          <div className="dest"> Departure </div> {trip.departing_city}
             </div>
           <br/>
             <div className='destination'>
-          <i className="fa fa-bullseye" aria-hidden="true"></i>
-              {trip.destination}
+          <div className="dest"> Destination </div> {trip.destination}
             </div>
+            <br/>
+           <div className='destination'>
+            <div className="dest"> Leaving </div> {trip.date_leave}
+          </div>
+
           </div>
         </div>
 
 
         <div className="results-dates-price-flex">
 
-            <div className="results-date">  <b>{trip.date_leave}</b></div>
+            <div className="results-date">  <b></b></div>
 
              <div>
-                <div className="results-price"> Currently <b>{breakdown[current_price].passenger_price}</b></div>
-                <div className="results-price"> As low as <b>{breakdown[breakdown.length - 2].passenger_price}</b> </div>
+                <div className="results-price"> <b>Currently {breakdown[current_price].passenger_price}</b></div>
+                <div className="results-price"> <b>As low as {breakdown[breakdown.length - 2].passenger_price}</b> </div>
               </div>
 
 
