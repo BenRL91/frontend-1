@@ -44,13 +44,24 @@ $newblue:#33CCCC;
 		font-size: 18px;
 		width:100%;
 		margin-right: 20%;
+
+		.fa {
+			width:30px;
+			text-align: center;
+		}
 		.profile-name{
 			font-weight: bold;
 			// width:400px;
 			font-size: 20px;
 
 		}
-		.profile-username{
+		.profile-name{
+			
+		}
+		.profile-home{
+			
+		}
+		.profile-car{
 			
 		}
 		.profile-email{
@@ -98,21 +109,32 @@ $newblue:#33CCCC;
 		font-size: 15px;
 		min-height:200px;
 
+		.lines{
+			border-bottom: 5px solid #222222;
+			
+		}
+
 
 		.booked-trips{
-			padding:20px;
-			// color:$newblue;
+			padding-top: 35px;
+		    padding-left:20px;
+			padding-right:20px;
+			padding-bottom:20px;
 			font-size: 18px;
 			border-top: 5px solid #222222;
+
 
 		}
 
 		.hosted-trips{
-			padding:20px;
+			padding-left:20px;
+			padding-right:20px;
+			padding-bottom:20px;
+
 			// color:$newblue;
 			font-size: 18px;
 
-			border-top: 5px solid #222222;
+			// border-top: 5px solid #222222;
 
 		}
 
@@ -125,7 +147,13 @@ $newblue:#33CCCC;
 			width:100%;
 			box-sizing:border-box;
 
-			
+			.marker-flex{
+				display:flex;
+				.fa-map-marker{
+					padding-right: 15px;
+					font-size: 20px;
+				}
+			}
 
 
 
@@ -152,6 +180,12 @@ $newblue:#33CCCC;
 				}
 
 			}
+
+			// .profile-arrow{
+			// 	display:flex;
+			// 	align-self:center;
+			// 	height:300px;
+			// }
 
 
 

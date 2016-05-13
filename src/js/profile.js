@@ -31,6 +31,9 @@ export default class Profile extends Component {
 gettrips(trip){
   return (
   <div className="profile_get_trips" key={trip.host_id}>
+
+    <div className="marker-flex">
+    <i className="fa fa-map-marker" aria-hidden="true"></i>
     <div className="profile-cities">
       <div className="flex">
       <div className="depart-flex">
@@ -48,7 +51,12 @@ gettrips(trip){
 
 
     </div>
-    <Link className="profile-trip-details" to={`/details/${trip.host_id}`}> details + </Link>
+    </div>
+
+    <div className="profile-arrow">
+      <Link className="profile-trip-details" to={`/details/${trip.host_id}`}> details <i className="fa fa-arrow-right" aria-hidden="true"></i> </Link>
+    </div>
+
   </div>
 )}
 allowEdit(){
@@ -100,22 +108,25 @@ renderPage(){
 
         <div className="profile-user-details">
 
-          <div className="profile-name">
-            {profile.first_name} {profile.last_name}
-          </div>
-           <br/>
-           <div className="profile-name">
-             {profile.car_info}
-           </div>
-           <br/>
-           <div className="profile-name">
-             {profile.home_city}
-           </div>
-          <div className="profile-email">
-            <i className="fa fa-envelope-o" aria-hidden="true"></i> {profile.email}
+          <div className="profile-name"> {profile.first_name} {profile.last_name}
           </div>
 
-            <br/>
+           <br/>
+
+           <div className="profile-car">
+             <i className="fa fa-car" aria-hidden="true"></i> {profile.car_info}
+           </div>
+
+      
+
+           <div className="profile-home">
+             <i className="fa fa-map-marker" aria-hidden="true"></i> {profile.home_city}
+           </div>
+
+           <div className="profile-email">
+            <i className="fa fa-envelope-o" aria-hidden="true"></i> {profile.email}
+           </div>
+
 
           <div className="profile-status">
             <i className="fa fa-user" aria-hidden="true"></i> {profile.user_name}
@@ -136,13 +147,15 @@ renderPage(){
       <div className="profile-trips">
 
 
-        <div className="profile-trips-list">
-          <div className="booked-trips"><b>Trips You've Been a Rider on</b></div>
+      <div className="profile-trips-list">
+        <div className="lines">
+          <div className="booked-trips"><b>Rider Trips</b></div>
             { profile.trips_ridden.map(::this.gettrips)}
+        </div>
             <br/>
             <br/>
 
-          <div className="hosted-trips"><b>Trips You've Been a Driver on</b></div>
+          <div className="hosted-trips"><b>Driver Trips</b></div>
             { current_user_trips.map(::this.gettrips) }
         </div>
 
