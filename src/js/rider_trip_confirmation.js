@@ -11,6 +11,7 @@ render(){
 		<div className="driver-trip-confirmation-wrapper-top">
 			<div className="driver-trip-confirmation-wrapper">
 				<span>Thanks for booking your trip with Lifteri!</span>
+				<span>Make sure to check your E-mail for the details of your trip!</span>
 				<Link className='driverlink' to={`/profile/${current_user.id}`}>
 					View Your Profile
 				</Link>
