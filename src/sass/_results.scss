@@ -56,21 +56,29 @@ $tangerine: #00CCCC;
 
 		.dest{
 			width:100px;
+		
 		}
 
 		.depart{
 			display:flex;
-			width:30vw;
+			span{
+			width:250px;
 			white-space:nowrap;
 			overflow:hidden;
 			text-overflow:ellipsis;
+				
+			}
 		}
 		.destination{
 			display:flex;
-			width:30vw;
+
+			span{
+			width:250px;
 			white-space:nowrap;
 			overflow:hidden;
 			text-overflow:ellipsis;
+				
+			}
 		}
 	}
 
