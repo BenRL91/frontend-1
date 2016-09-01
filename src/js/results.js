@@ -153,11 +153,12 @@ export default class Results extends Component {
   renderResults(){
     console.log("results")
     let { trips } = this.state;
+    let filteredResults = trips.filter( trip => trip.seats_left > 0)
     return (
       <div className='results-wrapper-top'>
 
       <div className='results-wrapper'>
-        {trips.map(::this.makeTripListing)}
+        {filteredResults.map(::this.makeTripListing)}
       </div>
       </div>
     )
